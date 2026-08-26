@@ -178,7 +178,18 @@ input { font: inherit; }
   width: 20px; height: 20px;
   transform: scaleX(-1);        /* dùng lại vector chevron, lật ngang thành mũi tên lùi */
 }
-.app-header__spacer { width: 20px; flex: none; }
+
+/* Tiêu đề căn giữa theo khung, không theo khoảng trống còn lại. Hai bên rộng
+   khác nhau — mũi tên lùi 20px, chuông 36px — nên nếu để tiêu đề nằm trong
+   dòng thì nó luôn lệch sang phải đúng 8px. Chỉ áp cho header có đúng một nút
+   bên phải; header nào có hai nút thì giữ nguyên bố cục cũ. */
+.app-header__inner:has(> .page-title + .icon-btn:last-child) { position: relative; }
+.app-header__inner:has(> .page-title + .icon-btn:last-child) > .page-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 120px);
+}
 
 .page-title {
   font-size: 20px;

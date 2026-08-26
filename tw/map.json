@@ -193,11 +193,7 @@
  },
  "app-header__inner": {
   "tw": "h-[64px] flex items-center justify-between gap-2",
-  "keep": ""
- },
- "app-header__spacer": {
-  "tw": "w-5 flex-none",
-  "keep": ""
+  "keep": ".app-header__inner:has(> .page-title + .icon-btn:last-child){position:relative}.app-header__inner:has(> .page-title + .icon-btn:last-child)>.page-title{position:absolute;left:50%;transform:translateX(-50%);max-width:calc(100% - 120px)}"
  },
  "brand": {
   "tw": "",
