@@ -71,6 +71,12 @@ html{-webkit-text-size-adjust:100%}
 button{background:none;border:0 solid;font:inherit;color:inherit}
 a{-webkit-tap-highlight-color:transparent}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+/* Ba luật dưới đây không gắn vào class nào nên bản đồ class→utility không nhặt
+   được. Thiếu chúng thì: thanh chip hở 64px khi header ẩn, bàn phím mất vòng
+   focus, và hàng cuối khối đỏ thừa một đường kẻ. */
+body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
+:focus-visible{outline:2px solid var(--gnm-red);outline-offset:2px;border-radius:4px}
+.redlist__list>.redrow:last-child{padding-bottom:0;border-bottom:0}
 
 /* ---------- components (phần utility không diễn đạt được) ---------- */
 .act:active{transform:scale(.92)}
@@ -627,6 +633,7 @@ a{-webkit-tap-highlight-color:transparent}
 .size-8{width:2rem;height:2rem}
 .size-9{width:2.25rem;height:2.25rem}
 .size-\[14px\]{width:14px;height:14px}
+.size-\[18px\]{width:18px;height:18px}
 .size-\[22px\]{width:22px;height:22px}
 .size-\[28px\]{width:28px;height:28px}
 .size-\[30px\]{width:30px;height:30px}

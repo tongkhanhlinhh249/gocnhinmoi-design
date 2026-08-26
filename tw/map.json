@@ -1642,5 +1642,13 @@
  "feat__like": {
   "tw": "absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800",
   "keep": ".feat__like{background:rgba(16,24,40,.42)}.feat__like .icon{width:15px;height:15px}.feat__like[aria-pressed=\"true\"] .icon{fill:var(--gnm-red)}"
+ },
+ "drawer__link__main": {
+  "tw": "flex items-center gap-3 min-w-0",
+  "keep": ""
+ },
+ "drawer__link__ico": {
+  "tw": "size-[18px] text-icon-dark",
+  "keep": ""
  }
 }

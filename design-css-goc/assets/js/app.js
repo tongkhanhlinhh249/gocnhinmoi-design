@@ -23,6 +23,67 @@
     }, 2200);
   }
 
+  /* ---------- Menu ba chấm trên thẻ tin ---------- */
+  /* Đặt sớm, ngay sau toast: khối quản lý bài viết phía dưới chạy không có
+     bảo vệ và ném lỗi trên mọi trang không phải Cá nhân, cắt đứt mọi đoạn
+     đăng ký sau nó. Ở đây thì chắc chắn chạy trên cả 16 trang.
+     Tra phần tử sheet lúc gọi, không giữ tham chiếu: trong file có hai biến
+     cùng tên `sheet` nên biến sau ghi đè biến trước. */
+  function moSheetMenu(tieuDe, items, xuLy) {
+    var sh = document.getElementById('sheet');
+    var body = document.getElementById('sheetBody');
+    var tit = document.getElementById('sheetTitle');
+    var meta = document.getElementById('sheetMeta');
+    if (!sh || !body) return;
+    tit.textContent = tieuDe;
+    if (meta) { meta.textContent = ''; meta.hidden = true; }
+    body.innerHTML = '<div class="sheet-menu">' + items.map(function (x) {
+      return '<button type="button" data-card-act="' + x[1] + '"' + (x[2] ? ' data-danger' : '') + '>' +
+        '<svg class="icon" aria-hidden="true"><use href="#i-' + x[0] + '"></use></svg>' + x[1] + '</button>';
+    }).join('') + '</div>';
+    sh.hidden = false;
+    void sh.offsetWidth;
+    sh.classList.add('is-open');
+    var dau = sh.querySelector('button');
+    if (dau) dau.focus();
+
+    body.addEventListener('click', function handler(ev) {
+      var b = ev.target.closest('[data-card-act]');
+      if (!b) return;
+      body.removeEventListener('click', handler);
+      dongSheetMenu();
+      xuLy(b.getAttribute('data-card-act'));
+    });
+  }
+  function dongSheetMenu() {
+    var sh = document.getElementById('sheet');
+    if (!sh) return;
+    sh.classList.remove('is-open');
+    setTimeout(function () { sh.hidden = true; }, 260);
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-sheet-close]')) dongSheetMenu();
+    var nut = e.target.closest && e.target.closest('[data-card-menu]');
+    if (!nut) return;
+
+    // Nhận diện thẻ nghe/xem bằng dấu hiệu có thật trong thẻ — nút phát hoặc
+    // nhãn thời lượng — chứ không theo tên class, vì mỗi trang đặt tên một kiểu.
+    var the = nut.closest('article, li');
+    var laNgheXem = !!(the && the.querySelector(
+      '.play-fab, .vcard__play, .prow__play, .btn-play, [data-play], .badge-time'));
+
+    var items = [];
+    if (laNgheXem) items.push(['nav-media', 'Thêm vào playlist']);
+    items.push(['bookmark', 'Lưu để đọc sau']);
+    items.push(['alert', 'Báo cáo', true]);
+
+    moSheetMenu('Tuỳ chọn', items, function (act) {
+      setTimeout(function () {
+        toast(act === 'Báo cáo' ? 'Đã gửi báo cáo tới Ban biên tập' : act);
+      }, 260);
+    });
+  });
+
   /* ---------- Định dạng số lượt tương tác ---------- */
   function formatCount(n) {
     if (n >= 1000) {

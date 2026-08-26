@@ -2732,7 +2732,10 @@ input { font: inherit; }
   line-height: 22px;
   color: var(--ink);
 }
+.drawer__link__main { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .drawer__link .icon { width: 13px; height: 13px; color: var(--icon-muted); flex: none; }
+/* Icon dẫn đầu to hơn dấu mũi tên cuối dòng — nó là dấu nhận biết mục, không phải chỉ dấu hướng */
+.drawer__link__ico { width: 18px; height: 18px; color: var(--icon-dark); }
 .drawer__link:active { background: var(--bg); }
 .drawer__link[aria-current="page"] { color: var(--gnm-red); background: #fef2f3; }
 .drawer__link[aria-current="page"] .icon { color: var(--gnm-red); }

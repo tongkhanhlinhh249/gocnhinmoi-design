@@ -110,6 +110,12 @@ html{-webkit-text-size-adjust:100%}
 button{background:none;border:0 solid;font:inherit;color:inherit}
 a{-webkit-tap-highlight-color:transparent}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+/* Ba luật dưới đây không gắn vào class nào nên bản đồ class→utility không nhặt
+   được. Thiếu chúng thì: thanh chip hở 64px khi header ẩn, bàn phím mất vòng
+   focus, và hàng cuối khối đỏ thừa một đường kẻ. */
+body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
+:focus-visible{outline:2px solid var(--gnm-red);outline-offset:2px;border-radius:4px}
+.redlist__list>.redrow:last-child{padding-bottom:0;border-bottom:0}
 """
 
 
@@ -188,6 +194,14 @@ def main():
           "\n".join(giu) +
           "\n\n/* ---------- utilities ---------- */\n" + css_util + "\n")
     (DICH / "assets/css/tailwind.css").write_text(ra, encoding="utf-8")
+
+    # JS và ảnh không qua bước chuyển đổi nào, nhưng vẫn phải đồng bộ — thiếu
+    # bước này thì sửa JS ở nguồn xong bản đích vẫn chạy bản cũ.
+    import shutil
+    js_goc = GOC / "assets/js/app.js"
+    if js_goc.exists():
+        shutil.copy2(js_goc, DICH / "assets/js/app.js")
+        print("đồng bộ app.js từ nguồn")
 
     print("HTML: %d trang" % len(trang))
     print("utility dùng: %d class" % len(ung_vien))

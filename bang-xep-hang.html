@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="Bảng xếp hạng tác giả Góc Nhìn Mới — thứ hạng theo lượt đọc, tương tác và chỉ số ảnh hưởng.">
-<title>Bảng xếp hạng tác giả — Góc Nhìn Mới</title>
+<title>Tác giả nổi bật — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,7 +156,7 @@
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg>
       </a>
 
-      <h1 class="text-[20px] font-semibold leading-[28px] text-[#000] truncate">Bảng xếp hạng</h1>
+      <h1 class="text-[20px] font-semibold leading-[28px] text-[#000] truncate">Tác giả nổi bật</h1>
         <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer" data-drawer-open><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-menu"></use></svg></button>
 
       <span class="w-5 flex-none" aria-hidden="true"></span>
@@ -177,11 +177,11 @@
         </div>
 
         <div class="lb-range flex gap-2 pt-5" role="tablist" aria-label="Kỳ xếp hạng">
-          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-range="thang">Tháng này</button>
-          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-range="tuan">Tuần này</button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-range="tuan">Tuần này</button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-range="thang">Tháng này</button>
         </div>
 
-        <div data-range-panel="thang">
+        <div data-range-panel="thang" hidden>
       <ol class="grid grid-cols-3 gap-2 items-end pt-12">
         <li class="relative min-w-0 rounded-lg pt-[50px] px-2 pb-3 text-center shadow-card podium__item--2">
           <img class="podium__ava absolute -top-[26px] left-1/2 -translate-x-1/2 size-14 border-[3px] border-surface rounded-full object-cover bg-surface-fill" src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64">
@@ -210,7 +210,7 @@
       </ol>
         </div>
 
-        <div data-range-panel="tuan" hidden>
+        <div data-range-panel="tuan">
       <ol class="grid grid-cols-3 gap-2 items-end pt-12">
         <li class="relative min-w-0 rounded-lg pt-[50px] px-2 pb-3 text-center shadow-card podium__item--2">
           <img class="podium__ava absolute -top-[26px] left-1/2 -translate-x-1/2 size-14 border-[3px] border-surface rounded-full object-cover bg-surface-fill" src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64">
@@ -243,7 +243,7 @@
 
     <!-- ============ Hạng 4 trở đi ============ -->
     <section class="shell w-full max-w-shell mx-auto px-4" aria-label="Thứ hạng từ 4 trở đi">
-      <div data-range-panel="thang">
+      <div data-range-panel="thang" hidden>
       <ol class="bg-surface rounded-[12px] shadow-card overflow-hidden mt-3">
         <li class="rank-row flex items-center gap-[10px] py-3 px-4">
           <span class="flex-none w-[18px] text-[14px] font-bold text-ink-faint text-center tabular-nums">4</span>
@@ -304,7 +304,7 @@
       </ol>
       </div>
 
-      <div data-range-panel="tuan" hidden>
+      <div data-range-panel="tuan">
       <ol class="bg-surface rounded-[12px] shadow-card overflow-hidden mt-3">
         <li class="rank-row flex items-center gap-[10px] py-3 px-4">
           <span class="flex-none w-[18px] text-[14px] font-bold text-ink-faint text-center tabular-nums">4</span>
@@ -455,16 +455,14 @@
     </div>
 
     <ul class="drawer__list py-2 overflow-y-auto">
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="moi-nhat.html">Mới nhất <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="hot-hom-nay.html">Hot hôm nay <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="tra-dam.html">Trà đàm <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="goc-mo.html">Góc mở <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="quan-diem.html">Quan điểm <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="luan-co-suy-kim.html">Luận cổ suy kim <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="photo.html">Photo <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="spotlight.html">Spotlight <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-            <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="bang-xep-hang.html" aria-current="page">Bảng xếp hạng <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-            <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="dia-diem-list.html">Khám phá địa điểm <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="moi-nhat.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="hot-hom-nay.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-heart"></use></svg>Hot hôm nay</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="tra-dam.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="goc-mo.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Góc mở</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="quan-diem.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-nav-write"></use></svg>Quan điểm</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="luan-co-suy-kim.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-bookmark"></use></svg>Luận cổ suy kim</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="photo.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link flex items-center justify-between gap-3 px-4 py-[14px] text-[15px] font-semibold leading-[22px] text-ink active:bg-surface-soft aria-current:text-primary-800 aria-current:bg-[#fef2f3]" href="spotlight.html"><span class="flex items-center gap-3 min-w-0"><svg class="icon size-4 flex-none size-[18px] text-icon-dark" aria-hidden="true"><use href="#i-star"></use></svg>Spotlight</span> <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
     </ul>
 
     <p class="drawer__foot mt-auto p-4 border-t border-line-3 text-[12px] leading-[20px] text-ink-muted">© 2026 Mạng xã hội Góc Nhìn Mới</p>
