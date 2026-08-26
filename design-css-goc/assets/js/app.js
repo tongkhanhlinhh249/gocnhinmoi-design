@@ -343,6 +343,16 @@
       return;
     }
 
+    var addBtn = e.target.closest('[data-playlist-add]');
+    if (addBtn) {
+      var added = addBtn.getAttribute('aria-pressed') === 'true';
+      addBtn.setAttribute('aria-pressed', added ? 'false' : 'true');
+      addBtn.setAttribute('aria-label',
+        added ? 'Thêm vào playlist của tôi' : 'Bỏ khỏi playlist của tôi');
+      toast(added ? 'Đã bỏ khỏi playlist của bạn' : 'Đã thêm vào playlist của bạn');
+      return;
+    }
+
     var followBtn = e.target.closest('[data-follow]');
     if (followBtn) {
       var following = followBtn.getAttribute('aria-pressed') === 'true';
@@ -620,6 +630,15 @@
         window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
       });
     });
+
+    // Trang chủ dẫn sang đây kèm ?view=short — mở thẳng đúng chế độ, nếu không
+    // người dùng bấm "Xem thêm" ở mục Video ngắn lại rơi vào tab "Tất cả".
+    var viewYeuCau = (location.search.match(/[?&]view=([\w-]+)/) || [])[1];
+    if (viewYeuCau) {
+      $$('.chip', mediaChips).forEach(function (c) {
+        if (c.getAttribute('data-view') === viewYeuCau) c.click();
+      });
+    }
   }
 
   function chipsWrapScrollTo(box, chip) {

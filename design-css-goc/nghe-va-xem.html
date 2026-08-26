@@ -81,6 +81,12 @@
   <symbol id="i-phone-btn" viewBox="0 0 14.9889 14.9889">
     <path d="M13.7398 10.5672V12.4408C13.7405 12.6147 13.7049 12.7869 13.6352 12.9463C13.5655 13.1056 13.4633 13.2487 13.3352 13.3663C13.207 13.4839 13.0557 13.5734 12.8909 13.6291C12.7262 13.6848 12.5516 13.7055 12.3783 13.6899C10.4565 13.481 8.6105 12.8243 6.98857 11.7725C4.73998 10.4788 2.96327 8.50075 1.91733 6.12671C0.89195 4.49807 0.26107 2.65248 0.0749442 0.736954C0.18021 0.500482 0.356341 0.302554 0.578986 0.170533C0.80163 0.0385132 1.05979 -0.0210777 1.31777 0C1.31777 0 3.19139 0 3.19139 0C3.49448 -0.0029834 3.78831 0.104347 4.01813 0.301984C4.24794 0.499621 4.39804 0.774081 4.44046 1.0742C4.51978 1.67376 4.66592 2.2627 4.87764 2.82915C4.96167 3.05269 4.97985 3.29563 4.93004 3.52919C4.88023 3.76274 4.76451 3.97712 4.5966 4.14693L3.80343 4.94009C4.6925 6.50365 5.9871 7.79825 7.55066 8.68732L8.34382 7.89415C8.51363 7.72624 8.72801 7.61052 8.96156 7.56071C9.19512 7.5109 9.43806 7.52908 9.6616 7.61311C10.2281 7.82483 10.817 7.97097 11.4165 8.05029C11.7503 7.7422 12.1928 7.57932 12.6466 7.59747C13.1005 7.61563 13.5285 7.81333 13.8366 8.14709C14.1447 8.48085 14.3076 8.92333 14.2894 9.37718C14.2713 9.83104 14.0736 10.2591 13.7398 10.5672Z" stroke="currentColor" stroke-width="1.24908" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16">
+    <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 16 16">
+    <path d="M3.5 8.4L6.4 11.3L12.5 4.7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="i-close" viewBox="0 0 16 16">
     <path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
@@ -185,7 +191,7 @@
         <button class="chip" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
         <button class="chip" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
         <button class="chip" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-view="short">Short Video</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
       </div>
     </nav>
 
@@ -836,6 +842,155 @@
     </div>
 
     <!-- ============ Playlist gợi ý ============ -->
+    <!-- ============ Video ngắn ============ -->
+    <section class="media-section shell" data-view="short" hidden aria-labelledby="short-title">
+      <div class="section-head__row">
+        <h2 class="section-title" id="short-title">Video ngắn</h2>
+      </div>
+      <ul class="shortgrid">
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-ha-noi.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-lan-chi.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Lan Chi</span><span class="short__time">2 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Vịnh Hạ Long lúc bình minh — ba phút không lời</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-tay-nguyen.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-dang-khoa.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Đăng Khoa</span><span class="short__time">5 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Phiên chợ vùng cao trước giờ tan</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-sai-gon-5h.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-thu-hang.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Thu Hằng</span><span class="short__time">8 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Sài Gòn 5 giờ sáng qua ống kính điện thoại</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/cover-nong-nghiep.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-minh-tuan.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Minh Tuấn</span><span class="short__time">1 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Một ngày ở nông trại công nghệ cao</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Quỳnh Chi</span><span class="short__time">1 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Đô thị số nhìn từ tầng 30</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-song-cham.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-hoai-nam.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Hoài Nam</span><span class="short__time">2 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Sống chậm ở một thị trấn không đèn giao thông</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/cover-du-lich.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-phuong-linh.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Phương Linh</span><span class="short__time">3 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Ba ngày đi bộ dọc bờ biển miền Trung</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-gen-z.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-duc-anh.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Đức Anh</span><span class="short__time">4 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Gen Z chọn nghề: hỏi mười người, mười câu trả lời</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/cover-lang-nghe.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-ngoc-han.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Ngọc Hân</span><span class="short__time">5 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Làng nghề cuối cùng còn giữ khuôn gỗ</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-tri-hanh.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-minh-duc.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Minh Đức</span><span class="short__time">1 tuần</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Đọc sách trên tàu — thói quen của một thế hệ</a></h3>
+            </div>
+          </li>
+      </ul>
+    </section>
+
     <section class="media-section shell" data-view="all playlist" aria-labelledby="playlist-title">
       <div class="section-head__row">
         <h2 class="section-title" id="playlist-title">Playlist gợi ý</h2>
@@ -843,6 +998,10 @@
 
       <ul class="playlists">
         <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack">
               <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
@@ -858,6 +1017,10 @@
         </li>
 
         <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack">
               <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
@@ -873,6 +1036,10 @@
         </li>
 
         <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack">
               <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
@@ -888,6 +1055,10 @@
         </li>
 
         <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack">
               <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>

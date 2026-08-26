@@ -1612,7 +1612,7 @@
   "keep": ".play-fab .icon--pause,.btn-play .icon--pause,.vcard__play .icon--pause,.prow__play .icon--pause{display:none}.play-fab.is-playing .icon--pause,.btn-play.is-playing .icon--pause,.vcard__play.is-playing .icon--pause,.prow__play.is-playing .icon--pause{display:block}"
  },
  "plcard": {
-  "tw": "",
+  "tw": "relative",
   "keep": ".plcard>a{display:block}"
  },
  "plist__item": {
@@ -1730,5 +1730,13 @@
  "short__title": {
   "tw": "text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2",
   "keep": ""
+ },
+ "shortgrid": {
+  "tw": "grid grid-cols-2 gap-3 pt-1",
+  "keep": ".shortgrid>.short{width:auto;flex:none}"
+ },
+ "plcard__add": {
+  "tw": "absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors",
+  "keep": ".plcard__add{background:rgba(16,24,40,.55);transition-timing-function:var(--ease)}.plcard__add .icon{width:15px;height:15px}.plcard__add .icon--check{display:none}.plcard__add[aria-pressed=\"true\"]{background:var(--gnm-red)}.plcard__add[aria-pressed=\"true\"] .icon--plus{display:none}.plcard__add[aria-pressed=\"true\"] .icon--check{display:block}"
  }
 }

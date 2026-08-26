@@ -81,6 +81,12 @@
   <symbol id="i-phone-btn" viewBox="0 0 14.9889 14.9889">
     <path d="M13.7398 10.5672V12.4408C13.7405 12.6147 13.7049 12.7869 13.6352 12.9463C13.5655 13.1056 13.4633 13.2487 13.3352 13.3663C13.207 13.4839 13.0557 13.5734 12.8909 13.6291C12.7262 13.6848 12.5516 13.7055 12.3783 13.6899C10.4565 13.481 8.6105 12.8243 6.98857 11.7725C4.73998 10.4788 2.96327 8.50075 1.91733 6.12671C0.89195 4.49807 0.26107 2.65248 0.0749442 0.736954C0.18021 0.500482 0.356341 0.302554 0.578986 0.170533C0.80163 0.0385132 1.05979 -0.0210777 1.31777 0C1.31777 0 3.19139 0 3.19139 0C3.49448 -0.0029834 3.78831 0.104347 4.01813 0.301984C4.24794 0.499621 4.39804 0.774081 4.44046 1.0742C4.51978 1.67376 4.66592 2.2627 4.87764 2.82915C4.96167 3.05269 4.97985 3.29563 4.93004 3.52919C4.88023 3.76274 4.76451 3.97712 4.5966 4.14693L3.80343 4.94009C4.6925 6.50365 5.9871 7.79825 7.55066 8.68732L8.34382 7.89415C8.51363 7.72624 8.72801 7.61052 8.96156 7.56071C9.19512 7.5109 9.43806 7.52908 9.6616 7.61311C10.2281 7.82483 10.817 7.97097 11.4165 8.05029C11.7503 7.7422 12.1928 7.57932 12.6466 7.59747C13.1005 7.61563 13.5285 7.81333 13.8366 8.14709C14.1447 8.48085 14.3076 8.92333 14.2894 9.37718C14.2713 9.83104 14.0736 10.2591 13.7398 10.5672Z" stroke="currentColor" stroke-width="1.24908" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16">
+    <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 16 16">
+    <path d="M3.5 8.4L6.4 11.3L12.5 4.7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="i-close" viewBox="0 0 16 16">
     <path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
@@ -185,7 +191,7 @@
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="short">Short Video</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
       </div>
     </nav>
 
@@ -444,7 +450,7 @@
       </div>
 
       <ul class="grid grid-cols-2 gap-3 pt-4">
-        <li class="plcard">
+        <li class="plcard relative">
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
@@ -455,7 +461,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">11 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard">
+        <li class="plcard relative">
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
@@ -466,7 +472,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">8 video<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard">
+        <li class="plcard relative">
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
@@ -477,7 +483,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">6 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard">
+        <li class="plcard relative">
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
@@ -488,7 +494,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">14 mục<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-              <li class="plcard" hidden>
+              <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
@@ -499,7 +505,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">8 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
@@ -510,7 +516,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">6 video<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
@@ -521,7 +527,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">11 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
@@ -836,13 +842,166 @@
     </div>
 
     <!-- ============ Playlist gợi ý ============ -->
+    <!-- ============ Video ngắn ============ -->
+    <section class="media-section py-3 shell w-full max-w-shell mx-auto px-4" data-view="short" hidden aria-labelledby="short-title">
+      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+        <h2 class="text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="short-title">Video ngắn</h2>
+      </div>
+      <ul class="shortgrid grid grid-cols-2 gap-3 pt-1">
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-ha-noi.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-lan-chi.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Lan Chi</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">2 giờ</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Vịnh Hạ Long lúc bình minh — ba phút không lời</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-tay-nguyen.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-dang-khoa.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Đăng Khoa</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">5 giờ</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Phiên chợ vùng cao trước giờ tan</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-sai-gon-5h.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-thu-hang.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Thu Hằng</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">8 giờ</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Sài Gòn 5 giờ sáng qua ống kính điện thoại</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/cover-nong-nghiep.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-minh-tuan.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Minh Tuấn</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">1 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Một ngày ở nông trại công nghệ cao</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Quỳnh Chi</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">1 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Đô thị số nhìn từ tầng 30</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-song-cham.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-hoai-nam.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Hoài Nam</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">2 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Sống chậm ở một thị trấn không đèn giao thông</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/cover-du-lich.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-phuong-linh.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Phương Linh</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">3 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Ba ngày đi bộ dọc bờ biển miền Trung</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-gen-z.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-duc-anh.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Đức Anh</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">4 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Gen Z chọn nghề: hỏi mười người, mười câu trả lời</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/cover-lang-nghe.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-ngoc-han.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Ngọc Hân</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">5 ngày</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Làng nghề cuối cùng còn giữ khuôn gỗ</a></h3>
+            </div>
+          </li>
+          <li class="short relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark">
+            <a class="short__media block w-full h-full" href="bai-viet.html">
+              <img src="assets/img/kp-tri-hanh.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim absolute inset-0" aria-hidden="true"></span>
+            </a>
+            <span class="short__play absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="absolute inset-x-0 bottom-0 px-3 pb-3 text-surface">
+              <p class="short__by flex items-center gap-[6px] pb-[6px]">
+                <img src="assets/img/avatar-minh-duc.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name min-w-0 truncate text-[11px] font-bold leading-4">Minh Đức</span><span class="short__time flex-none whitespace-nowrap text-[10px] leading-[15px]">1 tuần</span>
+              </p>
+              <h3 class="text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2"><a href="bai-viet.html">Đọc sách trên tàu — thói quen của một thế hệ</a></h3>
+            </div>
+          </li>
+      </ul>
+    </section>
+
     <section class="media-section py-3 shell w-full max-w-shell mx-auto px-4" data-view="all playlist" aria-labelledby="playlist-title">
       <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
         <h2 class="text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="playlist-title">Playlist gợi ý</h2>
       </div>
 
       <ul class="grid grid-cols-2 gap-3 pt-4">
-        <li class="plcard">
+        <li class="plcard relative">
+        <button class="plcard__add absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon size-4 flex-none icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon size-4 flex-none icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
@@ -857,7 +1016,11 @@
           </a>
         </li>
 
-        <li class="plcard">
+        <li class="plcard relative">
+        <button class="plcard__add absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon size-4 flex-none icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon size-4 flex-none icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
@@ -872,7 +1035,11 @@
           </a>
         </li>
 
-        <li class="plcard">
+        <li class="plcard relative">
+        <button class="plcard__add absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon size-4 flex-none icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon size-4 flex-none icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
@@ -887,7 +1054,11 @@
           </a>
         </li>
 
-        <li class="plcard">
+        <li class="plcard relative">
+        <button class="plcard__add absolute top-2 right-2 z-[1] size-[30px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon size-4 flex-none icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon size-4 flex-none icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
@@ -901,7 +1072,7 @@
             </p>
           </a>
         </li>
-              <li class="plcard" hidden>
+              <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
@@ -912,7 +1083,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">9 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
@@ -923,7 +1094,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">7 video<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
@@ -934,7 +1105,7 @@
             <p class="flex items-center justify-between gap-2 pt-1 text-[11px] font-medium leading-[16.5px] text-ink-faint">12 podcast<span class="plcard__dots flex gap-[1px] flex-none" aria-hidden="true"><i></i><i></i><i></i></span></p>
           </a>
         </li>
-        <li class="plcard" hidden>
+        <li class="plcard relative" hidden>
           <a href="#">
             <span class="plcard__stack relative block w-full aspect-[178/186]">
               <span class="plcard__layer absolute rounded-card overflow-hidden plcard__layer--back left-[6.18%] top-[17.2%] w-[87.64%] h-[82.8%]"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>

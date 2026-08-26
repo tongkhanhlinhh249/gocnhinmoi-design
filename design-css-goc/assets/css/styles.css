@@ -1187,7 +1187,30 @@ input { font: inherit; }
 
 .pcard { flex: 0 0 200px; }
 /* Thẻ nghe gần đây ở chế độ Playlist dùng ảnh chồng lớp của thẻ playlist */
-.pcard .plcard__stack { width: 100%; }
+.pcard .plcard { position: relative; }
+.plcard__add {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  transition: background-color .15s var(--ease);
+}
+.plcard__add .icon { width: 15px; height: 15px; }
+.plcard__add .icon--check { display: none; }
+.plcard__add[aria-pressed="true"] { background: var(--gnm-red); }
+.plcard__add[aria-pressed="true"] .icon--plus { display: none; }
+.plcard__add[aria-pressed="true"] .icon--check { display: block; }
+
+.plcard__stack { width: 100%; }
 .pcard__art {
   width: 100%;
   aspect-ratio: 1;
@@ -3624,6 +3647,16 @@ input { font: inherit; }
   overflow: hidden;
   background: var(--surface-dark);
 }
+.shortgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 4px;
+}
+/* Trong lưới thì thẻ giãn theo cột — bề rộng cố định của dải cuộn phải bỏ đi,
+   nhưng tỉ lệ khung hình thì giữ để thẻ vẫn dọc như ở trang chủ. */
+.shortgrid > .short { width: auto; flex: none; }
+
 .short__media { display: block; width: 100%; height: 100%; }
 .short__media img { width: 100%; height: 100%; object-fit: cover; }
 .short__scrim {
