@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Photo trên Góc Nhìn Mới — bộ ảnh và phóng sự ảnh từ các tay máy.">
+<title>Photo — Góc Nhìn Mới</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tailwind.css">
+</head>
+<body>
+
+<!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-menu" viewBox="0 0 15.5 13.5">
+    <path d="M0.75 0.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M0.75 6.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M0.75 12.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-bell" viewBox="0 0 18.986 18.986">
+    <path d="M10.8616 16.6128C10.7225 16.8525 10.5229 17.0515 10.2827 17.1899C10.0425 17.3282 9.77018 17.401 9.493 17.401C9.21582 17.401 8.94351 17.3282 8.70332 17.1899C8.46313 17.0515 8.26351 16.8525 8.12443 16.6128M14.2395 6.32867C14.2395 5.06982 13.7394 3.86253 12.8493 2.97238C11.9591 2.08224 10.7519 1.58217 9.493 1.58217C8.23415 1.58217 7.02686 2.08224 6.13672 2.97238C5.24658 3.86253 4.7465 5.06982 4.7465 6.32867C4.7465 11.8663 2.37325 13.4484 2.37325 13.4484H16.6128C16.6128 13.4484 14.2395 11.8663 14.2395 6.32867Z" stroke="currentColor" stroke-width="1.42395" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 19.9842 19.9842">
+    <path d="M9.15943 15.8208C12.8384 15.8208 15.8208 12.8384 15.8208 9.15943C15.8208 5.48044 12.8384 2.49803 9.15943 2.49803C5.48044 2.49803 2.49803 5.48044 2.49803 9.15943C2.49803 12.8384 5.48044 15.8208 9.15943 15.8208Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.4862 17.4862L13.9057 13.9057" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 12.9904 12.9904">
+    <path d="M4.8714 9.7428L8.119 6.4952L4.8714 3.2476" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-heart" viewBox="0 0 15.9882 15.9882">
+    <path d="M13.8831 3.07107C13.5428 2.73065 13.1388 2.46061 12.6942 2.27638C12.2496 2.09214 11.773 1.99731 11.2917 1.99731C10.8104 1.99731 10.3338 2.09214 9.88913 2.27638C9.44449 2.46061 9.0405 2.73065 8.70025 3.07107L7.9941 3.77721L7.28795 3.07107C6.60067 2.38378 5.66851 1.99766 4.69653 1.99766C3.72456 1.99766 2.7924 2.38378 2.10511 3.07107C1.41783 3.75835 1.03171 4.69052 1.03171 5.66249C1.03171 6.63446 1.41783 7.56662 2.10511 8.25391L2.81126 8.96005L7.9941 14.1429L13.1769 8.96005L13.8831 8.25391C14.2235 7.91366 14.4935 7.50967 14.6778 7.06502C14.862 6.62038 14.9568 6.14379 14.9568 5.66249C14.9568 5.18118 14.862 4.7046 14.6778 4.25995C14.4935 3.81531 14.2235 3.41132 13.8831 3.07107Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-comment" viewBox="0 0 15.9882 15.9882">
+    <path d="M13.9897 9.99262C13.9897 10.346 13.8493 10.6849 13.5994 10.9347C13.3496 11.1846 13.0107 11.325 12.6573 11.325H4.66322L1.99852 13.9897V3.33087C1.99852 2.97751 2.1389 2.63863 2.38876 2.38876C2.63863 2.1389 2.97751 1.99852 3.33087 1.99852H12.6573C13.0107 1.99852 13.3496 2.1389 13.5994 2.38876C13.8493 2.63863 13.9897 2.97751 13.9897 3.33087V9.99262Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-share" viewBox="0 0 15.9882 15.9882">
+    <path d="M5.72244 9.00002L10.2724 11.6514M10.2658 4.3368L5.72244 6.98818M11.9912 5.3294C12.5212 5.3294 13.0295 5.11884 13.4043 4.74405C13.7791 4.36925 13.9897 3.86092 13.9897 3.33087C13.9897 2.80083 13.7791 2.2925 13.4043 1.9177C13.0295 1.54291 12.5212 1.33235 11.9912 1.33235C11.4611 1.33235 10.9528 1.54291 10.578 1.9177C10.2032 2.2925 9.99262 2.80083 9.99262 3.33087C9.99262 3.86092 10.2032 4.36925 10.578 4.74405C10.9528 5.11884 11.4611 5.3294 11.9912 5.3294ZM3.99705 7.9941C4.52709 7.9941 5.03542 7.78354 5.41022 7.40875C5.78502 7.03395 5.99557 6.52562 5.99557 5.99557C5.99557 5.46553 5.78502 4.9572 5.41022 4.5824C5.03542 4.20761 4.52709 3.99705 3.99705 3.99705C3.46701 3.99705 2.95868 4.20761 2.58388 4.5824C2.20908 4.9572 1.99852 5.46553 1.99852 5.99557C1.99852 6.52562 2.20908 7.03395 2.58388 7.40875C2.95868 7.78354 3.46701 7.9941 3.99705 7.9941ZM11.9912 10.6588C11.4611 10.6588 10.9528 10.8694 10.578 11.2442C10.2032 11.619 9.99262 12.1273 9.99262 12.6573C9.99262 13.1874 10.2032 13.6957 10.578 14.0705C10.9528 14.4453 11.4611 14.6559 11.9912 14.6559C12.5212 14.6559 13.0295 14.4453 13.4043 14.0705C13.7791 13.6957 13.9897 13.1874 13.9897 12.6573C13.9897 12.1273 13.7791 11.619 13.4043 11.2442C13.0295 10.8694 12.5212 10.6588 11.9912 10.6588Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-bookmark" viewBox="0 0 15.9882 15.9882">
+    <path d="M12.6573 13.9897L7.9941 10.6588L3.33087 13.9897V3.33087C3.33087 2.97751 3.47125 2.63863 3.72111 2.38876C3.97098 2.1389 4.30986 1.99852 4.66322 1.99852H11.325C11.6783 1.99852 12.0172 2.1389 12.2671 2.38876C12.517 2.63863 12.6573 2.97751 12.6573 3.33087V13.9897Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-more" viewBox="0 0 15.9882 15.9882">
+    <path d="M7.9941 4.33014C8.54598 4.33014 8.99336 3.88275 8.99336 3.33087C8.99336 2.779 8.54598 2.33161 7.9941 2.33161C7.44222 2.33161 6.99484 2.779 6.99484 3.33087C6.99484 3.88275 7.44222 4.33014 7.9941 4.33014Z" fill="currentColor"/>
+    <path d="M7.9941 8.99336C8.54598 8.99336 8.99336 8.54598 8.99336 7.9941C8.99336 7.44222 8.54598 6.99484 7.9941 6.99484C7.44222 6.99484 6.99484 7.44222 6.99484 7.9941C6.99484 8.54598 7.44222 8.99336 7.9941 8.99336Z" fill="currentColor"/>
+    <path d="M7.9941 13.6566C8.54598 13.6566 8.99336 13.2092 8.99336 12.6573C8.99336 12.1054 8.54598 11.6581 7.9941 11.6581C7.44222 11.6581 6.99484 12.1054 6.99484 12.6573C6.99484 13.2092 7.44222 13.6566 7.9941 13.6566Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 17.9867 17.9867">
+    <path d="M3.74723 2.24834L14.2395 8.99335L3.74723 15.7384V2.24834Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-play-sm" viewBox="0 0 10.9919 10.9919">
+    <path d="M2.28998 1.37399L8.70192 5.49595L2.28998 9.61791V1.37399Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16">
+    <rect x="3.5" y="2.5" width="3.4" height="11" rx="1.2" fill="currentColor"/>
+    <rect x="9.1" y="2.5" width="3.4" height="11" rx="1.2" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 10.9919 10.9919">
+    <path d="M9.61791 4.57996C9.61791 7.78593 5.49595 10.5339 5.49595 10.5339C5.49595 10.5339 1.37399 7.78593 1.37399 4.57996C1.37399 3.48675 1.80826 2.43831 2.58128 1.66529C3.3543 0.892273 4.40274 0.457996 5.49595 0.457996C6.58916 0.457996 7.6376 0.892273 8.41062 1.66529C9.18364 2.43831 9.61791 3.48675 9.61791 4.57996ZM5.49595 4.57996C5.67638 4.57996 5.85505 4.54442 6.02175 4.47537C6.18845 4.40632 6.33992 4.30511 6.46751 4.17753C6.59509 4.04994 6.6963 3.89847 6.76535 3.73177C6.8344 3.56507 6.86994 3.38641 6.86994 3.20597C6.86994 3.02554 6.8344 2.84687 6.76535 2.68017C6.6963 2.51347 6.59509 2.362 6.46751 2.23442C6.33992 2.10683 6.18845 2.00562 6.02175 1.93657C5.85505 1.86752 5.67638 1.83198 5.49595 1.83198C5.13155 1.83198 4.78207 1.97674 4.52439 2.23442C4.26672 2.49209 4.12196 2.84157 4.12196 3.20597C4.12196 3.57038 4.26672 3.91985 4.52439 4.17753C4.78207 4.4352 5.13155 4.57996 5.49595 4.57996Z" stroke="currentColor" stroke-width="0.915992" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 10.9919 10.9919">
+    <path d="M5.49595 0.915992L6.91116 3.78305L10.0759 4.24562L7.78593 6.47606L8.32636 9.62707L5.49595 8.13859L2.66554 9.62707L3.20597 6.47606L0.915992 4.24562L4.08074 3.78305L5.49595 0.915992Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-bookmark-lg" viewBox="0 0 14.9889 14.9889">
+    <path d="M11.8662 13.1153L7.49445 9.9926L3.12269 13.1153V3.12269C3.12269 2.79141 3.25429 2.4737 3.48853 2.23946C3.72278 2.00521 4.04049 1.87361 4.37176 1.87361H10.6171C10.9484 1.87361 11.2661 2.00521 11.5004 2.23946C11.7346 2.4737 11.8662 2.79141 11.8662 3.12269V13.1153Z" stroke="currentColor" stroke-width="1.24908" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-map-pin" viewBox="0 0 13.9897 13.9897">
+    <path d="M12.241 5.82904C12.241 9.90937 6.99485 13.4068 6.99485 13.4068C6.99485 13.4068 1.74871 9.90937 1.74871 5.82904C1.74871 4.43768 2.30143 3.1033 3.28527 2.11946C4.26911 1.13562 5.60349 0.582904 6.99485 0.582904C8.38621 0.582904 9.72059 1.13562 10.7044 2.11946C11.6883 3.1033 12.241 4.43768 12.241 5.82904Z" stroke="currentColor" stroke-width="1.04923" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.99485 7.57775C7.96064 7.57775 8.74356 6.79483 8.74356 5.82904C8.74356 4.86325 7.96064 4.08033 6.99485 4.08033C6.02906 4.08033 5.24614 4.86325 5.24614 5.82904C5.24614 6.79483 6.02906 7.57775 6.99485 7.57775Z" stroke="currentColor" stroke-width="1.04923" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 13.9897 13.9897">
+    <path d="M12.8239 9.86274V11.6115C12.8246 11.7738 12.7913 11.9345 12.7263 12.0832C12.6612 12.232 12.5658 12.3655 12.4462 12.4752C12.3266 12.585 12.1854 12.6685 12.0316 12.7205C11.8778 12.7726 11.7148 12.7919 11.5532 12.7773C9.75947 12.5824 8.0365 11.9694 6.5227 10.9877C4.424 9.78022 2.76573 7.93407 1.78952 5.71829C0.832491 4.19822 0.243667 2.47566 0.0699486 0.687827C0.168197 0.467119 0.332587 0.282385 0.540389 0.159166C0.748192 0.0359462 0.989142 -0.0196722 1.22993 0C1.22993 0 2.97864 0 2.97864 0C3.26153 -0.00278413 3.53578 0.0973909 3.75027 0.281853C3.96476 0.466316 4.10486 0.722479 4.14445 1.0026C4.21848 1.56218 4.35488 2.11186 4.55248 2.64056C4.63091 2.84919 4.64788 3.07594 4.60139 3.29392C4.5549 3.51191 4.4469 3.712 4.29017 3.87048L3.54989 4.61077C4.37968 6.0701 5.58798 7.2784 7.04731 8.1082L7.7876 7.36791C7.94608 7.21119 8.14618 7.10318 8.36416 7.05669C8.58215 7.0102 8.80889 7.02718 9.01753 7.1056C9.54622 7.30321 10.0959 7.43961 10.6555 7.51363C10.967 7.22609 11.38 7.07406 11.8036 7.09101C12.2272 7.10795 12.6267 7.29247 12.9142 7.60398C13.2018 7.9155 13.3538 8.32848 13.3369 8.75207C13.3199 9.17567 13.1354 9.57519 12.8239 9.86274Z" stroke="currentColor" stroke-width="1.04923" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 13.9897 13.9897">
+    <path d="M2.33162 2.33162H11.6581C12.2993 2.33162 12.8239 2.85623 12.8239 3.49742V10.4923C12.8239 11.1335 12.2993 11.6581 11.6581 11.6581H2.33162C1.69042 11.6581 1.16581 11.1335 1.16581 10.4923V3.49742C1.16581 2.85623 1.69042 2.33162 2.33162 2.33162Z" stroke="currentColor" stroke-width="1.04923" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.8239 3.49743L6.99485 7.57775L1.16581 3.49743" stroke="currentColor" stroke-width="1.04923" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-phone-btn" viewBox="0 0 14.9889 14.9889">
+    <path d="M13.7398 10.5672V12.4408C13.7405 12.6147 13.7049 12.7869 13.6352 12.9463C13.5655 13.1056 13.4633 13.2487 13.3352 13.3663C13.207 13.4839 13.0557 13.5734 12.8909 13.6291C12.7262 13.6848 12.5516 13.7055 12.3783 13.6899C10.4565 13.481 8.6105 12.8243 6.98857 11.7725C4.73998 10.4788 2.96327 8.50075 1.91733 6.12671C0.89195 4.49807 0.26107 2.65248 0.0749442 0.736954C0.18021 0.500482 0.356341 0.302554 0.578986 0.170533C0.80163 0.0385132 1.05979 -0.0210777 1.31777 0C1.31777 0 3.19139 0 3.19139 0C3.49448 -0.0029834 3.78831 0.104347 4.01813 0.301984C4.24794 0.499621 4.39804 0.774081 4.44046 1.0742C4.51978 1.67376 4.66592 2.2627 4.87764 2.82915C4.96167 3.05269 4.97985 3.29563 4.93004 3.52919C4.88023 3.76274 4.76451 3.97712 4.5966 4.14693L3.80343 4.94009C4.6925 6.50365 5.9871 7.79825 7.55066 8.68732L8.34382 7.89415C8.51363 7.72624 8.72801 7.61052 8.96156 7.56071C9.19512 7.5109 9.43806 7.52908 9.6616 7.61311C10.2281 7.82483 10.817 7.97097 11.4165 8.05029C11.7503 7.7422 12.1928 7.57932 12.6466 7.59747C13.1005 7.61563 13.5285 7.81333 13.8366 8.14709C14.1447 8.48085 14.3076 8.92333 14.2894 9.37718C14.2713 9.83104 14.0736 10.2591 13.7398 10.5672Z" stroke="currentColor" stroke-width="1.24908" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 16 16">
+    <path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 13.9982 13.9982">
+    <path d="M1.20268 6.79613C1.15407 6.92708 1.15407 7.07112 1.20268 7.20207C1.67611 8.35001 2.47973 9.33153 3.51166 10.0222C4.5436 10.7128 5.75737 11.0815 6.9991 11.0815C8.24083 11.0815 9.4546 10.7128 10.4865 10.0222C11.5185 9.33153 12.3221 8.35001 12.7955 7.20207C12.8441 7.07112 12.8441 6.92708 12.7955 6.79613C12.3221 5.64819 11.5185 4.66667 10.4865 3.97603C9.4546 3.28539 8.24083 2.9167 6.9991 2.9167C5.75737 2.9167 4.5436 3.28539 3.51166 3.97603C2.47973 4.66667 1.67611 5.64819 1.20268 6.79613Z" stroke="currentColor" stroke-width="1.16652" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.9991 8.74888C7.96549 8.74888 8.74902 7.96535 8.74902 6.99896C8.74902 6.03257 7.96549 5.24904 6.9991 5.24904C6.03271 5.24904 5.24918 6.03257 5.24918 6.99896C5.24918 7.96535 6.03271 8.74888 6.9991 8.74888Z" stroke="currentColor" stroke-width="1.16652" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-nav-home" viewBox="0 0 19.9674 19.9674">
+    <path d="M12.4796 17.4715V10.8157C12.4796 10.595 12.392 10.3834 12.2359 10.2274C12.0799 10.0713 11.8683 9.9837 11.6476 9.9837H8.31975C8.0991 9.9837 7.88748 10.0713 7.73145 10.2274C7.57543 10.3834 7.48777 10.595 7.48777 10.8157V17.4715" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.49593 8.31975C2.49587 8.0777 2.54862 7.83855 2.6505 7.61899C2.75237 7.39942 2.90093 7.20474 3.08579 7.04849L8.90962 2.05748C9.20995 1.80364 9.59047 1.66438 9.9837 1.66438C10.377 1.66438 10.7574 1.80364 11.0578 2.05748L16.8816 7.04849C17.0664 7.20474 17.215 7.39942 17.3169 7.61899C17.4187 7.83855 17.4715 8.0777 17.4715 8.31975V15.8075C17.4715 16.2488 17.2961 16.6721 16.9841 16.9841C16.6721 17.2961 16.2488 17.4715 15.8075 17.4715H4.15988C3.71857 17.4715 3.29534 17.2961 2.98328 16.9841C2.67123 16.6721 2.49593 16.2488 2.49593 15.8075V8.31975Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-nav-media" viewBox="0 0 19.9674 19.9674">
+    <path d="M14.9755 4.1632H4.99185C3.61339 4.1632 2.49592 5.28067 2.49592 6.65913V13.3183C2.49592 14.6967 3.61339 15.8142 4.99185 15.8142H14.9755C16.354 15.8142 17.4715 14.6967 17.4715 13.3183V6.65913C17.4715 5.28067 16.354 4.1632 14.9755 4.1632Z" stroke="currentColor" stroke-width="1.66728" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73574 7.48777L12.8989 9.9837L8.73574 12.4796V7.48777Z" stroke="currentColor" stroke-width="1.66728" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-nav-explore" viewBox="0 0 18.3034 18.3034">
+    <path d="M12.6793 5.62415L11.1784 10.126C11.0967 10.3711 10.9591 10.5937 10.7765 10.7765C10.5937 10.9591 10.3711 11.0967 10.126 11.1784L5.62415 12.6793L7.12503 8.17748C7.20672 7.9324 7.34435 7.7097 7.52702 7.52702C7.7097 7.34435 7.9324 7.20672 8.17748 7.12503L12.6793 5.62415Z" stroke="currentColor" stroke-width="1.66395" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.15172 17.4714C13.7466 17.4714 17.4714 13.7466 17.4714 9.15172C17.4714 4.55685 13.7466 0.831975 9.15172 0.831975C4.55685 0.831975 0.831975 4.55685 0.831975 9.15172C0.831975 13.7466 4.55685 17.4714 9.15172 17.4714Z" stroke="currentColor" stroke-width="1.66395" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-nav-write" viewBox="0 0 17.8844 17.8844">
+    <path d="M8.52774 1.86889H2.70392C2.26261 1.86889 1.83938 2.0442 1.52732 2.35624C1.21527 2.6683 1.03997 3.09153 1.03997 3.53284V15.1805C1.03997 15.6218 1.21527 16.045 1.52732 16.3571C1.83938 16.6691 2.26261 16.8445 2.70392 16.8445H14.3515C14.7929 16.8445 15.2161 16.6691 15.5282 16.3571C15.8402 16.045 16.0155 15.6218 16.0155 15.1805V9.35666" stroke="currentColor" stroke-width="2.07994" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.8316 1.5569C14.1626 1.22591 14.6114 1.03997 15.0795 1.03997C15.5476 1.03997 15.9966 1.22591 16.3275 1.5569C16.6585 1.88788 16.8444 2.33678 16.8444 2.80486C16.8444 3.27294 16.6585 3.72184 16.3275 4.05283L8.82889 11.5522C8.63135 11.7496 8.38731 11.8941 8.11924 11.9724L5.72898 12.6713C5.65739 12.6922 5.5815 12.6934 5.50926 12.6749C5.43702 12.6564 5.37109 12.6188 5.31835 12.5661C5.26563 12.5133 5.22804 12.4474 5.20952 12.3751C5.19102 12.3029 5.19227 12.227 5.21315 12.1554L5.91201 9.76512C5.99065 9.49734 6.13542 9.25355 6.33299 9.05631L13.8316 1.5569Z" stroke="currentColor" stroke-width="2.07994" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-verified" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="7" fill="currentColor"/>
+    <path d="M4.9 8.2L7 10.3L11.1 6.2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-nav-user" viewBox="0 0 19.9674 19.9674">
+    <path d="M16.6395 17.4715V15.8075C16.6395 14.9249 16.2889 14.0784 15.6648 13.4543C15.0407 12.8302 14.1943 12.4796 13.3116 12.4796H6.6558C5.77316 12.4796 4.9267 12.8302 4.3026 13.4543C3.6785 14.0784 3.3279 14.9249 3.3279 15.8075V17.4715" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.9837 9.1517C11.8217 9.1517 13.3116 7.6618 13.3116 5.8237C13.3116 3.9857 11.8217 2.4958 9.9837 2.4958C8.1457 2.4958 6.6558 3.9857 6.6558 5.8237C6.6558 7.6618 8.1457 9.1517 9.9837 9.1517Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M8 4.6V8.2L10.3 9.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M8 4.9V8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="8" cy="11.1" r=".95" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-draft" viewBox="0 0 16 16">
+    <path d="M9.1 1.9H4.4C3.85 1.9 3.4 2.35 3.4 2.9V13.1C3.4 13.65 3.85 14.1 4.4 14.1H11.6C12.15 14.1 12.6 13.65 12.6 13.1V5.4L9.1 1.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+    <path d="M9.1 1.9V5.4H12.6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-link" viewBox="0 0 16 16">
+    <path d="M6.7 8.65C6.98 9.02 7.34 9.33 7.75 9.55C8.16 9.77 8.62 9.9 9.08 9.93C9.55 9.96 10.01 9.89 10.45 9.73C10.88 9.56 11.28 9.31 11.6 8.98L13.6 6.98C14.18 6.38 14.5 5.58 14.49 4.75C14.48 3.92 14.15 3.13 13.56 2.54C12.97 1.95 12.18 1.62 11.35 1.61C10.52 1.6 9.72 1.92 9.13 2.5L7.98 3.64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M9.3 7.35C9.02 6.98 8.66 6.67 8.25 6.45C7.84 6.23 7.38 6.1 6.92 6.07C6.45 6.04 5.99 6.11 5.55 6.27C5.12 6.44 4.72 6.69 4.4 7.02L2.4 9.02C1.82 9.62 1.5 10.42 1.51 11.25C1.52 12.08 1.85 12.87 2.44 13.46C3.03 14.05 3.82 14.38 4.65 14.39C5.48 14.4 6.28 14.08 6.87 13.5L8.02 12.36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-send" viewBox="0 0 16 16">
+    <path d="M14.3 1.7L7.3 8.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M14.3 1.7L9.85 14.3L7.3 8.7L1.7 6.15L14.3 1.7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-trash" viewBox="0 0 16 16">
+    <path d="M2.4 4.2H13.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M5.6 4.2V2.9C5.6 2.35 6.05 1.9 6.6 1.9H9.4C9.95 1.9 10.4 2.35 10.4 2.9V4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12.3 4.2V13.1C12.3 13.65 11.85 14.1 11.3 14.1H4.7C4.15 14.1 3.7 13.65 3.7 13.1V4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-camera" viewBox="0 0 20 20">
+    <path d="M17.5 15.4C17.5 16.2 16.8 16.9 16 16.9H4C3.2 16.9 2.5 16.2 2.5 15.4V7.1C2.5 6.3 3.2 5.6 4 5.6H6.6L7.9 3.1H12.1L13.4 5.6H16C16.8 5.6 17.5 6.3 17.5 7.1V15.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+    <circle cx="10" cy="11" r="2.9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  </symbol>
+  <symbol id="i-facebook" viewBox="0 0 15.9882 15.9882">
+    <path d="M11.9912 1.33235H9.99263C9.10922 1.33235 8.262 1.68328 7.63734 2.30794C7.01268 2.9326 6.66175 3.77982 6.66175 4.66322V6.66175H4.66323V9.32645H6.66175V14.6559H9.32645V9.32645H11.325L11.9912 6.66175H9.32645V4.66322C9.32645 4.48654 9.39664 4.3171 9.52157 4.19217C9.6465 4.06724 9.81594 3.99705 9.99263 3.99705H11.9912V1.33235Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="page">
+
+  <!-- ============ Header trang con ============ -->
+  <header class="app-header sticky top-0 z-50 bg-surface border-b border-line-3 shadow-header" id="appHeader">
+    <div class="shell w-full max-w-shell mx-auto px-4 h-[64px] flex items-center justify-between gap-2">
+      <a class="btn-back size-5 grid place-items-center text-icon-dark" href="index.html" data-back aria-label="Quay lại">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg>
+      </a>
+
+      <h1 class="text-[20px] font-semibold leading-[28px] text-[#000] truncate">Photo</h1>
+
+      <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Thông báo (có thông báo mới)" data-toast="Bạn có 3 thông báo mới">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
+        <span class="absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ Tìm kiếm ============ -->
+  <div class="pt-4 shell w-full max-w-shell mx-auto px-4">
+    <form class="search relative flex items-center h-9 px-[17px] bg-surface-fill border rounded-full" role="search" onsubmit="return false">
+      <label class="sr-only" for="q">Tìm kiếm nội dung</label>
+      <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off">
+      <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+    </form>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ Tin nổi bật ============ -->
+    <section class="grid gap-4 py-4 max-w-shell mx-auto" aria-label="Bộ ảnh nổi bật">
+      <article class="relative overflow-hidden bg-surface-dark aspect-square">
+        <img class="w-full h-full object-cover" src="assets/img/kp-tay-nguyen.jpg" alt="Người dân thu hoạch cà phê trên cao nguyên" width="400" height="400">
+        <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
+        <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
+          <h2 class="text-[18px] font-extrabold leading-[24.75px] tracking-[-.011em]"><a href="bai-viet.html">Sắc màu Tây Nguyên mùa cà phê — bộ ảnh độc quyền từ vùng cao nguyên</a></h2>
+          <p class="tophero__meta flex items-center gap-2 pt-[6px]">
+            <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=quoc-bao" aria-label="Xem trang cá nhân của Quốc Bảo"><img src="assets/img/avatar-quoc-bao.png" alt="" width="24" height="24"></a>
+            <a class="text-[12px] font-semibold leading-[18px] text-[rgba(255,255,255,.8)]" href="ca-nhan.html?tac-gia=quoc-bao">Quốc Bảo</a>
+            <span class="text-[11px] leading-[16.5px] text-[rgba(255,255,255,.5)]">· 3 ngày trước</span>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ Bảng xếp hạng ============ -->
+    <section class="leaderboard pb-4 shell w-full max-w-shell mx-auto px-4" aria-labelledby="lb-title">
+      <div class="section-head pt-4">
+        <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+          <h2 class="text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="lb-title">Tác giả nổi bật trong tuần</h2>
+          <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="bang-xep-hang.html">Xem thêm <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+        </div>
+      </div>
+
+      <ol class="ranks flex gap-1 pt-4">
+        <li class="rank flex-1 min-w-0">
+          <a href="ca-nhan.html?tac-gia=nguyen-thanh-binh">
+            <span class="rank__ava relative block">
+              <img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64">
+              <span class="absolute left-[50%] -bottom-1 translate-x-[-50%] px-[6px] py-[2px] rounded-full text-[9px] font-extrabold leading-[13.5px] text-surface whitespace-nowrap shadow-badge bg-gold">TOP 1</span>
+            </span>
+            <span class="text-[10px] font-bold leading-[12.5px] text-center text-ink-strong line-clamp-2">GS. Nguyễn Thanh Bình</span>
+          </a>
+        </li>
+        <li class="rank flex-1 min-w-0">
+          <a href="ca-nhan.html?tac-gia=thu-hang">
+            <span class="rank__ava relative block">
+              <img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64">
+              <span class="absolute left-[50%] -bottom-1 translate-x-[-50%] px-[6px] py-[2px] rounded-full text-[9px] font-extrabold leading-[13.5px] text-surface whitespace-nowrap shadow-badge bg-silver">TOP 2</span>
+            </span>
+            <span class="text-[10px] font-bold leading-[12.5px] text-center text-ink-strong line-clamp-2">Thu Hằng</span>
+          </a>
+        </li>
+        <li class="rank flex-1 min-w-0">
+          <a href="ca-nhan.html?tac-gia=lan-anh">
+            <span class="rank__ava relative block">
+              <img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64">
+              <span class="absolute left-[50%] -bottom-1 translate-x-[-50%] px-[6px] py-[2px] rounded-full text-[9px] font-extrabold leading-[13.5px] text-surface whitespace-nowrap shadow-badge bg-bronze">TOP 3</span>
+            </span>
+            <span class="text-[10px] font-bold leading-[12.5px] text-center text-ink-strong line-clamp-2">TS. Lan Anh</span>
+          </a>
+        </li>
+        <li class="rank flex-1 min-w-0">
+          <a href="ca-nhan.html?tac-gia=nhat-minh">
+            <span class="rank__ava relative block">
+              <img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64">
+              <span class="absolute left-[50%] -bottom-1 translate-x-[-50%] px-[6px] py-[2px] rounded-full text-[9px] font-extrabold leading-[13.5px] text-surface whitespace-nowrap shadow-badge bg-[#6B7280]">TOP 4</span>
+            </span>
+            <span class="text-[10px] font-bold leading-[12.5px] text-center text-ink-strong line-clamp-2">Nhật Minh</span>
+          </a>
+        </li>
+        <li class="rank flex-1 min-w-0">
+          <a href="ca-nhan.html?tac-gia=hoai-nam">
+            <span class="rank__ava relative block">
+              <img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64">
+              <span class="absolute left-[50%] -bottom-1 translate-x-[-50%] px-[6px] py-[2px] rounded-full text-[9px] font-extrabold leading-[13.5px] text-surface whitespace-nowrap shadow-badge bg-[#6B7280]">TOP 5</span>
+            </span>
+            <span class="text-[10px] font-bold leading-[12.5px] text-center text-ink-strong line-clamp-2">Hoài Nam</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ Lưới bộ ảnh ============ -->
+    <section class="shell w-full max-w-shell mx-auto px-4" aria-labelledby="grid-title">
+      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+        <h2 class="text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="grid-title">Bài viết nổi bật</h2>
+      </div>
+
+      <ul class="grid grid-cols-2 gap-3 pt-[14px]">
+        <li class="photo-tile">
+          <a class="photo-tile__media block aspect-[3/4] rounded-md overflow-hidden bg-surface-fill" href="#"><img src="assets/img/kp-tay-nguyen.jpg" alt="" loading="lazy"></a>
+          <h3 class="pt-[10px] text-[13px] font-bold leading-[19px] tracking-[-.011em] text-ink line-clamp-2"><a href="#">Sắc màu Tây Nguyên mùa cà phê</a></h3>
+          <p class="pt-1 text-[11px] leading-[17px] text-ink-muted">Quốc Bảo · 24 ảnh</p>
+        </li>
+        <li class="photo-tile">
+          <a class="photo-tile__media block aspect-[3/4] rounded-md overflow-hidden bg-surface-fill" href="#"><img src="assets/img/kp-sai-gon-5h.jpg" alt="" loading="lazy"></a>
+          <h3 class="pt-[10px] text-[13px] font-bold leading-[19px] tracking-[-.011em] text-ink line-clamp-2"><a href="#">Đường phố Sài Gòn lúc 5 giờ sáng</a></h3>
+          <p class="pt-1 text-[11px] leading-[17px] text-ink-muted">Thanh Hà · 18 ảnh</p>
+        </li>
+        <li class="photo-tile">
+          <a class="photo-tile__media block aspect-[3/4] rounded-md overflow-hidden bg-surface-fill" href="#"><img src="assets/img/kp-ha-noi.jpg" alt="" loading="lazy"></a>
+          <h3 class="pt-[10px] text-[13px] font-bold leading-[19px] tracking-[-.011em] text-ink line-clamp-2"><a href="#">Hà Nội qua ống kính người nước ngoài</a></h3>
+          <p class="pt-1 text-[11px] leading-[17px] text-ink-muted">Marco Rossi · 36 ảnh</p>
+        </li>
+        <li class="photo-tile">
+          <a class="photo-tile__media block aspect-[3/4] rounded-md overflow-hidden bg-surface-fill" href="#"><img src="assets/img/gallery2-main.png" alt="" loading="lazy"></a>
+          <h3 class="pt-[10px] text-[13px] font-bold leading-[19px] tracking-[-.011em] text-ink line-clamp-2"><a href="#">Kiến trúc Việt Nam đương đại</a></h3>
+          <p class="pt-1 text-[11px] leading-[17px] text-ink-muted">Quốc Bảo · 12 ảnh</p>
+        </li>
+      </ul>
+
+    </section>
+
+    <!-- ============ Gợi ý theo dõi ============ -->
+    <!-- Gợi ý theo dõi — Figma đặt ngay giữa feed -->
+    <section class="authors py-[20px] shell w-full max-w-shell mx-auto px-4" aria-labelledby="authors-title">
+      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+        <h2 class="text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="authors-title">Gợi ý theo dõi</h2>
+        <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="bang-xep-hang.html">Xem tất cả <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+
+      <ul class="hscroll flex gap-3 overflow-x-auto snap-x snap-proximity scrollbar-none py-3 px-4 -mx-4 items-stretch">
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=nguyen-thanh-binh" aria-label="Xem trang cá nhân của GS. Nguyễn Thanh Bình"><img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">GS. Nguyễn Thanh Bình</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">42.9k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=thu-hang" aria-label="Xem trang cá nhân của Thu Hằng"><img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Thu Hằng</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">28.7k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">TS. Lan Anh</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">19.3k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="true" data-follow>Đang theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Nhật Minh</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">15.8k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=hoai-nam" aria-label="Xem trang cá nhân của Hoài Nam"><img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Hoài Nam</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">67.4k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Quỳnh Chi</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">21.9k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ Album mới ============ -->
+    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" aria-label="Album ảnh mới">
+      <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
+        <a class="gallery grid gap-[2px] aspect-[370/208]" href="#" aria-label="Xem album ảnh: Kiến trúc Việt Nam đương đại: 10 công trình định hình diện mạo đô thị 2026">
+          <span class="gallery__main relative overflow-hidden"><img src="assets/img/gallery2-main.png" alt="" width="246" height="208" loading="lazy"></span>
+          <span class="gallery__side grid gap-[2px]">
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/gallery2-thumb1.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/gallery2-thumb2.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden">
+              <img src="assets/img/gallery2-thumb3.png" alt="" width="122" height="68" loading="lazy">
+              <span class="gallery__more absolute inset-0 grid place-items-center text-surface text-[14px] font-bold">+5</span>
+            </span>
+          </span>
+        </a>
+        <div class="card__body pt-3 px-4 pb-4">
+          <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Kiến trúc Việt Nam đương đại: 10 công trình định hình diện mạo đô thị 2026</a></h3>
+          <div class="byline flex items-center gap-2 pt-3">
+            <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=quoc-bao" aria-label="Xem trang cá nhân của Quốc Bảo"><img src="assets/img/avatar-quoc-bao.png" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="flex items-center gap-1 min-w-0"><a class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate" href="ca-nhan.html?tac-gia=quoc-bao">Quốc Bảo</a><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 14 giờ trước</span></p>
+          </div>
+          <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="2700" aria-pressed="false" aria-label="Thích">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.7k</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">178</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+            <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu album"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-toast="Tuỳ chọn khác" aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
+        <a class="gallery grid gap-[2px] aspect-[370/208]" href="#" aria-label="Xem album ảnh: Chân dung người giữ nghề — bộ ảnh về những làng nghề còn sáng đèn">
+          <span class="gallery__main relative overflow-hidden"><img src="assets/img/gallery1-main.png" alt="" width="246" height="208" loading="lazy"></span>
+          <span class="gallery__side grid gap-[2px]">
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/gallery1-thumb1.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/gallery1-thumb2.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden">
+              <img src="assets/img/gallery1-thumb3.png" alt="" width="122" height="68" loading="lazy">
+              <span class="gallery__more absolute inset-0 grid place-items-center text-surface text-[14px] font-bold">+8</span>
+            </span>
+          </span>
+        </a>
+        <div class="card__body pt-3 px-4 pb-4">
+          <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Chân dung người giữ nghề — bộ ảnh về những làng nghề còn sáng đèn</a></h3>
+          <div class="byline flex items-center gap-2 pt-3">
+            <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=khanh-linh" aria-label="Xem trang cá nhân của Khánh Linh"><img src="assets/img/avatar-khanh-linh.png" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="flex items-center gap-1 min-w-0"><a class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate" href="ca-nhan.html?tac-gia=khanh-linh">Khánh Linh</a><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 2 ngày trước</span></p>
+          </div>
+          <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1900" aria-pressed="false" aria-label="Thích">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">1.9k</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">122</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+            <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu album"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-toast="Tuỳ chọn khác" aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </div>
+      </article>
+          <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
+        <a class="gallery grid gap-[2px] aspect-[370/208]" href="#" aria-label="Xem album ảnh: Một ngày ở nông trại công nghệ cao">
+          <span class="gallery__main relative overflow-hidden"><img src="assets/img/cover-nong-nghiep.png" alt="" width="246" height="208" loading="lazy"></span>
+          <span class="gallery__side grid gap-[2px]">
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/cover-tang-truong-xanh.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/cover-du-lich.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden">
+              <img src="assets/img/kp-tay-nguyen.jpg" alt="" width="122" height="68" loading="lazy">
+              <span class="gallery__more absolute inset-0 grid place-items-center text-surface text-[14px] font-bold">+12</span>
+            </span>
+          </span>
+        </a>
+        <div class="card__body pt-3 px-4 pb-4">
+          <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Một ngày ở nông trại công nghệ cao — nơi rau lớn lên dưới cảm biến</a></h3>
+          <div class="byline flex items-center gap-2 pt-3">
+            <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=thanh-ha" aria-label="Xem trang cá nhân của Quốc Bảo"><img src="assets/img/avatar-thanh-ha.jpg" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="flex items-center gap-1 min-w-0"><a class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate" href="ca-nhan.html?tac-gia=thanh-ha">Thanh Hà</a><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 3 ngày trước</span></p>
+          </div>
+          <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="3400" aria-pressed="false" aria-label="Thích">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3.4k</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">204</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+            <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu album"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-toast="Tuỳ chọn khác" aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
+        <a class="gallery grid gap-[2px] aspect-[370/208]" href="#" aria-label="Xem album ảnh: Đường phố Sài Gòn lúc 5 giờ sáng — khoảnh khắc thành phố chưa thức giấc">
+          <span class="gallery__main relative overflow-hidden"><img src="assets/img/kp-sai-gon-5h.jpg" alt="" width="246" height="208" loading="lazy"></span>
+          <span class="gallery__side grid gap-[2px]">
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/cover-sai-gon.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden"><img src="assets/img/cover-thanh-pho.png" alt="" width="122" height="68" loading="lazy"></span>
+            <span class="gallery__thumb relative overflow-hidden">
+              <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="122" height="68" loading="lazy">
+              <span class="gallery__more absolute inset-0 grid place-items-center text-surface text-[14px] font-bold">+6</span>
+            </span>
+          </span>
+        </a>
+        <div class="card__body pt-3 px-4 pb-4">
+          <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Đường phố Sài Gòn lúc 5 giờ sáng — khoảnh khắc thành phố chưa thức giấc</a></h3>
+          <div class="byline flex items-center gap-2 pt-3">
+            <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=thanh-ha" aria-label="Xem trang cá nhân của Thanh Hà"><img src="assets/img/avatar-thanh-ha.jpg" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="flex items-center gap-1 min-w-0"><a class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate" href="ca-nhan.html?tac-gia=thanh-ha">Thanh Hà</a><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 5 ngày trước</span></p>
+          </div>
+          <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="5100" aria-pressed="false" aria-label="Thích">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.1k</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">278</span>
+            </button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+            <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu album"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-toast="Tuỳ chọn khác" aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="loadmore flex justify-center pt-2 pb-6">
+      <button class="btn-outline inline-flex items-center gap-2 h-10 px-5 border border-line-2 rounded-full bg-surface text-[13px] font-bold text-ink shadow-card disabled:opacity-55 disabled:shadow-none" type="button" data-toast="Đang tải thêm bộ ảnh">
+        <span class="btn-outline__label">Xem thêm</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer bg-surface border-t border-line-3 mt-[44px]">
+    <div class="shell w-full max-w-shell mx-auto px-4">
+      <img class="w-[107px] h-[32px] object-contain" src="assets/img/logo-gnm-footer.png" alt="Góc Nhìn Mới" width="107" height="32" loading="lazy">
+
+      <h2 class="text-[15px] font-extrabold leading-[22px] pt-5">Mạng xã hội Góc Nhìn Mới</h2>
+      <p class="text-[12px] leading-[20px] text-ink-action pt-[10px]">
+        Công ty Cổ phần Công nghệ và Truyền thông Không gian số (NetSpace)<br>
+        Giấy phép MXH số 93/GP-PTTH&amp;TTĐT do Cục PTTH&amp;TTĐT (Bộ VHTTDL) cấp ngày 25 tháng 5 năm 2026<br>
+        Người chịu trách nhiệm: Nguyễn Văn Tuấn
+      </p>
+
+      <h3 class="text-[14px] font-extrabold leading-[22px] pt-5">Thông tin liên hệ</h3>
+      <ul class="footer__list grid gap-[10px] pt-[10px]">
+        <li>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-map-pin"></use></svg>
+          <span>Tầng 3, Tòa nhà Mipec, 229 Tây Sơn, Kim Liên, Hà Nội</span>
+        </li>
+        <li>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-phone"></use></svg>
+          <span>Hotline: <a href="tel:+842438888888">0888.13.8888</a></span>
+        </li>
+        <li>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mail"></use></svg>
+          <span><a href="mailto:lienhe@gocnhinmoi.vn">lienhe@gocnhinmoi.vn</a></span>
+        </li>
+      </ul>
+
+      <a class="btn-ad flex items-center justify-center gap-[10px] mt-5 h-[42px] rounded-md bg-primary-800 text-surface text-[14px] font-semibold" href="tel:+842438888888">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-phone-btn"></use></svg>
+        Liên hệ quảng cáo <strong>0888.13.8888</strong>
+      </a>
+
+      <a class="social grid place-items-center size-[34px] mt-5 border border-line-3 rounded-full text-icon-dark" href="#" aria-label="Trang Facebook của Góc Nhìn Mới">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg>
+      </a>
+    </div>
+
+    <div class="footer__bottom border-t border-line-3 text-center text-[12px] leading-[20px] text-ink-muted">
+      <p>© 2026 Mạng xã hội Góc Nhìn Mới</p>
+      <p>Vận hành bởi <a href="#">NetSpace</a></p>
+    </div>
+  </footer>
+
+</div><!-- /.page -->
+
+<!-- ============ Thanh điều hướng dưới ============ -->
+<nav class="bottom-nav fixed inset-x-0 bottom-0 z-[60] flex justify-center pt-2 pointer-events-none" aria-label="Điều hướng chính">
+  <div class="bottom-nav__inner flex items-center w-full max-w-shell">
+    <div class="nav-pill flex-1 min-w-0 flex items-center h-[60px] p-1 border rounded-full" role="tablist">
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="index.html" role="tab" aria-current="page">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-home"></use></svg>
+        Trang chủ
+      </a>
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="nghe-va-xem.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-media"></use></svg>
+        Nghe &amp; Xem
+      </a>
+
+      <button class="nav-write flex-none size-[52px] mx-1 grid place-items-center rounded-full text-surface transition duration-[180] ease-out" type="button" data-toast="Tạo bài viết mới" aria-label="Tạo nội dung">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-write"></use></svg>
+      </button>
+
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="kham-pha.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-explore"></use></svg>
+        Khám phá
+      </a>
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="ca-nhan.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-user"></use></svg>
+        Cá nhân
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="toast fixed left-1/2 z-[80] px-4 py-[10px] rounded-full text-surface text-[13px] opacity-0 pointer-events-none" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/app.js"></script><script>(function(){document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('.html')===-1)return;e.preventDefault();parent.postMessage({gnmGoto:h},'*');},true);})();</script>
+</body>
+</html>
