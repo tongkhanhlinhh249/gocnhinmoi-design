@@ -3120,6 +3120,10 @@ input { font: inherit; }
 .article-back { transition: opacity .18s ease; }
 .article-back.is-off { opacity: 0; pointer-events: none; }
 
+/* Nút menu nổi trên ảnh, đối xứng với nút quay lại ở mép trái */
+.article-back--menu { left: auto; right: var(--gutter); }
+.article-back--menu .icon { transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .article-topbar, .article-back { transition: none; }
 }

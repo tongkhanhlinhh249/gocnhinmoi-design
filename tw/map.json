@@ -1352,8 +1352,8 @@
   "keep": ""
  },
  "drawer": {
-  "tw": "fixed inset-0 z-[90] overflow-hidden",
-  "keep": "@media (min-width:520px){.drawer{left:50%;right:auto;width:100%;max-width:480px;transform:translateX(-50%)}}.drawer{visibility:hidden}.drawer.is-open{visibility:visible}"
+  "tw": "fixed z-[90] overflow-hidden",
+  "keep": ".drawer{inset:0}@media (min-width:520px){.drawer{left:50%;right:auto;width:100%;max-width:480px;transform:translateX(-50%)}}.drawer{visibility:hidden}.drawer.is-open{visibility:visible}"
  },
  "field": {
   "tw": "pt-4",
@@ -1626,5 +1626,9 @@
  "rank__badge--5": {
   "tw": "bg-[#6B7280]",
   "keep": ""
+ },
+ "article-back--menu": {
+  "tw": "",
+  "keep": ".article-back--menu{left:auto;right:var(--gutter)}.article-back--menu .icon{transform:none}"
  }
 }

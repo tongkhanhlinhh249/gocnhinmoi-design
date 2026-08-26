@@ -84,6 +84,7 @@ a{-webkit-tap-highlight-color:transparent}
 .act-pill .icon{width:16px;height:16px;color:var(--color-icon-dark)}.act-pill[aria-pressed="true"] .icon{color:var(--color-primary-800);fill:var(--color-primary-800)}
 .app-header{padding-top:env(safe-area-inset-top);transition:transform .28s var(--ease)}.app-header.is-hidden{transform:translateY(-100%)}@media (min-width:520px){.app-header,.chips-bar{max-width:480px;margin-inline:auto}}
 .article-back.is-off{opacity:0;pointer-events:none}.article-back{top:calc(12px + env(safe-area-inset-top));left:var(--gutter)}.article-back::before{content:"";position:absolute;inset:4px;border-radius:var(--r-pill);background:rgba(16, 24, 40, .38);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.article-back .icon{position:relative;width:20px;height:20px;transform:scaleX(-1)}
+.article-back--menu{left:auto;right:var(--gutter)}.article-back--menu .icon{transform:none}
 .article-hero img{width:100%;height:100%;object-fit:cover}
 .article-topbar.is-on{transform:none}
 .article-topbar__back .icon{width:20px;height:20px;transform:scaleX(-1)}
@@ -168,7 +169,7 @@ a{-webkit-tap-highlight-color:transparent}
 .dialog__panel{width:min(320px, calc(100% - 40px));box-shadow:0 20px 48px rgba(16,24,40,.28);transform:translate(-50%,-46%) scale(.96);transition:transform .2s var(--ease), opacity .2s var(--ease)}.dialog.is-open .dialog__panel{transform:translate(-50%,-50%) scale(1);opacity:1}
 .discussed .hscroll{padding-top:16px}
 .discussed--lead .hscroll{padding-top:28px}
-@media (min-width:520px){.drawer{left:50%;right:auto;width:100%;max-width:480px;transform:translateX(-50%)}}.drawer{visibility:hidden}.drawer.is-open{visibility:visible}
+.drawer{inset:0}@media (min-width:520px){.drawer{left:50%;right:auto;width:100%;max-width:480px;transform:translateX(-50%)}}.drawer{visibility:hidden}.drawer.is-open{visibility:visible}
 .drawer__backdrop{background:rgba(16,24,40,.5);transition:opacity .25s var(--ease)}.drawer.is-open .drawer__backdrop{opacity:1}
 .drawer__foot{padding-bottom:calc(var(--gutter) + env(safe-area-inset-bottom))}
 .drawer__head{height:var(--header-h)}.drawer__head img{width:108px;height:32px;object-fit:contain}
