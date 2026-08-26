@@ -3785,7 +3785,35 @@ input { font: inherit; }
   }
 
   .v-web .page > main { grid-column: 2; grid-row: 1; min-width: 0; }
-  .v-web .page .site-footer { grid-column: 2 / -1; grid-row: 2; margin-top: 32px; }
+  /* Cột phụ dính (sticky) bị trình duyệt cho phép trượt quá ô lưới của nó và
+     đè lên footer. Cho footer nằm trên một tầng và có nền đục là đủ: cuộn tới
+     footer thì cột phụ khuất hẳn sau nó, đúng như mong đợi. */
+  .v-web .page .site-footer {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    position: relative;
+    z-index: 1;
+    margin-top: 32px;
+    background: var(--surface);
+  }
+  /* Chân trang dàn hai cột cho đỡ trống: khối giấy phép bên trái, liên hệ bên phải */
+  .v-web .page .site-footer > .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    column-gap: 56px;
+    align-items: start;
+    padding-block: 32px;
+  }
+  .v-web .page .footer__logo,
+  .v-web .page .footer__title,
+  .v-web .page .footer__legal,
+  .v-web .page .btn-ad { grid-column: 1; }
+  .v-web .page .footer__subtitle,
+  .v-web .page .footer__list,
+  .v-web .page .social { grid-column: 2; }
+  .v-web .page .footer__subtitle { margin-top: 0; }
+  .v-web .page .btn-ad { justify-self: start; }
+  .v-web .page .footer__bottom { grid-column: 1 / -1; }
 
   .v-web .page .app-header,
   .v-web .page .searchbar,
@@ -3805,6 +3833,22 @@ input { font: inherit; }
     margin-inline: 0;
     padding-inline: 24px;
   }
+
+  /* Cỡ chữ tiêu đề tăng theo bề ngang: cột nội dung 765px rộng gần gấp đôi
+     khung 480px, giữ nguyên cỡ của điện thoại thì tiêu đề trông nhỏ hẳn so
+     với ảnh. Thẻ ở cột phải không đổi — cột đó vẫn hẹp. */
+  .v-web .page .tophero__item--lg .tophero__title { font-size: 26px; line-height: 34px; }
+  .v-web .page .tophero__item--sm .tophero__title { font-size: 19px; line-height: 26px; }
+  .v-web .page .card__title { font-size: 17px; line-height: 24px; }
+  .v-web .page .section-title { font-size: 17px; line-height: 25px; }
+  .v-web .page .trend-card__title { font-size: 14px; line-height: 19px; }
+
+  /* Bảng xếp hạng: sáu ô chia đều 765px thì mỗi ô rộng ~125px mà ảnh chỉ 64px,
+     nhìn toàn khoảng trống. Phóng ảnh và tên lên cho khớp bề ngang. */
+  .v-web .page .ranks { gap: 12px; }
+  .v-web .page .rank__ava img { width: 88px; height: 88px; }
+  .v-web .page .rank__badge { font-size: 10px; padding: 3px 8px; bottom: -5px; }
+  .v-web .page .rank__name { font-size: 12px; line-height: 16px; }
   .v-web .mini { bottom: 16px; }
 
   .v-web .page .tophero {
