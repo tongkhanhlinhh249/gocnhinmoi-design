@@ -1041,7 +1041,7 @@
   if (viewerBtn) {
     viewerBtn.addEventListener('click', function () {
       var guest = viewerBtn.getAttribute('aria-pressed') !== 'true';
-      guestNote.textContent = 'Đang xem hồ sơ dưới góc nhìn người khác — khu vực riêng tư đã bị ẩn.';
+      if (guestNote) guestNote.textContent = 'Đang xem hồ sơ dưới góc nhìn người khác — khu vực riêng tư đã bị ẩn.';
       applyGuest(guest);
       toast(guest ? 'Đang xem hồ sơ dưới góc nhìn người khác' : 'Đã trở lại chế độ chủ tài khoản');
     });
@@ -1056,7 +1056,7 @@
   var ME = 'duc-anh';
 
   function applyGuest(on) {
-    guestNote.hidden = !on;
+    if (guestNote) guestNote.hidden = !on;
     $$('[data-owner-only]').forEach(function (el) { el.hidden = on; });
     $$('[data-guest-only]').forEach(function (el) { el.hidden = !on; });
     if (viewerBtn) viewerBtn.setAttribute('aria-pressed', String(on));
@@ -1104,7 +1104,7 @@
 
     syncBio();
     applyGuest(true);
-    guestNote.textContent = 'Bạn đang xem hồ sơ công khai của ' + a.name + '.';
+    if (guestNote) guestNote.textContent = 'Bạn đang xem hồ sơ công khai của ' + a.name + '.';
   }
 
 

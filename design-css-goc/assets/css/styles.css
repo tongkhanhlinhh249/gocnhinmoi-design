@@ -3486,6 +3486,41 @@ input { font: inherit; }
 }
 .contributor .contributor__note .icon { width: 13px; height: 13px; margin-top: 2px; flex: none; color: var(--ok); }
 
+/* ---------- Bài viết nổi bật (trang cá nhân) ---------- */
+.feat { padding-top: 4px; }
+.feat__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.feat__meta .icon { width: 13px; height: 13px; flex: none; color: var(--icon-grey); }
+
+/* Nút tim nổi góc trên phải ảnh. Đặt ngoài thẻ <a> của ảnh — nút nằm trong
+   link là HTML không hợp lệ, trình duyệt tự cắt và cấu trúc vỡ. */
+.feat__like {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 30px; height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  transition: color .18s var(--ease), background-color .18s var(--ease);
+}
+.feat__like .icon { width: 15px; height: 15px; }
+.feat__like[aria-pressed="true"] { color: var(--gnm-red); }
+.feat__like[aria-pressed="true"] .icon { fill: var(--gnm-red); }
+
 /* ---------- 18. Màn hình lớn hơn ---------- */
 @media (min-width: 520px) {
   body { background: #eef0f3; }
