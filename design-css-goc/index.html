@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="v-web">
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -80,6 +80,13 @@
   </symbol>
   <symbol id="i-phone-btn" viewBox="0 0 14.9889 14.9889">
     <path d="M13.7398 10.5672V12.4408C13.7405 12.6147 13.7049 12.7869 13.6352 12.9463C13.5655 13.1056 13.4633 13.2487 13.3352 13.3663C13.207 13.4839 13.0557 13.5734 12.8909 13.6291C12.7262 13.6848 12.5516 13.7055 12.3783 13.6899C10.4565 13.481 8.6105 12.8243 6.98857 11.7725C4.73998 10.4788 2.96327 8.50075 1.91733 6.12671C0.89195 4.49807 0.26107 2.65248 0.0749442 0.736954C0.18021 0.500482 0.356341 0.302554 0.578986 0.170533C0.80163 0.0385132 1.05979 -0.0210777 1.31777 0C1.31777 0 3.19139 0 3.19139 0C3.49448 -0.0029834 3.78831 0.104347 4.01813 0.301984C4.24794 0.499621 4.39804 0.774081 4.44046 1.0742C4.51978 1.67376 4.66592 2.2627 4.87764 2.82915C4.96167 3.05269 4.97985 3.29563 4.93004 3.52919C4.88023 3.76274 4.76451 3.97712 4.5966 4.14693L3.80343 4.94009C4.6925 6.50365 5.9871 7.79825 7.55066 8.68732L8.34382 7.89415C8.51363 7.72624 8.72801 7.61052 8.96156 7.56071C9.19512 7.5109 9.43806 7.52908 9.6616 7.61311C10.2281 7.82483 10.817 7.97097 11.4165 8.05029C11.7503 7.7422 12.1928 7.57932 12.6466 7.59747C13.1005 7.61563 13.5285 7.81333 13.8366 8.14709C14.1447 8.48085 14.3076 8.92333 14.2894 9.37718C14.2713 9.83104 14.0736 10.2591 13.7398 10.5672Z" stroke="currentColor" stroke-width="1.24908" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
   <symbol id="i-close" viewBox="0 0 16 16">
     <path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -176,7 +183,61 @@
     </form>
   </div>
 
+  <!-- ============ Cột điều hướng (chỉ hiện ở màn rộng) ============ -->
+  <aside class="desknav" aria-label="Điều hướng chính">
+    <a class="desknav__brand" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ">
+      <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
+    </a>
+
+    <nav aria-label="Khu vực chính">
+      <ul class="desknav__list">
+        <li><a class="desknav__link is-active" href="index.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
+        <li><a class="desknav__link" href="nghe-va-xem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-media"></use></svg>Nghe & Xem</a></li>
+        <li><a class="desknav__link" href="kham-pha.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Khám phá</a></li>
+      </ul>
+    </nav>
+
+    <nav class="desknav__group" aria-label="Chuyên mục">
+      <ul class="desknav__list">
+        <li><a class="desknav__link desknav__link--sub" href="moi-nhat.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="hot-hom-nay.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-heart"></use></svg>Hot hôm nay</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="tra-dam.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="spotlight.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-star"></use></svg>Spotlight</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="quan-diem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-write"></use></svg>Quan điểm</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-bookmark"></use></svg>Luận cổ suy kim</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Góc mở</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="bang-xep-hang.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-star"></use></svg>Tác giả nổi bật</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="dia-diem-list.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-map-pin"></use></svg>Khám phá địa điểm</a></li>
+      </ul>
+    </nav>
+
+    <div class="desknav__foot">
+      <ul class="desknav__list">
+        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
+        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
+      </ul>
+    </div>
+  </aside>
+
   <main id="main">
+    <div class="deskbar">
+      <label class="deskbar__search">
+        <svg class="icon deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
+        <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
+      </label>
+      <a class="deskbar__write" href="#">
+        <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
+      </a>
+      <button class="icon-btn" type="button" aria-label="Thông báo (có thông báo mới)" data-toast="Bạn có 3 thông báo mới">
+        <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
+        <span class="icon-btn__dot" aria-hidden="true"></span>
+      </button>
+      <a class="deskbar__me" href="ca-nhan.html" aria-label="Trang cá nhân">
+        <img src="assets/img/avatar-duc-anh.png" alt="" width="34" height="34">
+      </a>
+    </div>
+
 
     <!-- ============ Tin nổi bật (Figma 192:1124) ============ -->
     <section class="tophero" aria-label="Tin nổi bật">
@@ -1978,6 +2039,110 @@
     </div>
 
   </main>
+
+  <!-- ============ Cột phụ bên phải (chỉ hiện ở màn rất rộng) ============ -->
+  <aside class="siderail" aria-label="Nội dung liên quan">
+    <section class="rail-card" aria-labelledby="rail-tags-title">
+      <h2 class="rail-title" id="rail-tags-title">🔥 Đang thịnh hành</h2>
+      <ul class="rail-tags">
+        <li><a class="rail-tag" href="#">#AI</a></li>
+        <li><a class="rail-tag" href="#">#KinhTe</a></li>
+        <li><a class="rail-tag" href="#">#Startup</a></li>
+        <li><a class="rail-tag" href="#">#ChinhTri</a></li>
+        <li><a class="rail-tag" href="#">#GiaoDuc</a></li>
+      </ul>
+    </section>
+
+    <section class="rail-card rail-card--flush" aria-labelledby="rail-place-title">
+      <a class="rail-place" href="dia-diem.html">
+        <img src="assets/img/place-workshop-coffee.png" alt="" width="280" height="140" loading="lazy">
+        <span class="rail-place__scrim" aria-hidden="true"></span>
+        <span class="rail-place__body">
+          <span class="rail-place__name">The Workshop Coffee</span>
+          <span class="rail-place__meta">
+            <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh
+          </span>
+        </span>
+      </a>
+      <div class="rail-head">
+        <h2 class="rail-title" id="rail-place-title">📍 Địa điểm</h2>
+        <a class="rail-more" href="dia-diem-list.html">Khám phá <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-authors-title">
+      <div class="rail-head">
+        <h2 class="rail-title" id="rail-authors-title">Gợi ý theo dõi</h2>
+        <a class="rail-more" href="bang-xep-hang.html">Xem tất cả</a>
+      </div>
+      <ul class="rail-rows">
+          <li class="rail-row">
+            <img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">GS. Nguyễn Thanh Bình</p>
+              <p class="rail-row__desc">Kinh tế học · ĐH Kinh tế Quốc dân</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-thu-hang.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Thu Hằng</p>
+              <p class="rail-row__desc">Nhà báo · Công nghệ &amp; Tương lai</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-lan-anh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">TS. Lan Anh</p>
+              <p class="rail-row__desc">Giáo dục · Chính sách xã hội</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="true">Đang theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-nhat-minh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Nhật Minh</p>
+              <p class="rail-row__desc">Phóng viên khởi nghiệp · Longform</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-hoai-nam.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Hoài Nam</p>
+              <p class="rail-row__desc">Host podcast Tiền Đẻ Ra Tiền</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-hoang-nam.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">PGS. Hoàng Nam</p>
+              <p class="rail-row__desc">Xã hội học · Nghiên cứu đô thị</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Quỳnh Chi</p>
+              <p class="rail-row__desc">Biên tập viên eMagazine · Văn hoá</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-tran-bao.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Trần Bảo Long</p>
+              <p class="rail-row__desc">Phân tích dữ liệu · Infographic</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+      </ul>
+    </section>
+  </aside>
 
   <!-- ============ Footer ============ -->
   <footer class="site-footer">

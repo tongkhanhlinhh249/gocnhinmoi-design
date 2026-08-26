@@ -392,7 +392,7 @@
   var feed = $('#feedSecondary') || $('#feedPrimary');
   var emptyEl = $('#feedEmpty');
   var loadWrap = $('.loadmore');
-  var searchInput = $('[data-search]');
+  var searchInputs = $$('[data-search]');
   var currentFilter = 'all';
 
   /* Đổi chuyên mục làm trang ngắn lại, trình duyệt sẽ kéo scroll lên và bị hiểu nhầm là
@@ -402,6 +402,14 @@
      Đo từ #feedSecondary (không sticky) trừ đi chiều cao thanh chip. */
   function feedStickTarget() {
     return Math.round(docTopOf(feed) - chipsBar.offsetHeight);
+  }
+
+  function timTuKhoa() {
+    for (var i = 0; i < searchInputs.length; i++) {
+      var v = searchInputs[i].value.trim();
+      if (v) return v.toLowerCase();
+    }
+    return '';
   }
 
   function alignToFeed() {
@@ -441,7 +449,7 @@
 
   function applyFilters() {
     if (!feed) return;
-    var q = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    var q = timTuKhoa();
     var matched = 0;
     var shown = 0;
 
@@ -505,13 +513,15 @@
   }
 
   /* ---------- Tìm kiếm nhanh trong feed ---------- */
-  if (searchInput) {
-    var searchTimer;
-    searchInput.addEventListener('input', function () {
+  var searchTimer;
+  searchInputs.forEach(function (o) {
+    o.addEventListener('input', function () {
+      // gõ ở ô nào thì ô kia phải theo, nếu không đổi bề ngang màn hình là mất từ khoá
+      searchInputs.forEach(function (k) { if (k !== o) k.value = o.value; });
       clearTimeout(searchTimer);
       searchTimer = setTimeout(applyFilters, 180);
     });
-  }
+  });
 
   /* ---------- Drawer chuyên mục ---------- */
   var drawer = $('#drawer');
