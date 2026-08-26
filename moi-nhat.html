@@ -727,6 +727,24 @@
   </div>
 </div>
 
+<div class="mini fixed left-0 right-0 z-[45] max-w-shell mx-auto bg-surface border border-line rounded-md shadow-card overflow-hidden opacity-0 transition duration-[200] ease-out" id="mini" role="region" aria-label="Đang phát" hidden>
+  <div class="h-[2px] bg-line-2"><span class="block h-full w-0 bg-primary-800" data-mini-fill></span></div>
+  <div class="flex items-center gap-[10px] px-[10px] py-2">
+    <img class="size-10 flex-none rounded-card object-cover bg-surface-fill" data-mini-art src="" alt="" width="40" height="40">
+    <div class="flex-1 min-w-0">
+      <p class="text-[13px] font-bold leading-[19px] text-ink truncate" data-mini-title></p>
+      <p class="text-[11px] leading-4 text-ink-muted tabular-nums"><span data-mini-time>0:00 / 0:00</span></p>
+    </div>
+    <button class="mini__play flex-none size-9 grid place-items-center rounded-full text-primary-800" type="button" data-mini-toggle aria-label="Tạm dừng">
+      <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+      <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+    </button>
+    <button class="mini__close flex-none size-9 grid place-items-center rounded-full text-icon-dark" type="button" data-mini-close aria-label="Đóng trình phát">
+      <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+</div>
+
 <div class="toast fixed left-1/2 z-[80] px-4 py-[10px] rounded-full text-surface text-[13px] opacity-0 pointer-events-none" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/app.js"></script></body>

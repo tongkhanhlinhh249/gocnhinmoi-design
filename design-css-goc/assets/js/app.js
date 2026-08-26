@@ -208,6 +208,57 @@
     }
   }
 
+  /* ---------- Trình phát nền ---------- */
+  /* Thanh nhỏ nổi trên thanh điều hướng, để nghe tiếp trong lúc xem mục khác.
+     Đây là bản mô phỏng: rời trang là mất, vì bản dựng không có trạng thái
+     chạy xuyên trang. */
+  var mini = document.getElementById('mini');
+  var miniTiepTuc = null, miniDung = null;
+
+  function miniVe(elapsed, duration) {
+    if (!mini) return;
+    var f = mini.querySelector('[data-mini-fill]');
+    var t = mini.querySelector('[data-mini-time]');
+    if (f && duration) f.style.width = (elapsed / duration * 100) + '%';
+    if (t) t.textContent = formatTime(elapsed) + ' / ' + formatTime(duration);
+  }
+
+  function miniBat(card, btn, layElapsed, duration, tiepTuc, dung) {
+    if (!mini) return;
+    var art = card && card.querySelector('img');
+    var tit = card && card.querySelector('.card__title, .podcast__title, .prow__title');
+    var a = mini.querySelector('[data-mini-art]');
+    var h = mini.querySelector('[data-mini-title]');
+    if (a && art) { a.src = art.getAttribute('src'); a.alt = ''; }
+    if (h) h.textContent = tit ? tit.textContent.trim() : 'Đang phát';
+    miniTiepTuc = tiepTuc;
+    miniDung = dung;
+    mini.hidden = false;
+    void mini.offsetWidth;
+    mini.classList.add('is-on', 'is-playing');
+    miniVe(layElapsed(), duration);
+  }
+
+  function miniTat() {
+    if (!mini) return;
+    mini.classList.remove('is-playing');
+  }
+
+  if (mini) {
+    mini.addEventListener('click', function (e) {
+      if (e.target.closest('[data-mini-close]')) {
+        if (mini.classList.contains('is-playing') && miniDung) miniDung();
+        mini.classList.remove('is-on', 'is-playing');
+        setTimeout(function () { mini.hidden = true; }, 200);
+        return;
+      }
+      if (e.target.closest('[data-mini-toggle]')) {
+        if (mini.classList.contains('is-playing')) { if (miniDung) miniDung(); }
+        else if (miniTiepTuc) miniTiepTuc();
+      }
+    });
+  }
+
   /* ---------- Trình phát podcast (mô phỏng) ---------- */
   var activePlayer = null;
 
@@ -231,19 +282,27 @@
       btn.classList.remove('is-playing');
       if (label) label.textContent = 'Phát ngay';
       if (activePlayer === stop) activePlayer = null;
+      miniTat();
     }
 
-    btn.addEventListener('click', function () {
-      if (timer) { stop(); return; }
+    function batDau() {
       if (activePlayer) activePlayer();          // chỉ cho phép một tập phát cùng lúc
       activePlayer = stop;
       btn.classList.add('is-playing');
       if (label) label.textContent = 'Tạm dừng';
+      miniBat(card, btn, function () { return elapsed; }, duration, batDau, stop);
       timer = setInterval(function () {
         elapsed += 1;
-        if (elapsed >= duration) { elapsed = 0; stop(); }
+        if (elapsed >= duration) { elapsed = 0; stop(); return; }
         render();
+        miniVe(elapsed, duration);
       }, 1000);
+      miniVe(elapsed, duration);
+    }
+
+    btn.addEventListener('click', function () {
+      if (timer) { stop(); return; }
+      batDau();
     });
 
     render();

@@ -722,6 +722,24 @@
   </div>
 </div>
 
+<div class="mini" id="mini" role="region" aria-label="Đang phát" hidden>
+  <div class="mini__bar"><span class="mini__fill" data-mini-fill></span></div>
+  <div class="mini__row">
+    <img class="mini__art" data-mini-art src="" alt="" width="40" height="40">
+    <div class="mini__body">
+      <p class="mini__title" data-mini-title></p>
+      <p class="mini__time"><span data-mini-time>0:00 / 0:00</span></p>
+    </div>
+    <button class="mini__play" type="button" data-mini-toggle aria-label="Tạm dừng">
+      <svg class="icon icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+      <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+    </button>
+    <button class="mini__close" type="button" data-mini-close aria-label="Đóng trình phát">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/app.js"></script></body>

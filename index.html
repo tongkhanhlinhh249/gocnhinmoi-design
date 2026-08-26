@@ -183,6 +183,7 @@
       <article class="relative overflow-hidden bg-surface-dark aspect-square">
             <img class="w-full h-full object-cover" src="assets/img/hero-genz.png" alt="Nhóm bạn trẻ làm việc trong không gian mở" width="400" height="300">
             <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
+          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-like data-count="0" aria-pressed="false" aria-label="Thích bài viết này"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
             <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
               <h2 class="text-[18px] font-extrabold leading-[24.75px] tracking-[-.011em]"><a href="bai-viet.html">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có</a></h2>
               <p class="tophero__meta flex items-center gap-2 pt-[6px]">
@@ -195,6 +196,7 @@
       <article class="relative overflow-hidden bg-surface-dark aspect-[400/240]">
             <img class="w-full h-full object-cover" src="assets/img/cover-startup-video.png" alt="Buổi gọi vốn của một startup Việt" width="400" height="300" loading="lazy">
             <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
+          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-like data-count="0" aria-pressed="false" aria-label="Thích bài viết này"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
             <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
               <h2 class="text-[18px] font-extrabold leading-[24.75px] tracking-[-.011em]"><a href="bai-viet.html">Startup Việt gọi vốn triệu đô: Câu chuyện thật và những điều chưa kể</a></h2>
               <p class="tophero__meta flex items-center gap-2 pt-[6px]">
@@ -207,6 +209,7 @@
       <article class="relative overflow-hidden bg-surface-dark aspect-[400/240]">
             <img class="w-full h-full object-cover" src="assets/img/gallery2-main.png" alt="Công trình kiến trúc đương đại tại Việt Nam" width="400" height="300" loading="lazy">
             <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
+          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-like data-count="0" aria-pressed="false" aria-label="Thích bài viết này"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
             <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
               <h2 class="text-[18px] font-extrabold leading-[24.75px] tracking-[-.011em]"><a href="bai-viet.html">Kiến trúc Việt Nam đương đại: 10 công trình định hình diện mạo đô thị 2026</a></h2>
               <p class="tophero__meta flex items-center gap-2 pt-[6px]">
@@ -725,7 +728,7 @@
     <!-- ============ Bộ lọc chuyên mục ============ -->
     <nav class="chips-bar sticky z-30 bg-surface-soft" aria-label="Lọc theo chuyên mục">
       <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" id="chips">
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-filter="all">Tất cả</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-filter="all">Mới nhất</button>
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-filter="hot">Hot hôm nay</button>
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-filter="tra-dam">Trà đàm</button>
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-filter="goc-mo">Góc mở</button>
@@ -2005,6 +2008,24 @@
     <h2 class="text-base font-extrabold leading-[24px] text-ink" id="sheetTitle"></h2>
     <p class="pt-1 text-[12px] leading-[18px] text-ink-muted" id="sheetMeta"></p>
     <div id="sheetBody"></div>
+  </div>
+</div>
+
+<div class="mini fixed left-0 right-0 z-[45] max-w-shell mx-auto bg-surface border border-line rounded-md shadow-card overflow-hidden opacity-0 transition duration-[200] ease-out" id="mini" role="region" aria-label="Đang phát" hidden>
+  <div class="h-[2px] bg-line-2"><span class="block h-full w-0 bg-primary-800" data-mini-fill></span></div>
+  <div class="flex items-center gap-[10px] px-[10px] py-2">
+    <img class="size-10 flex-none rounded-card object-cover bg-surface-fill" data-mini-art src="" alt="" width="40" height="40">
+    <div class="flex-1 min-w-0">
+      <p class="text-[13px] font-bold leading-[19px] text-ink truncate" data-mini-title></p>
+      <p class="text-[11px] leading-4 text-ink-muted tabular-nums"><span data-mini-time>0:00 / 0:00</span></p>
+    </div>
+    <button class="mini__play flex-none size-9 grid place-items-center rounded-full text-primary-800" type="button" data-mini-toggle aria-label="Tạm dừng">
+      <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+      <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+    </button>
+    <button class="mini__close flex-none size-9 grid place-items-center rounded-full text-icon-dark" type="button" data-mini-close aria-label="Đóng trình phát">
+      <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
   </div>
 </div>
 

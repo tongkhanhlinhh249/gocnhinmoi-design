@@ -2794,6 +2794,27 @@ input { font: inherit; }
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
 }
+/* Nút tim nổi góc trên phải ảnh. Đặt là anh em của ảnh, không lồng trong
+   link tiêu đề — nút nằm trong link là HTML không hợp lệ. */
+.tophero__like {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 34px; height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  transition: color .18s var(--ease);
+}
+.tophero__like .icon { width: 17px; height: 17px; }
+.tophero__like[aria-pressed="true"] { color: var(--gnm-red); }
+.tophero__like[aria-pressed="true"] .icon { fill: var(--gnm-red); }
+
 .tophero__body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -3523,6 +3544,62 @@ input { font: inherit; }
 .feat__like .icon { width: 15px; height: 15px; }
 .feat__like[aria-pressed="true"] { color: var(--gnm-red); }
 .feat__like[aria-pressed="true"] .icon { fill: var(--gnm-red); }
+
+/* ---------- Trình phát nền ---------- */
+/* Nằm ngay trên thanh điều hướng để nghe tiếp trong lúc đọc trang khác.
+   z-index thấp hơn drawer và sheet — nó là nền, không được che thứ đang mở. */
+.mini {
+  position: fixed;
+  left: 0; right: 0;
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  z-index: 45;
+  max-width: var(--shell);
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-card);
+  overflow: hidden;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform .2s var(--ease), opacity .2s var(--ease);
+}
+.mini.is-on { transform: none; opacity: 1; }
+.mini__bar { height: 2px; background: var(--line-2); }
+.mini__fill { display: block; height: 100%; width: 0; background: var(--gnm-red); }
+.mini__row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; }
+.mini__art {
+  width: 40px; height: 40px;
+  flex: none;
+  border-radius: var(--r-card);
+  object-fit: cover;
+  background: var(--fill-soft);
+}
+.mini__body { flex: 1; min-width: 0; }
+.mini__title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 19px;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mini__time { font-size: 11px; line-height: 16px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.mini__play, .mini__close {
+  flex: none;
+  width: 36px; height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  color: var(--icon-dark);
+}
+.mini__play { color: var(--gnm-red); }
+.mini__play:active, .mini__close:active { background: var(--fill-soft); }
+.mini__play .icon, .mini__close .icon { width: 16px; height: 16px; }
+.mini__play .icon--pause { display: none; }
+.mini.is-playing .mini__play .icon--play { display: none; }
+.mini.is-playing .mini__play .icon--pause { display: block; }
 
 /* ---------- 18. Màn hình lớn hơn ---------- */
 @media (min-width: 520px) {
