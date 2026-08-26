@@ -296,6 +296,12 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .sheet__backdrop{background:rgba(16,24,40,.45);transition:opacity .22s var(--ease)}.sheet.is-open .sheet__backdrop{opacity:1}
 .sheet__footer{grid-template-columns:1fr 1.6fr;padding:12px 0 calc(4px + env(safe-area-inset-bottom));box-shadow:0 -8px 16px -8px rgba(16,24,40,.12)}
 .sheet__panel{padding:8px var(--gutter) calc(20px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .26s var(--ease)}.sheet.is-open .sheet__panel{transform:translateY(0)}
+.short__by img{width:22px;height:22px;flex:none;border-radius:var(--r-pill);object-fit:cover;border:1px solid rgba(255,255,255,.35)}
+.short__media img{width:100%;height:100%;object-fit:cover}
+.short__name{color:rgba(255,255,255,.95)}
+.short__play{background:rgba(16,24,40,.42)}.short__play .icon{width:12px;height:12px}
+.short__scrim{background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.18) 52%,rgba(0,0,0,0) 100%)}
+.short__time{color:rgba(255,255,255,.72)}
 .site-footer > .shell{padding-block:24px}
 .social .icon{fill:currentColor}
 .sort-select{background-image:linear-gradient(45deg, transparent 50%, var(--icon-dark) 50%),linear-gradient(135deg, var(--icon-dark) 50%, transparent 50%);background-position:right 15px center, right 10px center;background-size:5px 5px, 5px 5px;background-repeat:no-repeat}
@@ -365,6 +371,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .aria-selected\:border-primary-800[aria-selected="true"]{border-color:#B80001}
 .aria-selected\:text-surface[aria-selected="true"]{color:#FFFFFF}
 .aspect-\[1\/\.72\]{aspect-ratio:1/.72}
+.aspect-\[158\/224\]{aspect-ratio:158/224}
 .aspect-\[178\/100\]{aspect-ratio:178/100}
 .aspect-\[178\/186\]{aspect-ratio:178/186}
 .aspect-\[200\/112\]{aspect-ratio:200/112}
@@ -641,6 +648,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .size-\[14px\]{width:14px;height:14px}
 .size-\[18px\]{width:18px;height:18px}
 .size-\[22px\]{width:22px;height:22px}
+.size-\[26px\]{width:26px;height:26px}
 .size-\[28px\]{width:28px;height:28px}
 .size-\[30px\]{width:30px;height:30px}
 .size-\[34px\]{width:34px;height:34px}
@@ -674,6 +682,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .top-1\/2{top:50%}
 .top-2{top:0.5rem}
 .top-3{top:0.75rem}
+.top-\[10px\]{top:10px}
 .top-\[17\.2\%\]{top:17.2%}
 .top-\[22px\]{top:22px}
 .top-\[50\%\]{top:50%}
@@ -698,6 +707,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .w-9{width:2.25rem}
 .w-\[107px\]{width:107px}
 .w-\[136px\]{width:136px}
+.w-\[158px\]{width:158px}
 .w-\[168px\]{width:168px}
 .w-\[18px\]{width:18px}
 .w-\[200px\]{width:200px}

@@ -1694,5 +1694,45 @@
  "mini__close": {
   "tw": "flex-none size-9 grid place-items-center rounded-full text-icon-dark",
   "keep": ".mini__close:active{background:var(--fill-soft)}.mini__close .icon{width:16px;height:16px}"
+ },
+ "shorts": {
+  "tw": "pt-1",
+  "keep": ""
+ },
+ "short": {
+  "tw": "relative flex-none w-[158px] aspect-[158/224] rounded-lg overflow-hidden bg-surface-dark",
+  "keep": ""
+ },
+ "short__media": {
+  "tw": "block w-full h-full",
+  "keep": ".short__media img{width:100%;height:100%;object-fit:cover}"
+ },
+ "short__scrim": {
+  "tw": "absolute inset-0",
+  "keep": ".short__scrim{background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.18) 52%,rgba(0,0,0,0) 100%)}"
+ },
+ "short__play": {
+  "tw": "absolute top-[10px] right-[10px] size-[26px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface",
+  "keep": ".short__play{background:rgba(16,24,40,.42)}.short__play .icon{width:12px;height:12px}"
+ },
+ "short__body": {
+  "tw": "absolute inset-x-0 bottom-0 px-3 pb-3 text-surface",
+  "keep": ""
+ },
+ "short__by": {
+  "tw": "flex items-center gap-[6px] pb-[6px]",
+  "keep": ".short__by img{width:22px;height:22px;flex:none;border-radius:var(--r-pill);object-fit:cover;border:1px solid rgba(255,255,255,.35)}"
+ },
+ "short__name": {
+  "tw": "min-w-0 truncate text-[11px] font-bold leading-4",
+  "keep": ".short__name{color:rgba(255,255,255,.95)}"
+ },
+ "short__time": {
+  "tw": "flex-none whitespace-nowrap text-[10px] leading-[15px]",
+  "keep": ".short__time{color:rgba(255,255,255,.72)}"
+ },
+ "short__title": {
+  "tw": "text-[13px] font-extrabold leading-[18px] tracking-[-.011em] line-clamp-2",
+  "keep": ""
  }
 }

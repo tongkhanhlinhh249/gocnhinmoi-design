@@ -3601,6 +3601,80 @@ input { font: inherit; }
 .mini.is-playing .mini__play .icon--play { display: none; }
 .mini.is-playing .mini__play .icon--pause { display: block; }
 
+/* ---------- Video ngắn ---------- */
+/* Thẻ dọc theo tỉ lệ màn điện thoại — cùng khung hình với thứ người ta quay,
+   nên ảnh không bị cắt cụt như khi nhét vào thẻ ngang. */
+.shorts { padding-top: 4px; }
+.short {
+  position: relative;
+  flex: 0 0 158px;
+  aspect-ratio: 158 / 224;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+.short__media { display: block; width: 100%; height: 100%; }
+.short__media img { width: 100%; height: 100%; object-fit: cover; }
+.short__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .18) 52%, rgba(0, 0, 0, 0) 100%);
+}
+.short__play {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 26px; height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+.short__play .icon { width: 12px; height: 12px; }
+.short__body {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 12px 12px;
+  color: #fff;
+}
+.short__by { display: flex; align-items: center; gap: 6px; padding-bottom: 6px; }
+.short__by img {
+  width: 22px; height: 22px;
+  flex: none;
+  border-radius: var(--r-pill);
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, .35);
+}
+.short__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+  color: rgba(255, 255, 255, .95);
+}
+.short__time {
+  flex: none;
+  white-space: nowrap;
+  font-size: 10px;
+  line-height: 15px;
+  color: rgba(255, 255, 255, .72);
+}
+.short__title {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 18px;
+  letter-spacing: -.011em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* ---------- 18. Màn hình lớn hơn ---------- */
 @media (min-width: 520px) {
   body { background: #eef0f3; }
