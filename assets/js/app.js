@@ -36,7 +36,8 @@
 
     var web = false;
     function doThe(c) {
-      if (!web) { c.style.gridRowEnd = ''; return; }
+      var f = c.parentElement;
+      if (!web || getComputedStyle(f).display !== 'grid') { c.style.gridRowEnd = ''; return; }
       var h = c.getBoundingClientRect().height;
       if (!h) return;
       c.style.gridRowEnd = 'span ' + Math.ceil((h + KHE) / BUOC);
@@ -60,6 +61,51 @@
     window.addEventListener('load', xep);
     xep();
     return xep;
+  })();
+
+  /* ---------- Danh sách dài: bày 12 thẻ rồi mới Xem thêm ---------- */
+  /* Dùng cho tab Nghe & Xem. Nút Xem thêm ở đó dùng chung cho cả video lẫn
+     podcast nên phải hỏi xem chế độ nào đang mở, thay vì gắn cứng vào một
+     danh sách. */
+  var danhSachDai = (function () {
+    var BUOC = 4;
+    var ds = $$('.feed[data-limit]');
+    if (!ds.length) return function () {};
+    var hop = $('.loadmore[data-view]');
+    var nut = hop && $('button', hop);
+
+    function dangMo() {
+      for (var i = 0; i < ds.length; i++) if (!ds[i].hidden) return ds[i];
+      return null;
+    }
+    function bay(f, n) {
+      Array.prototype.forEach.call(f.children, function (c, i) { c.hidden = i >= n; });
+      f.setAttribute('data-shown', String(n));
+    }
+    function veNut() {
+      if (!hop) return;
+      var f = dangMo();
+      if (!f) { hop.hidden = true; return; }
+      hop.hidden = (parseInt(f.getAttribute('data-shown'), 10) || 0) >= f.children.length;
+    }
+
+    ds.forEach(function (f) { bay(f, parseInt(f.getAttribute('data-limit'), 10) || 12); });
+
+    if (nut) {
+      nut.addEventListener('click', function () {
+        var f = dangMo();
+        if (!f) return;
+        bay(f, (parseInt(f.getAttribute('data-shown'), 10) || 0) + BUOC);
+        veNut();
+        xepSoLe();
+      });
+    }
+    // Bộ lọc chip đăng ký sau nên chạy sau; đợi hết vòng rồi mới đọc trạng thái.
+    $$('#mediaChips .chip').forEach(function (c) {
+      c.addEventListener('click', function () { setTimeout(veNut, 0); });
+    });
+    veNut();
+    return veNut;
   })();
 
   /* ---------- Menu ba chấm trên thẻ tin ---------- */

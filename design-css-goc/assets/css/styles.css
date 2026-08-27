@@ -3899,6 +3899,22 @@ input { font: inherit; }
      về một hàng mỗi thẻ, vẫn đọc được, chỉ là không so le. */
   .v-web .page .feed > * { grid-row-end: span 40; }
 
+  /* Thẻ podcast là hàng ngang có ảnh nhỏ bên trái — cắt đôi bề ngang thì tiêu
+     đề chỉ còn hơn trăm pixel. Danh sách này xếp dọc, một cột. */
+  .v-web .page .feed[data-view="podcast"] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* .feed đang là align-items:start cho lưới so le; ở cột dọc thì start làm
+       mỗi hàng co đúng bề rộng nội dung, tiêu đề dài ngắn khác nhau là hàng
+       thò thụt. stretch cho mọi hàng bằng đúng bề ngang cột. */
+    align-items: stretch;
+  }
+
+  /* Thẻ playlist ở màn rộng: khe 12px của bản điện thoại trông dính vào nhau
+     khi thẻ to gấp đôi. */
+  .v-web .page .playlists { gap: 24px; }
+
   .v-web .discussed .hscroll {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
