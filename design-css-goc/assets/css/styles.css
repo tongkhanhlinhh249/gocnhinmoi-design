@@ -3263,13 +3263,18 @@ input { font: inherit; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  align-items: end;
+  align-items: stretch;
   /* Avatar nhô lên 32px trên mép bục, nên chừa đủ chỗ ở đây, không thì nó
      thúc vào hàng nút Tháng này / Tuần này ngay phía trên. */
   padding-top: 48px;
 }
 .podium__item {
   position: relative;
+  /* Ba bục cao bằng nhau, nhưng chỗ dư phải dồn lên phía trên: tên tác giả bám
+     sát ngay trên điểm số. Trước đây chốt min-height cho tên nên tên một dòng
+     bị hụt hẳn một dòng trống ở dưới. */
+  display: flex;
+  flex-direction: column;
   /* Huy hiệu số nằm tuyệt đối, đáy ở 44px — chữ phải bắt đầu dưới mốc đó,
      nếu không tên tác giả chui vào dưới huy hiệu. */
   min-width: 0;
@@ -3324,8 +3329,8 @@ input { font: inherit; }
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  min-height: 36px;
   overflow: hidden;
+  margin-top: auto;
 }
 /* Bỏ điểm, thay bằng hai chỉ số người đọc quan tâm thật: số bài và người theo dõi.
    Con số in đậm, chữ mô tả nhạt hơn để mắt bắt số trước. */
@@ -3915,6 +3920,17 @@ input { font: inherit; }
      khi thẻ to gấp đôi. */
   .v-web .page .playlists { gap: 24px; }
 
+  /* Bảng xếp hạng từ hạng 4 trở đi: một cột ở 765px thì mỗi hàng dài lê thê mà
+     chỉ có tên với hai con số. Chia đôi, đường kẻ chuyển thành viền lưới. */
+  .v-web .page .rank-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .v-web .page .rank-row + .rank-row { border-top: 0; }
+  .v-web .page .rank-row { border-top: 1px solid var(--line); }
+  .v-web .page .rank-row:nth-child(-n+2) { border-top: 0; }
+  .v-web .page .rank-row:nth-child(odd) { border-right: 1px solid var(--line); }
+
   .v-web .discussed .hscroll {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4013,6 +4029,18 @@ input { font: inherit; }
     line-height: 20px;
   }
   .v-web .deskbar__write .icon { width: 13px; height: 13px; }
+
+  /* Mục đầu tiên của mỗi trang phải cách thanh trên cùng ra. Có trang mở bằng
+     .tophero hay .deskhead đã tự chừa lề, có trang mở thẳng bằng một mục nội
+     dung dán sát vào vạch kẻ của thanh — nên đặt lề ở chính thanh. */
+  .v-web .page main > .deskbar { margin-bottom: 12px; }
+  /* Mục nào tự có nền hoặc tự chừa lề thì không cần khoảng này — để lại thì
+     thành một vạch trắng mỏng cắt ngang nền màu của mục đó. */
+  .v-web .page main > .deskbar + .tophero,
+  .v-web .page main > .deskbar + .deskhead,
+  .v-web .page main > .deskbar + .chips-bar,
+  .v-web .page main > .deskbar + .lb-hero,
+  .v-web .page main > .deskbar + .redlist { margin-top: -12px; }
   /* Người dùng nằm ở đáy cột trái, không phải trên thanh tìm kiếm: đó là chỗ
      quen thuộc của mạng xã hội trên web, và thanh trên cùng nhờ vậy chỉ còn
      đúng việc tìm kiếm với viết bài. */
