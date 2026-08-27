@@ -3432,8 +3432,6 @@ input { font: inherit; }
 
 /* ---------- Danh sách địa điểm có bộ lọc ---------- */
 .plist-wrap { padding-block: 4px 8px; }
-/* Tiêu đề khối đã ẩn, để space-between thì số đếm dạt về trái — đẩy nó về phải */
-.plist-wrap .section-head__row { justify-content: flex-end; }
 .plist__count {
   font-size: 13px;
   line-height: 20px;
@@ -3848,6 +3846,32 @@ input { font: inherit; }
   }
 
   .v-web .page > main { grid-column: 2; grid-row: 1; min-width: 0; }
+
+  /* Trình tự khối ở trang chủ, bố cục rộng: tin nổi bật → bảng xếp hạng → tin
+     → Thảo luận nhiều → tin → Video ngắn → tin → Xem thêm.
+
+     Chỉ áp cho trang chủ. Mỗi trang chuyên mục có trình tự riêng trong markup,
+     ép một bảng order chung lên tất cả thì trang nào cũng bị xáo. #feedSecondary
+     chỉ trang chủ có nên dùng làm dấu nhận biết.
+
+     Đặt order cho mọi con trước rồi mới chỉ định từng khối: order mặc định là 0
+     sẽ đẩy khối chưa đặt lên đầu. */
+  .v-web .page > main:has(> #feedSecondary) { display: flex; flex-direction: column; }
+  .v-web .page > main:has(> #feedSecondary) > * { order: 20; }
+  .v-web .page > main:has(> #feedSecondary) > .deskbar { order: 0; }
+  .v-web .page > main:has(> #feedSecondary) > .tophero { order: 1; }
+  .v-web .page > main:has(> #feedSecondary) > .leaderboard { order: 2; }
+  .v-web .page > main:has(> #feedSecondary) > #feedPrimary { order: 3; }
+  .v-web .page > main:has(> #feedSecondary) > .discussed { order: 4; }
+  .v-web .page > main:has(> #feedSecondary) > .redlist { order: 5; }
+  .v-web .page > main:has(> #feedSecondary) > .feed:not([id]) { order: 6; }
+  .v-web .page > main:has(> #feedSecondary) > .shorts { order: 7; }
+  .v-web .page > main:has(> #feedSecondary) > .panel { order: 8; }
+  .v-web .page > main:has(> #feedSecondary) > .authors { order: 9; }
+  .v-web .page > main:has(> #feedSecondary) > .places { order: 10; }
+  .v-web .page > main:has(> #feedSecondary) > .chips-bar { order: 11; }
+  .v-web .page > main:has(> #feedSecondary) > #feedSecondary { order: 12; }
+  .v-web .page > main:has(> #feedSecondary) > .loadmore { order: 13; }
   /* Cột phụ dính (sticky) bị trình duyệt cho phép trượt quá ô lưới của nó và
      đè lên footer. Cho footer nằm trên một tầng và có nền đục là đủ: cuộn tới
      footer thì cột phụ khuất hẳn sau nó, đúng như mong đợi. */
@@ -4315,19 +4339,21 @@ input { font: inherit; }
 
   /* Thịnh hành: giữ nền đỏ và chữ trắng như bản trong dòng, chỉ thu ảnh từ
      136px xuống 56px cho vừa cột 280px. */
+  /* Nền đỏ nhạt: khối này nằm cạnh hai khối trắng trong cùng một cột, nền đỏ
+     đậm hút mắt quá mức so với vai trò của nó. */
   .v-web .rail-card--red {
     padding: 16px 14px;
-    background: linear-gradient(to bottom, #b80001 0%, #520000 100%);
+    background: #FFEFEF;
     box-shadow: none;
   }
-  .v-web .rail-card--red .rail-title { color: #fff; }
+  .v-web .rail-card--red .rail-title { color: var(--gnm-red); }
   .v-web .rail-red { display: grid; gap: 12px; padding-top: 12px; }
   .v-web .rail-red__row {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, .28);
+    border-bottom: 1px solid rgba(184, 0, 1, .16);
   }
   .v-web .rail-red > .rail-red__row:last-child { padding-bottom: 0; border-bottom: 0; }
   .v-web .rail-red__row > img {
@@ -4336,7 +4362,7 @@ input { font: inherit; }
     flex: none;
     border-radius: var(--r-card);
     object-fit: cover;
-    background: rgba(255, 255, 255, .12);
+    background: rgba(184, 0, 1, .08);
   }
   .v-web .rail-red__body { flex: 1; min-width: 0; }
   .v-web .rail-red__by { display: flex; align-items: center; gap: 4px; min-width: 0; padding-bottom: 2px; }
@@ -4348,21 +4374,21 @@ input { font: inherit; }
     font-size: 11px;
     font-weight: 600;
     line-height: 16px;
-    color: rgba(255, 255, 255, .82);
+    color: var(--text-muted);
   }
   .v-web .rail-red__time {
     flex: none;
     white-space: nowrap;
     font-size: 10px;
     line-height: 15px;
-    color: rgba(255, 255, 255, .58);
+    color: var(--text-muted-2);
   }
   .v-web .rail-red__title {
     font-size: 13px;
     font-weight: 700;
     line-height: 18px;
     letter-spacing: -.011em;
-    color: #fff;
+    color: var(--ink-strong);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
