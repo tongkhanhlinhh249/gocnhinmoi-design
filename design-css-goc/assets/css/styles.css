@@ -3909,6 +3909,11 @@ input { font: inherit; }
     padding-inline: 24px;
   }
 
+  /* Cột điều hướng trái đã liệt kê đủ chuyên mục nên thanh chip là thừa. Chỉ
+     ẩn thanh lọc chuyên mục; thanh lọc loại nội dung ở Nghe & Xem và thanh
+     lọc tỉnh ở Khám phá địa điểm thì giữ — cột trái không có hai thứ đó. */
+  .v-web .page .chips-bar:has(#chips) { display: none; }
+
   /* Cỡ chữ tiêu đề tăng theo bề ngang: cột nội dung 765px rộng gần gấp đôi
      khung 480px, giữ nguyên cỡ của điện thoại thì tiêu đề trông nhỏ hẳn so
      với ảnh. Thẻ ở cột phải không đổi — cột đó vẫn hẹp. */
@@ -4256,6 +4261,7 @@ input { font: inherit; }
   .v-web .desknav,
   .v-web .deskbar,
   .v-web .deskhead { display: none; }
+  .v-web .page .chips-bar:has(#chips) { display: block; }
 
   .v-web .page .site-footer {
     grid-column: auto;
