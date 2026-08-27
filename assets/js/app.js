@@ -466,10 +466,12 @@
     }, 820);
   }
 
-  /* Mỗi chuyên mục chỉ bày 8 thẻ đầu; còn nữa thì đẩy người đọc sang trang riêng của
-     chuyên mục đó, thay vì kéo dài mãi một danh sách trộn lẫn mọi thứ. */
-  var PAGE_SIZE = 8;
+  /* Dòng tin ở trang chủ chỉ bày 12 thẻ đầu — kể cả chip "Mới nhất"; muốn xem
+     nữa thì sang trang riêng của chuyên mục đang chọn, thay vì kéo dài mãi một
+     danh sách trộn lẫn mọi thứ. */
+  var PAGE_SIZE = 12;
   var CAT_PAGES = {
+    'all': 'moi-nhat.html',
     'hot': 'hot-hom-nay.html',
     'tra-dam': 'tra-dam.html',
     'goc-mo': 'goc-mo.html',
@@ -477,6 +479,7 @@
     'spotlight': 'spotlight.html'
   };
   var CAT_NAMES = {
+    'all': 'Mới nhất',
     'hot': 'Hot hôm nay',
     'tra-dam': 'Trà đàm',
     'goc-mo': 'Góc mở',
@@ -502,8 +505,7 @@
       var ok = matchCat && matchText;
       if (ok) matched++;
 
-      // "Tất cả" bày hết; lọc theo chuyên mục thì cắt ở PAGE_SIZE
-      var visible = ok && (currentFilter === 'all' || shown < PAGE_SIZE);
+      var visible = ok && shown < PAGE_SIZE;
       if (visible) shown++;
 
       card.classList.toggle('is-filtered', !visible);
@@ -512,20 +514,20 @@
     if (emptyEl) emptyEl.classList.toggle('is-visible', shown === 0);
 
     var page = CAT_PAGES[currentFilter];
-    var overflow = currentFilter !== 'all' && !!page && matched > PAGE_SIZE;
+    var overflow = !!page && matched > PAGE_SIZE;
 
     if (catMore) {
       catMore.hidden = !overflow;
       if (overflow) {
         catMore.setAttribute('href', page);
-        var lb = $('.btn-outline__label', catMore);
-        if (lb) lb.textContent = 'Xem tất cả ' + CAT_NAMES[currentFilter];
+        catMore.setAttribute('aria-label', 'Xem thêm bài ' + CAT_NAMES[currentFilter]);
       }
     }
 
-    // Kho bài để nạp thêm chỉ dùng cho danh sách đầy đủ — đang lọc thì ẩn nút đi
-    // thay vì để người dùng bấm vào một nút không có tác dụng.
-    if (loadMoreBtn) loadMoreBtn.hidden = currentFilter !== 'all' || q !== '';
+    // Trang chủ luôn dừng ở 12 thẻ rồi dẫn sang trang chuyên mục, nên nút nạp
+    // thêm tại chỗ không còn việc gì; trang con không có #feedSecondary thì vẫn
+    // giữ nút đó để bày tiếp danh sách.
+    if (loadMoreBtn) loadMoreBtn.hidden = !!$('#feedSecondary') || q !== '';
     if (loadWrap) {
       loadWrap.hidden = (!loadMoreBtn || loadMoreBtn.hidden) && (!catMore || catMore.hidden);
     }

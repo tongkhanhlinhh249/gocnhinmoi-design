@@ -3768,6 +3768,7 @@ input { font: inherit; }
 
 .v-web .desknav,
 .v-web .deskbar,
+.v-web .deskhead,
 .v-web .siderail { display: none; }
 
 @media (min-width: 800px) {
@@ -3777,6 +3778,8 @@ input { font: inherit; }
 
   .v-web .page {
     display: grid;
+    /* Chỉ trang chủ có cột phụ; các trang khác hai cột là hết. Xem thêm luật
+       ba cột ở mốc 1180px bên dưới. */
     grid-template-columns: 220px minmax(0, 1fr);
     max-width: 1280px;
     padding-bottom: 0;
@@ -3824,6 +3827,18 @@ input { font: inherit; }
   .v-web .page .chips-bar { max-width: none; }
   .v-web .page .shell { padding-inline: 24px; }
   .v-web .rank--desk { display: block; }
+
+  /* Header của bản điện thoại bị ẩn, mà nó đang mang tên trang — nên các trang
+     chuyên mục có một dòng tên riêng cho bố cục web. */
+  .v-web .deskhead {
+    display: block;
+    padding: 24px 24px 4px;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+    letter-spacing: -.014em;
+    color: var(--ink-strong);
+  }
 
   /* Thanh chip: .chips-bar đã bỏ khung 480px nhưng ô .chips bên trong vẫn tự
      căn giữa theo khung đó, nên chip dồn vào giữa cột. Cho nó chạy hết bề
@@ -3911,9 +3926,9 @@ input { font: inherit; }
   .v-web .desknav__brand { padding: 0 12px 20px; }
   .v-web .desknav__brand img { width: 108px; height: 32px; object-fit: contain; }
   .v-web .desknav__list { display: flex; flex-direction: column; gap: 2px; }
-  .v-web .desknav__group,
-  .v-web .desknav__foot { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
-  .v-web .desknav__foot { margin-top: auto; }
+  .v-web .desknav__group { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  /* Không kẻ phía trên Chính sách: đã có đường ngăn giữa nó và khối người dùng */
+  .v-web .desknav__foot { margin-top: auto; padding-top: 16px; }
   .v-web .desknav__link {
     display: flex;
     align-items: center;
@@ -4025,7 +4040,7 @@ input { font: inherit; }
 }
 
 @media (min-width: 1180px) {
-  .v-web .page { grid-template-columns: 220px minmax(0, 1fr) 280px; }
+  .v-web .page:has(> .siderail) { grid-template-columns: 220px minmax(0, 1fr) 280px; }
 
   .v-web .siderail {
     grid-column: 3;
