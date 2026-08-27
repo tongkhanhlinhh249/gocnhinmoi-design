@@ -73,7 +73,19 @@
     var BUOC = 4;
     var ds = $$('.feed[data-limit]');
     if (!ds.length) return function () {};
-    var hop = $('.loadmore[data-view]');
+
+    /* Tab Nghe & Xem có một nút dùng chung cho nhiều chế độ; trang chuyên mục
+       thì nút nằm sau danh sách. Tìm hộp .loadmore đứng sau danh sách trong
+       cây DOM, không có thì lấy hộp mang data-view. */
+    function hopCua(f) {
+      var e = f;
+      while (e) {
+        if (e.classList && e.classList.contains('loadmore')) return e;
+        e = e.nextElementSibling;
+      }
+      return $('.loadmore[data-view]');
+    }
+    var hop = hopCua(ds[0]);
     var nut = hop && $('button', hop);
 
     function dangMo() {
