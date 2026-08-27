@@ -3987,9 +3987,6 @@ input { font: inherit; }
      thẻ nhìn như lỗi bố cục. */
   .v-web .page main > .deskhead ~ .feed > *:nth-child(n+6) { display: none; }
 
-  /* Thẻ dẫn mặc bộ áo của thẻ Tin nổi bật ở trang chủ: ảnh khổ ngang, chữ đè
-     lên ảnh trên một lớp phủ tối, không còn dải trắng và hàng nút bên dưới.
-     Hai dạng thẻ đều phải lo: thẻ thường để chữ trong .card__body, thẻ dạng
 
   .v-web .discussed .hscroll {
     display: grid;
