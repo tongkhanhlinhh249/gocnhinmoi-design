@@ -32,6 +32,18 @@ Photo · Bảng xếp hạng
 **Chuyên mục** — Mới nhất · Hot hôm nay · Trà đàm · Góc mở · Quan điểm ·
 Spotlight · Luận cổ suy kim
 
+## Ba cỡ màn
+
+| bề ngang | bố cục |
+|---|---|
+| < 768px | điện thoại: khung 480px, header + thanh tab dưới |
+| 768–1023px | máy tính bảng: khung 813px, nội dung xếp như bản web (thẻ hai cột), **bộ khung vẫn của điện thoại** — header có hamburger, thanh tab dưới |
+| 1024–1179px | web hai cột: cột điều hướng trái 220px + nội dung |
+| ≥ 1180px | web ba cột: thêm cột phụ phải 280px, khung tối đa 1280px |
+
+Bố cục web khoá trong lớp `.v-web` trên `<body>` — 14/16 trang mang lớp này.
+`bai-viet.html` và `ca-nhan.html` chưa chuyển, ở màn rộng vẫn là khung 480px.
+
 ## Hệ thiết kế
 
 Token lấy từ site production `cdn.gocnhinmoi.com`, không đặt lại:

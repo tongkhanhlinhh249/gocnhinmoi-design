@@ -3831,7 +3831,7 @@ input { font: inherit; }
 .v-web .deskhead,
 .v-web .siderail { display: none; }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .v-web { background: var(--surface); }
   .v-web,
   .v-web.is-header-hidden { --stick-top: 61px; }
@@ -4226,6 +4226,49 @@ input { font: inherit; }
     white-space: nowrap;
   }
   .v-web .desknav__me__go { width: 14px; height: 14px; flex: none; color: var(--icon-grey); }
+}
+
+/* ---------- Máy tính bảng 768–1023px ---------- */
+/* Cách xếp nội dung lấy của bản web (khối trên đã lo), nhưng bộ khung vẫn là
+   của điện thoại: header có nút hamburger, thanh tab dưới, không cột điều
+   hướng trái cũng không cột phụ phải. Khung nội dung rộng 765px — đúng bằng
+   cột giữa của bản web — để thẻ xếp y như nhau ở hai cỡ màn. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  body { background: #eef0f3; }
+
+  .v-web,
+  .v-web.is-header-hidden { --stick-top: calc(var(--header-h) + env(safe-area-inset-top)); }
+  .v-web.is-header-hidden { --stick-top: env(safe-area-inset-top); }
+
+  .v-web .page {
+    display: block;
+    max-width: 813px;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    background: var(--bg);
+    box-shadow: 0 0 0 1px rgba(16, 24, 40, .05), 0 16px 40px rgba(16, 24, 40, .1);
+  }
+
+  /* trả lại bộ khung của điện thoại */
+  .v-web .page .app-header,
+  .v-web .page .searchbar { display: block; }
+  .v-web .page .app-header { max-width: none; }
+  .v-web .bottom-nav { display: flex; }
+  .v-web .desknav,
+  .v-web .deskbar,
+  .v-web .deskhead { display: none; }
+
+  .v-web .page .site-footer {
+    grid-column: auto;
+    grid-row: auto;
+    position: static;
+    margin-top: 44px;
+  }
+  .v-web .mini { bottom: calc(76px + env(safe-area-inset-bottom)); }
+
+  /* lớp phủ bám theo bề ngang trang, không còn khung 480px của điện thoại */
+  .v-web .drawer,
+  .v-web .sheet,
+  .v-web .dialog { max-width: 813px; }
 }
 
 @media (min-width: 1180px) {
