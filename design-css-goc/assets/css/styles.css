@@ -3922,7 +3922,9 @@ input { font: inherit; }
 
   /* Thẻ video trong dải cuộn: 272px là cỡ cho khung 480px, ở 765px thì nhỏ
      hẳn so với chữ quanh nó. To thêm 45%. */
-  .v-web .page .vcard { width: 394px; }
+  /* Thẻ hero trải hết bề ngang mục, không nằm trong dải cuộn — nó có w-full
+     riêng, ép 394px vào là nó co lại còn một phần ba. */
+  .v-web .page .vcard:not(.vcard--hero) { width: 394px; }
 
   /* Bảng xếp hạng giữ một cột, nhưng ở 765px thì tên với hai con số không cần
      xếp chồng nữa — cho chúng cùng một hàng, hàng gọn lại hẳn một dòng. */
@@ -3937,55 +3939,9 @@ input { font: inherit; }
   /* Trang chuyên mục: thẻ đầu chạy hết bề ngang như một tin dẫn, hai thẻ kế
      đứng cạnh nhau. Chỉ những trang có dòng tên riêng (.deskhead) mới áp —
      trang chủ đã có khối tin nổi bật lo việc này rồi. */
-  /* Khối đúng ba thẻ thì kiểu xếp nào cũng để hụt một cột — cho thẻ đầu chạy
-     hết bề ngang, hai thẻ sau đứng cạnh nhau là vừa khít, không còn lỗ. */
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
-  .v-web .page main > .deskhead ~ .feed > *:first-child { grid-column: 1 / -1; }
-
-  /* Thẻ dẫn mặc bộ áo của thẻ Tin nổi bật trang chủ: ảnh khổ ngang, chữ đè lên
-     ảnh trên lớp phủ tối, bỏ dải trắng và hàng nút bên dưới. Hai dạng thẻ đều
-     phải lo — thẻ thường để chữ trong .card__body, thẻ spotlight đã sẵn
-     .card__overlay nằm trong ảnh. */
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__media { aspect-ratio: 16 / 9; }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media::after,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .25) 52%, rgba(0, 0, 0, 0) 100%);
-  }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__overlay,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__overlay { z-index: 1; padding: 20px 24px; }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:not(:has(.card__overlay)) .card__body,
-  .v-web .page main > .deskhead ~ .feed > *:first-child:not(:has(.card__overlay)) .card__body {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    padding: 20px 24px;
-  }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title { font-size: 24px; line-height: 32px; }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title,
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title a,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title a,
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .byline__name,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .byline__name { color: #fff; }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .byline__time,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .byline__time { color: rgba(255, 255, 255, .62); }
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .actions,
-  .v-web .page main > .deskhead ~ .feed > *:first-child .actions,
-  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:has(.card__overlay) .card__body,
-  .v-web .page main > .deskhead ~ .feed > *:first-child:has(.card__overlay) .card__body { display: none; }
-
-  /* Mỗi khối tin ở trang chuyên mục: một thẻ dẫn rồi đúng bốn thẻ chia hai
-     cột, mỗi cột hai thẻ. Thẻ thứ sáu trở đi cắt bỏ — hàng cuối lẻ đúng một
-     thẻ nhìn như lỗi bố cục. */
-  .v-web .page main > .deskhead ~ .feed > *:nth-child(n+6) { display: none; }
+  /* Mọi khối tin ở bố cục web đều chia đôi đều nhau, không có thẻ dẫn chạy hết
+     bề ngang, và dừng ở 12 thẻ. */
+  .v-web .page main > .feed > *:nth-child(n+13) { display: none; }
 
 
   .v-web .discussed .hscroll {
