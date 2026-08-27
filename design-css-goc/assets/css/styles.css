@@ -3789,7 +3789,7 @@ input { font: inherit; }
      đè lên footer. Cho footer nằm trên một tầng và có nền đục là đủ: cuộn tới
      footer thì cột phụ khuất hẳn sau nó, đúng như mong đợi. */
   .v-web .page .site-footer {
-    grid-column: 2 / -1;
+    grid-column: 2;
     grid-row: 2;
     position: relative;
     z-index: 1;
@@ -3799,8 +3799,8 @@ input { font: inherit; }
   /* Chân trang dàn hai cột cho đỡ trống: khối giấy phép bên trái, liên hệ bên phải */
   .v-web .page .site-footer > .shell {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    column-gap: 56px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    column-gap: 40px;
     align-items: start;
     padding-block: 32px;
   }
@@ -3858,11 +3858,22 @@ input { font: inherit; }
   .v-web .page .tophero > :first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
   .v-web .page .tophero > :first-child ~ * { aspect-ratio: 16 / 10; }
 
+  /* Xếp thẻ kiểu Pinterest: thẻ cao thấp khác nhau nên lưới theo hàng để lại
+     một dải trống dưới mỗi thẻ ngắn. Dùng cột báo (column-count) thì thẻ rơi
+     nối đuôi trong từng cột, so le và không hở.
+
+     Đánh đổi: thứ tự đọc thành trên-xuống theo cột chứ không phải trái-phải
+     theo hàng. Với dòng tin thì chấp nhận được. `grid-template-rows: masonry`
+     giữ được thứ tự nhưng Chrome bản chính thức chưa chạy. */
   .v-web .page .feed {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-    align-items: start;
+    display: block;
+    column-count: 2;
+    column-gap: 20px;
+  }
+  .v-web .page .feed > * {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: 20px;
   }
 
   .v-web .discussed .hscroll {
@@ -3963,8 +3974,42 @@ input { font: inherit; }
     line-height: 20px;
   }
   .v-web .deskbar__write .icon { width: 13px; height: 13px; }
-  .v-web .deskbar__me { flex: none; width: 34px; height: 34px; }
-  .v-web .deskbar__me img { width: 100%; height: 100%; border-radius: var(--r-pill); object-fit: cover; }
+  /* Người dùng nằm ở đáy cột trái, không phải trên thanh tìm kiếm: đó là chỗ
+     quen thuộc của mạng xã hội trên web, và thanh trên cùng nhờ vậy chỉ còn
+     đúng việc tìm kiếm với viết bài. */
+  .v-web .desknav__me {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    border-radius: 14px;
+    transition: background-color .15s var(--ease);
+  }
+  .v-web .desknav__me:hover { background: var(--fill-soft); }
+  .v-web .desknav__me > img { width: 36px; height: 36px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
+  .v-web .desknav__me__body { flex: 1; min-width: 0; }
+  .v-web .desknav__me__name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 18px;
+    color: var(--ink-strong);
+  }
+  .v-web .desknav__me__name .icon { width: 12px; height: 12px; flex: none; color: var(--gnm-red); }
+  .v-web .desknav__me__handle {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--text-muted-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .v-web .desknav__me__go { width: 14px; height: 14px; flex: none; color: var(--icon-grey); }
 }
 
 @media (min-width: 1180px) {
@@ -4010,7 +4055,7 @@ input { font: inherit; }
     background: linear-gradient(to bottom, #b80001 0%, #520000 100%);
     box-shadow: none;
   }
-  .v-web .rail-title--on-red { color: #fff; }
+  .v-web .rail-card--red .rail-title { color: #fff; }
   .v-web .rail-red { display: grid; gap: 12px; padding-top: 12px; }
   .v-web .rail-red__row {
     display: flex;
