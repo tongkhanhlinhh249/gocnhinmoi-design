@@ -23,6 +23,45 @@
     }, 2200);
   }
 
+  /* ---------- Xếp thẻ so le ở bố cục web ---------- */
+  /* column-count cân chiều cao hai cột nên hay để lại một lỗ ở đáy cột ngắn.
+     Cách chắc ăn: lưới có hàng cao 8px, mỗi thẻ chiếm số hàng đúng bằng chiều
+     cao của nó, thế là thẻ rơi sát nhau mà thứ tự đọc vẫn trái sang phải.
+     Ảnh tải chậm làm thẻ cao lên sau, nên theo dõi bằng ResizeObserver thay vì
+     đo một lần lúc dựng trang. */
+  var xepSoLe = (function () {
+    var BUOC = 8, KHE = 20;
+    var feeds = $$('main .feed');
+    if (!document.body.classList.contains('v-web') || !feeds.length) return function () {};
+
+    var web = false;
+    function doThe(c) {
+      if (!web) { c.style.gridRowEnd = ''; return; }
+      var h = c.getBoundingClientRect().height;
+      if (!h) return;
+      c.style.gridRowEnd = 'span ' + Math.ceil((h + KHE) / BUOC);
+    }
+    function xep() {
+      web = window.matchMedia('(min-width: 800px)').matches;
+      feeds.forEach(function (f) {
+        Array.prototype.forEach.call(f.children, doThe);
+      });
+    }
+
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function (mucs) {
+        mucs.forEach(function (m) { doThe(m.target); });
+      });
+      feeds.forEach(function (f) {
+        Array.prototype.forEach.call(f.children, function (c) { ro.observe(c); });
+      });
+    }
+    window.addEventListener('resize', xep);
+    window.addEventListener('load', xep);
+    xep();
+    return xep;
+  })();
+
   /* ---------- Menu ba chấm trên thẻ tin ---------- */
   /* Đặt sớm, ngay sau toast: khối quản lý bài viết phía dưới chạy không có
      bảo vệ và ném lỗi trên mọi trang không phải Cá nhân, cắt đứt mọi đoạn
