@@ -3888,7 +3888,7 @@ input { font: inherit; }
   .v-web .page .feed {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 8px;
+    grid-auto-rows: 1px;
     /* dense: không có nó thì hai thẻ cùng một hàng vẫn phải chờ nhau, thẻ ngắn
        để lại đúng cái lỗ mà lưới theo hàng vẫn để lại. dense cho thẻ sau lấp
        vào chỗ trống phía trên — đó mới là cách xếp của Pinterest. */
@@ -3920,16 +3920,67 @@ input { font: inherit; }
      khi thẻ to gấp đôi. */
   .v-web .page .playlists { gap: 24px; }
 
-  /* Bảng xếp hạng từ hạng 4 trở đi: một cột ở 765px thì mỗi hàng dài lê thê mà
-     chỉ có tên với hai con số. Chia đôi, đường kẻ chuyển thành viền lưới. */
-  .v-web .page .rank-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Thẻ video trong dải cuộn: 272px là cỡ cho khung 480px, ở 765px thì nhỏ
+     hẳn so với chữ quanh nó. To thêm 45%. */
+  .v-web .page .vcard { width: 394px; }
+
+  /* Bảng xếp hạng giữ một cột, nhưng ở 765px thì tên với hai con số không cần
+     xếp chồng nữa — cho chúng cùng một hàng, hàng gọn lại hẳn một dòng. */
+  .v-web .page .rank-row__body {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
   }
-  .v-web .page .rank-row + .rank-row { border-top: 0; }
-  .v-web .page .rank-row { border-top: 1px solid var(--line); }
-  .v-web .page .rank-row:nth-child(-n+2) { border-top: 0; }
-  .v-web .page .rank-row:nth-child(odd) { border-right: 1px solid var(--line); }
+  .v-web .page .rank-row__name { min-width: 0; }
+  .v-web .page .rank-row__meta { flex: none; }
+
+  /* Trang chuyên mục: thẻ đầu chạy hết bề ngang như một tin dẫn, hai thẻ kế
+     đứng cạnh nhau. Chỉ những trang có dòng tên riêng (.deskhead) mới áp —
+     trang chủ đã có khối tin nổi bật lo việc này rồi. */
+  /* Khối đúng ba thẻ thì kiểu xếp nào cũng để hụt một cột — cho thẻ đầu chạy
+     hết bề ngang, hai thẻ sau đứng cạnh nhau là vừa khít, không còn lỗ. */
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child { grid-column: 1 / -1; }
+
+  /* Thẻ dẫn mặc bộ áo của thẻ Tin nổi bật ở trang chủ: ảnh khổ ngang, chữ đè
+     lên ảnh trên một lớp phủ tối, không còn dải trắng và hàng nút bên dưới.
+     Hai dạng thẻ đều phải lo: thẻ thường để chữ trong .card__body, thẻ dạng
+     spotlight đã sẵn .card__overlay nằm trong ảnh. */
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__media { aspect-ratio: 16 / 9; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .25) 52%, rgba(0, 0, 0, 0) 100%);
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__overlay { z-index: 1; padding: 20px 24px; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child:not(:has(.card__overlay)) .card__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 20px 24px;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title { font-size: 24px; line-height: 32px; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title,
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .card__title a,
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .byline__name { color: #fff; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .byline__time { color: rgba(255, 255, 255, .62); }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child .actions { display: none; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child,
+  .v-web .page main > .deskhead ~ .feed > *:first-child:has(.card__overlay) .card__body { display: none; }
 
   .v-web .discussed .hscroll {
     display: grid;

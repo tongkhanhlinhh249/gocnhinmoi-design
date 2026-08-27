@@ -30,7 +30,9 @@
      Ảnh tải chậm làm thẻ cao lên sau, nên theo dõi bằng ResizeObserver thay vì
      đo một lần lúc dựng trang. */
   var xepSoLe = (function () {
-    var BUOC = 8, KHE = 20;
+    // Bước 1px: bước càng lớn thì số hàng làm tròn lên càng dôi ra, khe dọc
+    // phình hơn khe ngang. 1px cho khe dọc đúng bằng KHE.
+    var BUOC = 1, KHE = 20;
     var feeds = $$('main .feed');
     if (!document.body.classList.contains('v-web') || !feeds.length) return function () {};
 
