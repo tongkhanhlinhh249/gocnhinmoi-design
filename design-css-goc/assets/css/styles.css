@@ -4035,6 +4035,43 @@ input { font: inherit; }
      cho chạy hết bề ngang, đúng kiểu thẻ tin nổi bật đầu trang chủ. */
   .v-web .page main > .feed > :only-child { grid-column: 1 / -1; }
   .v-web .page main > .feed > :only-child .card__media { aspect-ratio: 16 / 9; }
+  /* Thẻ dẫn dùng bộ áo của thẻ Tin nổi bật trang chủ: chữ đè lên ảnh trên lớp
+     phủ tối, bỏ dải trắng và hàng nút bên dưới. Thẻ thường để chữ trong
+     .card__body, thẻ spotlight đã sẵn .card__overlay trong ảnh — tách bằng
+     :has() để lo cả hai. */
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media::after,
+  .v-web .page main > .feed > :only-child .card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .25) 52%, rgba(0, 0, 0, 0) 100%);
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__overlay,
+  .v-web .page main > .feed > :only-child .card__overlay { z-index: 1; padding: 20px 24px; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:not(:has(.card__overlay)) .card__body,
+  .v-web .page main > .feed > :only-child:not(:has(.card__overlay)) .card__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 20px 24px;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title,
+  .v-web .page main > .feed > :only-child .card__title { font-size: 24px; line-height: 32px; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title,
+  .v-web .page main > .feed > :only-child .card__title,
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__title a,
+  .v-web .page main > .feed > :only-child .card__title a,
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .byline__name,
+  .v-web .page main > .feed > :only-child .byline__name { color: #fff; }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .byline__time,
+  .v-web .page main > .feed > :only-child .byline__time { color: rgba(255, 255, 255, .62); }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .actions,
+  .v-web .page main > .feed > :only-child .actions,
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:has(.card__overlay) .card__body,
+  .v-web .page main > .feed > :only-child:has(.card__overlay) .card__body { display: none; }
 
 
   .v-web .discussed .hscroll {
