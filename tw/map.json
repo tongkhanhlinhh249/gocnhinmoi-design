@@ -1293,7 +1293,7 @@
  },
  "plist-wrap": {
   "tw": "pt-[4px] pb-2",
-  "keep": ""
+  "keep": ".plist-wrap .section-head__row{justify-content:flex-end}"
  },
  "plist__count": {
   "tw": "text-[13px] leading-[20px] text-ink-muted tabular-nums",

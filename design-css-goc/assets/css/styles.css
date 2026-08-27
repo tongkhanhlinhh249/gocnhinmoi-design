@@ -3432,6 +3432,8 @@ input { font: inherit; }
 
 /* ---------- Danh sách địa điểm có bộ lọc ---------- */
 .plist-wrap { padding-block: 4px 8px; }
+/* Tiêu đề khối đã ẩn, để space-between thì số đếm dạt về trái — đẩy nó về phải */
+.plist-wrap .section-head__row { justify-content: flex-end; }
 .plist__count {
   font-size: 13px;
   line-height: 20px;
