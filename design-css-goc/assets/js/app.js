@@ -1686,16 +1686,33 @@
   var rong = document.querySelector('[data-plist-empty]');
   var chon = { tinh: 'tat-ca', loai: 'tat-ca' };
 
+  /* Bày 8 địa điểm rồi mới tới nút Xem thêm. Đếm riêng số khớp bộ lọc và số
+     thật sự bày ra: đổi bộ lọc thì lại tính từ 8, không giữ số của lần trước. */
+  var BAY_DAU = 8, BUOC_BAY = 8;
+  var bayToi = BAY_DAU;
+  var themNut = document.querySelector('[data-plist-more]');
+  var themHop = document.getElementById('plist-more');
+
   function loc() {
-    var con = 0;
+    var khop = 0, bay = 0;
     muc.forEach(function (li) {
       var hop = (chon.tinh === 'tat-ca' || li.dataset.tinh === chon.tinh) &&
                 (chon.loai === 'tat-ca' || li.dataset.loai === chon.loai);
-      li.hidden = !hop;
-      if (hop) con++;
+      if (hop) khop++;
+      var hien = hop && bay < bayToi;
+      if (hien) bay++;
+      li.hidden = !hien;
     });
-    if (dem) dem.textContent = con + ' địa điểm';
-    if (rong) rong.hidden = con > 0;
+    if (dem) dem.textContent = khop + ' địa điểm';
+    if (rong) rong.hidden = khop > 0;
+    if (themHop) themHop.hidden = bay >= khop;
+  }
+
+  if (themNut) {
+    themNut.addEventListener('click', function () {
+      bayToi += BUOC_BAY;
+      loc();
+    });
   }
 
   ['tinh', 'loai'].forEach(function (nhom) {
@@ -1709,6 +1726,7 @@
           x.setAttribute('aria-selected', String(x.getAttribute('data-' + nhom) === gt));
         });
         chon[nhom] = b.getAttribute('data-' + nhom);
+        bayToi = BAY_DAU;
         loc();
       });
     });
