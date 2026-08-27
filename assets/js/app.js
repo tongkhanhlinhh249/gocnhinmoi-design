@@ -1702,12 +1702,39 @@
     var nut = [].slice.call(document.querySelectorAll('[data-' + nhom + ']'));
     nut.forEach(function (b) {
       b.addEventListener('click', function () {
-        nut.forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+        var gt = b.getAttribute('data-' + nhom);
+        // Chip ở thanh rút gọn và chip trong hộp lọc là hai phần tử khác nhau
+        // nhưng cùng một giá trị — so theo giá trị thì cả hai cùng sáng.
+        nut.forEach(function (x) {
+          x.setAttribute('aria-selected', String(x.getAttribute('data-' + nhom) === gt));
+        });
         chon[nhom] = b.getAttribute('data-' + nhom);
         loc();
       });
     });
   });
+
+  /* ---------- Hộp lọc ---------- */
+  var hop = document.getElementById('placeFilter');
+  var moNut = document.querySelector('[data-filter-open]');
+  if (hop && moNut) {
+    function dong() {
+      hop.hidden = true;
+      moNut.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    moNut.addEventListener('click', function () {
+      hop.hidden = false;
+      moNut.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    [].slice.call(hop.querySelectorAll('[data-filter-close]')).forEach(function (b) {
+      b.addEventListener('click', dong);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !hop.hidden) dong();
+    });
+  }
 
   loc();
 })();

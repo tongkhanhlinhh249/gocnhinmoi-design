@@ -16,6 +16,9 @@
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-filter" viewBox="0 0 24 24">
+    <path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
   <symbol id="i-flame" viewBox="0 0 24 24">
     <path d="M13 2s-4 4-4 8a4 4 0 008 0c0-1.5-.5-3-1-4 0 0-1 2-2 2s-1-2-1-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M12 18a4 4 0 01-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -251,11 +254,41 @@
     <h1 class="deskhead">Khám phá địa điểm</h1>
 
     <div class="chips-bar chips-bar--lead">
-      <div class="chips" role="tablist" aria-label="Lọc theo tỉnh thành">
+      <div class="pfilter">
+        <div class="chips" role="tablist" aria-label="Lọc nhanh theo tỉnh thành">
+          <button class="chip" type="button" role="tab" data-tinh="tat-ca" aria-selected="true">Tất cả</button>
+          <button class="chip" type="button" role="tab" data-tinh="hcm" aria-selected="false">TP. Hồ Chí Minh</button>
+          <button class="chip" type="button" role="tab" data-tinh="hn" aria-selected="false">Hà Nội</button>
+        </div>
+        <button class="pfilter__btn" type="button" data-filter-open aria-expanded="false" aria-controls="placeFilter">
+          <svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg>Bộ lọc
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ Bộ lọc đầy đủ (mở từ nút Bộ lọc) ============ -->
+    <div class="pfilter__wrap" id="placeFilter" hidden>
+      <div class="pfilter__backdrop" data-filter-close></div>
+      <div class="pfilter__panel" role="dialog" aria-modal="true" aria-labelledby="pfilter-title">
+        <div class="pfilter__head">
+          <h2 class="pfilter__title" id="pfilter-title">Bộ lọc</h2>
+          <button class="icon-btn" type="button" aria-label="Đóng bộ lọc" data-filter-close>
+            <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <div class="pfilter__group">
+          <h3 class="pfilter__label">Tỉnh thành</h3>
+          <div class="chips" role="tablist" aria-label="Lọc theo tỉnh thành">
         <button class="chip" type="button" role="tab" data-tinh="tat-ca" aria-selected="true">Tất cả</button> <button class="chip" type="button" role="tab" data-tinh="hcm" aria-selected="false">TP. Hồ Chí Minh</button> <button class="chip" type="button" role="tab" data-tinh="hn" aria-selected="false">Hà Nội</button> <button class="chip" type="button" role="tab" data-tinh="dn" aria-selected="false">Đà Nẵng</button> <button class="chip" type="button" role="tab" data-tinh="hue" aria-selected="false">Huế</button> <button class="chip" type="button" role="tab" data-tinh="dl" aria-selected="false">Đà Lạt</button>
       </div>
-      <div class="chips" role="tablist" aria-label="Lọc theo loại địa điểm">
+        </div>
+        <div class="pfilter__group">
+          <h3 class="pfilter__label">Loại địa điểm</h3>
+          <div class="chips" role="tablist" aria-label="Lọc theo loại địa điểm">
         <button class="chip" type="button" role="tab" data-loai="tat-ca" aria-selected="true">Tất cả</button> <button class="chip" type="button" role="tab" data-loai="ca-phe" aria-selected="false">Quán cà phê</button> <button class="chip" type="button" role="tab" data-loai="thu-vien" aria-selected="false">Thư viện</button> <button class="chip" type="button" role="tab" data-loai="lam-viec" aria-selected="false">Không gian làm việc</button> <button class="chip" type="button" role="tab" data-loai="bao-tang" aria-selected="false">Bảo tàng</button> <button class="chip" type="button" role="tab" data-loai="nha-sach" aria-selected="false">Nhà sách</button>
+      </div>
+        </div>
+        <button class="pfilter__done" type="button" data-filter-close>Xem kết quả</button>
       </div>
     </div>
 

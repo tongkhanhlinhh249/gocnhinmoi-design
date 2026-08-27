@@ -3755,6 +3755,59 @@ input { font: inherit; }
   }
 }
 
+/* ---------- Bộ lọc địa điểm ---------- */
+/* Sáu tỉnh cộng sáu loại là mười hai chip xếp hai hàng, chiếm gần hết màn
+   trước khi thấy địa điểm nào. Thanh chỉ giữ vài chip hay dùng, phần còn lại
+   nằm trong một hộp mở ra khi cần. Dùng chung cho cả điện thoại lẫn web. */
+.pfilter { display: flex; align-items: center; gap: 8px; padding: 12px var(--gutter); }
+.pfilter .chips { flex: 1; min-width: 0; padding: 0; margin-inline: 0; max-width: none; }
+.pfilter__btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19.5px;
+  color: var(--text-action);
+  transition: border-color .15s var(--ease), color .15s var(--ease);
+}
+.pfilter__btn .icon { width: 15px; height: 15px; }
+.pfilter__btn[aria-expanded="true"] { border-color: var(--gnm-red); color: var(--gnm-red); }
+
+.pfilter__wrap { position: fixed; inset: 0; z-index: 70; display: grid; place-items: end center; }
+.pfilter__backdrop { position: absolute; inset: 0; background: rgba(16, 24, 40, .45); }
+.pfilter__panel {
+  position: relative;
+  width: 100%;
+  max-width: var(--shell);
+  max-height: 84vh;
+  overflow-y: auto;
+  padding: 4px 16px calc(16px + env(safe-area-inset-bottom));
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: var(--surface);
+}
+.pfilter__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 0 4px; }
+.pfilter__title { font-size: 17px; font-weight: 800; line-height: 24px; color: var(--ink-strong); }
+.pfilter__group { padding-top: 12px; }
+.pfilter__label { padding-bottom: 8px; font-size: 13px; font-weight: 700; line-height: 19px; color: var(--text-muted); }
+.pfilter__group .chips { flex-wrap: wrap; overflow: visible; padding: 0; margin-inline: 0; max-width: none; }
+.pfilter__done {
+  width: 100%;
+  margin-top: 20px;
+  padding-block: 12px;
+  border-radius: var(--r-pill);
+  background: var(--gnm-red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
 /* ---------- 19. Trang chủ ở màn rộng: bố cục ba cột ---------- */
 /* Điện thoại và máy tính bảng (<800px) giữ nguyên khung 480px như cũ. Từ 800px
    mới đổi sang bố cục web: cột điều hướng trái + nội dung. Cột phụ bên phải
@@ -3920,6 +3973,32 @@ input { font: inherit; }
      khi thẻ to gấp đôi. */
   .v-web .page .playlists { gap: 24px; }
 
+  /* Địa điểm ở màn rộng: chia đôi, và mỗi thẻ đổi sang xếp dọc — ảnh trên,
+     chữ dưới. Kiểu hàng ngang chỉ hợp khung hẹp; ở cột 349px thì ảnh 96px
+     chiếm gần một phần ba mà chữ vẫn phải xuống dòng. */
+  .v-web .page .plist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .v-web .page .plist__link {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 10px 12px;
+  }
+  .v-web .page .plist__thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--r-md);
+  }
+  .v-web .page .plist__body { flex: 1; }
+  .v-web .page .plist__name { font-size: 16px; line-height: 22px; }
+
+  /* Ở web hộp lọc nổi giữa màn thay vì trượt lên từ đáy như trên điện thoại */
+  .v-web .pfilter__wrap { place-items: center; }
+  .v-web .pfilter__panel { max-width: 460px; border-radius: var(--r-lg); padding-bottom: 20px; }
+
   /* Thẻ video trong dải cuộn: 272px là cỡ cho khung 480px, ở 765px thì nhỏ
      hẳn so với chữ quanh nó. To thêm 45%. */
   /* Thẻ hero trải hết bề ngang mục, không nằm trong dải cuộn — nó có w-full
@@ -3942,6 +4021,20 @@ input { font: inherit; }
   /* Mọi khối tin ở bố cục web đều chia đôi đều nhau, không có thẻ dẫn chạy hết
      bề ngang, và dừng ở 12 thẻ. */
   .v-web .page main > .feed > *:nth-child(n+13) { display: none; }
+
+  /* Riêng khối đúng ba thẻ: ba thẻ chia hai cột thì kiểu gì cũng hụt một ô,
+     nên thẻ đầu chạy hết bề ngang rồi hai thẻ sau đứng cạnh nhau. */
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child {
+    grid-column: 1 / -1;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Khối chỉ có một thẻ thì để nó nửa cột trông như thiếu mất thẻ bên cạnh —
+     cho chạy hết bề ngang, đúng kiểu thẻ tin nổi bật đầu trang chủ. */
+  .v-web .page main > .feed > :only-child { grid-column: 1 / -1; }
+  .v-web .page main > .feed > :only-child .card__media { aspect-ratio: 16 / 9; }
 
 
   .v-web .discussed .hscroll {

@@ -16,6 +16,9 @@
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-filter" viewBox="0 0 24 24">
+    <path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
   <symbol id="i-flame" viewBox="0 0 24 24">
     <path d="M13 2s-4 4-4 8a4 4 0 008 0c0-1.5-.5-3-1-4 0 0-1 2-2 2s-1-2-1-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M12 18a4 4 0 01-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -251,11 +254,41 @@
     <h1 class="deskhead">Khám phá địa điểm</h1>
 
     <div class="chips-bar sticky z-30 bg-surface-soft">
-      <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" aria-label="Lọc theo tỉnh thành">
+      <div class="pfilter">
+        <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" aria-label="Lọc nhanh theo tỉnh thành">
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="tat-ca" aria-selected="true">Tất cả</button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="hcm" aria-selected="false">TP. Hồ Chí Minh</button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="hn" aria-selected="false">Hà Nội</button>
+        </div>
+        <button class="pfilter__btn" type="button" data-filter-open aria-expanded="false" aria-controls="placeFilter">
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-filter"></use></svg>Bộ lọc
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ Bộ lọc đầy đủ (mở từ nút Bộ lọc) ============ -->
+    <div class="pfilter__wrap" id="placeFilter" hidden>
+      <div class="pfilter__backdrop" data-filter-close></div>
+      <div class="pfilter__panel" role="dialog" aria-modal="true" aria-labelledby="pfilter-title">
+        <div class="pfilter__head">
+          <h2 class="pfilter__title" id="pfilter-title">Bộ lọc</h2>
+          <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Đóng bộ lọc" data-filter-close>
+            <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <div class="pfilter__group">
+          <h3 class="pfilter__label">Tỉnh thành</h3>
+          <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" aria-label="Lọc theo tỉnh thành">
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="tat-ca" aria-selected="true">Tất cả</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="hcm" aria-selected="false">TP. Hồ Chí Minh</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="hn" aria-selected="false">Hà Nội</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="dn" aria-selected="false">Đà Nẵng</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="hue" aria-selected="false">Huế</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-tinh="dl" aria-selected="false">Đà Lạt</button>
       </div>
-      <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" aria-label="Lọc theo loại địa điểm">
+        </div>
+        <div class="pfilter__group">
+          <h3 class="pfilter__label">Loại địa điểm</h3>
+          <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" aria-label="Lọc theo loại địa điểm">
         <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="tat-ca" aria-selected="true">Tất cả</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="ca-phe" aria-selected="false">Quán cà phê</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="thu-vien" aria-selected="false">Thư viện</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="lam-viec" aria-selected="false">Không gian làm việc</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="bao-tang" aria-selected="false">Bảo tàng</button> <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" data-loai="nha-sach" aria-selected="false">Nhà sách</button>
+      </div>
+        </div>
+        <button class="pfilter__done" type="button" data-filter-close>Xem kết quả</button>
       </div>
     </div>
 
@@ -265,133 +298,133 @@
         <p class="text-[13px] leading-[20px] text-ink-muted tabular-nums" data-plist-count>12 địa điểm</p>
       </div>
 
-      <ol class="flex flex-col gap-[10px] pt-3" data-plist>
-        <li class="" data-tinh="hcm" data-loai="ca-phe">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết The Workshop Coffee">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/place-workshop-coffee.png" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">The Workshop Coffee</span>
+      <ol class="plist flex flex-col gap-[10px] pt-3" data-plist>
+        <li class="plist__item" data-tinh="hcm" data-loai="ca-phe">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết The Workshop Coffee">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/place-workshop-coffee.png" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">The Workshop Coffee</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>27 Ngô Đức Kế, Quận 1</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Cà phê thủ công, khu làm việc yên tĩnh</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Quán cà phê</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hcm" data-loai="thu-vien">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Thư viện Khoa học Tổng hợp">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-sai-gon-5h.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Thư viện Khoa học Tổng hợp</span>
+        <li class="plist__item" data-tinh="hcm" data-loai="thu-vien">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Thư viện Khoa học Tổng hợp">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-sai-gon-5h.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Thư viện Khoa học Tổng hợp</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>69 Lý Tự Trọng, Quận 1</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Phòng đọc rộng, mở cửa tới 20h</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Thư viện</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hn" data-loai="lam-viec">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Toong Co-working">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-nha-o-ha-noi.png" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Toong Co-working</span>
+        <li class="plist__item" data-tinh="hn" data-loai="lam-viec">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Toong Co-working">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-nha-o-ha-noi.png" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Toong Co-working</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>8 Tràng Thi, Hoàn Kiếm</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Bàn linh hoạt, phòng họp theo giờ</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Không gian làm việc</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hn" data-loai="bao-tang">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Dân tộc học">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-ha-noi.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Dân tộc học</span>
+        <li class="plist__item" data-tinh="hn" data-loai="bao-tang">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Dân tộc học">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-ha-noi.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Dân tộc học</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>Nguyễn Văn Huyên, Cầu Giấy</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Khu nhà dài ngoài trời, vé 40.000đ</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Bảo tàng</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hn" data-loai="nha-sach">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Nhã Nam Thư quán">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-khong-tu.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Nhã Nam Thư quán</span>
+        <li class="plist__item" data-tinh="hn" data-loai="nha-sach">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Nhã Nam Thư quán">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-khong-tu.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Nhã Nam Thư quán</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>59 Đỗ Quang, Cầu Giấy</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Sách văn học, có góc ngồi đọc</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Nhà sách</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="dn" data-loai="ca-phe">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Cộng Cà Phê Bạch Đằng">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-du-lich.png" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Cộng Cà Phê Bạch Đằng</span>
+        <li class="plist__item" data-tinh="dn" data-loai="ca-phe">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Cộng Cà Phê Bạch Đằng">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-du-lich.png" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Cộng Cà Phê Bạch Đằng</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>96 Bạch Đằng, Hải Châu</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Ban công nhìn ra sông Hàn</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Quán cà phê</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="dn" data-loai="bao-tang">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Chăm">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-thanh-pho.png" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Chăm</span>
+        <li class="plist__item" data-tinh="dn" data-loai="bao-tang">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Chăm">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-thanh-pho.png" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Chăm</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>02 2 Tháng 9, Hải Châu</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Bộ sưu tập điêu khắc Chăm lớn nhất</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Bảo tàng</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hue" data-loai="thu-vien">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Thư viện Tổng hợp Huế">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-tay-nguyen.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Thư viện Tổng hợp Huế</span>
+        <li class="plist__item" data-tinh="hue" data-loai="thu-vien">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Thư viện Tổng hợp Huế">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-tay-nguyen.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Thư viện Tổng hợp Huế</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>29A Lê Quý Đôn</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Không gian cổ, kho tư liệu Hán Nôm</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Thư viện</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="dl" data-loai="ca-phe">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết An Cafe Đà Lạt">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-sai-gon.png" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">An Cafe Đà Lạt</span>
+        <li class="plist__item" data-tinh="dl" data-loai="ca-phe">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết An Cafe Đà Lạt">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/cover-sai-gon.png" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">An Cafe Đà Lạt</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>63 Trần Hưng Đạo, Phường 3</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Vườn thông, mở cửa từ 6h sáng</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Quán cà phê</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="dl" data-loai="nha-sach">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Dalat Book Space">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-song-cham.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Dalat Book Space</span>
+        <li class="plist__item" data-tinh="dl" data-loai="nha-sach">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Dalat Book Space">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-song-cham.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Dalat Book Space</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>4 Nguyễn Thái Học</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Sách cũ, có quầy cà phê nhỏ</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Nhà sách</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hcm" data-loai="lam-viec">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Circo Bến Thành">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Circo Bến Thành</span>
+        <li class="plist__item" data-tinh="hcm" data-loai="lam-viec">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Circo Bến Thành">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Circo Bến Thành</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>81 Cách Mạng Tháng 8, Quận 1</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Mở 24/7, có phòng gọi điện riêng</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Không gian làm việc</span>
             </span>
           </a>
         </li>
-        <li class="" data-tinh="hcm" data-loai="bao-tang">
-          <a class="flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Mỹ thuật TP.HCM">
-            <img class="size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-kinh-te-vn.jpg" alt="" width="96" height="96" loading="lazy">
-            <span class="flex flex-col gap-[3px] min-w-0 flex-1">
-              <span class="text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Mỹ thuật TP.HCM</span>
+        <li class="plist__item" data-tinh="hcm" data-loai="bao-tang">
+          <a class="plist__link flex gap-3 p-[10px] rounded-[8px] bg-surface shadow-card" href="dia-diem.html" aria-label="Xem chi tiết Bảo tàng Mỹ thuật TP.HCM">
+            <img class="plist__thumb size-24 flex-none rounded-card object-cover bg-surface-fill" src="assets/img/kp-kinh-te-vn.jpg" alt="" width="96" height="96" loading="lazy">
+            <span class="plist__body flex flex-col gap-[3px] min-w-0 flex-1">
+              <span class="plist__name text-[15px] font-bold leading-[21px] text-ink-strong">Bảo tàng Mỹ thuật TP.HCM</span>
               <span class="plist__meta flex items-center gap-1 text-[12px] leading-[18px] text-ink-muted"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>97A Phó Đức Chính, Quận 1</span>
               <span class="text-[12px] leading-[18px] text-ink-action line-clamp-2">Kiến trúc Pháp, ba toà nhà cổ</span>
               <span class="self-start mt-auto px-2 py-[2px] rounded-full bg-surface-fill text-[11px] font-semibold leading-[17px] text-ink-action">Bảo tàng</span>
