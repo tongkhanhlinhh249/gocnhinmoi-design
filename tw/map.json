@@ -669,7 +669,7 @@
  },
  "page": {
   "tw": "",
-  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}main{display:flex;flex-direction:column}main>.leaderboard{order:1}main>.redlist{order:2}main>.discussed{order:3}main>.panel{order:4}main>.authors{order:5}main>.places{order:6}"
+  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}@media (max-width:767.98px){main{display:flex;flex-direction:column}main>.leaderboard{order:1}main>.redlist{order:2}main>.discussed{order:3}main>.panel{order:4}main>.authors{order:5}main>.places{order:6}}"
  },
  "profile-bar": {
   "tw": "flex items-center justify-between",

@@ -3755,21 +3755,23 @@ input { font: inherit; }
   }
 }
 
-/* ---------- Trình tự khối: nội dung trước, khối chung sau ---------- */
-/* Bảng xếp hạng, hashtag, gợi ý theo dõi, địa điểm, thảo luận nhiều là khối
-   chung — chúng đang nằm rải giữa các khối nội dung nên cắt danh sách podcast
-   hay playlist thành từng mảnh. Đẩy hết về cuối bằng order, markup giữ nguyên.
+/* ---------- Trình tự khối ở bản điện thoại ---------- */
+/* Dưới 768px không có cột phụ, nên bảng xếp hạng, Thịnh hành, thảo luận nhiều,
+   hashtag, gợi ý theo dõi và địa điểm đều rơi vào giữa mạch đọc, cắt danh sách
+   tin thành từng khúc. Dồn hết xuống cuối.
 
-   Áp cho cả trang chủ. Bảng thứ tự riêng của trang chủ ở mục 19 nằm trong
-   media query 768px và mang :has(#feedSecondary) nên nặng hơn hẳn, vẫn thắng
-   từ 768px trở lên; dưới mốc đó luật này lo. */
-main { display: flex; flex-direction: column; }
-main > .leaderboard { order: 1; }
-main > .redlist { order: 2; }
-main > .discussed { order: 3; }
-main > .panel { order: 4; }
-main > .authors { order: 5; }
-main > .places { order: 6; }
+   Chỉ áp cho bản điện thoại. Từ 768px trở lên giữ nguyên thứ tự trong markup
+   và bảng thứ tự riêng của trang chủ — bản web đã chốt bảng xếp hạng nằm ngay
+   dưới cụm thẻ đầu, đặt luật này ra ngoài media query là phá mất. */
+@media (max-width: 767.98px) {
+  main { display: flex; flex-direction: column; }
+  main > .leaderboard { order: 1; }
+  main > .redlist { order: 2; }
+  main > .discussed { order: 3; }
+  main > .panel { order: 4; }
+  main > .authors { order: 5; }
+  main > .places { order: 6; }
+}
 
 /* ---------- Bộ lọc địa điểm ---------- */
 /* Sáu tỉnh cộng sáu loại là mười hai chip xếp hai hàng, chiếm gần hết màn
