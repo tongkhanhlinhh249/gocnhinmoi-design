@@ -240,7 +240,7 @@
       </a>
     </div>
   </aside>
-  <main id="main">
+  <main id="main" data-thu-tu="chot">
     <div class="deskbar">
       <label class="deskbar__search">
         <svg class="icon size-4 flex-none deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
@@ -310,7 +310,7 @@
     </section>
 
     <!-- ============ Dòng nội dung ============ -->
-    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" id="feedPrimary" aria-label="Dòng nội dung Góc mở">
+    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" aria-label="Dòng nội dung Luận cổ suy kim 1">
 
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="trong-nha">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
@@ -337,7 +337,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="trong-nha">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/trend-hoc-them.png" alt="" width="370" height="208" loading="lazy">
@@ -363,7 +362,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="trong-nha">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/cover-suc-khoe-tinh-than.png" alt="" width="370" height="208" loading="lazy">
@@ -389,7 +387,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="tren-duong">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/kp-sai-gon-5h.jpg" alt="" width="370" height="208" loading="lazy">
@@ -417,7 +414,6 @@
       </article>
     </section>
 
-    <!-- ============ Bảng xếp hạng ============ -->
     <section class="leaderboard pb-4 shell w-full max-w-shell mx-auto px-4" aria-labelledby="lb-title">
       <div class="section-head pt-4">
         <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
@@ -475,7 +471,7 @@
       </ol>
     </section>
 
-    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" aria-label="Dòng nội dung tiếp theo">
+    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" aria-label="Dòng nội dung Luận cổ suy kim 2">
 
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="tren-duong">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
@@ -502,7 +498,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="tren-duong">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="370" height="208" loading="lazy">
@@ -528,7 +523,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="trong-nha">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/kp-song-cham.jpg" alt="" width="370" height="208" loading="lazy">
@@ -554,7 +548,6 @@
           </div>
         </div>
       </article>
-
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden" data-cat="tren-duong">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/cover-nong-nghiep.png" alt="" width="370" height="208" loading="lazy">
@@ -580,6 +573,50 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="authors py-[20px] shell w-full max-w-shell mx-auto px-4" aria-labelledby="authors-title">
+      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+        <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="authors-title">Gợi ý theo dõi</h2>
+        <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="bang-xep-hang.html">Xem tất cả <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+
+      <ul class="hscroll flex gap-3 overflow-x-auto snap-x snap-proximity scrollbar-none py-3 px-4 -mx-4 items-stretch">
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=nguyen-thanh-binh" aria-label="Xem trang cá nhân của GS. Nguyễn Thanh Bình"><img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">GS. Nguyễn Thanh Bình</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">42.9k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=thu-hang" aria-label="Xem trang cá nhân của Thu Hằng"><img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Thu Hằng</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">28.7k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">TS. Lan Anh</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">19.3k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="true" data-follow>Đang theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Nhật Minh</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">15.8k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=hoai-nam" aria-label="Xem trang cá nhân của Hoài Nam"><img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Hoài Nam</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">67.4k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
+          <a class="block" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Quỳnh Chi</p></a>
+          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">21.9k người theo dõi</p>
+          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" data-limit="4" aria-label="Dòng nội dung Luận cổ suy kim 3">
+
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
           <img src="assets/img/kp-khong-tu.jpg" alt="" width="370" height="208" loading="lazy">
@@ -797,46 +834,6 @@
 
     <!-- ============ Gợi ý theo dõi ============ -->
     <!-- Gợi ý theo dõi — Figma đặt ngay giữa feed -->
-    <section class="authors py-[20px] shell w-full max-w-shell mx-auto px-4" aria-labelledby="authors-title">
-      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
-        <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="authors-title">Gợi ý theo dõi</h2>
-        <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="bang-xep-hang.html">Xem tất cả <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      </div>
-
-      <ul class="hscroll flex gap-3 overflow-x-auto snap-x snap-proximity scrollbar-none py-3 px-4 -mx-4 items-stretch">
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=nguyen-thanh-binh" aria-label="Xem trang cá nhân của GS. Nguyễn Thanh Bình"><img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">GS. Nguyễn Thanh Bình</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">42.9k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=thu-hang" aria-label="Xem trang cá nhân của Thu Hằng"><img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Thu Hằng</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">28.7k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">TS. Lan Anh</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">19.3k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="true" data-follow>Đang theo dõi</button>
-        </li>
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Nhật Minh</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">15.8k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=hoai-nam" aria-label="Xem trang cá nhân của Hoài Nam"><img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Hoài Nam</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">67.4k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card flex-none w-[168px] min-w-0 bg-surface rounded-card p-4 text-center">
-          <a class="block" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="64" height="64" loading="lazy"><p class="text-[13px] font-bold leading-[16.25px] text-ink-strong truncate">Quỳnh Chi</p></a>
-          <p class="text-[11px] font-medium leading-[16.5px] text-ink-muted pt-1">21.9k người theo dõi</p>
-          <button class="btn-follow w-full mt-3 py-[6px] rounded-full bg-primary-800 text-surface text-[12px] font-bold leading-[18px] transition-colors duration-[180] ease-out aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-      </ul>
-    </section>
-
   </main>
 
   <!-- ============ Cột phụ bên phải (chỉ hiện ở màn rất rộng) ============ -->
