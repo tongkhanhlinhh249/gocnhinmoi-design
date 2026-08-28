@@ -978,6 +978,32 @@
       </ul>
     </section>
 
+    <section class="places pb-[20px] shell w-full max-w-shell mx-auto px-4" aria-labelledby="places-title">
+      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
+        <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="places-title">Địa điểm</h2>
+        <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="dia-diem-list.html">Khám phá <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+
+      <ul class="hscroll flex gap-3 overflow-x-auto snap-x snap-proximity scrollbar-none py-3 px-4 -mx-4 items-stretch">
+        <li class="place-card relative flex-none w-full aspect-[370/220] rounded-md overflow-hidden bg-surface-dark">
+          <img src="assets/img/place-workshop-coffee.png" alt="Không gian quán The Workshop Coffee" width="370" height="220" loading="lazy">
+          <span class="place-card__scrim absolute inset-0" aria-hidden="true"></span>
+            <a class="absolute inset-0 z-[1]" href="dia-diem.html" aria-label="Xem chi tiết The Workshop Coffee"></a>
+          <div class="absolute left-4 bottom-4 text-surface">
+            <p class="text-[17px] font-extrabold leading-[22px]"><a href="dia-diem.html">The Workshop Coffee</a></p>
+            <p class="place-card__meta flex items-center gap-[6px] pt-[6px] text-[12px]">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>
+              TP. Hồ Chí Minh
+              <span class="place-card__rate inline-flex items-center gap-[3px] font-semibold"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-star"></use></svg>4.8</span>
+            </p>
+          </div>
+          <button class="place-card__save absolute right-4 bottom-4 size-9 grid place-items-center rounded-full text-surface backdrop-blur-[4px] z-[2]" type="button" aria-pressed="false" data-save aria-label="Lưu địa điểm">
+            <svg class="icon size-4 flex-none" aria-hidden="true" style="width:15px;height:15px"><use href="#i-bookmark-lg"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
     <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" data-feed="dong-tin" data-feed-loc aria-label="Dòng tin 4">
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
         <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
@@ -2261,32 +2287,6 @@
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg>
       </a>
     </div>
-
-    <section class="places pb-[20px] shell w-full max-w-shell mx-auto px-4" aria-labelledby="places-title">
-      <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
-        <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="places-title">Địa điểm</h2>
-        <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="dia-diem-list.html">Khám phá <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      </div>
-
-      <ul class="hscroll flex gap-3 overflow-x-auto snap-x snap-proximity scrollbar-none py-3 px-4 -mx-4 items-stretch">
-        <li class="place-card relative flex-none w-full aspect-[370/220] rounded-md overflow-hidden bg-surface-dark">
-          <img src="assets/img/place-workshop-coffee.png" alt="Không gian quán The Workshop Coffee" width="370" height="220" loading="lazy">
-          <span class="place-card__scrim absolute inset-0" aria-hidden="true"></span>
-            <a class="absolute inset-0 z-[1]" href="dia-diem.html" aria-label="Xem chi tiết The Workshop Coffee"></a>
-          <div class="absolute left-4 bottom-4 text-surface">
-            <p class="text-[17px] font-extrabold leading-[22px]"><a href="dia-diem.html">The Workshop Coffee</a></p>
-            <p class="place-card__meta flex items-center gap-[6px] pt-[6px] text-[12px]">
-              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pin"></use></svg>
-              TP. Hồ Chí Minh
-              <span class="place-card__rate inline-flex items-center gap-[3px] font-semibold"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-star"></use></svg>4.8</span>
-            </p>
-          </div>
-          <button class="place-card__save absolute right-4 bottom-4 size-9 grid place-items-center rounded-full text-surface backdrop-blur-[4px] z-[2]" type="button" aria-pressed="false" data-save aria-label="Lưu địa điểm">
-            <svg class="icon size-4 flex-none" aria-hidden="true" style="width:15px;height:15px"><use href="#i-bookmark-lg"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </section>
 
   </main>
 
