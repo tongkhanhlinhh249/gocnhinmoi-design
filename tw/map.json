@@ -669,7 +669,7 @@
  },
  "page": {
   "tw": "",
-  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}main:not(:has(>#feedSecondary)){display:flex;flex-direction:column}main:not(:has(>#feedSecondary))>.leaderboard{order:1}main:not(:has(>#feedSecondary))>.discussed{order:2}main:not(:has(>#feedSecondary))>.panel{order:3}main:not(:has(>#feedSecondary))>.authors{order:4}main:not(:has(>#feedSecondary))>.places{order:5}"
+  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}main:not(:has(>#feedSecondary)){display:flex;flex-direction:column}main:not(:has(>#feedSecondary))>.leaderboard{order:1}main:not(:has(>#feedSecondary))>.redlist{order:2}main:not(:has(>#feedSecondary))>.discussed{order:3}main:not(:has(>#feedSecondary))>.panel{order:4}main:not(:has(>#feedSecondary))>.authors{order:5}main:not(:has(>#feedSecondary))>.places{order:6}"
  },
  "profile-bar": {
   "tw": "flex items-center justify-between",

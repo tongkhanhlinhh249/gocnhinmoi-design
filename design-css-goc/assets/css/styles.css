@@ -3762,10 +3762,11 @@ input { font: inherit; }
    Trang chủ trừ ra: trang đó đã có bảng thứ tự riêng ở mục 19. */
 main:not(:has(> #feedSecondary)) { display: flex; flex-direction: column; }
 main:not(:has(> #feedSecondary)) > .leaderboard { order: 1; }
-main:not(:has(> #feedSecondary)) > .discussed { order: 2; }
-main:not(:has(> #feedSecondary)) > .panel { order: 3; }
-main:not(:has(> #feedSecondary)) > .authors { order: 4; }
-main:not(:has(> #feedSecondary)) > .places { order: 5; }
+main:not(:has(> #feedSecondary)) > .redlist { order: 2; }
+main:not(:has(> #feedSecondary)) > .discussed { order: 3; }
+main:not(:has(> #feedSecondary)) > .panel { order: 4; }
+main:not(:has(> #feedSecondary)) > .authors { order: 5; }
+main:not(:has(> #feedSecondary)) > .places { order: 6; }
 
 /* ---------- Bộ lọc địa điểm ---------- */
 /* Sáu tỉnh cộng sáu loại là mười hai chip xếp hai hàng, chiếm gần hết màn
