@@ -489,6 +489,11 @@
   var chipsBar = $('.chips-bar');
   // Trang chỉ có một feed thì lọc thẳng trên feed đó, không cần feed phụ
   var feed = $('#feedSecondary') || $('#feedPrimary');
+  /* Trang chủ tách dòng tin sau thanh chip thành mấy khối xen kẽ với khối khác.
+     Bộ lọc phải chạy trên cả cụm, không chỉ khối đầu, nên gom lại theo dấu
+     data-feed-loc; trang nào không đánh dấu thì vẫn lọc trên feed như cũ. */
+  var feedParts = $$('[data-feed-loc]');
+  if (!feedParts.length) feedParts = feed ? [feed] : [];
   var emptyEl = $('#feedEmpty');
   var loadWrap = $('.loadmore');
   var searchInputs = $$('[data-search]');
@@ -555,7 +560,12 @@
     var matched = 0;
     var shown = 0;
 
-    $$('.card', feed).forEach(function (card) {
+    var theCards = [];
+    feedParts.forEach(function (part) {
+      $$('.card', part).forEach(function (c) { theCards.push(c); });
+    });
+
+    theCards.forEach(function (card) {
       var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
       var matchCat = currentFilter === 'all' || cats.indexOf(currentFilter) !== -1;
       var titleEl = $('.card__title, .podcast__title', card);

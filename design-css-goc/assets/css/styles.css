@@ -3755,6 +3755,10 @@ input { font: inherit; }
   }
 }
 
+/* Lọc theo chuyên mục có thể vét sạch thẻ của một khối tin; khối rỗng vẫn
+   giữ padding nên để lại một vệt trắng giữa hai mục. Thu gọn hẳn. */
+[data-feed-loc]:not(:has(.card:not(.is-filtered))) { display: none; }
+
 /* ---------- Trình tự khối ở bản điện thoại ---------- */
 /* Dưới 768px không có cột phụ, nên bảng xếp hạng, Thịnh hành, thảo luận nhiều,
    hashtag, gợi ý theo dõi và địa điểm đều rơi vào giữa mạch đọc, cắt danh sách
@@ -3762,15 +3766,18 @@ input { font: inherit; }
 
    Chỉ áp cho bản điện thoại. Từ 768px trở lên giữ nguyên thứ tự trong markup
    và bảng thứ tự riêng của trang chủ — bản web đã chốt bảng xếp hạng nằm ngay
-   dưới cụm thẻ đầu, đặt luật này ra ngoài media query là phá mất. */
+   dưới cụm thẻ đầu, đặt luật này ra ngoài media query là phá mất.
+
+   Trang nào đã chốt thứ tự sẵn trong markup thì đánh dấu data-thu-tu trên
+   thẻ main để luật này bỏ qua. */
 @media (max-width: 767.98px) {
-  main { display: flex; flex-direction: column; }
-  main > .leaderboard { order: 1; }
-  main > .redlist { order: 2; }
-  main > .discussed { order: 3; }
-  main > .panel { order: 4; }
-  main > .authors { order: 5; }
-  main > .places { order: 6; }
+  main:not([data-thu-tu]) { display: flex; flex-direction: column; }
+  main:not([data-thu-tu]) > .leaderboard { order: 1; }
+  main:not([data-thu-tu]) > .redlist { order: 2; }
+  main:not([data-thu-tu]) > .discussed { order: 3; }
+  main:not([data-thu-tu]) > .panel { order: 4; }
+  main:not([data-thu-tu]) > .authors { order: 5; }
+  main:not([data-thu-tu]) > .places { order: 6; }
 }
 
 /* ---------- Bộ lọc địa điểm ---------- */
@@ -3865,31 +3872,6 @@ input { font: inherit; }
 
   .v-web .page > main { grid-column: 2; grid-row: 1; min-width: 0; }
 
-  /* Trình tự khối ở trang chủ, bố cục rộng: tin nổi bật → bảng xếp hạng → tin
-     → Thảo luận nhiều → tin → Video ngắn → tin → Xem thêm.
-
-     Chỉ áp cho trang chủ. Mỗi trang chuyên mục có trình tự riêng trong markup,
-     ép một bảng order chung lên tất cả thì trang nào cũng bị xáo. #feedSecondary
-     chỉ trang chủ có nên dùng làm dấu nhận biết.
-
-     Đặt order cho mọi con trước rồi mới chỉ định từng khối: order mặc định là 0
-     sẽ đẩy khối chưa đặt lên đầu. */
-  .v-web .page > main:has(> #feedSecondary) { display: flex; flex-direction: column; }
-  .v-web .page > main:has(> #feedSecondary) > * { order: 20; }
-  .v-web .page > main:has(> #feedSecondary) > .deskbar { order: 0; }
-  .v-web .page > main:has(> #feedSecondary) > .tophero { order: 1; }
-  .v-web .page > main:has(> #feedSecondary) > .leaderboard { order: 2; }
-  .v-web .page > main:has(> #feedSecondary) > #feedPrimary { order: 3; }
-  .v-web .page > main:has(> #feedSecondary) > .discussed { order: 4; }
-  .v-web .page > main:has(> #feedSecondary) > .redlist { order: 5; }
-  .v-web .page > main:has(> #feedSecondary) > .feed:not([id]) { order: 6; }
-  .v-web .page > main:has(> #feedSecondary) > .shorts { order: 7; }
-  .v-web .page > main:has(> #feedSecondary) > .panel { order: 8; }
-  .v-web .page > main:has(> #feedSecondary) > .authors { order: 9; }
-  .v-web .page > main:has(> #feedSecondary) > .places { order: 10; }
-  .v-web .page > main:has(> #feedSecondary) > .chips-bar { order: 11; }
-  .v-web .page > main:has(> #feedSecondary) > #feedSecondary { order: 12; }
-  .v-web .page > main:has(> #feedSecondary) > .loadmore { order: 13; }
   /* Cột phụ dính (sticky) bị trình duyệt cho phép trượt quá ô lưới của nó và
      đè lên footer. Cho footer nằm trên một tầng và có nền đục là đủ: cuộn tới
      footer thì cột phụ khuất hẳn sau nó, đúng như mong đợi. */

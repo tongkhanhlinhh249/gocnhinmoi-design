@@ -240,7 +240,7 @@
       </a>
     </div>
   </aside>
-  <main id="main">
+  <main id="main" data-thu-tu="chot">
     <div class="deskbar">
       <label class="deskbar__search">
         <svg class="icon deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
@@ -460,7 +460,7 @@
       </div>
     </section>
 
-    <section class="feed shell" aria-label="Dòng nội dung tiếp theo">
+    <section class="feed shell" aria-label="Dòng nội dung 1">
 
       <article class="card">
         <a class="card__media" href="bai-viet.html">
@@ -487,7 +487,6 @@
           </div>
         </div>
       </article>
-
       <article class="card card--podcast">
         <div class="podcast__head">
           <img class="podcast__art" src="assets/img/cover-podcast-tra-dam.png" alt="" width="72" height="72" loading="lazy">
@@ -521,7 +520,6 @@
           <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
         </div>
       </article>
-
       <article class="card">
         <a class="card__media" href="bai-viet.html">
           <img src="assets/img/cover-du-lich.png" alt="Khung cảnh thiên nhiên xanh mát" width="370" height="208" loading="lazy">
@@ -547,7 +545,6 @@
           </div>
         </div>
       </article>
-
       <article class="card">
         <a class="gallery" href="#" aria-label="Xem album ảnh: Bức tranh toàn cảnh các kỳ lân Đông Nam Á trong năm 2026">
           <span class="gallery__main"><img src="assets/img/gallery1-main.png" alt="" width="246" height="208" loading="lazy"></span>
@@ -580,6 +577,25 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="panel shell" aria-labelledby="tags-title">
+      <div class="panel__card">
+        <h2 class="section-title" id="tags-title">Hastag nổi bật</h2>
+        <ul class="tags">
+          <li><a class="tag" href="#">#AI</a></li>
+          <li><a class="tag" href="#">#KinhTe</a></li>
+          <li><a class="tag" href="#">#Startup</a></li>
+          <li><a class="tag" href="#">#ChinhTri</a></li>
+          <li><a class="tag" href="#">#GiaoDuc</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Gợi ý theo dõi ============ -->
+    <!-- Gợi ý theo dõi — Figma đặt ngay giữa feed -->
+    <section class="feed shell" aria-label="Dòng nội dung 2">
+
       <article class="card">
         <a class="card__media" href="bai-viet.html">
           <img src="assets/img/kp-kinh-te-ai.png" alt="" width="370" height="208" loading="lazy">
@@ -680,6 +696,61 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="authors shell" aria-labelledby="authors-title">
+      <div class="section-head__row">
+        <h2 class="section-title" id="authors-title">Gợi ý theo dõi</h2>
+        <a class="link-more" href="#">Xem tất cả <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+
+      <ul class="hscroll">
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=nguyen-thanh-binh" aria-label="Xem trang cá nhân của GS. Nguyễn Thanh Bình"><img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">GS. Nguyễn Thanh Bình</p></a>
+          <p class="author-card__count">42.1k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=thu-hang" aria-label="Xem trang cá nhân của Thu Hằng"><img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Thu Hằng</p></a>
+          <p class="author-card__count">28.7k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">TS. Lan Anh</p></a>
+          <p class="author-card__count">19.3k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="true" data-follow>Đang theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Nhật Minh</p></a>
+          <p class="author-card__count">15.8k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=hoai-nam" aria-label="Xem trang cá nhân của Hoài Nam"><img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Hoài Nam</p></a>
+          <p class="author-card__count">67.4k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=hoang-nam" aria-label="Xem trang cá nhân của PGS. Hoàng Nam"><img src="assets/img/avatar-hoang-nam.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">PGS. Hoàng Nam</p></a>
+          <p class="author-card__count">33.5k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Quỳnh Chi</p></a>
+          <p class="author-card__count">21.9k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+        <li class="author-card">
+          <a class="author-card__who" href="ca-nhan.html?tac-gia=tran-bao-long" aria-label="Xem trang cá nhân của Trần Bảo Long"><img src="assets/img/avatar-tran-bao-long.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Trần Bảo Long</p></a>
+          <p class="author-card__count">12.6k người theo dõi</p>
+          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ Thịnh hành ============ -->
+    <section class="feed shell" aria-label="Dòng nội dung 3">
+
       <article class="card">
         <a class="card__media" href="bai-viet.html">
           <img src="assets/img/cover-lang-nghe.png" alt="" width="370" height="208" loading="lazy">
@@ -782,80 +853,6 @@
       </article>
     </section>
 
-    <div class="loadmore">
-      <button class="btn-outline" type="button" id="loadMore">
-        <span class="spinner" aria-hidden="true"></span>
-        <span class="btn-outline__label">Xem thêm</span>
-      </button>
-    </div>
-
-    <!-- ============ Hastag nổi bật ============ -->
-    <section class="panel shell" aria-labelledby="tags-title">
-      <div class="panel__card">
-        <h2 class="section-title" id="tags-title">Hastag nổi bật</h2>
-        <ul class="tags">
-          <li><a class="tag" href="#">#AI</a></li>
-          <li><a class="tag" href="#">#KinhTe</a></li>
-          <li><a class="tag" href="#">#Startup</a></li>
-          <li><a class="tag" href="#">#ChinhTri</a></li>
-          <li><a class="tag" href="#">#GiaoDuc</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ Gợi ý theo dõi ============ -->
-    <!-- Gợi ý theo dõi — Figma đặt ngay giữa feed -->
-    <section class="authors shell" aria-labelledby="authors-title">
-      <div class="section-head__row">
-        <h2 class="section-title" id="authors-title">Gợi ý theo dõi</h2>
-        <a class="link-more" href="#">Xem tất cả <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      </div>
-
-      <ul class="hscroll">
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=nguyen-thanh-binh" aria-label="Xem trang cá nhân của GS. Nguyễn Thanh Bình"><img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">GS. Nguyễn Thanh Bình</p></a>
-          <p class="author-card__count">42.1k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=thu-hang" aria-label="Xem trang cá nhân của Thu Hằng"><img src="assets/img/avatar-thu-hang.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Thu Hằng</p></a>
-          <p class="author-card__count">28.7k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">TS. Lan Anh</p></a>
-          <p class="author-card__count">19.3k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="true" data-follow>Đang theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Nhật Minh</p></a>
-          <p class="author-card__count">15.8k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=hoai-nam" aria-label="Xem trang cá nhân của Hoài Nam"><img src="assets/img/avatar-hoai-nam.png" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Hoài Nam</p></a>
-          <p class="author-card__count">67.4k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=hoang-nam" aria-label="Xem trang cá nhân của PGS. Hoàng Nam"><img src="assets/img/avatar-hoang-nam.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">PGS. Hoàng Nam</p></a>
-          <p class="author-card__count">33.5k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Quỳnh Chi</p></a>
-          <p class="author-card__count">21.9k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-        <li class="author-card">
-          <a class="author-card__who" href="ca-nhan.html?tac-gia=tran-bao-long" aria-label="Xem trang cá nhân của Trần Bảo Long"><img src="assets/img/avatar-tran-bao-long.jpg" alt="" width="64" height="64" loading="lazy"><p class="author-card__name">Trần Bảo Long</p></a>
-          <p class="author-card__count">12.6k người theo dõi</p>
-          <button class="btn-follow" type="button" aria-pressed="false" data-follow>+ Theo dõi</button>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ============ Thịnh hành ============ -->
     <section class="discussed shell" aria-labelledby="discussed-title">
       <h2 class="section-title" id="discussed-title">Thảo luận nhiều</h2>
 
@@ -890,6 +887,142 @@
       </ul>
     </section>
 
+    <section class="feed shell" aria-label="Dòng nội dung 4">
+
+      <article class="card">
+        <a class="card__media" href="bai-viet.html">
+          <img src="assets/img/kp-kinh-te-vn.jpg" alt="" width="370" height="208" loading="lazy">
+          <span class="card__scrim" aria-hidden="true"></span>
+        </a>
+        <div class="card__body">
+          <h2 class="card__title"><a href="bai-viet.html">Kinh tế Việt Nam 2026: Những điểm sáng giữa bão toàn cầu</a></h2>
+          <div class="byline">
+            <a class="byline__who" href="ca-nhan.html?tac-gia=quang-huy" aria-label="Xem trang cá nhân của TS. Quang Huy"><img src="assets/img/avatar-quang-huy.jpg" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=quang-huy">TS. Quang Huy</a><span class="byline__time">· 1 giờ trước</span></p>
+          </div>
+          <div class="actions">
+            <button class="act" type="button" data-like data-count="2100" aria-pressed="false" aria-label="Thích">
+              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">2.1k</span>
+            </button>
+            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">176</span>
+            </button>
+            <button class="act" type="button" data-share aria-label="Chia sẻ">
+              <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+            </button>
+            <span class="actions__spacer"></span>
+            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
+              <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+            </button>
+            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác">
+              <svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="card__media" href="bai-viet.html">
+          <img src="assets/img/kp-startup-ky-lan.jpg" alt="" width="370" height="208" loading="lazy">
+          <span class="card__scrim" aria-hidden="true"></span>
+        </a>
+        <div class="card__body">
+          <h2 class="card__title"><a href="bai-viet.html">Startup kỳ lân Việt Nam thứ ba chính thức ra thị trường quốc tế</a></h2>
+          <div class="byline">
+            <a class="byline__who" href="ca-nhan.html?tac-gia=lan-chi" aria-label="Xem trang cá nhân của Lan Chi"><img src="assets/img/avatar-lan-chi.png" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=lan-chi">Lan Chi</a><span class="byline__time">· 2 giờ trước</span></p>
+          </div>
+          <div class="actions">
+            <button class="act" type="button" data-like data-count="1600" aria-pressed="false" aria-label="Thích">
+              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.6k</span>
+            </button>
+            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">98</span>
+            </button>
+            <button class="act" type="button" data-share aria-label="Chia sẻ">
+              <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+            </button>
+            <span class="actions__spacer"></span>
+            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
+              <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+            </button>
+            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác">
+              <svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="card__media" href="bai-viet.html">
+          <img src="assets/img/kp-dan-chu-so.jpg" alt="" width="370" height="208" loading="lazy">
+          <span class="card__scrim" aria-hidden="true"></span>
+        </a>
+        <div class="card__body">
+          <h2 class="card__title"><a href="bai-viet.html">Dân chủ số: Khi mạng xã hội định hình lại chính trị toàn cầu</a></h2>
+          <div class="byline">
+            <a class="byline__who" href="ca-nhan.html?tac-gia=hoang-nam" aria-label="Xem trang cá nhân của PGS. Hoàng Nam"><img src="assets/img/avatar-hoang-nam.jpg" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=hoang-nam">PGS. Hoàng Nam</a><span class="byline__time">· 5 giờ trước</span></p>
+          </div>
+          <div class="actions">
+            <button class="act" type="button" data-like data-count="2900" aria-pressed="false" aria-label="Thích">
+              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">2.9k</span>
+            </button>
+            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">367</span>
+            </button>
+            <button class="act" type="button" data-share aria-label="Chia sẻ">
+              <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+            </button>
+            <span class="actions__spacer"></span>
+            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
+              <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+            </button>
+            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác">
+              <svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="card__media" href="bai-viet.html">
+          <img src="assets/img/kp-song-cham.jpg" alt="" width="370" height="208" loading="lazy">
+          <span class="card__scrim" aria-hidden="true"></span>
+        </a>
+        <div class="card__body">
+          <h2 class="card__title"><a href="bai-viet.html">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</a></h2>
+          <div class="byline">
+            <a class="byline__who" href="ca-nhan.html?tac-gia=lan-anh" aria-label="Xem trang cá nhân của TS. Lan Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=lan-anh">TS. Lan Anh</a><span class="byline__time">· 3 giờ trước</span></p>
+          </div>
+          <div class="actions">
+            <button class="act" type="button" data-like data-count="4200" aria-pressed="false" aria-label="Thích">
+              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">4.2k</span>
+            </button>
+            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">512</span>
+            </button>
+            <button class="act" type="button" data-share aria-label="Chia sẻ">
+              <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+            </button>
+            <span class="actions__spacer"></span>
+            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
+              <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+            </button>
+            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác">
+              <svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="loadmore">
+      <button class="btn-outline" type="button" id="loadMore">
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="btn-outline__label">Xem thêm</span>
+      </button>
+    </div>
+
+    <!-- ============ Hastag nổi bật ============ -->
   </main>
 
   <!-- ============ Cột phụ bên phải (chỉ hiện ở màn rất rộng) ============ -->
