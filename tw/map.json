@@ -792,8 +792,8 @@
     "keep": ".card--video .card__media{background:#101828}"
   },
   "play-fab": {
-    "tw": "absolute top-1/2 left-1/2 translate-y-[-50%] w-[56px] h-[56px] grid place-items-center rounded-full text-surface backdrop-blur-[2px] transition duration-[180] ease-out",
-    "keep": ".play-fab{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);box-shadow:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.1);-webkit-backdrop-filter:blur(2px)}\n.play-fab .icon{width:18px;height:18px;fill:currentColor}\n.play-fab:active{transform:translate(-50%,-50%) scale(.9)}\n.play-fab .icon--pause{display:none}\n.play-fab.is-playing .icon--play{display:none}\n.play-fab.is-playing .icon--pause{display:block}"
+    "tw": "absolute top-1/2 left-1/2 w-[56px] h-[56px] grid place-items-center rounded-full text-surface backdrop-blur-[2px] transition duration-[180] ease-out",
+    "keep": ".play-fab{transform:translate(-50%,-50%);background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);box-shadow:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.1);-webkit-backdrop-filter:blur(2px)}\n.play-fab .icon{width:18px;height:18px;fill:currentColor}\n.play-fab:active{transform:translate(-50%,-50%) scale(.9)}\n.play-fab .icon--pause{display:none}\n.play-fab.is-playing .icon--play{display:none}\n.play-fab.is-playing .icon--pause{display:block}"
   },
   "badge-time": {
     "tw": "absolute right-3 bottom-3 px-[10px] py-[4px] rounded-md text-surface text-[10px] font-bold leading-[15px] tracking-[.25px]",

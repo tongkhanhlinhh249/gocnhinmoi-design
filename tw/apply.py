@@ -148,10 +148,25 @@ def thay_class(html, bando):
     return re.sub(r'class="([^"]*)"', doi, html), thieu
 
 
+def canhBaoTranslate(mp):
+    """translate-x và translate-y đều ghi đè nguyên thuộc tính transform, cái
+    sau xoá cái trước. Class nào xin cả hai chiều thì phải viết transform vào
+    keep, không dùng utility."""
+    for ten, v in mp.items():
+        tw = (v.get("tw") or "") if isinstance(v, dict) else ""
+        cot = [x for x in tw.split() if "translate-x-" in x]
+        hang = [x for x in tw.split() if "translate-y-" in x]
+        if cot and hang:
+            raise SystemExit(
+                "map.json: class %r xin cả %s lẫn %s — hai utility này ghi đè "
+                "lẫn nhau. Đưa transform vào keep." % (ten, cot[0], hang[0]))
+
+
 def main():
     if len(sys.argv) < 2:
         print("cần đường dẫn map.json"); return 1
     bando = nap_map(sys.argv[1])
+    canhBaoTranslate(bando)
     global MOC_JS
     them = moc_trong_keep(bando)
     MOC_JS = MOC_JS | them
