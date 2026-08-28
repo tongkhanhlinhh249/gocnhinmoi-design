@@ -509,60 +509,10 @@
 
 
     <!-- ============ Nghe gần đây (chế độ Playlist) ============ -->
-    <section class="media-section shell" data-view="playlist" hidden aria-labelledby="recent-title-3">
-      <div class="section-head__row">
-        <h2 class="section-title" id="recent-title-3">Nghe gần đây</h2>
-      </div>
-
-      <ul class="hscroll">
-        <li class="pcard">
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-            </span>
-            <p class="pcard__meta">GS. Nguyễn Thanh Bình · 4 giờ trước</p>
-            <h3 class="pcard__title">Đầu tư thông minh — Ep.12: Bất động sản hay chứng khoán năm 2026?</h3>
-          </a>
-        </li>
-        <li class="pcard">
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-            </span>
-            <p class="pcard__meta">Thu Hằng · 8 giờ trước</p>
-            <h3 class="pcard__title">Góc Nhìn Mới Podcast — Ep.89: Trí tuệ nhân tạo có thay thế nhà báo không?</h3>
-          </a>
-        </li>
-        <li class="pcard">
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-            </span>
-            <p class="pcard__meta">PGS. Hoàng Nam · 1 ngày trước</p>
-            <h3 class="pcard__title">Trà Đàm — Ep.23: Văn hoá doanh nghiệp kiểu Việt — điểm mạnh hay điểm yếu?</h3>
-          </a>
-        </li>
-        <li class="pcard">
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-            </span>
-            <p class="pcard__meta">Thu Hằng · 2 ngày trước</p>
-            <h3 class="pcard__title">Trà Đàm — Ep.22: Khi nhân viên giỏi xin nghỉ, doanh nghiệp học được gì?</h3>
-          </a>
-        </li>
-      </ul>
-    </section>
 
     <!-- ============ Playlist của bạn ============ -->
+
+    <!-- ============ Bảng xếp hạng ============ -->
     <section class="media-section shell" data-view="playlist" hidden aria-labelledby="myplaylist-title">
       <div class="section-head__row">
         <h2 class="section-title" id="myplaylist-title">Playlist của bạn</h2>
@@ -663,8 +613,189 @@
         <button class="btn-more" type="button" data-playlist-more="myplaylist-title">Xem thêm</button>
       </div>
     </section>
+    <section class="media-section shell" data-view="all playlist" aria-labelledby="playlist-title">
+      <div class="section-head__row">
+        <h2 class="section-title" id="playlist-title">Playlist gợi ý</h2>
+      </div>
 
-    <!-- ============ Bảng xếp hạng ============ -->
+      <ul class="playlists">
+        <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Đầu tư thông minh — Ep.12: Bất động sản hay chứng khoán năm 2026?</h3>
+            <p class="plcard__foot">
+              11 podcast
+              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </p>
+          </a>
+        </li>
+
+        <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Trà Đàm — Trò chuyện cùng người trong cuộc</h3>
+            <p class="plcard__foot">
+              8 video
+              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </p>
+          </a>
+        </li>
+
+        <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Tăng trưởng xanh: Việt Nam trên đường tới NetZero</h3>
+            <p class="plcard__foot">
+              11 podcast
+              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </p>
+          </a>
+        </li>
+
+        <li class="plcard">
+        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
+          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
+          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
+        </button>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Khám phá Sài Gòn qua góc nhìn đường phố</h3>
+            <p class="plcard__foot">
+              8 video
+              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </p>
+          </a>
+        </li>
+              <li class="plcard" hidden>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Chuyện nghề: những người ở lại với nghề cũ</h3>
+            <p class="plcard__foot">9 podcast<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
+          </a>
+        </li>
+        <li class="plcard" hidden>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Đô thị nhìn từ vỉa hè</h3>
+            <p class="plcard__foot">7 video<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
+          </a>
+        </li>
+        <li class="plcard" hidden>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Tiền bạc và người trẻ — nghe để nghĩ lại</h3>
+            <p class="plcard__foot">12 podcast<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
+          </a>
+        </li>
+        <li class="plcard" hidden>
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+            </span>
+            <h3 class="plcard__title">Cuối tuần xem gì</h3>
+            <p class="plcard__foot">10 video<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
+          </a>
+        </li>
+      </ul>
+
+      <div class="section-more">
+        <button class="btn-more" type="button" data-playlist-more="playlist-title">Xem thêm</button>
+      </div>
+    </section>
+    <section class="media-section shell" data-view="playlist" hidden aria-labelledby="recent-title-3">
+      <div class="section-head__row">
+        <h2 class="section-title" id="recent-title-3">Nghe gần đây</h2>
+      </div>
+
+      <ul class="hscroll">
+        <li class="pcard">
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
+            </span>
+            <p class="pcard__meta">GS. Nguyễn Thanh Bình · 4 giờ trước</p>
+            <h3 class="pcard__title">Đầu tư thông minh — Ep.12: Bất động sản hay chứng khoán năm 2026?</h3>
+          </a>
+        </li>
+        <li class="pcard">
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
+            </span>
+            <p class="pcard__meta">Thu Hằng · 8 giờ trước</p>
+            <h3 class="pcard__title">Góc Nhìn Mới Podcast — Ep.89: Trí tuệ nhân tạo có thay thế nhà báo không?</h3>
+          </a>
+        </li>
+        <li class="pcard">
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
+            </span>
+            <p class="pcard__meta">PGS. Hoàng Nam · 1 ngày trước</p>
+            <h3 class="pcard__title">Trà Đàm — Ep.23: Văn hoá doanh nghiệp kiểu Việt — điểm mạnh hay điểm yếu?</h3>
+          </a>
+        </li>
+        <li class="pcard">
+          <a href="#">
+            <span class="plcard__stack">
+              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
+            </span>
+            <p class="pcard__meta">Thu Hằng · 2 ngày trước</p>
+            <h3 class="pcard__title">Trà Đàm — Ep.22: Khi nhân viên giỏi xin nghỉ, doanh nghiệp học được gì?</h3>
+          </a>
+        </li>
+      </ul>
+    </section>
     <section class="leaderboard shell" aria-labelledby="lb-title">
       <div class="section-head">
         <div class="section-head__row">
@@ -1974,137 +2105,6 @@
       </ul>
     </section>
 
-    <section class="media-section shell" data-view="all playlist" aria-labelledby="playlist-title">
-      <div class="section-head__row">
-        <h2 class="section-title" id="playlist-title">Playlist gợi ý</h2>
-      </div>
-
-      <ul class="playlists">
-        <li class="plcard">
-        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
-          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
-          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
-        </button>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Đầu tư thông minh — Ep.12: Bất động sản hay chứng khoán năm 2026?</h3>
-            <p class="plcard__foot">
-              11 podcast
-              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </p>
-          </a>
-        </li>
-
-        <li class="plcard">
-        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
-          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
-          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
-        </button>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Trà Đàm — Trò chuyện cùng người trong cuộc</h3>
-            <p class="plcard__foot">
-              8 video
-              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </p>
-          </a>
-        </li>
-
-        <li class="plcard">
-        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
-          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
-          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
-        </button>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Tăng trưởng xanh: Việt Nam trên đường tới NetZero</h3>
-            <p class="plcard__foot">
-              11 podcast
-              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </p>
-          </a>
-        </li>
-
-        <li class="plcard">
-        <button class="plcard__add" type="button" aria-pressed="false" data-playlist-add aria-label="Thêm vào playlist của tôi">
-          <svg class="icon icon--plus" aria-hidden="true"><use href="#i-plus"></use></svg>
-          <svg class="icon icon--check" aria-hidden="true"><use href="#i-check"></use></svg>
-        </button>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Khám phá Sài Gòn qua góc nhìn đường phố</h3>
-            <p class="plcard__foot">
-              8 video
-              <span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </p>
-          </a>
-        </li>
-              <li class="plcard" hidden>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-2.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Chuyện nghề: những người ở lại với nghề cũ</h3>
-            <p class="plcard__foot">9 podcast<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
-          </a>
-        </li>
-        <li class="plcard" hidden>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-3.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Đô thị nhìn từ vỉa hè</h3>
-            <p class="plcard__foot">7 video<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
-          </a>
-        </li>
-        <li class="plcard" hidden>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-1.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Tiền bạc và người trẻ — nghe để nghĩ lại</h3>
-            <p class="plcard__foot">12 podcast<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
-          </a>
-        </li>
-        <li class="plcard" hidden>
-          <a href="#">
-            <span class="plcard__stack">
-              <span class="plcard__layer plcard__layer--back"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--mid"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-              <span class="plcard__layer plcard__layer--front"><img src="assets/img/nx-playlist-4.jpg" alt="" loading="lazy"></span>
-            </span>
-            <h3 class="plcard__title">Cuối tuần xem gì</h3>
-            <p class="plcard__foot">10 video<span class="plcard__dots" aria-hidden="true"><i></i><i></i><i></i></span></p>
-          </a>
-        </li>
-      </ul>
-
-      <div class="section-more">
-        <button class="btn-more" type="button" data-playlist-more="playlist-title">Xem thêm</button>
-      </div>
-    </section>
 
     <p class="empty" id="mediaEmpty">Chưa có nội dung nào trong mục này.</p>
 

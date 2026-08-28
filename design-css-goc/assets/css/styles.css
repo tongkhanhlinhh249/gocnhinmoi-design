@@ -3755,6 +3755,18 @@ input { font: inherit; }
   }
 }
 
+/* ---------- Trình tự khối: nội dung trước, khối chung sau ---------- */
+/* Bảng xếp hạng, hashtag, gợi ý theo dõi, địa điểm, thảo luận nhiều là khối
+   chung — chúng đang nằm rải giữa các khối nội dung nên cắt danh sách podcast
+   hay playlist thành từng mảnh. Đẩy hết về cuối bằng order, markup giữ nguyên.
+   Trang chủ trừ ra: trang đó đã có bảng thứ tự riêng ở mục 19. */
+main:not(:has(> #feedSecondary)) { display: flex; flex-direction: column; }
+main:not(:has(> #feedSecondary)) > .leaderboard { order: 1; }
+main:not(:has(> #feedSecondary)) > .discussed { order: 2; }
+main:not(:has(> #feedSecondary)) > .panel { order: 3; }
+main:not(:has(> #feedSecondary)) > .authors { order: 4; }
+main:not(:has(> #feedSecondary)) > .places { order: 5; }
+
 /* ---------- Bộ lọc địa điểm ---------- */
 /* Sáu tỉnh cộng sáu loại là mười hai chip xếp hai hàng, chiếm gần hết màn
    trước khi thấy địa điểm nào. Thanh chỉ giữ vài chip hay dùng, phần còn lại
