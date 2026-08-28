@@ -265,6 +265,17 @@
     </div>
 
     <!-- ============ Lọc theo loại nội dung ============ -->
+    <nav class="chips-bar sticky z-30 bg-surface-soft" aria-label="Lọc theo loại nội dung">
+      <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" id="mediaChips">
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-view="all">Tất cả</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
+      </div>
+    </nav>
+
+    <!-- ============ Video nổi bật ============ -->
     <section class="media-section py-3 shell w-full max-w-shell mx-auto px-4" data-view="all" aria-labelledby="video-title">
       <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
         <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="video-title">Video nổi bật</h2>
@@ -1362,17 +1373,6 @@
         <button class="btn-more inline-flex items-center justify-center h-[38px] px-6 rounded-full bg-[#fdecee] text-primary-800 text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#fbdfe2]" type="button" data-playlist-more="playlist-title">Xem thêm</button>
       </div>
     </section>
-    <nav class="chips-bar sticky z-30 bg-surface-soft" aria-label="Lọc theo loại nội dung">
-      <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" id="mediaChips">
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-view="all">Tất cả</button>
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
-        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
-      </div>
-    </nav>
-
-    <!-- ============ Video nổi bật ============ -->
     <section class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4"  data-view="all" aria-label="Dòng tin 1">
 
       <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">

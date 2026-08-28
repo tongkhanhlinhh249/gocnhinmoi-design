@@ -265,6 +265,17 @@
     </div>
 
     <!-- ============ Lọc theo loại nội dung ============ -->
+    <nav class="chips-bar chips-bar--lead" aria-label="Lọc theo loại nội dung">
+      <div class="chips" role="tablist" id="mediaChips">
+        <button class="chip" type="button" role="tab" aria-selected="true" data-view="all">Tất cả</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
+      </div>
+    </nav>
+
+    <!-- ============ Video nổi bật ============ -->
     <section class="media-section shell" data-view="all" aria-labelledby="video-title">
       <div class="section-head__row">
         <h2 class="section-title" id="video-title">Video nổi bật</h2>
@@ -1362,17 +1373,6 @@
         <button class="btn-more" type="button" data-playlist-more="playlist-title">Xem thêm</button>
       </div>
     </section>
-    <nav class="chips-bar chips-bar--lead" aria-label="Lọc theo loại nội dung">
-      <div class="chips" role="tablist" id="mediaChips">
-        <button class="chip" type="button" role="tab" aria-selected="true" data-view="all">Tất cả</button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-view="video">Video</button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-view="podcast">Podcast</button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-view="playlist">Playlist</button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-view="short">Video ngắn</button>
-      </div>
-    </nav>
-
-    <!-- ============ Video nổi bật ============ -->
     <section class="feed shell"  data-view="all" aria-label="Dòng tin 1">
 
       <article class="card">
