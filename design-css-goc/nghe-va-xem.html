@@ -370,97 +370,61 @@
 
 
     <!-- ============ Chế độ Video: thẻ hero + hai thẻ nhỏ ============ -->
-    <section class="feed shell" data-view="video" hidden aria-label="Danh sách video 1">
+    <section class="media-section shell" data-view="video" aria-label="Video nổi bật" hidden>
+      <div class="vcard vcard--hero">
+        <img src="assets/img/nx-hero-momo.png" alt="Buổi phỏng vấn trong trường quay" width="368" height="225" loading="lazy">
+        <span class="vcard__scrim" aria-hidden="true"></span>
+        <button class="vcard__play" type="button" aria-label="Phát video" data-play>
+          <svg class="icon icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+          <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+        </button>
+        <div class="vcard__body">
+          <h2 class="vcard__title"><a href="#">Phỏng vấn độc quyền: CEO Momo chia sẻ tầm nhìn fintech 2026</a></h2>
+          <div class="vcard__meta">
+            <div class="vcard__author">
+              <img src="assets/img/avatar-thu-hang.png" alt="" width="20" height="20" loading="lazy">
+              <p><strong>Thu Hằng</strong> <span>· 5 giờ trước</span></p>
+            </div>
+            <p class="vcard__views"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>11.3K</p>
+          </div>
+        </div>
+      </div>
 
-      <article class="card card--video">
-        <div class="card__media">
-          <img src="assets/img/nx-hanh-trinh-10-nam.png" alt="" width="370" height="208" loading="lazy">
-          <button class="play-fab" type="button" aria-label="Phát video" data-play>
-            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
-          <span class="badge-time">24:05</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title"><a href="bai-viet.html">Hành trình 10 năm xây dựng thương hiệu Việt ra thị trường quốc tế</a></h3>
-          <div class="byline">
-            <a class="byline__who" href="ca-nhan.html?tac-gia=quynh-chi" aria-label="Xem trang cá nhân của Quỳnh Chi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="32" height="32" loading="lazy"></a>
-            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=quynh-chi">Quỳnh Chi</a><span class="byline__time">· 1 giờ trước</span></p>
-          </div>
-          <div class="actions">
-            <button class="act" type="button" data-like data-count="2100" aria-pressed="false" aria-label="Thích">
-              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">2.1k</span>
+      <ul class="mini-grid">
+        <li class="mcard">
+          <div class="mcard__media">
+            <img src="assets/img/cover-shark-viet.png" alt="" width="178" height="100" loading="lazy">
+            <button class="play-fab" type="button" aria-label="Phát video" data-play>
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
             </button>
-            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
-              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">183</span>
-            </button>
-            <button class="act" type="button" data-share aria-label="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
-            <span class="actions__spacer"></span>
-            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
+            <span class="badge-time">32:17</span>
           </div>
-        </div>
-      </article>
-      <article class="card card--video">
-        <div class="card__media">
-          <img src="assets/img/cover-startup-video.png" alt="" width="370" height="208" loading="lazy">
-          <button class="play-fab" type="button" aria-label="Phát video" data-play>
-            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
-          <span class="badge-time">15:33</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title"><a href="bai-viet.html">Startup Việt gọi vốn triệu đô: Câu chuyện thật và những điều chưa kể</a></h3>
-          <div class="byline">
-            <a class="byline__who" href="ca-nhan.html?tac-gia=lan-chi" aria-label="Xem trang cá nhân của Lan Chi"><img src="assets/img/avatar-lan-chi.png" alt="" width="32" height="32" loading="lazy"></a>
-            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=lan-chi">Lan Chi</a><span class="byline__time">· 1 ngày trước</span></p>
+          <h3 class="mcard__title"><a href="#">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
+          <div class="mcard__author">
+            <img src="assets/img/avatar-nhat-minh.png" alt="" width="32" height="32" loading="lazy">
+            <p><b>Nhật Minh</b><span>10 giờ trước</span></p>
           </div>
-          <div class="actions">
-            <button class="act" type="button" data-like data-count="1900" aria-pressed="false" aria-label="Thích">
-              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.9k</span>
+        </li>
+        <li class="mcard">
+          <div class="mcard__media">
+            <img src="assets/img/cover-sai-gon.png" alt="" width="178" height="100" loading="lazy">
+            <button class="play-fab" type="button" aria-label="Phát video" data-play>
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
             </button>
-            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
-              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">144</span>
-            </button>
-            <button class="act" type="button" data-share aria-label="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
-            <span class="actions__spacer"></span>
-            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
+            <span class="badge-time">02:18</span>
           </div>
-        </div>
-      </article>
-      <article class="card card--video">
-        <div class="card__media">
-          <img src="assets/img/cover-shark-viet.png" alt="" width="370" height="208" loading="lazy">
-          <button class="play-fab" type="button" aria-label="Phát video" data-play>
-            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
-          <span class="badge-time">32:17</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title"><a href="bai-viet.html">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
-          <div class="byline">
-            <a class="byline__who" href="ca-nhan.html?tac-gia=nhat-minh" aria-label="Xem trang cá nhân của Nhật Minh"><img src="assets/img/avatar-nhat-minh.png" alt="" width="32" height="32" loading="lazy"></a>
-            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=nhat-minh">Nhật Minh</a><span class="byline__time">· 10 giờ trước</span></p>
+          <h3 class="mcard__title"><a href="#">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</a></h3>
+          <div class="mcard__author">
+            <img src="assets/img/avatar-minh-duc.png" alt="" width="32" height="32" loading="lazy">
+            <p><b>Minh Đức</b><span>3 giờ trước</span></p>
           </div>
-          <div class="actions">
-            <button class="act" type="button" data-like data-count="6400" aria-pressed="false" aria-label="Thích">
-              <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">6.4k</span>
-            </button>
-            <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
-              <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">752</span>
-            </button>
-            <button class="act" type="button" data-share aria-label="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
-            <span class="actions__spacer"></span>
-            <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-            <button class="act act--icon act--more" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
-          </div>
-        </div>
-      </article>
+        </li>
+      </ul>
     </section>
 
+    <!-- ============ Chế độ Podcast: banner ============ -->
     <section class="media-section shell" data-view="podcast" aria-label="Podcast nổi bật" hidden>
       <a class="pod-banner" href="#">
         <img src="assets/img/nx-podcast-banner.png" alt="Làm remote cho startup Singapore 2 năm và đây là sự thật không ai kể với bạn" width="367" height="237" loading="lazy">
@@ -468,10 +432,7 @@
     </section>
 
     <!-- ============ Nghe gần đây ============ -->
-    <section class="media-section shell" data-view="short" aria-labelledby="short-title" hidden>
-      <div class="section-head__row">
-        <h2 class="section-title" id="short-title">Video ngắn</h2>
-      </div>
+    <section class="media-section shell" data-view="short" aria-label="Video ngắn" hidden>
       <ul class="shortgrid">
           <li class="short">
             <a class="short__media" href="bai-viet.html">
@@ -1144,7 +1105,7 @@
       </article>
     </section>
 
-    <section class="feed shell" data-view="video" hidden aria-label="Danh sách video 2">
+    <section class="feed shell" data-view="video" hidden aria-label="Danh sách video 1">
 
       <article class="card card--video">
         <div class="card__media">
@@ -1641,7 +1602,7 @@
       </article>
     </section>
 
-    <section class="feed shell" data-view="video" hidden aria-label="Danh sách video 3">
+    <section class="feed shell" data-view="video" hidden aria-label="Danh sách video 2">
 
       <article class="card card--video">
         <div class="card__media">
@@ -2244,7 +2205,7 @@
       </article>
     </section>
 
-    <section class="feed shell" data-view="video" hidden data-limit="4" aria-label="Danh sách video 4">
+    <section class="feed shell" data-view="video" hidden data-limit="4" aria-label="Danh sách video 3">
 
       <article class="card card--video">
         <div class="card__media">
@@ -2909,61 +2870,6 @@
 
     <!-- ============ Playlist gợi ý ============ -->
     <!-- ============ Video ngắn ============ -->
-    <section class="media-section shell" data-view="video" aria-label="Video nổi bật" hidden>
-      <div class="vcard vcard--hero">
-        <img src="assets/img/nx-hero-momo.png" alt="Buổi phỏng vấn trong trường quay" width="368" height="225" loading="lazy">
-        <span class="vcard__scrim" aria-hidden="true"></span>
-        <button class="vcard__play" type="button" aria-label="Phát video" data-play>
-          <svg class="icon icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-          <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-        </button>
-        <div class="vcard__body">
-          <h2 class="vcard__title"><a href="#">Phỏng vấn độc quyền: CEO Momo chia sẻ tầm nhìn fintech 2026</a></h2>
-          <div class="vcard__meta">
-            <div class="vcard__author">
-              <img src="assets/img/avatar-thu-hang.png" alt="" width="20" height="20" loading="lazy">
-              <p><strong>Thu Hằng</strong> <span>· 5 giờ trước</span></p>
-            </div>
-            <p class="vcard__views"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>11.3K</p>
-          </div>
-        </div>
-      </div>
-
-      <ul class="mini-grid">
-        <li class="mcard">
-          <div class="mcard__media">
-            <img src="assets/img/cover-shark-viet.png" alt="" width="178" height="100" loading="lazy">
-            <button class="play-fab" type="button" aria-label="Phát video" data-play>
-              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-            </button>
-            <span class="badge-time">32:17</span>
-          </div>
-          <h3 class="mcard__title"><a href="#">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
-          <div class="mcard__author">
-            <img src="assets/img/avatar-nhat-minh.png" alt="" width="32" height="32" loading="lazy">
-            <p><b>Nhật Minh</b><span>10 giờ trước</span></p>
-          </div>
-        </li>
-        <li class="mcard">
-          <div class="mcard__media">
-            <img src="assets/img/cover-sai-gon.png" alt="" width="178" height="100" loading="lazy">
-            <button class="play-fab" type="button" aria-label="Phát video" data-play>
-              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-            </button>
-            <span class="badge-time">02:18</span>
-          </div>
-          <h3 class="mcard__title"><a href="#">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</a></h3>
-          <div class="mcard__author">
-            <img src="assets/img/avatar-minh-duc.png" alt="" width="32" height="32" loading="lazy">
-            <p><b>Minh Đức</b><span>3 giờ trước</span></p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ============ Chế độ Podcast: banner ============ -->
   </main>
 
   <!-- ============ Cột phụ bên phải (chỉ hiện ở màn rất rộng) ============ -->
