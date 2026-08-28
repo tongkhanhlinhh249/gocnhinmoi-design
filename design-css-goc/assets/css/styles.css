@@ -3759,14 +3759,17 @@ input { font: inherit; }
 /* Bảng xếp hạng, hashtag, gợi ý theo dõi, địa điểm, thảo luận nhiều là khối
    chung — chúng đang nằm rải giữa các khối nội dung nên cắt danh sách podcast
    hay playlist thành từng mảnh. Đẩy hết về cuối bằng order, markup giữ nguyên.
-   Trang chủ trừ ra: trang đó đã có bảng thứ tự riêng ở mục 19. */
-main:not(:has(> #feedSecondary)) { display: flex; flex-direction: column; }
-main:not(:has(> #feedSecondary)) > .leaderboard { order: 1; }
-main:not(:has(> #feedSecondary)) > .redlist { order: 2; }
-main:not(:has(> #feedSecondary)) > .discussed { order: 3; }
-main:not(:has(> #feedSecondary)) > .panel { order: 4; }
-main:not(:has(> #feedSecondary)) > .authors { order: 5; }
-main:not(:has(> #feedSecondary)) > .places { order: 6; }
+
+   Áp cho cả trang chủ. Bảng thứ tự riêng của trang chủ ở mục 19 nằm trong
+   media query 768px và mang :has(#feedSecondary) nên nặng hơn hẳn, vẫn thắng
+   từ 768px trở lên; dưới mốc đó luật này lo. */
+main { display: flex; flex-direction: column; }
+main > .leaderboard { order: 1; }
+main > .redlist { order: 2; }
+main > .discussed { order: 3; }
+main > .panel { order: 4; }
+main > .authors { order: 5; }
+main > .places { order: 6; }
 
 /* ---------- Bộ lọc địa điểm ---------- */
 /* Sáu tỉnh cộng sáu loại là mười hai chip xếp hai hàng, chiếm gần hết màn
