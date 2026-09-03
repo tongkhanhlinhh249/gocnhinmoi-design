@@ -3902,8 +3902,11 @@ input { font: inherit; }
   .v-web .page .btn-ad { justify-self: start; }
   .v-web .page .footer__bottom { grid-column: 1 / -1; }
 
+  /* .profile-bar là thanh trên của trang cá nhân ở bản điện thoại — nút quay
+     lại và chuông. Bố cục rộng đã có cột trái và thanh deskbar nên bỏ đi. */
   .v-web .page .app-header,
   .v-web .page .searchbar,
+  .v-web .page .profile-bar,
   .v-web .bottom-nav { display: none; }
 
   .v-web .page .shell,
@@ -4280,6 +4283,7 @@ input { font: inherit; }
   /* trả lại bộ khung của điện thoại */
   .v-web .page .app-header,
   .v-web .page .searchbar { display: block; }
+  .v-web .page .profile-bar { display: flex; }
   .v-web .page .app-header { max-width: none; }
   .v-web .bottom-nav { display: flex; }
   .v-web .desknav,
