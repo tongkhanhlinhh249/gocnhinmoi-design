@@ -245,14 +245,15 @@
 
     <!-- ============ Nhận diện ============ -->
     <header class="pb-1 shell w-full max-w-shell mx-auto px-4">
-      <div class="flex items-center gap-3 pt-2">
+      <div class="profile-id flex items-center gap-3 pt-2">
         <span class="flex-none grid place-items-center size-[78px] rounded-full bg-gradient-to-br from-primary-800 to-[#ff8a5c]">
-          <img class="block size-[72px] border-[3px] border-surface rounded-full object-cover bg-surface-fill" data-me="ava" src="assets/img/avatar-duc-anh.png" alt="" width="72" height="72">
+          <img class="profile-head__ava block size-[72px] border-[3px] border-surface rounded-full object-cover bg-surface-fill" data-me="ava" src="assets/img/avatar-duc-anh.png" alt="" width="72" height="72">
         </span>
         <div class="flex-1 min-w-0">
           <h1 class="profile-head__name flex items-center gap-[5px] text-[20px] font-extrabold leading-[27px] tracking-[-.015em] text-ink" id="me-name"><span data-me="name">Đức Anh</span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg></h1>
           <p class="pt-[1px] text-[13px] leading-[20px] text-ink-muted"><span data-me="handle">@ducanh</span></p>
           <p class="pt-[1px] text-[13px] leading-[20px] text-ink-action" data-me="role">Nhà báo công nghệ</p>
+          <p class="profile-pen only-desk">Bút danh: <b>Đức A.</b></p>
         </div>
         <button class="flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" data-owner-only data-toast="Mở trang chỉnh sửa hồ sơ">Chỉnh sửa</button>
         <button class="flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" data-guest-only hidden aria-pressed="false" data-follow-toggle><span class="btn-outline-sm__label">Theo dõi</span></button>
@@ -262,9 +263,10 @@
       <button class="mt-1 py-2 text-[13px] font-bold text-primary-800" type="button" id="bioMore" hidden>Xem thêm</button>
       <button class="mt-[14px] py-[10px] text-sm font-semibold text-primary-800" type="button" id="bioAdd" hidden data-toast="Mở trang chỉnh sửa hồ sơ">Thêm giới thiệu về bạn</button>
 
-      <p class="pt-2 text-[12px] leading-[18px] text-ink-muted"><span data-me="joined">Tham gia tháng 3, 2026</span></p>
 
-      <div class="grid grid-cols-3 mt-4 py-[14px] border-t border-b border-line">
+      <p class="profile-joined pt-2 text-[12px] leading-[18px] text-ink-muted"><span data-me="joined">Tham gia tháng 3, 2026</span></p>
+
+      <div class="profile-nums grid grid-cols-3 mt-4 py-[14px] border-t border-b border-line">
           <button class="profile-num flex flex-col items-center gap-[2px] text-center" type="button" data-ptab-go="bai-viet" data-owner-only><b data-me="posts">12</b><span>Bài viết</span></button>
           <span class="profile-num flex flex-col items-center gap-[2px] text-center profile-num--flat" data-guest-only hidden><b data-me="posts-guest">12</b><span>Bài viết</span></span>
           <button class="profile-num flex flex-col items-center gap-[2px] text-center" type="button" data-people="followers"><b data-me="followers">12,4K</b><span>Người theo dõi</span></button>
@@ -284,7 +286,7 @@
       <div class="shell w-full max-w-shell mx-auto px-4">
       </div>
 
-      <section class="pt-1 shell w-full max-w-shell mx-auto px-4" aria-labelledby="feat-title">
+      <section class="feat pt-1 shell w-full max-w-shell mx-auto px-4" aria-labelledby="feat-title">
         <div class="section-head__row flex items-center justify-between gap-3 pt-[2px]">
           <h2 class="section-title text-[15px] font-extrabold leading-[22.5px] tracking-[-.011em] text-ink" id="feat-title">Bài viết nổi bật</h2>
           <a class="link-more inline-flex items-center gap-[2px] text-[12px] font-semibold leading-[18px] text-primary-800 whitespace-nowrap" href="#" data-toast="Mở danh sách bài nổi bật">Xem thêm <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
@@ -299,6 +301,10 @@
             <div class="card__body pt-3 px-4 pb-4">
               <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng</a></h3>
               <p class="feat__meta flex items-center gap-1 pt-[6px] text-[12px] leading-[18px] text-ink-muted tabular-nums"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>12,4K lượt xem</p>
+              <div class="byline flex items-center gap-2 pt-3 only-desk">
+                <span class="byline__who flex-none block"><img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32" loading="lazy"></span>
+                <p class="flex items-center gap-1 min-w-0"><span class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate">Đức Anh</span><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 10 giờ trước</span></p>
+              </div>
             </div>
           </li>
           <li class="card relative bg-surface rounded-card shadow-card overflow-hidden">
@@ -310,6 +316,18 @@
             <div class="card__body pt-3 px-4 pb-4">
               <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Kinh tế AI: cuộc chuyển đổi lớn nhất của thế kỷ 21</a></h3>
               <p class="feat__meta flex items-center gap-1 pt-[6px] text-[12px] leading-[18px] text-ink-muted tabular-nums"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>9,8K lượt xem</p>
+              <div class="byline flex items-center gap-2 pt-3 only-desk">
+                <span class="byline__who flex-none block"><img src="assets/img/avatar-nhat-minh.png" alt="" width="32" height="32" loading="lazy"></span>
+                <p class="flex items-center gap-1 min-w-0"><span class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate">Nhật Minh</span><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 1 ngày trước</span></p>
+              </div>
+              <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line only-desk">
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="5700" aria-pressed="false" aria-label="Thích"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.7k</span></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">612</span></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+                <span class="flex-1"></span>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+              </div>
             </div>
           </li>
           <li class="card relative bg-surface rounded-card shadow-card overflow-hidden">
@@ -321,6 +339,18 @@
             <div class="card__body pt-3 px-4 pb-4">
               <h3 class="card__title text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink"><a href="bai-viet.html">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</a></h3>
               <p class="feat__meta flex items-center gap-1 pt-[6px] text-[12px] leading-[18px] text-ink-muted tabular-nums"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>7,1K lượt xem</p>
+              <div class="byline flex items-center gap-2 pt-3 only-desk">
+                <span class="byline__who flex-none block"><img src="assets/img/avatar-phuong-anh.png" alt="" width="32" height="32" loading="lazy"></span>
+                <p class="flex items-center gap-1 min-w-0"><span class="byline__name text-[13px] font-semibold leading-[19.5px] text-ink truncate">Phương Anh</span><span class="byline__time text-[11px] leading-[16.5px] text-ink-muted whitespace-nowrap">· 1 ngày trước</span></p>
+              </div>
+              <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line only-desk">
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="4600" aria-pressed="false" aria-label="Thích"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">4.6k</span></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">534</span></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-share aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
+                <span class="flex-1"></span>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+                <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+              </div>
             </div>
           </li>
         </ul>
