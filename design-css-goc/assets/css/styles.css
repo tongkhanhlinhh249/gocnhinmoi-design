@@ -1394,62 +1394,58 @@ input { font: inherit; }
 .pod-banner {
   display: block;
   width: 100%;
-  aspect-ratio: 367 / 237;
+  aspect-ratio: 367 / 160;
   border-radius: var(--r-md);
   overflow: hidden;
   background: var(--fill-soft);
 }
 .pod-banner { position: relative; }
-/* Ảnh gốc đã nướng sẵn một dải trắng chứa tiêu đề ở đáy, chiếm chừng một
-   phần ba chiều cao. Kéo ảnh cao hơn khung rồi neo mép trên để dải đó nằm
-   ngoài khung, lấy chỗ đặt tấm kính thật bên dưới. */
+/* Ảnh gốc 367x237 đã nướng sẵn một dải trắng chứa tiêu đề ở đáy; phần ảnh
+   thật chỉ là 367x160 phía trên. Lấy đúng tỉ lệ đó cho khung rồi neo mép
+   trên: object-fit tự cắt dải trắng, không cần ảnh tràn ra ngoài khung. */
 .pod-banner img {
-  position: absolute;
-  /* Phải ghi rõ bottom:auto — để inset:0 thì trình duyệt coi là bị ràng buộc
-     thừa và canh giữa theo chiều dọc, kéo ảnh lệch lên. */
-  top: 0; left: 0; right: 0; bottom: auto;
   width: 100%;
-  height: 148%;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
 }
 
-/* Kính lỏng: nền trong mờ, làm nhoè và tăng bão hoà phần ảnh phía sau, viền
-   sáng mảnh cùng một vệt loé chéo cho ra cảm giác mặt kính cong. */
+/* Kính lỏng trải hết bề ngang card: nền trong mờ, làm nhoè và tăng bão hoà
+   phần ảnh phía sau, một vệt loé chéo cùng viền sáng mảnh ở mép trên cho ra
+   cảm giác mặt kính. Bo góc dưới ăn theo góc của card. */
 .pod-glass {
   position: absolute;
-  left: 10px; right: 10px; bottom: 10px;
+  left: 0; right: 0; bottom: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border-radius: 18px;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 0 0 var(--r-md) var(--r-md);
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .26));
-  border: 1px solid rgba(255, 255, 255, .55);
-  box-shadow: 0 8px 24px rgba(16, 24, 40, .18), inset 0 1px 0 rgba(255, 255, 255, .7);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .52), rgba(255, 255, 255, .3));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .65);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
 }
 .pod-glass::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, rgba(255, 255, 255, .45) 0%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(115deg, rgba(255, 255, 255, .4) 0%, rgba(255, 255, 255, 0) 45%);
   pointer-events: none;
 }
 /* Trình duyệt không làm nhoè nền được thì để nền đục hẳn, chữ vẫn đọc rõ. */
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .pod-glass { background: rgba(255, 255, 255, .88); }
+  .pod-glass { background: rgba(255, 255, 255, .9); }
 }
 .pod-glass__title {
   position: relative;
   z-index: 1;
   flex: 1;
   min-width: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
-  line-height: 21px;
+  line-height: 24px;
   letter-spacing: -.011em;
   color: var(--ink-strong);
   display: -webkit-box;
@@ -1461,13 +1457,13 @@ input { font: inherit; }
   position: relative;
   z-index: 1;
   flex: none;
-  width: 44px; height: 44px;
+  width: 46px; height: 46px;
   display: grid;
   place-items: center;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, .7);
-  border: 1px solid rgba(255, 255, 255, .8);
-  box-shadow: 0 4px 12px rgba(16, 24, 40, .18);
+  border: 1px solid rgba(255, 255, 255, .75);
+  background: rgba(255, 255, 255, .55);
+  box-shadow: 0 4px 12px rgba(16, 24, 40, .16);
   color: var(--ink-strong);
 }
 .pod-glass__play .icon { width: 18px; height: 18px; fill: currentColor; }
