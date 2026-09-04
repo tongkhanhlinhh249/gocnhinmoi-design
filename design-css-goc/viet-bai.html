@@ -188,6 +188,10 @@
     <circle cx="8.5" cy="10" r="1.6" fill="currentColor"/>
     <path d="M4 17l4.5-4.5 3.5 3.5 3-3L20 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24">
+    <path d="M12 3l1.7 4.6L18 9.3l-4.3 1.7L12 15.6l-1.7-4.6L6 9.3l4.3-1.7L12 3z" fill="currentColor"/>
+    <path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" fill="currentColor"/>
+  </symbol>
 </svg>
 
 <div class="page vb-page">
@@ -208,19 +212,40 @@
       <ol class="vb-steps__list">
         <li class="vb-step is-xong"><span class="vb-step__ico"><svg class="icon" aria-hidden="true"><use href="#i-pencil"></use></svg></span><span class="vb-step__ten">Lưu nháp</span></li>
         <li class="vb-step is-dang"><span class="vb-step__ico"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></span><span class="vb-step__ten">Gửi biên tập</span></li>
-        <li class="vb-step"><span class="vb-step__ico"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span><span class="vb-step__ten">Chờ xuất bản</span></li>
         <li class="vb-step"><span class="vb-step__ico"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span><span class="vb-step__ten">Đã xuất bản</span></li>
       </ol>
     </section>
 
     <!-- ============ Thông tin bài ============ -->
-    <section class="vb-card vb-meta" aria-label="Thông tin bài viết">
-      <div class="vb-meta__bia">
-        <img src="assets/img/kp-kinh-te-ai.png" alt="Ảnh bìa bài viết" width="240" height="180" loading="lazy">
-        <button class="vb-bia__doi" type="button" data-toast="Mở thư viện ảnh bìa">Đổi ảnh bìa</button>
-      </div>
+    <aside class="vb-rail">
+      <section class="vb-card vb-meta" aria-label="Thông tin bài viết">
+        <div class="vb-meta__bia">
+          <img src="assets/img/kp-kinh-te-ai.png" alt="Ảnh bìa bài viết" width="240" height="180" loading="lazy">
+          <button class="vb-bia__doi" type="button" data-toast="Mở thư viện ảnh bìa">Đổi ảnh bìa</button>
+        </div>
+      </section>
 
-    </section>
+      <section class="vb-card vb-phu" aria-label="Nguồn và tags">
+        <div class="vb-o-nhap">
+          <label class="vb-o-nhap__nhan" for="vbNguon">Nguồn</label>
+          <input class="vb-nhap" id="vbNguon" type="text" placeholder="Nhập nguồn…">
+        </div>
+
+        <div class="vb-o-nhap">
+          <span class="vb-o-nhap__nhan" id="vbTagNhan">Tags</span>
+          <div class="vb-tagbox" data-vb-tagbox role="group" aria-labelledby="vbTagNhan">
+              <span class="vb-chip">AI<button class="vb-chip__bo" type="button" aria-label="Bỏ tag AI"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+              <span class="vb-chip">Jensen Huang<button class="vb-chip__bo" type="button" aria-label="Bỏ tag Jensen Huang"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+              <span class="vb-chip">Nvidia<button class="vb-chip__bo" type="button" aria-label="Bỏ tag Nvidia"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+              <span class="vb-chip">chip<button class="vb-chip__bo" type="button" aria-label="Bỏ tag chip"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+              <span class="vb-chip">trí tuệ nhân tạo<button class="vb-chip__bo" type="button" aria-label="Bỏ tag trí tuệ nhân tạo"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+              <span class="vb-chip">Hugging Face<button class="vb-chip__bo" type="button" aria-label="Bỏ tag Hugging Face"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+            <input class="vb-tagbox__go" type="text" placeholder="Thêm tag…" aria-label="Thêm tag">
+          </div>
+          <button class="vb-taotag" type="button" data-vb-taotag>Tạo tag<svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg></button>
+        </div>
+      </section>
+    </aside>
 
     <!-- ============ Khung soạn ============ -->
     <section class="vb-card vb-soan" aria-label="Nội dung bài viết">

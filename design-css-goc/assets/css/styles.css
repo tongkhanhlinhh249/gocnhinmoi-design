@@ -4769,10 +4769,18 @@ input { font: inherit; }
   gap: 20px;
 }
 .vb-steps { grid-column: 1 / -1; }
-/* Ảnh bìa đứng trước chỗ soạn trong markup (khổ hẹp cần thứ tự đó), nên ở
+/* Cột phải đứng trước chỗ soạn trong markup (khổ hẹp cần thứ tự đó), nên ở
    khổ rộng phải chỉ định cột tường minh, không thì hai khối đảo chỗ. */
 .vb-soan { grid-column: 1; grid-row: 2; }
-.vb-meta { grid-column: 2; grid-row: 2; position: sticky; top: 72px; }
+.vb-rail {
+  grid-column: 2;
+  grid-row: 2;
+  position: sticky;
+  top: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .vb-card {
   background: var(--surface);
@@ -4808,7 +4816,8 @@ input { font: inherit; }
 .vb-step.is-dang .vb-step__ico { border-color: var(--gnm-red); background: #ffefef; color: var(--gnm-red); }
 
 /* ---------- Thông tin bài ---------- */
-.vb-meta { display: flex; flex-direction: column; gap: 18px; padding: 18px; }
+.vb-meta,
+.vb-phu { display: flex; flex-direction: column; gap: 18px; padding: 18px; }
 .vb-meta__bia { flex: none; }
 .vb-meta__bia img {
   width: 100%;
@@ -4900,6 +4909,77 @@ input { font: inherit; }
 .vb-num span { font-size: 12px; line-height: 18px; color: var(--text-muted); }
 .vb-num--ok { border-color: #bfe6cf; background: #f2fbf6; }
 .vb-num--ok b { color: var(--ok); }
+
+/* ---------- Nguồn và tags ở cột phải ---------- */
+.vb-o-nhap { display: flex; flex-direction: column; gap: 8px; }
+.vb-o-nhap__nhan { font-size: 13px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
+.vb-nhap {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 20px;
+}
+.vb-nhap::placeholder { color: var(--text-placeholder); }
+.vb-nhap:focus-visible { outline: 2px solid var(--gnm-red); outline-offset: 1px; }
+
+.vb-tagbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.vb-tagbox:focus-within { border-color: var(--gnm-red); }
+.vb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 6px 3px 9px;
+  border-radius: var(--r-md);
+  background: var(--fill-soft);
+  color: var(--ink-strong);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.vb-chip__bo { display: grid; place-items: center; color: var(--icon-grey); }
+.vb-chip__bo .icon { width: 11px; height: 11px; }
+.vb-chip__bo:hover { color: var(--gnm-red); }
+/* Ô gõ nằm chung hàng với chip, tự co giãn theo chỗ trống còn lại. */
+.vb-tagbox__go {
+  flex: 1;
+  min-width: 90px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 18px;
+}
+.vb-tagbox__go::placeholder { color: var(--text-placeholder); }
+.vb-tagbox__go:focus { outline: none; }
+
+.vb-taotag {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--r-md);
+  background: var(--gnm-red);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+.vb-taotag .icon { width: 14px; height: 14px; fill: currentColor; }
+.vb-taotag:active { background: #b8232f; }
 
 /* ---------- Khung soạn ---------- */
 .vb-soan { padding: 36px 0 48px; }
@@ -5015,15 +5095,26 @@ input { font: inherit; }
 /* ---------- Khổ hẹp ---------- */
 @media (max-width: 1099.98px) {
   .vb-main { grid-template-columns: minmax(0, 1fr); }
-  .vb-soan, .vb-meta { grid-column: 1; grid-row: auto; }
-  .vb-meta { position: static; }
+  .vb-soan, .vb-rail { grid-column: 1; grid-row: auto; }
+  .vb-rail { position: static; }
   .vb-meta__bia img { aspect-ratio: 21 / 9; }
 }
 
 @media (max-width: 899.98px) {
   .vb-page { padding-inline: 12px; }
   .vb-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .vb-steps__list { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+  /* Chữ dài quá khổ hẹp: chỉ để icon, tên bước vẫn nằm đó cho trình đọc
+     màn hình đọc được. */
+  .vb-steps { padding: 14px 16px; }
+  .vb-steps__list { justify-content: center; flex-wrap: nowrap; gap: 4px; }
+  .vb-step__ten {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .vb-step:not(:last-child)::after { width: 28px; margin-left: 4px; }
   .vb-soan { padding: 24px 0 32px; }
   .vb-tieude { font-size: 24px; line-height: 33px; }
   /* Không đủ chỗ đặt nút ngoài lề thì cho nằm trên khối. */

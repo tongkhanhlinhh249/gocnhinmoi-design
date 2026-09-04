@@ -1881,3 +1881,92 @@
     });
   });
 })();
+
+/* ---------- Trang viết bài: ô tags ---------- */
+(function () {
+  var hop = document.querySelector('[data-vb-tagbox]');
+  if (!hop) return;
+  var go = hop.querySelector('.vb-tagbox__go');
+
+  function danhSach() {
+    return Array.prototype.slice.call(hop.querySelectorAll('.vb-chip'))
+      .map(function (c) { return c.firstChild.textContent.trim().toLowerCase(); });
+  }
+
+  function themChip(ten) {
+    ten = (ten || '').trim();
+    if (!ten || danhSach().indexOf(ten.toLowerCase()) !== -1) return false;
+    var c = document.createElement('span');
+    c.className = 'vb-chip';
+    c.textContent = ten;
+    var x = document.createElement('button');
+    x.className = 'vb-chip__bo';
+    x.type = 'button';
+    x.setAttribute('aria-label', 'Bỏ tag ' + ten);
+    x.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>';
+    c.appendChild(x);
+    hop.insertBefore(c, go);
+    return true;
+  }
+
+  /* Enter thì thêm; Backspace trong ô rỗng thì bỏ chip cuối, giống các ô tag quen thuộc. */
+  go.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      if (themChip(go.value)) go.value = '';
+    } else if (e.key === 'Backspace' && go.value === '') {
+      var cuoi = hop.querySelectorAll('.vb-chip');
+      if (cuoi.length) cuoi[cuoi.length - 1].remove();
+    }
+  });
+  go.addEventListener('blur', function () {
+    if (themChip(go.value)) go.value = '';
+  });
+
+  hop.addEventListener('click', function (e) {
+    var x = e.target.closest ? e.target.closest('.vb-chip__bo') : null;
+    if (x) { x.closest('.vb-chip').remove(); return; }
+    if (e.target === hop) go.focus();
+  });
+
+  /* Nút "Tạo tag": nhặt từ khoá viết hoa trong tiêu đề và sa pô, bỏ những cái đã có. */
+  var nut = document.querySelector('[data-vb-taotag]');
+  if (!nut) return;
+  nut.addEventListener('click', function () {
+    var soan = document.querySelector('.vb-soan');
+    if (!soan) return;
+    /* \w và \b không hiểu chữ tiếng Việt có dấu nên cắt ra toàn mảnh vụn.
+       Phải cắt theo câu trước rồi mới tách từ, nếu không cụm sẽ dính qua hai
+       câu ("13 tỷ USD. Nvidia" thành "USD Nvidia"). Từ đầu câu bỏ qua vì nó
+       viết hoa do đứng đầu chứ không phải tên riêng. */
+    var vanBan = soan.innerText;
+    var hoa = function (x) {
+      return x.length > 1 && /\p{L}/u.test(x) && x[0] !== x[0].toLowerCase();
+    };
+    var dem = {};
+    vanBan.split(/[^\p{L}\p{N}]+/u).forEach(function (x) {
+      if (x) dem[x.toLowerCase()] = (dem[x.toLowerCase()] || 0) + 1;
+    });
+
+    var cum = [];
+    vanBan.split(/[.!?\n:;]+/).forEach(function (cau) {
+      var tu = cau.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+      for (var i = 1; i < tu.length; i++) {
+        if (!hoa(tu[i])) continue;
+        var j = i;
+        while (j + 1 < tu.length && hoa(tu[j + 1])) j++;
+        cum.push({ ten: tu.slice(i, j + 1).join(' '), dai: j - i + 1 });
+        i = j;
+      }
+    });
+    /* Cụm nhiều từ thì gần như chắc là tên riêng; từ đơn chỉ lấy khi lặp lại. */
+    var goi = cum.filter(function (c) {
+      return c.dai > 1 || dem[c.ten.toLowerCase()] > 1;
+    }).map(function (c) { return c.ten; });
+    var them = 0;
+    for (var k = 0; k < goi.length && them < 3; k++) {
+      if (themChip(goi[k])) them++;
+    }
+    if (!them && window.toast) window.toast('Chưa tìm thêm được tag nào mới');
+  });
+})();
