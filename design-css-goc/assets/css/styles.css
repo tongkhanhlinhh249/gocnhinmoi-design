@@ -4784,6 +4784,9 @@ input { font: inherit; }
 /* ---------- Thông tin bài ---------- */
 .vb-meta { display: flex; gap: 22px; padding: 22px 24px; }
 .vb-meta__bia { flex: none; width: 240px; }
+/* Khi thẻ chỉ còn ảnh bìa thì cho nó rộng ra, khỏi để trống nửa thẻ. Viết
+   theo :only-child nên thêm lại khối thông tin là tự về như cũ. */
+.vb-meta__bia:only-child { flex: 1; width: auto; max-width: 380px; }
 .vb-meta__bia img {
   width: 100%;
   aspect-ratio: 4 / 3;
