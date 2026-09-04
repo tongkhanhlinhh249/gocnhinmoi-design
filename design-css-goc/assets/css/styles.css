@@ -4754,6 +4754,12 @@ input { font: inherit; }
   align-self: center;
   min-height: 38px;
   height: 38px;
+  /* Hai nút chữ dài ngắn khác nhau nên bề ngang lệch; chốt một mức tối thiểu
+     cho cả hai để nhìn cân. Viền trong suốt là để bù chỗ: flex-basis: 0 không
+     tính viền, nút có viền sẽ rộng hơn nút không viền đúng 2px. Màu viền thật
+     của nút outline vẫn do utility đè lên sau. */
+  min-width: 118px;
+  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -5095,13 +5101,42 @@ input { font: inherit; }
 /* ---------- Khổ hẹp ---------- */
 @media (max-width: 1099.98px) {
   .vb-main { grid-template-columns: minmax(0, 1fr); }
-  .vb-soan, .vb-rail { grid-column: 1; grid-row: auto; }
-  .vb-rail { position: static; }
+  /* Xếp một cột thì cột phải tan ra thành hai khối rời (display: contents bỏ
+     cái hộp bao ngoài đi) để chen được vào mạch dọc: ảnh bìa nằm trên chỗ
+     soạn, còn Nguồn và Tags xuống cuối trang. */
+  .vb-rail { display: contents; }
+  .vb-steps,
+  .vb-meta,
+  .vb-soan,
+  .vb-phu {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    /* Không ghi rõ thì thẻ co lại vừa nội dung, thanh trạng thái chỉ còn ba
+       icon nên teo hẳn. */
+    justify-self: stretch;
+    width: 100%;
+  }
+  .vb-steps { order: 1; }
+  .vb-meta { order: 2; }
+  .vb-soan { order: 3; }
+  .vb-phu { order: 4; }
   .vb-meta__bia img { aspect-ratio: 21 / 9; }
 }
 
 @media (max-width: 899.98px) {
   .vb-page { padding-inline: 12px; }
+  /* Chỗ hẹp: tên trang không bẻ dòng, hai nút chia đôi một bề ngang cố định
+     nên bằng nhau bất kể chữ dài ngắn — min-width thôi thì nút chữ dài vẫn
+     phình ra. */
+  .vb-top__ten { white-space: nowrap; }
+  .vb-top__nut { flex: none; width: 204px; }
+  .vb-top .vb-top__nut > * {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 12px;
+  }
   .vb-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* Chữ dài quá khổ hẹp: chỉ để icon, tên bước vẫn nằm đó cho trình đọc
      màn hình đọc được. */
