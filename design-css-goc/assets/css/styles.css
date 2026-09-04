@@ -2885,8 +2885,12 @@ input { font: inherit; }
   overflow: hidden;
   background: var(--surface-dark);
 }
-.tophero__item--lg { aspect-ratio: 400 / 400; }
-.tophero__item--sm { aspect-ratio: 400 / 240; }
+/* Ảnh và tiêu đề nằm trong .tophero__media; dòng tác giả tách ra thành dải
+   riêng bên dưới để tiêu đề khỏi ăn hết phần ảnh. Tỉ lệ khung vì vậy đặt lên
+   .tophero__media chứ không phải cả thẻ. */
+.tophero__media { position: relative; display: block; overflow: hidden; }
+.tophero__item--lg .tophero__media { aspect-ratio: 400 / 400; }
+.tophero__item--sm .tophero__media { aspect-ratio: 400 / 240; }
 
 .tophero__img { width: 100%; height: 100%; object-fit: cover; }
 .tophero__scrim {
@@ -2931,7 +2935,8 @@ input { font: inherit; }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-top: 6px;
+  padding: 10px 16px;
+  background: var(--surface-dark);
 }
 .tophero__meta img { width: 24px; height: 24px; border-radius: var(--r-pill); object-fit: cover; }
 .tophero__author { font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .8); }
@@ -4142,8 +4147,9 @@ input { font: inherit; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-inline: 24px;
   }
-  .v-web .page .tophero > :first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
-  .v-web .page .tophero > :first-child ~ * { aspect-ratio: 16 / 10; }
+  .v-web .page .tophero > :first-child { grid-column: 1 / -1; }
+  .v-web .page .tophero > :first-child .tophero__media { aspect-ratio: 16 / 9; }
+  .v-web .page .tophero > :first-child ~ * .tophero__media { aspect-ratio: 16 / 10; }
 
   /* Xếp thẻ kiểu Pinterest: thẻ cao thấp khác nhau nên lưới theo hàng để lại
      một dải trống dưới mỗi thẻ ngắn. Dùng cột báo (column-count) thì thẻ rơi
