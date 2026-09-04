@@ -4267,7 +4267,7 @@ input { font: inherit; }
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .25) 52%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .25) 52%, rgba(0, 0, 0, 0) 100%);
   }
   .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__overlay,
   .v-web .page main > .feed > :only-child .card__overlay { z-index: 1; padding: 20px 24px; }
@@ -4295,6 +4295,42 @@ input { font: inherit; }
   .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:has(.card__overlay) .card__body,
   .v-web .page main > .feed > :only-child:has(.card__overlay) .card__body { display: none; }
 
+
+  /* Dòng tác giả tách xuống một dải nền đen ngay dưới ảnh, giống thẻ Tin nổi
+     bật ở trang chủ — tiêu đề vì vậy không ăn hết phần ảnh.
+
+     Bản điện thoại vẫn là thẻ tin thường nên không đụng markup được: dải này
+     làm bằng cách chừa 44px đệm dưới ảnh (box-sizing: content-box để phần đệm
+     cộng thêm ngoài tỉ lệ khung) rồi neo dòng tác giả vào đó. */
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media,
+  .v-web .page main > .feed > :only-child .card__media {
+    box-sizing: content-box;
+    padding-bottom: 44px;
+    background: #000;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__media::after,
+  .v-web .page main > .feed > :only-child .card__media::after {
+    bottom: 44px;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .card__overlay,
+  .v-web .page main > .feed > :only-child .card__overlay {
+    bottom: 44px;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child:not(:has(.card__overlay)) .card__body,
+  .v-web .page main > .feed > :only-child:not(:has(.card__overlay)) .card__body {
+    bottom: 44px;
+  }
+  .v-web .page main > .feed:has(> :nth-child(3):last-child) > :first-child .byline,
+  .v-web .page main > .feed > :only-child .byline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -44px;
+    height: 44px;
+    margin: 0;
+    padding: 0 24px;
+    background: #000;
+  }
 
   .v-web .discussed .hscroll {
     display: grid;
