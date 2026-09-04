@@ -1766,3 +1766,118 @@
 
   loc();
 })();
+
+/* ---------- Trang viết bài ---------- */
+(function () {
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  var soan = $('.vb-soan');
+  if (!soan) return;
+
+  /* --- đếm chữ --- */
+  var oSo = $('#vbSoChu');
+  function demChu() {
+    if (!oSo) return;
+    var chu = soan.innerText.replace(/\s+/g, ' ').trim();
+    oSo.textContent = chu ? String(chu.split(' ').length) : '0';
+  }
+  soan.addEventListener('input', demChu);
+  demChu();
+
+  /* --- bảng chọn khối --- */
+  var menu = $('#vbMenu');
+  var dangMo = null;
+
+  function dongMenu() {
+    if (!menu || menu.hidden) return;
+    menu.hidden = true;
+    if (dangMo) dangMo.setAttribute('aria-expanded', 'false');
+    dangMo = null;
+  }
+
+  function moMenu(nut) {
+    var o = nut.getBoundingClientRect();
+    menu.hidden = false;
+    /* Đặt ngay dưới nút; sát đáy màn thì lật lên trên cho khỏi tràn. */
+    var cao = menu.offsetHeight;
+    var tren = o.bottom + cao + 12 > window.innerHeight && o.top > cao + 12;
+    menu.style.left = (window.scrollX + o.left) + 'px';
+    menu.style.top = (window.scrollY + (tren ? o.top - cao - 8 : o.bottom + 8)) + 'px';
+    nut.setAttribute('aria-expanded', 'true');
+    dangMo = nut;
+  }
+
+  $$('[data-vb-them]').forEach(function (nut) {
+    nut.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (dangMo === nut) { dongMenu(); return; }
+      dongMenu();
+      moMenu(nut);
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (menu && !menu.hidden && !menu.contains(e.target)) dongMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') dongMenu();
+  });
+
+  /* --- thêm khối mới ngay dưới khối đang chọn --- */
+  var MAU = {
+    h1: '<h1 class="vb-tieude" contenteditable="true" role="textbox" data-goi="Tiêu đề cấp 1"></h1>',
+    h2: '<h2 class="vb-tieude vb-tieude--h2" contenteditable="true" role="textbox" data-goi="Tiêu đề cấp 2"></h2>',
+    h3: '<h3 class="vb-tieude vb-tieude--h3" contenteditable="true" role="textbox" data-goi="Tiêu đề cấp 3"></h3>',
+    anh: '<figure class="vb-anh"><img src="assets/img/kp-kinh-te-ai.png" alt="" width="860" height="484" loading="lazy"><figcaption contenteditable="true" role="textbox" data-goi="Thêm chú thích ảnh…"></figcaption></figure>',
+    video: '<figure class="vb-anh"><img src="assets/img/nx-hero-momo.png" alt="" width="860" height="484" loading="lazy"><figcaption contenteditable="true" role="textbox" data-goi="Thêm chú thích video…"></figcaption></figure>'
+  };
+
+  function nutKhoi() {
+    return '<div class="vb-khoi__nut">'
+      + '<button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg></button>'
+      + '<button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon" aria-hidden="true"><use href="#i-grip"></use></svg></button>'
+      + '</div>';
+  }
+
+  $$('.vb-menu__muc', menu).forEach(function (muc) {
+    muc.addEventListener('click', function () {
+      var loai = muc.getAttribute('data-them');
+      var goc = dangMo && dangMo.closest('[data-vb-khoi]');
+      dongMenu();
+      if (!goc || !MAU[loai]) return;
+      var moi = document.createElement('div');
+      moi.className = 'vb-khoi';
+      moi.setAttribute('data-vb-khoi', '');
+      moi.innerHTML = nutKhoi() + MAU[loai];
+      goc.parentNode.insertBefore(moi, goc.nextSibling);
+      gan(moi);
+      var o = moi.querySelector('[contenteditable]');
+      if (o) o.focus();
+      demChu();
+    });
+  });
+
+  function gan(khoi) {
+    var nut = khoi.querySelector('[data-vb-them]');
+    if (!nut) return;
+    nut.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (dangMo === nut) { dongMenu(); return; }
+      dongMenu();
+      moMenu(nut);
+    });
+  }
+
+  /* --- bỏ danh mục --- */
+  $$('.vb-tag__bo').forEach(function (b) {
+    b.addEventListener('click', function () { b.closest('.vb-tag').remove(); });
+  });
+
+  /* --- mũi tên mở/đóng --- */
+  $$('.vb-hang__mo').forEach(function (b) {
+    b.addEventListener('click', function () {
+      b.setAttribute('aria-expanded', b.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    });
+  });
+})();

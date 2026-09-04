@@ -4,18 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có.">
-<title>Thế hệ Gen Z Việt Nam — Góc Nhìn Mới</title>
+<meta name="description" content="Trình soạn bài viết của Góc Nhìn Mới — đặt danh mục, bút danh và soạn nội dung theo từng khối.">
+<title>Viết bài — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
-<body>
+<body class="v-web vb-body">
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-flame" viewBox="0 0 24 24">
+    <path d="M13 2s-4 4-4 8a4 4 0 008 0c0-1.5-.5-3-1-4 0 0-1 2-2 2s-1-2-1-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 18a4 4 0 01-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-star-line" viewBox="0 0 24 24">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-comment-lines" viewBox="0 0 24 24">
+    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 10h6M9 14h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24">
+    <path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="i-menu" viewBox="0 0 15.5 13.5">
     <path d="M0.75 0.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <path d="M0.75 6.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -145,224 +167,137 @@
   <symbol id="i-facebook" viewBox="0 0 15.9882 15.9882">
     <path d="M11.9912 1.33235H9.99263C9.10922 1.33235 8.262 1.68328 7.63734 2.30794C7.01268 2.9326 6.66175 3.77982 6.66175 4.66322V6.66175H4.66323V9.32645H6.66175V14.6559H9.32645V9.32645H11.325L11.9912 6.66175H9.32645V4.66322C9.32645 4.48654 9.39664 4.3171 9.52157 4.19217C9.6465 4.06724 9.81594 3.99705 9.99263 3.99705H11.9912V1.33235Z" fill="currentColor"/>
   </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M8.5 12.2l2.4 2.4 4.6-4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24">
+    <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24">
+    <circle cx="9" cy="6" r="1.5" fill="currentColor"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/>
+    <circle cx="9" cy="12" r="1.5" fill="currentColor"/><circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+    <circle cx="9" cy="18" r="1.5" fill="currentColor"/><circle cx="15" cy="18" r="1.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-image" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <circle cx="8.5" cy="10" r="1.6" fill="currentColor"/>
+    <path d="M4 17l4.5-4.5 3.5 3.5 3-3L20 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
 </svg>
 
-<div class="page">
+<div class="page vb-page">
 
-  <header class="article-topbar" id="artBar">
-    <a class="article-topbar__back" href="index.html" aria-label="Quay lại"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-    <p class="article-topbar__title">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng</p>
-  
-      <button class="icon-btn" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer" data-drawer-open><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
-    </header>
-
-  <main id="main">
-
-    <!-- ============ Ảnh mở đầu ============ -->
-    <section class="article-hero" aria-label="Ảnh bài viết">
-      <img src="assets/img/hero-genz.png" alt="Nhóm bạn trẻ làm việc trong không gian mở" width="375" height="250">
-      <a class="article-back" href="index.html" data-back aria-label="Quay lại"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      <button class="article-back article-back--menu" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer" data-drawer-open><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
-    </section>
-
-    <div class="article-scroll">
-    <!-- ============ Đầu bài ============ -->
-    <article class="shell">
-      <header class="article-head">
-        <a class="article__tag" href="#">#GenZ</a>
-        <h1 class="article__title">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có</h1>
-
-        <p class="article__sapo">Họ không mua thứ rẻ nhất, cũng không mua thứ đắt nhất. Họ mua thứ kể được một câu chuyện mà họ muốn kể lại.</p>
-
-        <div class="article__meta">
-          <a class="byline__who" href="ca-nhan.html?tac-gia=phuong-linh" aria-label="Xem trang cá nhân của Phương Linh"><img src="assets/img/avatar-phuong-linh.png" alt="" width="36" height="36"></a>
-          <div>
-            <p class="article__author"><a href="ca-nhan.html?tac-gia=phuong-linh">Phương Linh</a></p>
-            <p class="article__date">Thứ năm, 21/08/2026 15:17 (GMT+7)</p>
-          </div>
-        </div>
-      </header>
-
-      <div class="article__body">
-        <h2>Mua để kể chuyện, không phải để sở hữu</h2>
-        <p>Khảo sát trên 2.400 người tiêu dùng sinh sau năm 1997 tại sáu tỉnh thành cho thấy một mẫu hành vi lặp lại: quyết định mua gần như luôn đi qua một bước tra cứu trên mạng xã hội, và gần một nửa số người được hỏi nói rằng họ đã từng bỏ giỏ hàng vì thương hiệu “không hợp gu”.</p>
-        <p>Điều đáng chú ý không nằm ở con số, mà ở lý do. Với thế hệ trước, giá và chất lượng là hai trục chính. Với Gen Z, có một trục thứ ba: thứ này nói gì về tôi.</p>
-
-        <figure>
-          <img src="assets/img/kp-gen-z.jpg" alt="Người trẻ trong một buổi ra mắt sản phẩm" width="343" height="200" loading="lazy">
-          <figcaption>Một buổi ra mắt sản phẩm tại TP. Hồ Chí Minh, tháng 8/2026 (Ảnh: Góc Nhìn Mới).</figcaption>
-        </figure>
-
-        <blockquote>“Chúng tôi không bán được hàng bằng cách nói sản phẩm tốt như thế nào nữa. Phải để khách hàng tự thấy họ là ai khi cầm nó lên” — giám đốc tiếp thị một chuỗi thời trang nội địa nói.</blockquote>
-
-        <h2>Kênh mua sắm dịch chuyển</h2>
-        <p>Thương mại điện tử vẫn tăng, nhưng phần tăng mạnh nhất đến từ các phiên bán hàng trực tiếp và cửa hàng nhỏ có mặt tiền xã hội rõ ràng. Ba trong bốn người được hỏi cho biết họ mua lần đầu sau khi xem một nội dung dài hơn ba phút về thương hiệu đó.</p>
-        <p>Với các doanh nghiệp truyền thống, thay đổi này buộc họ viết lại ngân sách tiếp thị: chi phí sản xuất nội dung nay chiếm phần lớn hơn cả chi phí quảng cáo trả tiền.</p>
-      </div>
-    </article>
-
-    <!-- ============ Bình luận ============ -->
-    <section class="shell profile-section" aria-labelledby="cmt-title">
-      <div class="cmt-head">
-        <h2 class="section-title" id="cmt-title">Bình luận (287)</h2>
-        <div class="cmt-sort" role="tablist">
-          <button type="button" role="tab" aria-selected="true">Nổi bật</button>
-          <button type="button" role="tab" aria-selected="false">Mới nhất</button>
-        </div>
-      </div>
-
-      <form class="cmt-form" onsubmit="return false">
-        <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
-        <label class="sr-only" for="cmtInput">Chia sẻ cảm nghĩ của bạn về bài viết này</label>
-        <input id="cmtInput" type="text" placeholder="Chia sẻ cảm nghĩ của bạn về bài viết này...">
-        <button type="button" data-toast="Đã gửi bình luận" aria-label="Gửi bình luận"><svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg></button>
-      </form>
-
-      <ul>
-        <li class="cmt">
-          <img src="assets/img/avatar-minh-tuan.jpg" alt="" width="34" height="34" loading="lazy">
-          <div class="cmt__body">
-            <p class="cmt__who"><span class="cmt__name">Nguyễn Văn Khôi</span><span class="cmt__time">1 ngày trước</span></p>
-            <p class="cmt__text">Đọc xong mới thấy đúng cái mình đang làm mà không gọi tên được. Mình mua đồ không phải vì rẻ, mà vì thấy nó giống mình.</p>
-            <div class="cmt__acts">
-              <button type="button" data-like data-count="42" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">42</span></button>
-              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
-              <button type="button" data-toast="Đã gửi báo cáo tới Ban biên tập">Báo cáo</button>
-            </div>
-          </div>
-        </li>
-        <li class="cmt cmt--reply">
-          <img src="assets/img/avatar-gnn.png" alt="" width="34" height="34" loading="lazy">
-          <div class="cmt__body">
-            <p class="cmt__who"><span class="cmt__name">Phương Linh</span><span class="cmt__time">18 giờ trước</span></p>
-            <p class="cmt__text">Cảm ơn bạn đã đọc kỹ. Phần “trục thứ ba” là thứ nhóm khảo sát mất nhiều thời gian nhất để diễn đạt cho gọn.</p>
-            <div class="cmt__acts">
-              <button type="button" data-like data-count="8" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">8</span></button>
-              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
-              <button type="button" data-toast="Đã gửi báo cáo tới Ban biên tập">Báo cáo</button>
-            </div>
-          </div>
-        </li>
-        <li class="cmt">
-          <img src="assets/img/avatar-phuong-anh.png" alt="" width="34" height="34" loading="lazy">
-          <div class="cmt__body">
-            <p class="cmt__who"><span class="cmt__name">Phạm Hương Giang</span><span class="cmt__time">2 ngày trước</span></p>
-            <p class="cmt__text">Mình làm tiếp thị cho một thương hiệu nội địa, con số ba phút nội dung trong bài rất sát thực tế. Ngân sách năm nay bên mình cũng đã dịch chuyển đúng theo hướng đó.</p>
-            <div class="cmt__acts">
-              <button type="button" data-like data-count="18" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">18</span></button>
-              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
-              <button type="button" data-toast="Đã gửi báo cáo tới Ban biên tập">Báo cáo</button>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-
+  <header class="vb-top">
+    <a class="btn-back size-5 grid place-items-center text-icon-dark" href="index.html" data-back aria-label="Quay lại"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+    <p class="vb-top__ten">Viết bài</p>
+    <div class="vb-top__nut">
+      <button class="btn-outline-sm flex-1 min-h-[44px] inline-flex items-center justify-center gap-[6px] px-4 border border-line-2 rounded-full bg-surface text-[13px] font-bold text-ink transition-colors duration-[180] ease-out active:bg-surface-fill" type="button" data-toast="Đã lưu bản nháp">Lưu nháp</button>
+      <button class="flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" data-toast="Đã gửi cho biên tập">Gửi biên tập</button>
     </div>
+  </header>
+
+  <main id="main" class="vb-main">
+
+    <!-- ============ Trạng thái bài ============ -->
+    <section class="vb-card vb-steps" aria-label="Trạng thái bài viết">
+      <ol class="vb-steps__list">
+        <li class="vb-step is-xong"><span class="vb-step__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pencil"></use></svg></span><span class="vb-step__ten">Lưu nháp</span></li>
+        <li class="vb-step is-dang"><span class="vb-step__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg></span><span class="vb-step__ten">Gửi biên tập</span></li>
+        <li class="vb-step"><span class="vb-step__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-calendar"></use></svg></span><span class="vb-step__ten">Chờ xuất bản</span></li>
+        <li class="vb-step"><span class="vb-step__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span><span class="vb-step__ten">Đã xuất bản</span></li>
+      </ol>
+    </section>
+
+    <!-- ============ Thông tin bài ============ -->
+    <section class="vb-card vb-meta" aria-label="Thông tin bài viết">
+      <div class="vb-meta__bia">
+        <img src="assets/img/kp-kinh-te-ai.png" alt="Ảnh bìa bài viết" width="240" height="180" loading="lazy">
+        <button class="vb-bia__doi" type="button" data-toast="Mở thư viện ảnh bìa">Đổi ảnh bìa</button>
+      </div>
+
+      <div class="vb-meta__than">
+        <div class="vb-hang" data-vb-hang>
+          <span class="vb-hang__nhan">Danh mục:</span>
+          <span class="vb-tags">
+            <span class="vb-tag">#Kinh tế toàn cầu<button class="vb-tag__bo" type="button" aria-label="Bỏ danh mục Kinh tế toàn cầu"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+            <span class="vb-tag">Mới nhất<button class="vb-tag__bo" type="button" aria-label="Bỏ danh mục Mới nhất"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+          </span>
+          <button class="vb-hang__mo" type="button" aria-expanded="false" aria-label="Mở danh sách danh mục"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></button>
+        </div>
+
+        <div class="vb-hang" data-vb-hang>
+          <span class="vb-hang__nhan">Loại:</span>
+          <span class="vb-loai">Tin tự viết</span>
+          <button class="vb-hang__mo" type="button" aria-expanded="false" aria-label="Đổi loại bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></button>
+        </div>
+
+        <div class="vb-hang vb-hang--thua">
+          <span class="vb-o"><span class="vb-hang__nhan">Tài khoản:</span><span class="vb-ava vb-ava--chu">TL</span><span class="vb-o__gt">Tạ Ngọc Huy Linh</span></span>
+          <span class="vb-o"><span class="vb-hang__nhan">Bút danh:</span><img class="vb-ava" src="assets/img/avatar-phuong-linh.png" alt="" width="24" height="24" loading="lazy"><span class="vb-o__gt">Ngọc Linh</span><button class="vb-o__sua" type="button" aria-label="Đổi bút danh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pencil"></use></svg></button></span>
+          <span class="vb-o"><span class="vb-hang__nhan">Giờ xuất bản:</span><span class="vb-o__gt">Mặc định</span></span>
+          <span class="vb-o"><span class="vb-hang__nhan">Cài chủ đề:</span><span class="vb-o__gt vb-o__gt--trong">Chưa chọn</span><button class="vb-hang__mo" type="button" aria-expanded="false" aria-label="Chọn chủ đề"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></button></span>
+        </div>
+
+        <ul class="vb-nums">
+          <li class="vb-num vb-num--ok"><b id="">3/3</b><span>Cài đặt SEO</span></li>
+          <li class="vb-num"><b id="vbSoChu">1428</b><span>Số chữ</span></li>
+          <li class="vb-num"><b id="">0</b><span>Số lượt xem</span></li>
+          <li class="vb-num"><b id="">0</b><span>Bình luận</span></li>
+          <li class="vb-num"><b id="">0đ</b><span>Nhuận bút</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Khung soạn ============ -->
+    <section class="vb-card vb-soan" aria-label="Nội dung bài viết">
+      <h1 class="vb-tieude" contenteditable="true" role="textbox" aria-label="Tiêu đề bài viết" data-goi="Nhập tiêu đề bài viết…">Nvidia thâu tóm Hugging Face: 13 tỷ USD để làm bá chủ AI</h1>
+
+      <div class="vb-khoi" data-vb-khoi>
+        <div class="vb-khoi__nut">
+          <button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-plus"></use></svg></button>
+          <button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-grip"></use></svg></button>
+        </div>
+        <p class="vb-sapo" contenteditable="true" role="textbox" aria-label="Sa pô">Thương vụ Hugging Face, một trong những vụ mua bán lớn nhất lịch sử Nvidia với giá gần 13 tỷ USD, cho thấy Jensen Huang muốn mở rộng quyền lực từ chip sang nền tảng kết nối hàng triệu nhà phát triển AI trên thế giới.</p>
+      </div>
+
+      <div class="vb-khoi" data-vb-khoi>
+        <div class="vb-khoi__nut">
+          <button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-plus"></use></svg></button>
+          <button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-grip"></use></svg></button>
+        </div>
+        <p class="vb-doan" contenteditable="true" role="textbox" aria-label="Đoạn văn">Nvidia vừa thực hiện một trong những thương vụ doanh nghiệp lớn nhất lịch sử. Gã khổng lồ chip trí tuệ nhân tạo (AI) đạt thỏa thuận mua lại startup Hugging Face trong một giao dịch trị giá gần 13 tỷ USD. Nvidia, công ty có vốn hóa thị trường lớn nhất thế giới, đồng thời cam kết duy trì Hugging Face như một nền tảng mở, tiếp tục hỗ trợ các mô hình và phần cứng từ những nhà cung cấp khác.</p>
+      </div>
+
+      <div class="vb-khoi" data-vb-khoi>
+        <div class="vb-khoi__nut">
+          <button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-plus"></use></svg></button>
+          <button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-grip"></use></svg></button>
+        </div>
+        <figure class="vb-anh">
+          <img src="assets/img/kp-kinh-te-ai.png" alt="Nvidia và Hugging Face" width="860" height="484" loading="lazy">
+          <figcaption contenteditable="true" role="textbox" aria-label="Chú thích ảnh" data-goi="Thêm chú thích ảnh…"></figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
 
-  <!-- ============ Footer ============ -->
-  <footer class="site-footer">
-    <div class="shell">
-      <img class="footer__logo" src="assets/img/logo-gnm-footer.png" alt="Góc Nhìn Mới" width="107" height="32" loading="lazy">
-
-      <h2 class="footer__title">Mạng xã hội Góc Nhìn Mới</h2>
-      <p class="footer__legal">
-        Công ty Cổ phần Công nghệ và Truyền thông Không gian số (NetSpace)<br>
-        Giấy phép MXH số 93/GP-PTTH&amp;TTĐT do Cục PTTH&amp;TTĐT (Bộ VHTTDL) cấp ngày 25 tháng 5 năm 2026<br>
-        Người chịu trách nhiệm: Nguyễn Văn Tuấn
-      </p>
-
-      <h3 class="footer__subtitle">Thông tin liên hệ</h3>
-      <ul class="footer__list">
-        <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>
-          <span>Tầng 3, Tòa nhà Mipec, 229 Tây Sơn, Kim Liên, Hà Nội</span>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
-          <span>Hotline: <a href="tel:+842438888888">0888.13.8888</a></span>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
-          <span><a href="mailto:lienhe@gocnhinmoi.vn">lienhe@gocnhinmoi.vn</a></span>
-        </li>
-      </ul>
-
-      <a class="btn-ad" href="tel:+842438888888">
-        <svg class="icon" aria-hidden="true"><use href="#i-phone-btn"></use></svg>
-        Liên hệ quảng cáo <strong>0888.13.8888</strong>
-      </a>
-
-      <a class="social" href="#" aria-label="Trang Facebook của Góc Nhìn Mới">
-        <svg class="icon" aria-hidden="true"><use href="#i-facebook"></use></svg>
-      </a>
-    </div>
-
-    <div class="footer__bottom">
-      <p>© 2026 Mạng xã hội Góc Nhìn Mới</p>
-      <p>Vận hành bởi <a href="#">NetSpace</a></p>
-    </div>
-  </footer>
-
-</div><!-- /.page -->
-
-<!-- ============ Thanh điều hướng dưới ============ -->
-<nav class="bottom-nav" aria-label="Điều hướng chính">
-  <div class="bottom-nav__inner">
-    <div class="nav-pill" role="tablist">
-      <a class="nav-tab" href="index.html" role="tab" aria-current="page">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-home"></use></svg>
-        Trang chủ
-      </a>
-      <a class="nav-tab" href="nghe-va-xem.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-media"></use></svg>
-        Nghe &amp; Xem
-      </a>
-
-      <a class="nav-write" href="viet-bai.html" aria-label="Tạo nội dung">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>
-      </a>
-
-      <a class="nav-tab" href="kham-pha.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-explore"></use></svg>
-        Khám phá
-      </a>
-      <a class="nav-tab" href="ca-nhan.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-user"></use></svg>
-        Cá nhân
-      </a>
-    </div>
+  <!-- ============ Bảng chọn khối ============ -->
+  <div class="vb-menu" id="vbMenu" hidden role="menu" aria-label="Thêm khối nội dung">
+    <p class="vb-menu__nhom">Tiêu đề (Headings)</p>
+    <button class="vb-menu__muc" type="button" role="menuitem" data-them="h1"><span class="vb-menu__ico">H<sub>1</sub></span>Tiêu đề cấp 1<kbd>⌘-ALT-1</kbd></button>
+    <button class="vb-menu__muc" type="button" role="menuitem" data-them="h2"><span class="vb-menu__ico">H<sub>2</sub></span>Tiêu đề cấp 2<kbd>⌘-ALT-2</kbd></button>
+    <button class="vb-menu__muc" type="button" role="menuitem" data-them="h3"><span class="vb-menu__ico">H<sub>3</sub></span>Tiêu đề cấp 3<kbd>⌘-ALT-3</kbd></button>
+    <p class="vb-menu__nhom">Đa phương tiện (Media)</p>
+    <button class="vb-menu__muc" type="button" role="menuitem" data-them="anh"><span class="vb-menu__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-image"></use></svg></span>Hình ảnh</button>
+    <button class="vb-menu__muc" type="button" role="menuitem" data-them="video"><span class="vb-menu__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play"></use></svg></span>Video</button>
   </div>
-</nav>
 
-<div class="drawer" id="drawer">
-  <div class="drawer__backdrop" data-drawer-close></div>
-
-  <nav class="drawer__panel" aria-label="Chuyên mục">
-    <div class="drawer__head">
-      <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
-      <button class="icon-btn" type="button" aria-label="Đóng menu" data-drawer-close>
-        <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
-      </button>
-    </div>
-
-    <ul class="drawer__list">
-      <li><a class="drawer__link" href="moi-nhat.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="hot-hom-nay.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-heart"></use></svg>Hot hôm nay</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="tra-dam.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="goc-mo.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Góc mở</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="quan-diem.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-nav-write"></use></svg>Quan điểm</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="luan-co-suy-kim.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-bookmark"></use></svg>Luận cổ suy kim</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="photo.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-      <li><a class="drawer__link" href="spotlight.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-star"></use></svg>Spotlight</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
-    </ul>
-
-    <p class="drawer__foot">© 2026 Mạng xã hội Góc Nhìn Mới</p>
-  </nav>
 </div>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/app.js"></script></body>
 </html>
