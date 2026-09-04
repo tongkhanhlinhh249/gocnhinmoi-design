@@ -4745,8 +4745,34 @@ input { font: inherit; }
 }
 .vb-top__ten { flex: 1; font-size: 15px; font-weight: 800; line-height: 22px; color: var(--ink-strong); }
 .vb-top__nut { display: flex; align-items: center; gap: 8px; }
+/* Hai nút vốn thuộc hai bộ khác nhau: một cái cao 44px và giãn, cái kia cao
+   34px và neo lên đỉnh. Ở thanh này cho chúng cùng cỡ và cùng canh giữa.
+   Viết kèm .vb-top cho mạnh hơn utility min-h — utility xuất sau component
+   nên ngang điểm là nó thắng. */
+.vb-top .vb-top__nut > * {
+  flex: none;
+  align-self: center;
+  min-height: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 18px;
+}
 
-.vb-main { display: flex; flex-direction: column; gap: 20px; }
+/* Thanh trạng thái chạy suốt bề ngang; dưới nó là chỗ soạn bên trái và ảnh
+   bìa thành cột phải dính theo màn, để phần viết được rộng nhất có thể. */
+.vb-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 20px;
+}
+.vb-steps { grid-column: 1 / -1; }
+/* Ảnh bìa đứng trước chỗ soạn trong markup (khổ hẹp cần thứ tự đó), nên ở
+   khổ rộng phải chỉ định cột tường minh, không thì hai khối đảo chỗ. */
+.vb-soan { grid-column: 1; grid-row: 2; }
+.vb-meta { grid-column: 2; grid-row: 2; position: sticky; top: 72px; }
 
 .vb-card {
   background: var(--surface);
@@ -4782,14 +4808,11 @@ input { font: inherit; }
 .vb-step.is-dang .vb-step__ico { border-color: var(--gnm-red); background: #ffefef; color: var(--gnm-red); }
 
 /* ---------- Thông tin bài ---------- */
-.vb-meta { display: flex; gap: 22px; padding: 22px 24px; }
-.vb-meta__bia { flex: none; width: 240px; }
-/* Khi thẻ chỉ còn ảnh bìa thì cho nó rộng ra, khỏi để trống nửa thẻ. Viết
-   theo :only-child nên thêm lại khối thông tin là tự về như cũ. */
-.vb-meta__bia:only-child { flex: 1; width: auto; max-width: 380px; }
+.vb-meta { display: flex; flex-direction: column; gap: 18px; padding: 18px; }
+.vb-meta__bia { flex: none; }
 .vb-meta__bia img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: var(--r-md);
   background: var(--fill-soft);
@@ -4879,7 +4902,7 @@ input { font: inherit; }
 .vb-num--ok b { color: var(--ok); }
 
 /* ---------- Khung soạn ---------- */
-.vb-soan { padding: 40px 0 56px; }
+.vb-soan { padding: 36px 0 48px; }
 .vb-tieude,
 .vb-khoi { max-width: 860px; margin-inline: auto; padding-inline: 24px; }
 .vb-tieude {
@@ -4941,7 +4964,8 @@ input { font: inherit; }
   position: absolute;
   z-index: 40;
   width: 268px;
-  max-height: 300px;
+  /* Đủ chỗ cho cả năm mục; chỉ cuộn khi màn thấp quá. */
+  max-height: min(72vh, 440px);
   overflow-y: auto;
   padding: 8px;
   border: 1px solid var(--line-3);
@@ -4967,8 +4991,11 @@ input { font: inherit; }
 .vb-menu__ico {
   flex: none;
   width: 30px; height: 30px;
-  display: grid;
-  place-items: center;
+  /* Phải là flex chứ không phải grid: trong grid thì chữ H và số chỉ số thành
+     hai ô riêng, xếp chồng thành hai dòng. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--line-3);
   border-radius: var(--r-md);
   color: var(--icon-dark);
@@ -4976,7 +5003,7 @@ input { font: inherit; }
   font-weight: 700;
 }
 .vb-menu__ico .icon { width: 15px; height: 15px; }
-.vb-menu__ico sub { font-size: 9px; }
+.vb-menu__ico sub { font-size: 9px; line-height: 1; vertical-align: baseline; padding-top: 4px; }
 .vb-menu__muc kbd {
   margin-left: auto;
   font-family: inherit;
@@ -4986,10 +5013,15 @@ input { font: inherit; }
 }
 
 /* ---------- Khổ hẹp ---------- */
+@media (max-width: 1099.98px) {
+  .vb-main { grid-template-columns: minmax(0, 1fr); }
+  .vb-soan, .vb-meta { grid-column: 1; grid-row: auto; }
+  .vb-meta { position: static; }
+  .vb-meta__bia img { aspect-ratio: 21 / 9; }
+}
+
 @media (max-width: 899.98px) {
   .vb-page { padding-inline: 12px; }
-  .vb-meta { flex-direction: column; gap: 16px; }
-  .vb-meta__bia { width: 100%; }
   .vb-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vb-steps__list { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
   .vb-soan { padding: 24px 0 32px; }
