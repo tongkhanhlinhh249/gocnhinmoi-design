@@ -1394,20 +1394,23 @@ input { font: inherit; }
 .pod-banner {
   display: block;
   width: 100%;
-  aspect-ratio: 367 / 160;
+  aspect-ratio: 367 / 237;
   border-radius: var(--r-md);
   overflow: hidden;
   background: var(--fill-soft);
 }
 .pod-banner { position: relative; }
 /* Ảnh gốc 367x237 đã nướng sẵn một dải trắng chứa tiêu đề ở đáy; phần ảnh
-   thật chỉ là 367x160 phía trên. Lấy đúng tỉ lệ đó cho khung rồi neo mép
-   trên: object-fit tự cắt dải trắng, không cần ảnh tràn ra ngoài khung. */
+   thật chỉ là 367x160 phía trên, tức 67,5% chiều cao. Card giữ tỉ lệ cũ nên
+   phải phóng ảnh 237/160 = 1,481 lần và neo mép trên, để đúng phần ảnh thật
+   phủ kín card còn dải trắng bị đẩy ra ngoài và bị overflow cắt. */
 .pod-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  transform: scale(1.481);
+  transform-origin: top center;
 }
 
 /* Kính lỏng trải hết bề ngang card: nền trong mờ, làm nhoè và tăng bão hoà
@@ -1443,15 +1446,11 @@ input { font: inherit; }
   z-index: 1;
   flex: 1;
   min-width: 0;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 800;
-  line-height: 24px;
+  line-height: 20px;
   letter-spacing: -.011em;
   color: var(--ink-strong);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 .pod-glass__play {
   position: relative;
