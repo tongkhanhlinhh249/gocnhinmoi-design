@@ -320,8 +320,8 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .tophero__item--lg .tophero__media{aspect-ratio:400/400}
 .tophero__item--sm .tophero__media{aspect-ratio:400/240}
 .tophero__like{background:rgba(16,24,40,.42)}.tophero__like .icon{width:17px;height:17px}.tophero__like[aria-pressed="true"] .icon{fill:var(--gnm-red)}
-.tophero__meta img{width:24px;height:24px;border-radius:var(--r-pill);object-fit:cover}.tophero__meta{background:var(--surface-dark)}
-.tophero__scrim{background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0) 100%)}
+.tophero__meta img{width:24px;height:24px;border-radius:var(--r-pill);object-fit:cover}.tophero__meta{background:#000}
+.tophero__scrim{background:linear-gradient(to top,#000 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0) 100%)}
 .topics .tags{padding-top:10px}
 .trend-card > a{display:block}
 .trend-card__media img{width:100%;height:100%;object-fit:cover}.trend-card__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),rgba(0,0,0,0))}

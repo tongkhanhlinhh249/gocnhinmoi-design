@@ -1473,7 +1473,7 @@
   },
   "tophero__scrim": {
     "tw": "absolute inset-0",
-    "keep": ".tophero__scrim{background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0) 100%)}"
+    "keep": ".tophero__scrim{background:linear-gradient(to top,#000 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0) 100%)}"
   },
   "tophero__body": {
     "tw": "absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface",
@@ -1485,7 +1485,7 @@
   },
   "tophero__meta": {
     "tw": "flex items-center gap-2 py-[10px] px-4",
-    "keep": ".tophero__meta img{width:24px;height:24px;border-radius:var(--r-pill);object-fit:cover}.tophero__meta{background:var(--surface-dark)}"
+    "keep": ".tophero__meta img{width:24px;height:24px;border-radius:var(--r-pill);object-fit:cover}.tophero__meta{background:#000}"
   },
   "tophero__author": {
     "tw": "text-[12px] font-semibold leading-[18px] text-[rgba(255,255,255,.8)]",

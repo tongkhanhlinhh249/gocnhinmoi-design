@@ -2896,7 +2896,7 @@ input { font: inherit; }
 .tophero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
 }
 /* Nút tim nổi góc trên phải ảnh. Đặt là anh em của ảnh, không lồng trong
    link tiêu đề — nút nằm trong link là HTML không hợp lệ. */
@@ -2936,7 +2936,9 @@ input { font: inherit; }
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: var(--surface-dark);
+  /* Cùng màu với chân lớp phủ ở trên để hai phần liền một mạch, không lộ vệt
+     nối. --surface-dark ngả xanh nên không dùng ở đây. */
+  background: #000;
 }
 .tophero__meta img { width: 24px; height: 24px; border-radius: var(--r-pill); object-fit: cover; }
 .tophero__author { font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .8); }
