@@ -3935,11 +3935,16 @@ input { font: inherit; }
   .v-web .feat .hscroll > li:first-child .byline__name { color: #fff; }
   .v-web .feat .hscroll > li:first-child .byline__time { color: rgba(255, 255, 255, .6); }
 
-  /* Ba nút tab để cỡ vừa chữ và dồn về trái, không kéo giãn hết bề ngang. */
-  .v-web .ptabs {
+  /* Ba nút tab để cỡ vừa chữ và dồn về trái, không kéo giãn hết bề ngang.
+     Thanh này mang max-width 480px và margin auto nên tự canh giữa trong cột;
+     phải gỡ cả hai thì justify-content mới có tác dụng. Lề trái lấy bằng lề
+     của các khối .shell cùng cột. */
+  .v-web .page .ptabs {
     justify-content: flex-start;
+    max-width: none;
     margin-top: 12px;
-    padding-block: 12px 4px;
+    margin-inline: 0;
+    padding: 12px 24px 4px;
     background: transparent;
   }
   .v-web .ptab { flex: none; min-width: 116px; padding-inline: 20px; }
