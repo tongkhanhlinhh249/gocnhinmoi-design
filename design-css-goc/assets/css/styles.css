@@ -4337,6 +4337,9 @@ input { font: inherit; }
     background: #000;
   }
 
+  /* Mục Địa điểm ở cột phải: ẩn đi, markup vẫn giữ nguyên để bật lại được. */
+  .v-web .siderail .rail-card:has(.rail-place) { display: none; }
+
   .v-web .discussed .hscroll {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
