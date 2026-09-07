@@ -4780,13 +4780,14 @@ input { font: inherit; }
   align-items: start;
   gap: 20px;
 }
-.vb-steps { grid-column: 1 / -1; }
-/* Cột phải đứng trước chỗ soạn trong markup (khổ hẹp cần thứ tự đó), nên ở
-   khổ rộng phải chỉ định cột tường minh, không thì hai khối đảo chỗ. */
-.vb-soan { grid-column: 1; grid-row: 2; }
+/* Bốn khối con phải đặt hàng tường minh hết. Để một khối tự xếp thì nó chiếm
+   hàng 1, đẩy thanh trạng thái xuống đúng hàng của cột soạn và cột phải. */
+.vb-mo { grid-column: 1 / -1; grid-row: 1; }
+.vb-steps { grid-column: 1 / -1; grid-row: 2; }
+.vb-soan { grid-column: 1; grid-row: 3; }
 .vb-rail {
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 3;
   position: sticky;
   top: 72px;
   display: flex;
@@ -5112,6 +5113,7 @@ input { font: inherit; }
      cái hộp bao ngoài đi) để chen được vào mạch dọc: ảnh bìa nằm trên chỗ
      soạn, còn Nguồn và Tags xuống cuối trang. */
   .vb-rail { display: contents; }
+  .vb-mo,
   .vb-steps,
   .vb-meta,
   .vb-soan,
@@ -5124,6 +5126,7 @@ input { font: inherit; }
     justify-self: stretch;
     width: 100%;
   }
+  .vb-mo { order: 0; }
   .vb-steps { order: 1; }
   .vb-meta { order: 2; }
   .vb-soan { order: 3; }
