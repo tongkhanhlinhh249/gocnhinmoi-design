@@ -3847,8 +3847,6 @@ input { font: inherit; }
   .v-web .profile-id { align-items: flex-start; }
   .v-web .profile-head__ava { width: 88px; height: 88px; }
   .v-web .profile-head__name { font-size: 22px; line-height: 30px; }
-  .v-web .profile-pen { padding-top: 2px; font-size: 13px; line-height: 20px; color: var(--text-muted); }
-  .v-web .profile-pen b { color: var(--ink); font-weight: 700; }
 
 
 
@@ -5162,4 +5160,176 @@ input { font: inherit; }
   .vb-tieude { font-size: 24px; line-height: 33px; }
   /* Không đủ chỗ đặt nút ngoài lề thì cho nằm trên khối. */
   .vb-khoi__nut { position: static; opacity: 1; padding-bottom: 6px; }
+}
+
+/* ================= Trang chỉnh sửa hồ sơ ================= */
+/* Trang biểu mẫu: giữ khung điều hướng của cả site nhưng bỏ cột phải, phần
+   nhập bó lại một bề ngang dễ đọc. Class mang tiền tố hs- để không đụng bộ áo
+   của các trang đọc. */
+.hs-main { padding-inline: 24px; padding-bottom: 40px; }
+.hs-form { display: flex; flex-direction: column; gap: 18px; max-width: 720px; }
+
+.hs-top { display: flex; align-items: center; gap: 12px; padding: 8px 0 18px; }
+.hs-top__ten { flex: 1; font-size: 20px; font-weight: 800; line-height: 28px; color: var(--ink-strong); }
+.hs-top__nut { display: flex; align-items: center; gap: 8px; }
+/* Hai nút thuộc hai bộ khác nhau nên cùng cỡ và cùng canh giữa; viền trong
+   suốt để bù chỗ, nếu không nút có viền rộng hơn 2px. */
+.hs-top__nut > *,
+.hs-day > * {
+  flex: none;
+  align-self: center;
+  min-height: 38px;
+  height: 38px;
+  min-width: 120px;
+  padding-inline: 18px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hs-the {
+  padding: 20px;
+  border: 1px solid var(--line-3);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.hs-the__ten {
+  padding-bottom: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 22px;
+  color: var(--ink-strong);
+}
+
+/* ---------- Ảnh bìa và ảnh đại diện ---------- */
+.hs-anh { position: relative; padding-bottom: 44px; }
+.hs-bia { position: relative; overflow: hidden; border-radius: var(--r-md); background: var(--fill-soft); }
+.hs-bia img { width: 100%; aspect-ratio: 1000 / 300; object-fit: cover; display: block; }
+.hs-anh__nut {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.hs-anh__nut .icon { width: 14px; height: 14px; }
+/* Ảnh đại diện đè lên mép dưới ảnh bìa, lệch vào trong một quãng. */
+.hs-ava { position: absolute; left: 20px; bottom: 0; }
+.hs-ava img {
+  width: 96px; height: 96px;
+  border-radius: var(--r-pill);
+  border: 3px solid var(--surface);
+  object-fit: cover;
+  background: var(--fill-soft);
+  display: block;
+}
+.hs-anh__nut--tron {
+  right: -4px;
+  bottom: 2px;
+  padding: 0;
+  width: 30px; height: 30px;
+  justify-content: center;
+  border: 2px solid var(--surface);
+}
+
+/* ---------- Ô nhập ---------- */
+.hs-o { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; }
+.hs-o:first-of-type { padding-top: 0; }
+.hs-o__nhan { font-size: 13px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
+.hs-goi { font-size: 12px; line-height: 18px; color: var(--text-muted); }
+
+.hs-nhap {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 22px;
+}
+.hs-nhap::placeholder { color: var(--text-placeholder); }
+.hs-nhap:focus-visible { outline: 2px solid var(--gnm-red); outline-offset: 1px; }
+.hs-nhap--dai { resize: vertical; min-height: 96px; }
+/* Ô có tiền tố @: cái khung là .hs-nhap, ô gõ nằm trần bên trong. */
+.hs-nhap--tiento { display: flex; align-items: center; gap: 2px; padding-block: 0; }
+.hs-nhap--tiento > span { flex: none; color: var(--text-muted); font-size: 14px; }
+.hs-nhap--tiento input {
+  flex: 1;
+  min-width: 0;
+  padding-block: 10px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 22px;
+}
+.hs-nhap--tiento input:focus { outline: none; }
+.hs-nhap--tiento:focus-within { outline: 2px solid var(--gnm-red); outline-offset: 1px; }
+
+/* ---------- Công tắc ---------- */
+.hs-gat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-3);
+  cursor: pointer;
+}
+.hs-gat:first-of-type { border-top: 0; padding-top: 0; }
+.hs-gat__chu { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.hs-gat__chu b { font-size: 13px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
+.hs-gat__chu span { font-size: 12px; line-height: 18px; color: var(--text-muted); }
+/* Ô tick thật vẫn nằm đó cho bàn phím và trình đọc màn hình, chỉ giấu đi. */
+.hs-gat input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+.hs-gat__nut {
+  position: relative;
+  flex: none;
+  width: 42px; height: 24px;
+  border-radius: var(--r-pill);
+  background: var(--line-2);
+  transition: background .18s var(--ease);
+}
+.hs-gat__nut::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, .3);
+  transition: transform .18s var(--ease);
+}
+.hs-gat input:checked ~ .hs-gat__nut { background: var(--gnm-red); }
+.hs-gat input:checked ~ .hs-gat__nut::after { transform: translateX(18px); }
+.hs-gat input:focus-visible ~ .hs-gat__nut { outline: 2px solid var(--gnm-red); outline-offset: 2px; }
+
+.hs-day { display: flex; justify-content: flex-end; gap: 8px; padding-top: 2px; }
+
+@media (max-width: 767.98px) {
+  .hs-main { padding-inline: var(--gutter); }
+  .hs-top { padding-top: 4px; }
+  .hs-top__ten { font-size: 17px; line-height: 24px; }
+  /* Chỗ hẹp: bỏ hai nút trên đầu, chỉ giữ cụm nút ở cuối biểu mẫu. */
+  .hs-top__nut { display: none; }
+  .hs-the { padding: 16px; }
+  .hs-form { gap: 14px; }
+  .hs-day > * { flex: 1; min-width: 0; }
 }

@@ -23,6 +23,10 @@
     }, 2200);
   }
 
+  /* Các module ở dưới nằm trong IIFE riêng nên không thấy hàm này; xuất ra để
+     dùng chung, thay vì mỗi chỗ tự dựng một cái toast khác. */
+  window.toast = toast;
+
   /* ---------- Xếp thẻ so le ở bố cục web ---------- */
   /* column-count cân chiều cao hai cột nên hay để lại một lỗ ở đáy cột ngắn.
      Cách chắc ăn: lưới có hàng cao 8px, mỗi thẻ chiếm số hàng đúng bằng chiều
@@ -1968,5 +1972,53 @@
       if (themChip(goi[k])) them++;
     }
     if (!them && window.toast) window.toast('Chưa tìm thêm được tag nào mới');
+  });
+})();
+
+/* ---------- Trang chỉnh sửa hồ sơ ---------- */
+(function () {
+  var form = document.querySelector('#hsForm');
+  if (!form) return;
+
+  /* đếm ký tự phần giới thiệu */
+  var o = form.querySelector('[data-hs-dem]');
+  var dem = document.querySelector('#hsDem');
+  function capNhat() { if (dem && o) dem.textContent = String(o.value.length); }
+  if (o) o.addEventListener('input', capNhat);
+  capNhat();
+
+  /* Tên người dùng chỉ nhận chữ thường, số, dấu chấm và gạch dưới. Bỏ dấu
+     thẳng tay thì "Đức Anh" ra "canh"; phải tách dấu bằng NFD rồi mới lọc,
+     và đổi riêng chữ đ vì nó không phải d kèm dấu. */
+  var handle = form.querySelector('input[name="handle"]');
+  if (handle) {
+    handle.addEventListener('input', function () {
+      var sach = handle.value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/[^a-z0-9._]/g, '');
+      if (sach !== handle.value) {
+        var vt = handle.selectionStart - (handle.value.length - sach.length);
+        handle.value = sach;
+        try { handle.setSelectionRange(vt, vt); } catch (e) {}
+      }
+    });
+  }
+
+  /* Nút lưu: chỉ là bản dựng nên không gửi đi đâu, chỉ báo lại cho người dùng
+     và kiểm vài ô bắt buộc. */
+  /* Nút Lưu ở thanh đầu nằm ngoài thẻ form nên phải tìm trên cả trang. */
+  document.querySelectorAll('[data-hs-luu]').forEach(function (nut) {
+    nut.addEventListener('click', function () {
+      var ten = form.querySelector('input[name="ten"]');
+      if (ten && !ten.value.trim()) {
+        ten.focus();
+        if (window.toast) window.toast('Tên hiển thị không được bỏ trống');
+        return;
+      }
+      if (window.toast) window.toast('Đã lưu thay đổi hồ sơ');
+    });
   });
 })();
