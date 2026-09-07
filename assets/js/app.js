@@ -2022,3 +2022,223 @@
     });
   });
 })();
+
+/* ---------- Luồng gửi bài: xem trước → alert biên tập → gửi xong ---------- */
+(function () {
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  var soan = $('.vb-soan');
+  var manXT = $('#vbXemTruoc');
+  if (!soan || !manXT) return;
+
+  /* Hàm mở hộp thoại nằm trong module của trang cá nhân (module đó thoát sớm
+     khi trang không có #postList) nên ở đây phải tự lái thẻ #dialog. */
+  var hop = $('#dialog');
+  function moHop(ten, chu, nut) {
+    if (!hop) return;
+    $('#dialogTitle', hop).textContent = ten;
+    $('#dialogText', hop).textContent = chu;
+    var oNut = $('#dialogActions', hop);
+    oNut.innerHTML = '';
+    nut.forEach(function (a) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'btn-block btn-block--' + a.kind;
+      b.textContent = a.label;
+      b.addEventListener('click', function () { dongHop(); if (a.run) a.run(); });
+      oNut.appendChild(b);
+    });
+    hop.hidden = false;
+    void hop.offsetWidth;
+    hop.classList.add('is-open');
+    var f = oNut.querySelector('button');
+    if (f) f.focus();
+  }
+  function dongHop() {
+    if (!hop) return;
+    hop.classList.remove('is-open');
+    setTimeout(function () { hop.hidden = true; }, 200);
+  }
+  if (hop) {
+    hop.addEventListener('click', function (e) {
+      if (e.target.closest('[data-dialog-close]')) dongHop();
+    });
+  }
+
+  var HAN_MUC = 5;                       // daily_submission_limit
+  var KHOA = 'gnm-gui-bai';
+  var manXong = $('#vbXong');
+  var oQuota = $('#vbQuota');
+
+  /* --- đếm số bài đã gửi trong ngày --- */
+  function homNay() {
+    /* Theo giờ Việt Nam như spec, không theo giờ máy. */
+    return new Date(Date.now() + 7 * 3600e3).toISOString().slice(0, 10);
+  }
+  function docSo() {
+    try {
+      var d = JSON.parse(localStorage.getItem(KHOA) || '{}');
+      return d.ngay === homNay() ? (d.so || 0) : 0;
+    } catch (e) { return 0; }
+  }
+  function ghiSo(n) {
+    try { localStorage.setItem(KHOA, JSON.stringify({ ngay: homNay(), so: n })); } catch (e) {}
+  }
+  function veQuota() {
+    if (!oQuota) return;
+    var n = docSo();
+    oQuota.textContent = n >= HAN_MUC
+      ? 'Hôm nay bạn đã gửi ' + n + '/' + HAN_MUC + ' bài — đã hết lượt gửi.'
+      : 'Hôm nay bạn đã gửi ' + n + '/' + HAN_MUC + ' bài.';
+    oQuota.classList.toggle('is-het', n >= HAN_MUC);
+  }
+  veQuota();
+
+  /* --- chọn chủ đề --- */
+  $$('[data-chude]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+  function chuDeDaChon() {
+    return $$('[data-chude]').filter(function (b) {
+      return b.getAttribute('aria-pressed') === 'true';
+    }).map(function (b) { return b.textContent.trim(); });
+  }
+
+  /* --- kiểm các trường bắt buộc --- */
+  function thieuGi() {
+    var thieu = [];
+    var td = $('.vb-tieude', soan);
+    if (!td || !td.textContent.trim()) thieu.push('tiêu đề');
+    var chu = $$('.vb-sapo, .vb-doan', soan).some(function (o) { return o.textContent.trim(); });
+    if (!chu) thieu.push('nội dung');
+    if (!chuDeDaChon().length) thieu.push('chủ đề');
+    return thieu;
+  }
+
+  /* --- dựng bài xem trước từ nội dung đang soạn --- */
+  function dungXemTruoc() {
+    var hop = $('#vbXtBai');
+    hop.innerHTML = '';
+    var bia = $('.vb-meta__bia img');
+    if (bia) {
+      var a = document.createElement('img');
+      a.className = 'vb-xt__bia';
+      a.src = bia.getAttribute('src');
+      a.alt = '';
+      hop.appendChild(a);
+    }
+    var cd = chuDeDaChon();
+    if (cd.length) {
+      var oc = document.createElement('div');
+      oc.className = 'vb-xt__cd';
+      cd.forEach(function (x) {
+        var s = document.createElement('span');
+        s.textContent = x;
+        oc.appendChild(s);
+      });
+      hop.appendChild(oc);
+    }
+    var h = document.createElement('h1');
+    h.className = 'vb-xt__ten';
+    h.textContent = ($('.vb-tieude', soan) || {}).textContent || '';
+    hop.appendChild(h);
+
+    var ai = document.createElement('div');
+    ai.className = 'vb-xt__ai';
+    ai.innerHTML = '<img src="assets/img/avatar-duc-anh.png" alt="" width="36" height="36">'
+      + '<span><b>Đức Anh</b><br><span>Vừa xong · Bản xem trước</span></span>';
+    hop.appendChild(ai);
+
+    var than = document.createElement('div');
+    than.className = 'vb-xt__than';
+    $$('[data-vb-khoi]', soan).forEach(function (k) {
+      var o = k.querySelector('.vb-sapo, .vb-doan, .vb-tieude, .vb-anh');
+      if (!o) return;
+      if (o.classList.contains('vb-anh')) {
+        var f = o.cloneNode(true);
+        f.removeAttribute('class');
+        $$('[contenteditable]', f).forEach(function (x) { x.removeAttribute('contenteditable'); });
+        if (!f.querySelector('figcaption').textContent.trim()) f.querySelector('figcaption').remove();
+        than.appendChild(f);
+        return;
+      }
+      if (!o.textContent.trim()) return;
+      var the = o.tagName.toLowerCase() === 'p' ? 'p' : o.tagName.toLowerCase();
+      var el = document.createElement(the);
+      if (o.classList.contains('vb-sapo')) el.className = 'la-sapo';
+      el.textContent = o.textContent.trim();
+      than.appendChild(el);
+    });
+    hop.appendChild(than);
+  }
+
+  function mo(man) { man.hidden = false; document.body.style.overflow = 'hidden'; }
+  function dong(man) { man.hidden = true; document.body.style.overflow = ''; }
+
+  /* --- Lưu nháp --- */
+  var nhap = $('[data-vb-nhap]');
+  if (nhap) {
+    nhap.addEventListener('click', function () {
+      if (window.toast) window.toast('Đã lưu bản nháp');
+    });
+  }
+
+  /* --- Xem trước --- */
+  $$('[data-vb-xemtruoc]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var thieu = thieuGi();
+      if (thieu.length) {
+        if (window.toast) window.toast('Còn thiếu ' + thieu.join(', ') + '.');
+        return;
+      }
+      dungXemTruoc();
+      mo(manXT);
+      manXT.scrollTop = 0;
+    });
+  });
+
+  $$('[data-vb-dong]').forEach(function (b) {
+    b.addEventListener('click', function () { dong(manXT); });
+  });
+
+  /* --- Gửi bài: alert biên tập, hoặc alert hết lượt --- */
+  var ALERT_TEN = 'Bài viết có thể được biên tập trước khi đăng';
+  var ALERT_CHU = 'Đội ngũ Góc Nhìn Mới có thể điều chỉnh nội dung để đảm bảo phù hợp với '
+    + 'tiêu chuẩn cộng đồng, hạn chế nội dung nhạy cảm và tôn trọng quyền lợi của tác giả.\n\n'
+    + 'Sau khi gửi, bạn sẽ không thể chỉnh sửa hoặc xóa bài, trừ trường hợp bài không được duyệt. '
+    + 'Bài đã xuất bản cũng không thể tự gỡ khỏi Góc Nhìn Mới.';
+
+  $$('[data-vb-gui]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (docSo() >= HAN_MUC) {
+        moHop(
+          'Bạn đã đạt giới hạn gửi bài hôm nay',
+          'Bạn đã gửi tối đa ' + HAN_MUC + ' bài trong ngày. Bạn vẫn có thể tiếp tục viết và lưu '
+            + 'bản nháp để gửi vào ngày mai.\n\nBài viết hiện tại vẫn được lưu trong Bản nháp.',
+          [{ label: 'Đã hiểu', kind: 'ghost' }]
+        );
+        return;
+      }
+      /* Chỉ khi bấm "Đồng ý & Gửi bài" mới thật sự gửi; đóng hộp hay Quay lại
+         thì bài giữ nguyên trạng thái và vẫn sửa được. */
+      moHop(ALERT_TEN, ALERT_CHU, [
+        { label: 'Đồng ý & Gửi bài', kind: 'primary', run: function () {
+          ghiSo(docSo() + 1);
+          veQuota();
+          dong(manXT);
+          if (manXong) mo(manXong);
+        } },
+        { label: 'Quay lại', kind: 'ghost' }
+      ]);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (hop && hop.classList.contains('is-open')) { dongHop(); return; }
+    if (!manXT.hidden) dong(manXT);
+  });
+})();

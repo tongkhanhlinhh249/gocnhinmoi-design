@@ -200,12 +200,19 @@
     <a class="btn-back" href="index.html" data-back aria-label="Quay lại"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
     <p class="vb-top__ten">Viết bài</p>
     <div class="vb-top__nut">
-      <button class="btn-outline-sm" type="button" data-toast="Đã lưu bản nháp">Lưu nháp</button>
-      <button class="btn-pill" type="button" data-toast="Đã gửi cho biên tập">Gửi biên tập</button>
+      <button class="btn-outline-sm" type="button" data-vb-nhap>Lưu nháp</button>
+      <button class="btn-pill" type="button" data-vb-xemtruoc>Xem trước</button>
     </div>
   </header>
 
   <main id="main" class="vb-main" data-thu-tu="chot">
+
+    <!-- ============ Tên trang ============ -->
+    <div class="vb-mo">
+      <h1 class="vb-mo__ten">Chia sẻ góc nhìn</h1>
+      <p class="vb-mo__dan">Viết điều bạn muốn chia sẻ với cộng đồng Góc Nhìn Mới.</p>
+      <p class="vb-quota" id="vbQuota"></p>
+    </div>
 
     <!-- ============ Trạng thái bài ============ -->
     <section class="vb-card vb-steps" aria-label="Trạng thái bài viết">
@@ -218,10 +225,25 @@
 
     <!-- ============ Thông tin bài ============ -->
     <aside class="vb-rail">
-      <section class="vb-card vb-meta" aria-label="Thông tin bài viết">
+      <section class="vb-card vb-meta" aria-label="Ảnh đại diện">
+        <h2 class="vb-the__ten">Ảnh đại diện <span class="vb-bat">*</span></h2>
         <div class="vb-meta__bia">
           <img src="assets/img/kp-kinh-te-ai.png" alt="Ảnh bìa bài viết" width="240" height="180" loading="lazy">
-          <button class="vb-bia__doi" type="button" data-toast="Mở thư viện ảnh bìa">Đổi ảnh bìa</button>
+          <button class="vb-bia__doi" type="button" data-toast="Mở thư viện ảnh">Thêm ảnh</button>
+        </div>
+      </section>
+
+      <section class="vb-card vb-phu" aria-label="Chủ đề">
+        <h2 class="vb-the__ten">Chủ đề <span class="vb-bat">*</span></h2>
+        <div class="vb-cds" role="group" aria-label="Chọn chủ đề">
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Mới nhất</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Hot hôm nay</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Trà đàm</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Spotlight</button>
+            <button class="vb-cd" type="button" aria-pressed="true" data-chude>Quan điểm</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Luận cổ suy kim</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Góc mở</button>
+            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Photo</button>
         </div>
       </section>
 
@@ -249,7 +271,7 @@
 
     <!-- ============ Khung soạn ============ -->
     <section class="vb-card vb-soan" aria-label="Nội dung bài viết">
-      <h1 class="vb-tieude" contenteditable="true" role="textbox" aria-label="Tiêu đề bài viết" data-goi="Nhập tiêu đề bài viết…">Nvidia thâu tóm Hugging Face: 13 tỷ USD để làm bá chủ AI</h1>
+      <h1 class="vb-tieude" contenteditable="true" role="textbox" aria-label="Tiêu đề bài viết" data-goi="Đặt tiêu đề cho bài viết…">Nvidia thâu tóm Hugging Face: 13 tỷ USD để làm bá chủ AI</h1>
 
       <div class="vb-khoi" data-vb-khoi>
         <div class="vb-khoi__nut">
@@ -264,7 +286,7 @@
           <button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg></button>
           <button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon" aria-hidden="true"><use href="#i-grip"></use></svg></button>
         </div>
-        <p class="vb-doan" contenteditable="true" role="textbox" aria-label="Đoạn văn">Nvidia vừa thực hiện một trong những thương vụ doanh nghiệp lớn nhất lịch sử. Gã khổng lồ chip trí tuệ nhân tạo (AI) đạt thỏa thuận mua lại startup Hugging Face trong một giao dịch trị giá gần 13 tỷ USD. Nvidia, công ty có vốn hóa thị trường lớn nhất thế giới, đồng thời cam kết duy trì Hugging Face như một nền tảng mở, tiếp tục hỗ trợ các mô hình và phần cứng từ những nhà cung cấp khác.</p>
+        <p class="vb-doan" contenteditable="true" role="textbox" aria-label="Nội dung" data-goi="Bắt đầu câu chuyện của bạn…">Nvidia vừa thực hiện một trong những thương vụ doanh nghiệp lớn nhất lịch sử. Gã khổng lồ chip trí tuệ nhân tạo (AI) đạt thỏa thuận mua lại startup Hugging Face trong một giao dịch trị giá gần 13 tỷ USD. Nvidia, công ty có vốn hóa thị trường lớn nhất thế giới, đồng thời cam kết duy trì Hugging Face như một nền tảng mở, tiếp tục hỗ trợ các mô hình và phần cứng từ những nhà cung cấp khác.</p>
       </div>
 
       <div class="vb-khoi" data-vb-khoi>
@@ -280,6 +302,31 @@
     </section>
   </main>
 
+  <!-- ============ Màn xem trước ============ -->
+  <div class="vb-man" id="vbXemTruoc" hidden aria-label="Xem trước bài viết">
+    <div class="vb-man__thanh">
+      <button class="btn-outline-sm" type="button" data-vb-dong>Quay lại chỉnh sửa</button>
+      <p class="vb-man__ten">Xem trước</p>
+      <button class="btn-pill" type="button" data-vb-gui>Gửi bài</button>
+    </div>
+    <div class="vb-man__ruot">
+      <article class="vb-xt" id="vbXtBai"></article>
+    </div>
+  </div>
+
+  <!-- ============ Màn gửi thành công ============ -->
+  <div class="vb-man vb-man--xong" id="vbXong" hidden aria-label="Đã gửi bài">
+    <div class="vb-xong">
+      <span class="vb-xong__ico"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+      <h2 class="vb-xong__ten">Góc nhìn của bạn đã được gửi!</h2>
+      <p class="vb-xong__dan">Bài viết sẽ được Góc Nhìn Mới xem xét trước khi đăng. Chúng tôi sẽ thông báo cho bạn khi có cập nhật.</p>
+      <div class="vb-xong__nut">
+        <a class="btn-pill" href="ca-nhan.html">Xem bài của tôi</a>
+        <a class="btn-outline-sm" href="index.html">Về trang chủ</a>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ Bảng chọn khối ============ -->
   <div class="vb-menu" id="vbMenu" hidden role="menu" aria-label="Thêm khối nội dung">
     <p class="vb-menu__nhom">Tiêu đề (Headings)</p>
@@ -292,6 +339,17 @@
   </div>
 
 </div>
+
+<div class="dialog" id="dialog" hidden role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+  <div class="dialog__backdrop" data-dialog-close></div>
+  <div class="dialog__panel">
+    <h2 class="dialog__title" id="dialogTitle"></h2>
+    <p class="dialog__text" id="dialogText"></p>
+    <div class="dialog__actions" id="dialogActions"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/app.js"></script></body>
 </html>
