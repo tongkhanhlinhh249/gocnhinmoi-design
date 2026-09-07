@@ -4780,14 +4780,13 @@ input { font: inherit; }
   align-items: start;
   gap: 20px;
 }
-/* Bốn khối con phải đặt hàng tường minh hết. Để một khối tự xếp thì nó chiếm
-   hàng 1, đẩy thanh trạng thái xuống đúng hàng của cột soạn và cột phải. */
-.vb-mo { grid-column: 1 / -1; grid-row: 1; }
-.vb-steps { grid-column: 1 / -1; grid-row: 2; }
-.vb-soan { grid-column: 1; grid-row: 3; }
+/* Ba khối con phải đặt hàng tường minh hết. Để một khối tự xếp thì nó chiếm
+   hàng 1 và đẩy các khối sau xuống sai hàng. */
+.vb-steps { grid-column: 1 / -1; grid-row: 1; }
+.vb-soan { grid-column: 1; grid-row: 2; }
 .vb-rail {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 2;
   position: sticky;
   top: 72px;
   display: flex;
@@ -5113,7 +5112,6 @@ input { font: inherit; }
      cái hộp bao ngoài đi) để chen được vào mạch dọc: ảnh bìa nằm trên chỗ
      soạn, còn Nguồn và Tags xuống cuối trang. */
   .vb-rail { display: contents; }
-  .vb-mo,
   .vb-steps,
   .vb-meta,
   .vb-soan,
@@ -5126,7 +5124,6 @@ input { font: inherit; }
     justify-self: stretch;
     width: 100%;
   }
-  .vb-mo { order: 0; }
   .vb-steps { order: 1; }
   .vb-meta { order: 2; }
   .vb-soan { order: 3; }
@@ -5166,11 +5163,8 @@ input { font: inherit; }
   .vb-khoi__nut { position: static; opacity: 1; padding-bottom: 6px; }
 }
 
-/* ---------- Tên trang, hạn mức, chủ đề ---------- */
-.vb-mo { padding: 4px 0 16px; }
-.vb-mo__ten { font-size: 22px; font-weight: 800; line-height: 30px; color: var(--ink-strong); }
-.vb-mo__dan { padding-top: 4px; font-size: 13px; line-height: 20px; color: var(--text-muted); }
-.vb-quota { padding-top: 8px; font-size: 12px; line-height: 18px; color: var(--text-muted); }
+/* ---------- Hạn mức và chủ đề ---------- */
+.vb-quota { font-size: 12px; line-height: 18px; color: var(--text-muted); text-align: right; }
 .vb-quota.is-het { color: var(--gnm-red); font-weight: 700; }
 
 .vb-the__ten { font-size: 13px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
@@ -5213,6 +5207,7 @@ input { font: inherit; }
 .vb-man__ten { flex: 1; text-align: center; font-size: 14px; font-weight: 800; line-height: 22px; color: var(--ink-strong); }
 /* Hai nút hai đầu cùng cỡ để tiêu đề nằm đúng giữa. */
 .vb-man__thanh > button { flex: none; min-width: 152px; min-height: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; }
+.vb-man__phai { display: flex; align-items: center; gap: 12px; }
 .vb-man__ruot { flex: 1; padding: 24px 20px 56px; }
 
 /* ---------- Bài xem trước ---------- */
@@ -5268,9 +5263,15 @@ input { font: inherit; }
 .vb-xong__nut > * { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; }
 
 @media (max-width: 767.98px) {
-  .vb-mo__ten { font-size: 19px; line-height: 26px; }
   .vb-man__thanh { padding: 10px 12px; gap: 8px; }
-  .vb-man__thanh > button { min-width: 0; flex: 1; padding-inline: 8px; font-size: 12px; }
+  /* Chỗ hẹp: hai nút chia đôi một dòng, dòng hạn mức nằm riêng bên dưới. */
+  .vb-man__thanh { flex-wrap: wrap; }
+  .vb-man__thanh > button,
+  .vb-man__phai > button { min-width: 0; flex: 1; padding-inline: 8px; font-size: 12px; }
+  /* Cụm bên phải phải tan ra (display: contents) thì dòng hạn mức mới xuống
+     được dòng riêng; để nguyên hộp thì nó chiếm chỗ và bóp nút Gửi bài. */
+  .vb-man__phai { display: contents; }
+  .vb-quota { order: 1; width: 100%; text-align: center; font-size: 11px; }
   .vb-man__ten { display: none; }
   .vb-man__ruot { padding: 14px 12px 40px; }
   .vb-xt { padding: 16px; }
