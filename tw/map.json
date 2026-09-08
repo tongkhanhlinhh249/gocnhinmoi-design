@@ -2006,5 +2006,9 @@
   "nut-chinh-sua": {
     "tw": "",
     "keep": ".profile-id [data-owner-only]{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gnm-red);background:var(--surface);color:var(--gnm-red)}.profile-id [data-owner-only]:active{background:#ffefef}"
+  },
+  "act--xem": {
+    "tw": "",
+    "keep": ".act--xem{cursor:default}"
   }
 }

@@ -4796,6 +4796,10 @@ input { font: inherit; }
 .sheet.is-neo #sheetMeta { display: none; }
 .sheet.is-neo .sheet-menu button { padding: 9px 10px; font-size: 13px; }
 
+/* Ô lượt xem trong hàng tương tác: cùng dáng với các nút bên cạnh nhưng là
+   con số chứ không bấm được, nên dùng span và bỏ con trỏ bàn tay. */
+.act--xem { cursor: default; }
+
 /* ---------- Nút "Chỉnh sửa" ở trang cá nhân ---------- */
 /* Nền trắng, viền và chữ đỏ, ở mọi khổ màn. Nhắm theo thuộc tính chứ không
    theo thẻ vì nút này đã đổi từ button sang thẻ a để dẫn sang trang chỉnh

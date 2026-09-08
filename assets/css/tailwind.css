@@ -87,6 +87,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .act[data-save][aria-pressed="true"] .icon{fill:#1A1A1A}
 @keyframes pop{40%{transform:scale(1.28)}100%{transform:scale(1)}}
 .act.is-popping .icon{animation:pop .32s cubic-bezier(.4,0,.2,1)}
+.act--xem{cursor:default}
 .act-pill .icon{width:16px;height:16px;color:var(--color-icon-dark)}.act-pill[aria-pressed="true"] .icon{color:var(--color-primary-800);fill:var(--color-primary-800)}
 .app-header{padding-top:env(safe-area-inset-top);transition:transform .28s var(--ease)}.app-header.is-hidden{transform:translateY(-100%)}@media (min-width:520px){.app-header,.chips-bar{max-width:480px;margin-inline:auto}}
 .app-header__inner:has(> .page-title + .icon-btn:last-child){position:relative}.app-header__inner:has(> .page-title + .icon-btn:last-child)>.page-title{position:absolute;left:50%;transform:translateX(-50%);max-width:calc(100% - 120px)}
