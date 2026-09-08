@@ -2218,20 +2218,20 @@
           'Bạn đã đạt giới hạn gửi bài hôm nay',
           'Bạn đã gửi tối đa ' + HAN_MUC + ' bài trong ngày. Bạn vẫn có thể tiếp tục viết và lưu '
             + 'bản nháp để gửi vào ngày mai.\n\nBài viết hiện tại vẫn được lưu trong Bản nháp.',
-          [{ label: 'Đã hiểu', kind: 'ghost' }]
+          [{ label: 'Đã hiểu', kind: 'brand' }]
         );
         return;
       }
       /* Chỉ khi bấm "Đồng ý & Gửi bài" mới thật sự gửi; đóng hộp hay Quay lại
          thì bài giữ nguyên trạng thái và vẫn sửa được. */
       moHop(ALERT_TEN, ALERT_CHU, [
-        { label: 'Đồng ý & Gửi bài', kind: 'primary', run: function () {
+        { label: 'Đồng ý & Gửi bài', kind: 'brand', run: function () {
           ghiSo(docSo() + 1);
           veQuota();
           dong(manXT);
           if (manXong) mo(manXong);
         } },
-        { label: 'Quay lại', kind: 'ghost' }
+        { label: 'Quay lại', kind: 'outline' }
       ]);
     });
   });

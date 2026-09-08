@@ -1095,7 +1095,10 @@ input { font: inherit; }
   overflow: hidden;
   background: var(--surface-dark);
 }
-.vcard img {
+/* Chỉ ảnh bìa của card, không phải mọi ảnh bên trong — ảnh đại diện tác giả
+   nằm trong .vcard__body cũng là img, dính luật này thì nó bị đẩy lên góc
+   trên trái theo inset: 0. */
+.vcard > img {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
@@ -3742,19 +3745,23 @@ input { font: inherit; }
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .18) 52%, rgba(0, 0, 0, 0) 100%);
 }
+/* Cùng bộ áo với nút phát của card video: nằm giữa ảnh, nền mờ có viền sáng.
+   Cỡ 36px là 26px cũ cộng 40%. */
 .short__play {
   position: absolute;
-  top: 10px; right: 10px;
-  width: 26px; height: 26px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px; height: 36px;
   display: grid;
   place-items: center;
   border-radius: var(--r-pill);
-  background: rgba(16, 24, 40, .42);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  background: rgba(183, 183, 188, .4);
+  border: 1px solid rgba(255, 255, 255, .4);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   color: #fff;
 }
-.short__play .icon { width: 12px; height: 12px; }
+.short__play .icon { width: 17px; height: 17px; fill: currentColor; }
 .short__body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -3845,7 +3852,6 @@ input { font: inherit; }
 
   /* --- khối nhận diện --- */
   .v-web .profile-id { align-items: flex-start; }
-  .v-web .profile-head__ava { width: 88px; height: 88px; }
   .v-web .profile-head__name { font-size: 22px; line-height: 30px; }
 
 
@@ -3867,12 +3873,18 @@ input { font: inherit; }
 
   /* Nút "Chỉnh sửa": nền trắng, viền và chữ đỏ. Nhắm theo data-owner-only vì
      bản dựng Tailwind không còn giữ class .btn-pill trên thẻ này. */
-  .v-web .profile-id button[data-owner-only] {
+  /* Nhắm theo thuộc tính chứ không theo thẻ: nút này đã đổi từ button sang
+     thẻ a để dẫn sang trang chỉnh sửa. Phải tự canh chữ vì thẻ a không có
+     sẵn cách canh giữa như button. */
+  .v-web .profile-id [data-owner-only] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid var(--gnm-red);
     background: var(--surface);
     color: var(--gnm-red);
   }
-  .v-web .profile-id button[data-owner-only]:active { background: #ffefef; }
+  .v-web .profile-id [data-owner-only]:active { background: #ffefef; }
 
   /* --- Bài viết được lựa chọn --- */
   /* Khối này ở bố cục rộng đã bày đủ ba bài nên không cần lối "Xem thêm". */
@@ -3937,6 +3949,14 @@ input { font: inherit; }
      Thanh này mang max-width 480px và margin auto nên tự canh giữa trong cột;
      phải gỡ cả hai thì justify-content mới có tác dụng. Lề trái lấy bằng lề
      của các khối .shell cùng cột. */
+  /* Thanh lọc trạng thái cũng bị bó 480px và canh giữa như thanh tab. */
+  .v-web .page .status-bar,
+  .v-web .page .status-bar .chips {
+    max-width: none;
+    margin-inline: 0;
+  }
+  .v-web .page .status-bar .chips { padding-inline: 24px; }
+
   .v-web .page .ptabs {
     justify-content: flex-start;
     max-width: none;
@@ -4147,6 +4167,13 @@ input { font: inherit; }
   .v-web .page .rank__badge { font-size: 10px; padding: 3px 8px; bottom: -5px; }
   .v-web .page .rank__name { font-size: 12px; line-height: 16px; }
   .v-web .mini { bottom: 16px; }
+
+  /* Card video ở bố cục rộng to gấp mấy lần khổ điện thoại nên cỡ chữ 12px
+     của bản gốc đọc rất bé. */
+  .v-web .vcard--hero .vcard__title { font-size: 20px; line-height: 28px; }
+  .v-web .vcard__title { font-size: 15px; line-height: 22px; }
+  .v-web .mcard h3 { font-size: 15px; line-height: 22px; }
+  .v-web .mcard__author p { font-size: 13px; line-height: 20px; }
 
   .v-web .page .tophero {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5260,7 +5287,19 @@ input { font: inherit; }
 .vb-xong__ten { font-size: 22px; font-weight: 800; line-height: 30px; color: var(--ink-strong); }
 .vb-xong__dan { padding-top: 10px; font-size: 14px; line-height: 22px; color: var(--text-action); }
 .vb-xong__nut { display: flex; flex-direction: column; gap: 8px; padding-top: 24px; }
-.vb-xong__nut > * { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; }
+/* Viết kèm .vb-xong cho mạnh hơn utility min-h của từng nút, nếu không hai
+   nút cao 34 và 44. */
+.vb-xong .vb-xong__nut > * {
+  width: 100%;
+  min-height: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Hai nút thuộc hai bộ khác nhau, một cái có viền một cái không; cho cùng
+     viền để bề ngang khớp nhau. */
+  border: 1px solid transparent;
+}
 
 @media (max-width: 767.98px) {
   .vb-man__thanh { padding: 10px 12px; gap: 8px; }
