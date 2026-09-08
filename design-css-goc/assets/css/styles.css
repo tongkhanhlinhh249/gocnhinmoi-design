@@ -4132,10 +4132,10 @@ input { font: inherit; }
   .v-web .page .footer__title { grid-column: 1; grid-row: 2; }
   .v-web .page .footer__legal { grid-column: 1; grid-row: 3; }
   .v-web .page .btn-ad { grid-column: 1; grid-row: 4; justify-self: start; }
-  .v-web .page .footer__subtitle { grid-column: 2; grid-row: 1; margin-top: 0; padding-top: 0; }
-  /* Danh sách liên hệ trải qua hai hàng để bám sát tiêu đề của nó, không bị
-     chiều cao của khối giấy phép bên trái đẩy xuống. */
-  .v-web .page .footer__list { grid-column: 2; grid-row: 2 / span 2; align-self: start; }
+  /* Tiêu đề cột phải đặt ở hàng 2 để ngang bằng dòng "Mạng xã hội Góc Nhìn
+     Mới" bên trái, chứ không ngang với logo. */
+  .v-web .page .footer__subtitle { grid-column: 2; grid-row: 2; margin-top: 0; padding-top: 0; }
+  .v-web .page .footer__list { grid-column: 2; grid-row: 3; align-self: start; }
   .v-web .page .social { grid-column: 2; grid-row: 4; }
   .v-web .page .footer__bottom { grid-column: 1 / -1; grid-row: 5; }
 
