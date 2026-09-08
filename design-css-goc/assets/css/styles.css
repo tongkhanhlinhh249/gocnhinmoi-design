@@ -4404,8 +4404,9 @@ input { font: inherit; }
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
-    border-radius: 14px;
+    padding: 10px 14px;
+    /* Bo tròn hẳn hai đầu cho ra hình viên thuốc. */
+    border-radius: var(--r-pill);
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
