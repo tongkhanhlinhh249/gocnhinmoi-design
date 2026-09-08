@@ -3876,18 +3876,6 @@ input { font: inherit; }
 
   /* Nút "Chỉnh sửa": nền trắng, viền và chữ đỏ. Nhắm theo data-owner-only vì
      bản dựng Tailwind không còn giữ class .btn-pill trên thẻ này. */
-  /* Nhắm theo thuộc tính chứ không theo thẻ: nút này đã đổi từ button sang
-     thẻ a để dẫn sang trang chỉnh sửa. Phải tự canh chữ vì thẻ a không có
-     sẵn cách canh giữa như button. */
-  .v-web .profile-id [data-owner-only] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--gnm-red);
-    background: var(--surface);
-    color: var(--gnm-red);
-  }
-  .v-web .profile-id [data-owner-only]:active { background: #ffefef; }
 
   /* --- Bài viết được lựa chọn --- */
   /* Khối này ở bố cục rộng đã bày đủ ba bài nên không cần lối "Xem thêm". */
@@ -4808,6 +4796,20 @@ input { font: inherit; }
 .sheet.is-neo #sheetMeta { display: none; }
 .sheet.is-neo .sheet-menu button { padding: 9px 10px; font-size: 13px; }
 
+/* ---------- Nút "Chỉnh sửa" ở trang cá nhân ---------- */
+/* Nền trắng, viền và chữ đỏ, ở mọi khổ màn. Nhắm theo thuộc tính chứ không
+   theo thẻ vì nút này đã đổi từ button sang thẻ a để dẫn sang trang chỉnh
+   sửa; cũng phải tự canh chữ vì thẻ a không canh giữa sẵn như button. */
+.profile-id [data-owner-only] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gnm-red);
+  background: var(--surface);
+  color: var(--gnm-red);
+}
+.profile-id [data-owner-only]:active { background: #ffefef; }
+
 /* ================= Trang viết bài ================= */
 /* Trang soạn thảo đứng riêng: không cột trái, không cột phải, không thanh bar
    dưới — chỗ viết cần rộng và yên. Toàn bộ class mang tiền tố vb- để không
@@ -5469,13 +5471,15 @@ input { font: inherit; }
 .hs-top__nut { display: flex; align-items: center; gap: 8px; }
 /* Hai nút thuộc hai bộ khác nhau nên cùng cỡ và cùng canh giữa; viền trong
    suốt để bù chỗ, nếu không nút có viền rộng hơn 2px. */
-.hs-top__nut > *,
-.hs-day > * {
+/* Viết kèm .hs-top / .hs-form cho mạnh hơn utility min-h của từng nút, nếu
+   không hai nút cao 44 và 34. */
+.hs-top .hs-top__nut > *,
+.hs-form .hs-day > * {
   flex: none;
   align-self: center;
-  min-height: 38px;
-  height: 38px;
-  min-width: 120px;
+  min-height: 40px;
+  height: 40px;
+  min-width: 132px;
   padding-inline: 18px;
   border: 1px solid transparent;
   display: inline-flex;
@@ -5599,5 +5603,5 @@ input { font: inherit; }
   .hs-top__nut { display: none; }
   .hs-the { padding: 16px; }
   .hs-form { gap: 14px; }
-  .hs-day > * { flex: 1; min-width: 0; }
+  .hs-form .hs-day > * { flex: 1 1 0; min-width: 0; }
 }

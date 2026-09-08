@@ -1225,7 +1225,6 @@
       { act: 'view', label: 'Xem bài đã đăng', icon: 'eye' },
       { act: 'share', label: 'Chia sẻ', icon: 'share' },
       { act: 'copy', label: 'Sao chép liên kết', icon: 'link' },
-      { act: 'stats', label: 'Xem thống kê', icon: 'eye' },
       { act: 'go', label: 'Yêu cầu gỡ bài', icon: 'alert' }
     ],
     pending: [
@@ -1274,7 +1273,6 @@
                         toast('Bài viết đã được gửi cho Ban biên tập'); break;
       case 'share':     toast('Đã mở bảng chia sẻ'); break;
       case 'copy':      toast('Đã sao chép liên kết bài viết'); break;
-      case 'stats':     toast('Mở thống kê bài viết'); break;
       /* Bài đã trả nhuận bút thì không cho yêu cầu gỡ nữa, chỉ báo lại lý do. */
       case 'go':
         if (row.getAttribute('data-nhuan-but') === 'da-tra') {
