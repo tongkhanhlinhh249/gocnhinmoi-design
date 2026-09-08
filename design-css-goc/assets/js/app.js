@@ -936,7 +936,7 @@
        của mình chứ không xem bản nháp. */
     if (st === 'published')      foot.innerHTML = btn('Xem bài đã đăng', 'view');
     else if (st === 'pending')   foot.innerHTML = btn('Xem bài', 'view');
-    else if (st === 'rejected')  foot.innerHTML = btn('Chỉnh sửa bài', 'edit', true) + btn('Xem phản hồi', 'reason');
+    else if (st === 'rejected')  foot.innerHTML = btn('Chỉnh sửa bài', 'edit', true);
     else                         foot.innerHTML = btn('Tiếp tục viết', 'edit', true);
 
     $('.btn-menu', row).setAttribute('aria-label', 'Hành động khác với bài “' + title + '”');
@@ -1210,7 +1210,7 @@
       { act: 'copydraft', label: 'Sao chép thành bản nháp', icon: 'draft' }
     ],
     rejected: [
-      { act: 'reason', label: 'Xem lý do', icon: 'alert' },
+      { act: 'reason', label: 'Xem phản hồi', icon: 'alert' },
       { act: 'edit', label: 'Chỉnh sửa bài', icon: 'nav-write' },
       { act: 'resubmit', label: 'Gửi lại để duyệt', icon: 'send' },
       { act: 'delete', label: 'Xóa bài', icon: 'trash', danger: true }
