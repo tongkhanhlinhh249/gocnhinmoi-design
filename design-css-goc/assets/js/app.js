@@ -879,7 +879,7 @@
     rejected: 'alert', draft: 'draft'
   };
   var NOTE = {
-    published: ['ok', 'Góc nhìn của bạn đã được chia sẻ trên GNM.'],
+    published: ['ok', 'Bài viết của bạn đã được đăng trên GNM.'],
     pending: ['warn', 'Góc nhìn của bạn đang được xem xét.'],
     rejected: ['danger', 'Bài viết hiện chưa phù hợp với tiêu chí của GNM.']
   };
@@ -1218,25 +1218,28 @@
       ]);
   }
 
+  /* Menu theo trạng thái. Bài đang xem xét bị khoá hẳn: không sửa, không xoá,
+     không huỷ gửi — chỉ xem lại bài đã gửi. */
   var MENUS = {
     published: [
-      { act: 'edit', label: 'Chỉnh sửa', icon: 'nav-write' },
+      { act: 'view', label: 'Xem bài đã đăng', icon: 'eye' },
       { act: 'share', label: 'Chia sẻ', icon: 'share' },
       { act: 'copy', label: 'Sao chép liên kết', icon: 'link' },
-      { act: 'stats', label: 'Xem thống kê', icon: 'eye' }
+      { act: 'stats', label: 'Xem thống kê', icon: 'eye' },
+      { act: 'go', label: 'Yêu cầu gỡ bài', icon: 'alert' }
     ],
     pending: [
-      { act: 'cancel', label: 'Hủy gửi duyệt', icon: 'close' },
-      { act: 'copydraft', label: 'Sao chép thành bản nháp', icon: 'draft' }
+      { act: 'view', label: 'Xem bài đã gửi', icon: 'eye' }
     ],
     rejected: [
       { act: 'reason', label: 'Xem phản hồi', icon: 'alert' },
       { act: 'edit', label: 'Chỉnh sửa bài', icon: 'nav-write' },
-      { act: 'resubmit', label: 'Gửi lại để duyệt', icon: 'send' },
+      { act: 'resubmit', label: 'Gửi lại', icon: 'send' },
       { act: 'delete', label: 'Xóa bài', icon: 'trash', danger: true }
     ],
     draft: [
-      { act: 'submit', label: 'Gửi duyệt', icon: 'send' },
+      { act: 'edit', label: 'Tiếp tục viết', icon: 'nav-write' },
+      { act: 'submit', label: 'Gửi bài', icon: 'send' },
       { act: 'delete', label: 'Xóa bài', icon: 'trash', danger: true }
     ]
   };
@@ -1272,6 +1275,22 @@
       case 'share':     toast('Đã mở bảng chia sẻ'); break;
       case 'copy':      toast('Đã sao chép liên kết bài viết'); break;
       case 'stats':     toast('Mở thống kê bài viết'); break;
+      /* Bài đã trả nhuận bút thì không cho yêu cầu gỡ nữa, chỉ báo lại lý do. */
+      case 'go':
+        if (row.getAttribute('data-nhuan-but') === 'da-tra') {
+          openDialog('Bài viết không thể yêu cầu gỡ',
+            'Bài viết này đã hoàn tất thanh toán nhuận bút nên hiện không hỗ trợ yêu cầu gỡ khỏi '
+            + 'Góc Nhìn Mới. Nếu bài viết có thông tin cần điều chỉnh hoặc vấn đề khác, bạn vẫn có '
+            + 'thể gửi báo cáo để Ban Biên tập xem xét.',
+            [{ label: 'Đã hiểu', kind: 'brand' }]);
+        } else {
+          openDialog('Yêu cầu gỡ bài viết?',
+            'Ban biên tập sẽ xem xét yêu cầu của bạn. Bài viết vẫn hiển thị trên Góc Nhìn Mới cho '
+            + 'tới khi yêu cầu được duyệt.',
+            [{ label: 'Gửi yêu cầu', kind: 'brand', run: function () { toast('Đã gửi yêu cầu gỡ bài'); } },
+             { label: 'Quay lại', kind: 'outline' }]);
+        }
+        break;
       case 'copydraft': toast('Đã tạo một bản nháp từ bài viết này'); break;
       case 'delete':
         openDialog('Xóa bài viết?', 'Bài viết sẽ bị xóa khỏi danh sách của bạn. Thao tác này không hoàn tác được.',
