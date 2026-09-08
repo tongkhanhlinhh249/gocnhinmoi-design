@@ -892,7 +892,7 @@
     "keep": ".footer__list li{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:20px;color:var(--text-action)}.footer__list .icon{width:14px;height:14px;color:var(--icon-grey);margin-top:3px}.footer__list a{color:var(--gnm-red);font-weight:700}"
   },
   "btn-ad": {
-    "tw": "flex items-center justify-center gap-[10px] mt-5 h-[42px] rounded-md bg-primary-800 text-surface text-[14px] font-semibold",
+    "tw": "flex items-center justify-center gap-[10px] mt-5 h-[42px] px-5 rounded-md bg-primary-800 text-surface text-[14px] font-semibold",
     "keep": ".btn-ad .icon{width:15px;height:15px}.btn-ad strong{font-weight:800;letter-spacing:.2px}"
   },
   "social": {
