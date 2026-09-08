@@ -4774,6 +4774,33 @@ input { font: inherit; }
   .v-web .rail-follow[aria-pressed="true"] { background: var(--fill-soft); color: var(--text-muted); }
 }
 
+/* ---------- Bảng tuỳ chọn dạng hộp nhỏ bám vào nút ---------- */
+/* Cùng thẻ #sheet nhưng đổi dáng: hộp gọn cạnh nút ba chấm, bỏ tiêu đề và
+   thanh kéo, nền mờ trong suốt để chỉ còn tác dụng bấm ra ngoài là đóng. */
+.sheet.is-neo .sheet__backdrop { background: transparent; }
+.sheet.is-neo .sheet__panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  width: 232px;
+  max-width: none;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--line-3);
+  border-radius: var(--r-md);
+  box-shadow: 0 12px 32px rgba(16, 24, 40, .18);
+  transform: none;
+  opacity: 0;
+  transition: opacity .14s var(--ease);
+}
+.sheet.is-neo.is-open .sheet__panel { transform: none; opacity: 1; }
+.sheet.is-neo .sheet__panel > [aria-hidden="true"]:first-child,
+.sheet.is-neo #sheetTitle,
+.sheet.is-neo #sheetMeta { display: none; }
+.sheet.is-neo .sheet-menu button { padding: 9px 10px; font-size: 13px; }
+
 /* ================= Trang viết bài ================= */
 /* Trang soạn thảo đứng riêng: không cột trái, không cột phải, không thanh bar
    dưới — chỗ viết cần rộng và yên. Toàn bộ class mang tiền tố vb- để không

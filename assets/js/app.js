@@ -1060,21 +1060,41 @@
   var sheetBody = $('#sheetBody');
   var lastFocus = null;
 
-  function openSheet(title, meta, bodyHtml) {
+  /* neo: truyền vào thì bảng hiện thành hộp nhỏ bám lấy nút bấm thay vì tấm
+     trượt từ đáy, và bỏ luôn tiêu đề cho gọn. */
+  function openSheet(title, meta, bodyHtml, neo) {
     lastFocus = document.activeElement;
     sheetTitle.textContent = title;
     sheetMeta.textContent = meta || '';
     sheetMeta.hidden = !meta;
     sheetBody.innerHTML = bodyHtml;
+    sheet.classList.toggle('is-neo', !!neo);
     sheet.hidden = false;
+    if (neo) datCho(neo);
     // buộc trình duyệt tính lại layout trước khi gắn class, nếu không sẽ mất hiệu ứng trượt
     void sheet.offsetWidth;
     sheet.classList.add('is-open');
     var first = sheet.querySelector('button, a');
     if (first) first.focus();
   }
+  /* Đặt hộp ngay dưới nút, canh mép phải cho thẳng nút. Không đủ chỗ bên dưới
+     thì lật lên trên. */
+  function datCho(neo) {
+    var panel = sheet.querySelector('.sheet__panel');
+    panel.style.left = '0px';
+    panel.style.top = '0px';
+    var o = neo.getBoundingClientRect();
+    var cao = panel.offsetHeight;
+    var rong = panel.offsetWidth;
+    var tren = o.bottom + cao + 8 > window.innerHeight && o.top > cao + 8;
+    var x = Math.max(8, Math.min(o.right - rong, window.innerWidth - rong - 8));
+    panel.style.left = Math.round(x) + 'px';
+    panel.style.top = Math.round(tren ? o.top - cao - 6 : o.bottom + 6) + 'px';
+  }
+
   function closeSheet() {
     sheet.classList.remove('is-open');
+    sheet.classList.remove('is-neo');
     setTimeout(function () { sheet.hidden = true; }, reduced ? 0 : 260);
     if (lastFocus) lastFocus.focus();
   }
@@ -1228,7 +1248,7 @@
       return '<button type="button" data-menu-act="' + m.act + '"' + (m.danger ? ' data-danger' : '') + '>' +
         icon(m.icon) + m.label + '</button>';
     }).join('') + '</div>';
-    openSheet(title, LABEL[st], html);
+    openSheet(title, LABEL[st], html, $('[data-row-menu]', row));
 
     sheetBody.addEventListener('click', function handler(e) {
       var b = e.target.closest('[data-menu-act]');
