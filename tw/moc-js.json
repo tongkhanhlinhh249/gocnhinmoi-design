@@ -35,9 +35,13 @@
   "is-visible",
   "loadmore",
   "people-row",
+  "plist__item",
   "podcast__title",
   "post-row",
+  "post-row__foot",
+  "post-row__head",
   "post-row__note",
+  "post-row__time",
   "post-row__title",
   "ppanel",
   "ptab",
@@ -46,6 +50,5 @@
   "sheet__actions",
   "sheet__block",
   "sheet__label",
-  "sheet__text",
-  "plist__item"
+  "sheet__text"
 ]

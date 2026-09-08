@@ -867,10 +867,11 @@
   /* ---------- Dữ liệu trạng thái ----------
      Mô phỏng phần backend sẽ trả về. Nhãn và hành động gắn với trạng thái,
      không gắn với từng bài, nên thêm bài mới không phải sửa gì ở đây. */
+  /* Chữ hướng về người viết, không dùng từ vựng nội bộ của toà soạn. */
   var LABEL = {
-    published: 'Đã xuất bản',
-    pending: 'Chờ duyệt',
-    rejected: 'Từ chối',
+    published: 'Đã đăng',
+    pending: 'Đang xem xét',
+    rejected: 'Chưa phù hợp',
     draft: 'Bản nháp'
   };
   var ICON = {
@@ -878,8 +879,9 @@
     rejected: 'alert', draft: 'draft'
   };
   var NOTE = {
-    pending: ['warn', 'Bài viết đang được Ban biên tập xem xét.'],
-    rejected: ['danger', 'Bài viết chưa đáp ứng yêu cầu xuất bản.']
+    published: ['ok', 'Góc nhìn của bạn đã được chia sẻ trên GNM.'],
+    pending: ['warn', 'Góc nhìn của bạn đang được xem xét.'],
+    rejected: ['danger', 'Bài viết hiện chưa phù hợp với tiêu chí của GNM.']
   };
 
   // Lý do phản hồi của Ban biên tập — không nêu tên người kiểm duyệt.
@@ -930,9 +932,11 @@
     var btn = function (label, act, brand) {
       return '<button class="btn-row' + (brand ? ' btn-row--brand' : '') + '" type="button" data-act="' + act + '">' + label + '</button>';
     };
-    if (st === 'published')      foot.innerHTML = btn('Xem bài viết', 'view');
-    else if (st === 'pending')   foot.innerHTML = btn('Xem trước', 'preview');
-    else if (st === 'rejected')  foot.innerHTML = btn('Xem lý do', 'reason', true);
+    /* Bài đã gửi rồi thì không còn "Xem trước" nữa — người viết xem chính bài
+       của mình chứ không xem bản nháp. */
+    if (st === 'published')      foot.innerHTML = btn('Xem bài đã đăng', 'view');
+    else if (st === 'pending')   foot.innerHTML = btn('Xem bài', 'view');
+    else if (st === 'rejected')  foot.innerHTML = btn('Chỉnh sửa bài', 'edit', true) + btn('Xem phản hồi', 'reason');
     else                         foot.innerHTML = btn('Tiếp tục viết', 'edit', true);
 
     $('.btn-menu', row).setAttribute('aria-label', 'Hành động khác với bài “' + title + '”');

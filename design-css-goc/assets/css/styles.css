@@ -2091,6 +2091,7 @@ input { font: inherit; }
   font-size: 12px;
   line-height: 18px;
 }
+.post-row__note--ok { background: var(--ok-soft); color: var(--ok); }
 .post-row__note--warn { background: var(--warn-soft); color: var(--warn); }
 .post-row__note--info { background: var(--info-soft); color: var(--info); }
 .post-row__note--danger { background: var(--danger-soft); color: var(--danger); }
@@ -3913,13 +3914,34 @@ input { font: inherit; }
   .v-web .feat .hscroll > li:first-child .card__media img { width: 100%; height: 100%; object-fit: cover; }
   .v-web .feat .hscroll > li:first-child .card__scrim {
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
   }
   .v-web .feat .hscroll > li:first-child .card__body {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 0 var(--gutter) 16px;
     color: #fff;
   }
+  /* Dòng tác giả xuống dải nền đen dưới ảnh, giống thẻ Tin nổi bật trang chủ
+     và thẻ dẫn ở các trang chuyên mục. Chừa 44px đệm dưới ảnh với box-sizing:
+     content-box để phần đệm cộng thêm ngoài tỉ lệ khung. */
+  .v-web .feat .hscroll > li:first-child .card__media {
+    box-sizing: content-box;
+    padding-bottom: 44px;
+    background: #000;
+  }
+  .v-web .feat .hscroll > li:first-child .card__scrim { bottom: 44px; }
+  .v-web .feat .hscroll > li:first-child .card__body { bottom: 44px; }
+  .v-web .feat .hscroll > li:first-child .byline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -44px;
+    height: 44px;
+    margin: 0;
+    padding: 0 var(--gutter);
+    background: #000;
+  }
+
   .v-web .feat .hscroll > li:first-child .card__title {
     font-size: 26px; font-weight: 800; line-height: 34px; letter-spacing: -.011em;
   }
@@ -5404,7 +5426,7 @@ input { font: inherit; }
    nhập bó lại một bề ngang dễ đọc. Class mang tiền tố hs- để không đụng bộ áo
    của các trang đọc. */
 .hs-main { padding-inline: 24px; padding-bottom: 40px; }
-.hs-form { display: flex; flex-direction: column; gap: 18px; max-width: 720px; }
+.hs-form { display: flex; flex-direction: column; gap: 18px; }
 
 .hs-top { display: flex; align-items: center; gap: 12px; padding: 8px 0 18px; }
 .hs-top__ten { flex: 1; font-size: 20px; font-weight: 800; line-height: 28px; color: var(--ink-strong); }
@@ -5517,48 +5539,21 @@ input { font: inherit; }
 .hs-nhap--tiento input:focus { outline: none; }
 .hs-nhap--tiento:focus-within { outline: 2px solid var(--gnm-red); outline-offset: 1px; }
 
-/* ---------- Công tắc ---------- */
-.hs-gat {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line-3);
-  cursor: pointer;
-}
-.hs-gat:first-of-type { border-top: 0; padding-top: 0; }
-.hs-gat__chu { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.hs-gat__chu b { font-size: 13px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
-.hs-gat__chu span { font-size: 12px; line-height: 18px; color: var(--text-muted); }
-/* Ô tick thật vẫn nằm đó cho bàn phím và trình đọc màn hình, chỉ giấu đi. */
-.hs-gat input {
-  position: absolute;
-  width: 1px; height: 1px;
-  opacity: 0;
-}
-.hs-gat__nut {
-  position: relative;
-  flex: none;
-  width: 42px; height: 24px;
-  border-radius: var(--r-pill);
-  background: var(--line-2);
-  transition: background .18s var(--ease);
-}
-.hs-gat__nut::after {
-  content: "";
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 18px; height: 18px;
-  border-radius: var(--r-pill);
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, .3);
-  transition: transform .18s var(--ease);
-}
-.hs-gat input:checked ~ .hs-gat__nut { background: var(--gnm-red); }
-.hs-gat input:checked ~ .hs-gat__nut::after { transform: translateX(18px); }
-.hs-gat input:focus-visible ~ .hs-gat__nut { outline: 2px solid var(--gnm-red); outline-offset: 2px; }
-
 .hs-day { display: flex; justify-content: flex-end; gap: 8px; padding-top: 2px; }
+
+/* Cột rộng thì xếp hai ô mỗi hàng, không để form kéo dài một cột gây trống
+   nửa màn. Ô giới thiệu trải hết hàng vì nó cao. */
+@media (min-width: 1024px) {
+  .hs-the--luoi {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 14px;
+  }
+  .hs-the--luoi .hs-the__ten { grid-column: 1 / -1; padding-bottom: 2px; }
+  .hs-the--luoi .hs-o { padding-top: 0; }
+  .hs-o--rong { grid-column: 1 / -1; }
+}
 
 @media (max-width: 767.98px) {
   .hs-main { padding-inline: var(--gutter); }

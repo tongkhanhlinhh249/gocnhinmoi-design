@@ -718,9 +718,9 @@
       <nav class="status-bar max-w-shell mx-auto" aria-label="Lọc theo trạng thái">
         <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" id="statusChips">
           <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-status-filter="all">Tất cả <span class="chip__n opacity-65 font-semibold">(12)</span></button>
-          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="published">Đã xuất bản <span class="chip__n opacity-65 font-semibold">(6)</span></button>
-          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="pending">Chờ duyệt <span class="chip__n opacity-65 font-semibold">(3)</span></button>
-          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="rejected">Từ chối <span class="chip__n opacity-65 font-semibold">(1)</span></button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="published">Đã đăng <span class="chip__n opacity-65 font-semibold">(6)</span></button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="pending">Đang xem xét <span class="chip__n opacity-65 font-semibold">(3)</span></button>
+          <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="rejected">Chưa phù hợp <span class="chip__n opacity-65 font-semibold">(1)</span></button>
           <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-status-filter="draft">Bản nháp <span class="chip__n opacity-65 font-semibold">(1)</span></button>
         </div>
       </nav>
@@ -730,14 +730,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p1" data-status="published" data-created="2026-08-19T10:00" data-updated="2026-08-20T09:12">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-gen-z.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Một thế hệ lớn lên cùng internet đang bước vào ghế điều hành, mang theo cách làm việc khác hẳn thế hệ trước.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09:12, 20/08/2026 · Cập nhật 20/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09:12, 20/08/2026 · Cập nhật 20/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>12,4K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>4,1K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>512<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p1" aria-label="Hành động khác với bài “Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -746,14 +747,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p2" data-status="published" data-created="2026-08-17T09:00" data-updated="2026-08-18T08:40">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-song-cham.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Cứ cố gắng là sẽ có tất cả — một thế hệ đang đặt lại câu hỏi tất cả đó là gì.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 08:40, 18/08/2026 · Cập nhật 18/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 08:40, 18/08/2026 · Cập nhật 18/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>9,8K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>2,4K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>331<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p2" aria-label="Hành động khác với bài “Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -762,14 +764,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p3" data-status="published" data-created="2026-08-14T11:00" data-updated="2026-08-16T10:15">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/cover-van-hoa-doc.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Văn hoá đọc sách của người Việt trẻ: Đang phục hồi hay mãi chìm?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Số đầu sách bán ra tăng, nhưng số trang thực sự được đọc thì không ai đo được.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 15:20, 15/08/2026 · Cập nhật 16/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 15:20, 15/08/2026 · Cập nhật 16/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>15,2K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>4,2K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>386<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p3" aria-label="Hành động khác với bài “Văn hoá đọc sách của người Việt trẻ: Đang phục hồi hay mãi chìm?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -778,14 +781,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p4" data-status="published" data-created="2026-08-11T14:00" data-updated="2026-08-12T07:05">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-dan-chu-so.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Dân chủ số: Khi mạng xã hội định hình lại chính trị toàn cầu</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Thuật toán quyết định điều gì được nhìn thấy — và điều đó đang định hình lá phiếu.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 07:05, 12/08/2026 · Cập nhật 12/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 07:05, 12/08/2026 · Cập nhật 12/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>8,6K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>3,1K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>402<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p4" aria-label="Hành động khác với bài “Dân chủ số: Khi mạng xã hội định hình lại chính trị toàn cầu”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -794,14 +798,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p5" data-status="published" data-created="2026-08-07T16:00" data-updated="2026-08-08T10:30">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Thành phố thông minh: vì sao nhiều dự án đô thị số thất bại?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Cảm biến lắp đủ, dữ liệu thu đủ, nhưng không ai đọc.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 10:30, 08/08/2026 · Cập nhật 08/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 10:30, 08/08/2026 · Cập nhật 08/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>6,1K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>1,9K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>268<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p5" aria-label="Hành động khác với bài “Thành phố thông minh: vì sao nhiều dự án đô thị số thất bại?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -810,14 +815,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p6" data-status="published" data-created="2026-08-01T08:00" data-updated="2026-08-02T09:00">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-nguoi-viet-va-tien.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Người Việt và tiền: câu chuyện chưa bao giờ cũ</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Tiết kiệm là đức tính, nhưng đầu tư mới là kỹ năng — và khoảng cách giữa hai điều đó rất lớn.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09:00, 02/08/2026 · Cập nhật 02/08/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09:00, 02/08/2026 · Cập nhật 02/08/2026</p>
           <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>7,4K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>2,2K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>259<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p6" aria-label="Hành động khác với bài “Người Việt và tiền: câu chuyện chưa bao giờ cũ”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -826,14 +832,14 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p7" data-status="pending" data-created="2026-08-21T20:00" data-updated="2026-08-22T14:30">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-kinh-te-ai.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Chờ duyệt</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Đang xem xét</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Kinh tế AI: cuộc chuyển đổi lớn nhất của thế kỷ 21</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Không phải ngành nào cũng bị thay thế, nhưng ngành nào cũng phải trả lời câu hỏi về năng suất.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 14:30, 22/08/2026</p>
-          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Bài viết đang được Ban biên tập xem xét.</p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="preview">Xem trước</button></div>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 14:30, 22/08/2026</p>
+          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Góc nhìn của bạn đang được xem xét.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p7" aria-label="Hành động khác với bài “Kinh tế AI: cuộc chuyển đổi lớn nhất của thế kỷ 21”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -842,14 +848,14 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p8" data-status="pending" data-created="2026-08-20T18:00" data-updated="2026-08-21T09:05">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-de-che.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Chờ duyệt</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Đang xem xét</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Các đế chế sụp đổ để lại bài học gì cho doanh nghiệp Việt?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Không đế chế nào sụp vì một trận thua. Chúng sụp vì quá lớn để nghe được tiếng nói từ vùng biên.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 09:05, 21/08/2026</p>
-          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Bài viết đang được Ban biên tập xem xét.</p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="preview">Xem trước</button></div>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 09:05, 21/08/2026</p>
+          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Góc nhìn của bạn đang được xem xét.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p8" aria-label="Hành động khác với bài “Các đế chế sụp đổ để lại bài học gì cho doanh nghiệp Việt?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -858,14 +864,14 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p9" data-status="pending" data-created="2026-08-19T09:00" data-updated="2026-08-20T16:40">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/cover-nong-nghiep.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Chờ duyệt</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Đang xem xét</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Nông nghiệp công nghệ cao: Bước đột phá hay canh bạc của nông dân Việt?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Vốn đầu tư một nhà kính bằng ba năm thu nhập — và rủi ro thì không ai chia.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 16:40, 20/08/2026</p>
-          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Bài viết đang được Ban biên tập xem xét.</p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="preview">Xem trước</button></div>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi Ban biên tập lúc 16:40, 20/08/2026</p>
+          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-warn-soft text-warn">Góc nhìn của bạn đang được xem xét.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p9" aria-label="Hành động khác với bài “Nông nghiệp công nghệ cao: Bước đột phá hay canh bạc của nông dân Việt?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -874,14 +880,14 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p11" data-status="rejected" data-created="2026-08-15T13:00" data-updated="2026-08-17T15:48">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-startup-ky-lan.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-danger-soft text-danger"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-alert"></use></svg>Từ chối</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-danger-soft text-danger"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-alert"></use></svg>Chưa phù hợp</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Định giá tỷ đô và câu hỏi về tính bền vững của mô hình tăng trưởng bằng khuyến mãi.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Ban biên tập phản hồi lúc 15:48, 17/08/2026</p>
-          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-danger-soft text-danger">Bài viết chưa đáp ứng yêu cầu xuất bản.</p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="reason">Xem lý do</button></div>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Ban biên tập phản hồi lúc 15:48, 17/08/2026</p>
+          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-danger-soft text-danger">Bài viết hiện chưa phù hợp với tiêu chí của GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="edit">Chỉnh sửa bài</button><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="reason">Xem phản hồi</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p11" aria-label="Hành động khác với bài “Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -890,13 +896,13 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p12" data-status="draft" data-created="2026-08-16T20:00" data-updated="2026-08-22T08:20">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/trend-duong-sat.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
               <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-surface-fill text-ink-action"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-draft"></use></svg>Bản nháp</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Đường sắt cao tốc Bắc – Nam: Khi giấc mơ gần hơn bao giờ hết</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Bản nháp — mới viết phần mở đầu và dàn ý ba phần chính.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Cập nhật lần cuối 08:20, 22/08/2026</p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="edit">Tiếp tục viết</button></div>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Cập nhật lần cuối 08:20, 22/08/2026</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="edit">Tiếp tục viết</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p12" aria-label="Hành động khác với bài “Đường sắt cao tốc Bắc – Nam: Khi giấc mơ gần hơn bao giờ hết”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -905,14 +911,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p13" data-status="published" data-created="2026-07-27T09:00" data-updated="2026-07-28T08:15">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-chatgpt.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Công cụ không thay thế ý tưởng, nó chỉ rút ngắn quãng đường từ ý tưởng tới bản nháp đầu tiên.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 28/07/2026 · Cập nhật 28/07/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 28/07/2026 · Cập nhật 28/07/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>21,3K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>6,7K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>891<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p13" aria-label="Hành động khác với bài “ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -921,14 +928,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p14" data-status="published" data-created="2026-07-21T10:00" data-updated="2026-07-22T07:40">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-startup-ky-lan.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Định giá tỷ đô và câu hỏi về tính bền vững của mô hình tăng trưởng bằng khuyến mãi.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 22/07/2026 · Cập nhật 22/07/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 22/07/2026 · Cập nhật 22/07/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>5,4K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>1,6K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>98<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p14" aria-label="Hành động khác với bài “Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -937,14 +945,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p15" data-status="published" data-created="2026-07-15T14:00" data-updated="2026-07-16T09:05">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/cover-hoi-huong.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Làn sóng hồi hương của người Việt trẻ từ nước ngoài: Cơ hội hay thách thức?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Về nước không còn là bước lùi, nhưng cũng chưa hẳn là bước tiến — tuỳ vào thứ họ mang theo.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 16/07/2026 · Cập nhật 16/07/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 16/07/2026 · Cập nhật 16/07/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>14,7K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>4,6K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>534<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p15" aria-label="Hành động khác với bài “Làn sóng hồi hương của người Việt trẻ từ nước ngoài: Cơ hội hay thách thức?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -953,14 +962,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p16" data-status="published" data-created="2026-07-08T11:00" data-updated="2026-07-09T08:30">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-he-sinh-thai.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Khởi nghiệp Đông Nam Á: bức tranh toàn cảnh 2026</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Vốn ít đi, kỷ luật nhiều lên. Vòng gọi vốn khó hơn đang lọc ra những mô hình thật sự có lãi.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09/07/2026 · Cập nhật 09/07/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 09/07/2026 · Cập nhật 09/07/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>3,9K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>987<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>65<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p16" aria-label="Hành động khác với bài “Khởi nghiệp Đông Nam Á: bức tranh toàn cảnh 2026”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -969,14 +979,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p17" data-status="published" data-created="2026-06-30T16:00" data-updated="2026-07-01T07:20">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/cover-nha-o-ha-noi.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Thị trường nhà ở Hà Nội: Giá đã chạm đỉnh hay còn tiếp tục leo thang?</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Nguồn cung mới hạn chế trong khi nhu cầu thực vẫn còn — hai lực này chưa gặp nhau ở điểm cân bằng.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 01/07/2026 · Cập nhật 01/07/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 01/07/2026 · Cập nhật 01/07/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>19,5K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>6,8K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>712<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p17" aria-label="Hành động khác với bài “Thị trường nhà ở Hà Nội: Giá đã chạm đỉnh hay còn tiếp tục leo thang?”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
@@ -985,14 +996,15 @@
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p18" data-status="published" data-created="2026-06-23T09:00" data-updated="2026-06-24T08:00">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/cover-muoi-nam.png" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã xuất bản</span>
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
             </div>
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Mười năm nhìn lại: Hành trình của những người trẻ Việt chọn rời bỏ “an toàn”</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Một thế hệ đánh đổi biên chế lấy bất định, và mười năm sau họ kể lại cái giá của lựa chọn đó.</p>
-            <p class="pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 24/06/2026 · Cập nhật 24/06/2026</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Xuất bản 24/06/2026 · Cập nhật 24/06/2026</p>
             <p class="post-row__stats flex flex-nowrap gap-[14px] pt-[6px] text-[11px] leading-[16.5px] text-ink-muted"><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>17,8K<span class="sr-only"> lượt xem</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg>5,7K<span class="sr-only"> lượt thích</span></span><span><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg>612<span class="sr-only"> bình luận</span></span></p>
-            <div class="flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài viết</button></div>
+            <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-ok-soft text-ok">Góc nhìn của bạn đã được chia sẻ trên GNM.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold" type="button" data-act="view">Xem bài đã đăng</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p18" aria-label="Hành động khác với bài “Mười năm nhìn lại: Hành trình của những người trẻ Việt chọn rời bỏ “an toàn””"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
