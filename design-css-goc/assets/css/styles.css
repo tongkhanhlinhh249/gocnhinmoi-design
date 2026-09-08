@@ -4134,7 +4134,9 @@ input { font: inherit; }
   .v-web .page .btn-ad { grid-column: 1; grid-row: 4; justify-self: start; }
   /* Tiêu đề cột phải đặt ở hàng 2 để ngang bằng dòng "Mạng xã hội Góc Nhìn
      Mới" bên trái, chứ không ngang với logo. */
-  .v-web .page .footer__subtitle { grid-column: 2; grid-row: 2; margin-top: 0; padding-top: 0; }
+  /* Giữ nguyên đệm trên như dòng tiêu đề bên trái. Đặt padding-top: 0 thì hộp
+     tuy cùng mốc nhưng chữ lại nhô cao hơn 20px. */
+  .v-web .page .footer__subtitle { grid-column: 2; grid-row: 2; }
   .v-web .page .footer__list { grid-column: 2; grid-row: 3; align-self: start; }
   .v-web .page .social { grid-column: 2; grid-row: 4; }
   .v-web .page .footer__bottom { grid-column: 1 / -1; grid-row: 5; }
