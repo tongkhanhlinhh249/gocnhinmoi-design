@@ -3748,13 +3748,12 @@ input { font: inherit; }
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .18) 52%, rgba(0, 0, 0, 0) 100%);
 }
-/* Cùng bộ áo với nút phát của card video: nằm giữa ảnh, nền mờ có viền sáng.
-   Cỡ 36px là 26px cũ cộng 40%. */
+/* Cùng bộ áo và cùng cỡ với nút phát của card video: 44px, icon 14px. */
 .short__play {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
   display: grid;
   place-items: center;
   border-radius: var(--r-pill);
@@ -3764,7 +3763,7 @@ input { font: inherit; }
   backdrop-filter: blur(2px);
   color: #fff;
 }
-.short__play .icon { width: 17px; height: 17px; fill: currentColor; }
+.short__play .icon { width: 14px; height: 14px; fill: currentColor; }
 .short__body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -4104,16 +4103,19 @@ input { font: inherit; }
     align-items: start;
     padding-block: 32px;
   }
-  .v-web .page .footer__logo,
-  .v-web .page .footer__title,
-  .v-web .page .footer__legal,
-  .v-web .page .btn-ad { grid-column: 1; }
-  .v-web .page .footer__subtitle,
-  .v-web .page .footer__list,
-  .v-web .page .social { grid-column: 2; }
-  .v-web .page .footer__subtitle { margin-top: 0; }
-  .v-web .page .btn-ad { justify-self: start; }
-  .v-web .page .footer__bottom { grid-column: 1 / -1; }
+  /* Phải gán hàng tường minh cho từng cột. Để lưới tự xếp thì mỗi phần tử ăn
+     một hàng riêng, hàng nào cũng cao bằng phần tử cao nhất của nó, nên khối
+     bên phải bị các hàng của cột trái kéo lệch xuống và hở một quãng lớn. */
+  .v-web .page .footer__logo { grid-column: 1; grid-row: 1; }
+  .v-web .page .footer__title { grid-column: 1; grid-row: 2; }
+  .v-web .page .footer__legal { grid-column: 1; grid-row: 3; }
+  .v-web .page .btn-ad { grid-column: 1; grid-row: 4; justify-self: start; }
+  .v-web .page .footer__subtitle { grid-column: 2; grid-row: 1; margin-top: 0; padding-top: 0; }
+  /* Danh sách liên hệ trải qua hai hàng để bám sát tiêu đề của nó, không bị
+     chiều cao của khối giấy phép bên trái đẩy xuống. */
+  .v-web .page .footer__list { grid-column: 2; grid-row: 2 / span 2; align-self: start; }
+  .v-web .page .social { grid-column: 2; grid-row: 4; }
+  .v-web .page .footer__bottom { grid-column: 1 / -1; grid-row: 5; }
 
   /* .profile-bar là thanh trên của trang cá nhân ở bản điện thoại — nút quay
      lại và chuông. Bố cục rộng đã có cột trái và thanh deskbar nên bỏ đi. */
