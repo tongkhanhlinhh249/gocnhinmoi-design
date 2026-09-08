@@ -2095,16 +2095,95 @@
   }
   veQuota();
 
-  /* --- chọn chủ đề --- */
-  $$('[data-chude]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-    });
+  /* --- chữ gợi ý trong ô soạn --- */
+  function veGoi(o) {
+    if (!o.hasAttribute('data-goi')) return;
+    o.classList.toggle('is-trong', !o.textContent.trim());
+  }
+  function quetGoi() { $$('[data-goi]', soan).forEach(veGoi); }
+  soan.addEventListener('input', function (e) {
+    if (e.target && e.target.hasAttribute && e.target.hasAttribute('data-goi')) veGoi(e.target);
   });
+  soan.addEventListener('blur', quetGoi, true);
+  quetGoi();
+
+  /* --- chọn chủ đề: chip trong ô, danh sách xổ xuống --- */
+  var oChon = $('[data-vb-chon]');
+  var oGo = oChon && $('.vb-chon__go', oChon);
+  var oDs = oChon && $('.vb-ds', oChon);
+  var nutMo = oChon && $('.vb-chon__mo', oChon);
+
   function chuDeDaChon() {
-    return $$('[data-chude]').filter(function (b) {
-      return b.getAttribute('aria-pressed') === 'true';
-    }).map(function (b) { return b.textContent.trim(); });
+    return $$('.vb-ds__muc[aria-selected="true"]', oChon || document)
+      .map(function (b) { return b.getAttribute('data-chude'); });
+  }
+  function veChip() {
+    if (!oChon) return;
+    $$('.vb-chip--cd', oChon).forEach(function (c) { c.remove(); });
+    chuDeDaChon().reverse().forEach(function (ten) {
+      var c = document.createElement('span');
+      c.className = 'vb-chip vb-chip--cd';
+      c.setAttribute('data-chip', ten);
+      c.textContent = '#' + ten;
+      var x = document.createElement('button');
+      x.className = 'vb-chip__bo';
+      x.type = 'button';
+      x.setAttribute('aria-label', 'Bỏ chủ đề ' + ten);
+      x.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>';
+      c.appendChild(x);
+      oChon.querySelector('.vb-chon__o').insertBefore(c, oGo);
+    });
+  }
+  function moDs(mo) {
+    if (!oDs) return;
+    oDs.hidden = !mo;
+    if (nutMo) nutMo.setAttribute('aria-expanded', mo ? 'true' : 'false');
+  }
+  if (oChon) {
+    oChon.addEventListener('click', function (e) {
+      var bo = e.target.closest('.vb-chip__bo');
+      if (bo) {
+        var ten = bo.closest('.vb-chip--cd').getAttribute('data-chip');
+        var muc = $('.vb-ds__muc[data-chude="' + ten + '"]', oChon);
+        if (muc) muc.setAttribute('aria-selected', 'false');
+        veChip();
+        return;
+      }
+      var m = e.target.closest('.vb-ds__muc');
+      if (m) {
+        m.setAttribute('aria-selected', m.getAttribute('aria-selected') === 'true' ? 'false' : 'true');
+        veChip();
+        oGo.value = '';
+        loc('');
+        oGo.focus();
+        return;
+      }
+      if (e.target.closest('.vb-chon__mo')) { moDs(oDs.hidden); return; }
+      if (e.target.closest('.vb-chon__o')) { moDs(true); oGo.focus(); }
+    });
+    /* Gõ để lọc; không còn mục nào khớp thì báo hẳn ra. */
+    function loc(tu) {
+      var co = 0;
+      $$('.vb-ds__muc', oDs).forEach(function (b) {
+        var hop = b.getAttribute('data-chude').toLowerCase().indexOf(tu) !== -1;
+        b.parentElement.hidden = !hop;
+        if (hop) co++;
+      });
+      var trong = $('.vb-ds__trong', oDs);
+      if (!co && !trong) {
+        trong = document.createElement('li');
+        trong.className = 'vb-ds__trong';
+        trong.textContent = 'Không có chủ đề nào khớp';
+        oDs.appendChild(trong);
+      } else if (co && trong) trong.remove();
+    }
+    oGo.addEventListener('input', function () {
+      moDs(true);
+      loc(oGo.value.trim().toLowerCase());
+    });
+    document.addEventListener('click', function (e) {
+      if (!oChon.contains(e.target)) moDs(false);
+    });
   }
 
   /* --- kiểm các trường bắt buộc --- */

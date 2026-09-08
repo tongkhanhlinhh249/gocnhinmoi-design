@@ -228,15 +228,23 @@
 
       <section class="vb-card vb-phu" aria-label="Chủ đề">
         <h2 class="vb-the__ten">Chủ đề <span class="vb-bat">*</span></h2>
-        <div class="vb-cds" role="group" aria-label="Chọn chủ đề">
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Mới nhất</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Hot hôm nay</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Trà đàm</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Spotlight</button>
-            <button class="vb-cd" type="button" aria-pressed="true" data-chude>Quan điểm</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Luận cổ suy kim</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Góc mở</button>
-            <button class="vb-cd" type="button" aria-pressed="false" data-chude>Photo</button>
+        <div class="vb-chon" data-vb-chon>
+          <div class="vb-chon__o" data-vb-chon-o>
+            <span class="vb-chip vb-chip--cd" data-chip="Quan điểm">#Quan điểm<button class="vb-chip__bo" type="button" aria-label="Bỏ chủ đề Quan điểm"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+            <span class="vb-chip vb-chip--cd" data-chip="Luận cổ suy kim">#Luận cổ suy kim<button class="vb-chip__bo" type="button" aria-label="Bỏ chủ đề Luận cổ suy kim"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button></span>
+            <input class="vb-chon__go" type="text" placeholder="Chọn chủ đề…" aria-label="Tìm chủ đề" autocomplete="off">
+            <button class="vb-chon__mo" type="button" aria-expanded="false" aria-label="Mở danh sách chủ đề"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></button>
+          </div>
+          <ul class="vb-ds" role="listbox" aria-multiselectable="true" hidden>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Mới nhất"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Mới nhất</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Hot hôm nay"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Hot hôm nay</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Trà đàm"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Trà đàm</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Spotlight"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Spotlight</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="true" data-chude="Quan điểm"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Quan điểm</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="true" data-chude="Luận cổ suy kim"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Luận cổ suy kim</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Góc mở"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Góc mở</button></li>
+            <li><button class="vb-ds__muc" type="button" role="option" aria-selected="false" data-chude="Photo"><span class="vb-ds__tick"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-check"></use></svg></span>#Photo</button></li>
+          </ul>
         </div>
       </section>
 
@@ -271,7 +279,7 @@
           <button class="vb-nut-tron" type="button" data-vb-them aria-expanded="false" aria-label="Thêm khối nội dung"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-plus"></use></svg></button>
           <button class="vb-nut-tron" type="button" aria-label="Kéo để đổi chỗ khối"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-grip"></use></svg></button>
         </div>
-        <p class="vb-sapo" contenteditable="true" role="textbox" aria-label="Sa pô">Thương vụ Hugging Face, một trong những vụ mua bán lớn nhất lịch sử Nvidia với giá gần 13 tỷ USD, cho thấy Jensen Huang muốn mở rộng quyền lực từ chip sang nền tảng kết nối hàng triệu nhà phát triển AI trên thế giới.</p>
+        <p class="vb-sapo" contenteditable="true" role="textbox" aria-label="Sa pô" data-goi="Tóm tắt bài viết trong vài câu…">Thương vụ Hugging Face, một trong những vụ mua bán lớn nhất lịch sử Nvidia với giá gần 13 tỷ USD, cho thấy Jensen Huang muốn mở rộng quyền lực từ chip sang nền tảng kết nối hàng triệu nhà phát triển AI trên thế giới.</p>
       </div>
 
       <div class="vb-khoi" data-vb-khoi>
