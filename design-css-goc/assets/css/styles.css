@@ -5764,26 +5764,32 @@ input { font: inherit; }
   padding-top: 10px;
 }
 .tb-item__nut > * {
-  height: 32px;
-  padding-inline: 14px;
+  height: 30px;
+  padding-inline: 12px;
   border: 1px solid transparent;
   border-radius: var(--r-pill);
   display: inline-flex;
   align-items: center;
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color .15s var(--ease), border-color .15s var(--ease);
 }
+/* Chính: chỉ tô nhạt và giữ chữ đỏ, đủ để nổi hơn nút phụ mà không hút mắt
+   khỏi nội dung thông báo. */
 .tb-item__nut .tb-cta {
-  background: var(--gnm-red);
-  color: #fff;
+  border-color: #FFDCDC;
+  background: #FFF2F2;
+  color: var(--gnm-red);
 }
+.tb-item__nut .tb-cta:hover { border-color: #FFC9C9; background: #FFE8E8; }
 .tb-item__nut .tb-cta--phu {
   border-color: var(--line-2);
-  background: var(--surface);
+  background: transparent;
   color: var(--text-action);
 }
+.tb-item__nut .tb-cta--phu:hover { background: var(--fill-soft); }
 
 .tb-item__phai { flex: none; display: flex; align-items: flex-start; gap: 6px; }
 .tb-cham {
