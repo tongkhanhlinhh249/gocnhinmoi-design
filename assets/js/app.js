@@ -229,12 +229,12 @@
     if (!e.target.closest) return;
     if (e.target.closest('[data-dang-xuat]')) { e.preventDefault(); dangXuat(); return; }
     if (e.target.closest('[data-acc-menu]')) {
+      /* Không đưa 'Chỉnh sửa hồ sơ' vào đây: nút 'Chỉnh sửa' nằm ngay cạnh
+         tên và hiện cùng lúc trên màn hình. */
       moSheetMenu('Tài khoản', [
-        ['pencil', 'Chỉnh sửa hồ sơ'],
         ['settings', 'Cài đặt'],
         ['logout', 'Đăng xuất', true]
       ], function (act) {
-        if (act === 'Chỉnh sửa hồ sơ') { location.href = 'chinh-sua-ho-so.html'; return; }
         if (act === 'Đăng xuất') { setTimeout(dangXuat, 260); return; }
         setTimeout(function () { toast(act); }, 260);
       });
