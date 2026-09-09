@@ -182,7 +182,7 @@
 
     moSheetMenu('Tuỳ chọn', items, function (act) {
       setTimeout(function () {
-        toast(act === 'Báo cáo' ? 'Đã gửi báo cáo tới Ban biên tập' : act);
+        toast(act === 'Báo cáo' ? 'Đã gửi báo cáo' : act);
       }, 260);
     });
   });
@@ -881,21 +881,21 @@
   var NOTE = {
     published: ['ok', 'Bài viết của bạn đã được đăng trên GNM.'],
     pending: ['warn', 'Góc nhìn của bạn đang được xem xét.'],
-    rejected: ['danger', 'Bài viết hiện chưa phù hợp với tiêu chí của GNM.']
+    rejected: ['danger', 'Bài viết chưa được đăng. Bạn có thể chỉnh sửa và gửi lại.']
   };
 
-  // Lý do phản hồi của Ban biên tập — không nêu tên người kiểm duyệt.
+  // Nội dung phản hồi — không nêu tên người xử lý.
   var REASONS = {
     p10: {
       title: 'Yêu cầu chỉnh sửa',
-      meta: 'Ban biên tập phản hồi lúc 11:15, 19/08/2026',
+      meta: 'Phản hồi lúc 11:15, 19/08/2026',
       reason: 'Phần dự báo tới năm 2050 chưa dẫn nguồn số liệu, cần bổ sung trước khi xuất bản.',
       note: 'Nội dung tổng thể tốt, chỉ cần chỉnh phần cuối. Không phải viết lại bài.',
       guide: 'Bổ sung nguồn cho ba mốc số liệu ở phần “Lộ trình”, sau đó gửi lại để duyệt.'
     },
     p11: {
-      title: 'Lý do từ chối',
-      meta: 'Ban biên tập phản hồi lúc 15:48, 17/08/2026',
+      title: 'Lý do chưa đăng',
+      meta: 'Phản hồi lúc 15:48, 17/08/2026',
       reason: 'Nội dung cần bổ sung nguồn tham khảo và điều chỉnh tiêu đề để phản ánh chính xác nội dung bài viết.',
       note: 'Số liệu định giá chưa có nguồn công khai kiểm chứng được.',
       guide: 'Bổ sung nguồn cho phần định giá và đổi tiêu đề bám sát nội dung, sau đó có thể gửi lại.'
@@ -968,7 +968,7 @@
 
     var pending = by.pending || 0;
     summary.innerHTML = '<b>' + all.length + ' bài viết</b>' +
-      (pending ? ' · ' + pending + ' bài đang chờ duyệt' : '');
+      (pending ? ' · ' + pending + ' bài đang xem xét' : '');
   }
 
   function sortRows() {
@@ -984,7 +984,7 @@
   var BLANK_TEXT = {
     all: 'Bạn chưa có bài viết nào',
     published: 'Chưa có bài viết nào được xuất bản',
-    pending: 'Không có bài viết nào đang chờ duyệt',
+    pending: 'Không có bài viết nào đang xem xét',
     rejected: 'Không có bài viết nào bị từ chối',
     draft: 'Không có bản nháp nào'
   };
@@ -1166,8 +1166,8 @@
   }
 
   function resubmit(row) {
-    setStatus(row, 'pending', nowStamp('Đã gửi Ban biên tập'));
-    toast('Bài viết đã được gửi lại cho Ban biên tập');
+    setStatus(row, 'pending', nowStamp('Đã gửi'));
+    toast('Đã gửi lại bài viết');
   }
 
   function showReason(row) {
@@ -1175,7 +1175,7 @@
     if (!r) { toast('Chưa có phản hồi cho bài viết này'); return; }
     var html =
       '<div class="sheet__block"><p class="sheet__label">Lý do</p><p class="sheet__text">' + r.reason + '</p></div>' +
-      '<div class="sheet__block"><p class="sheet__label">Ghi chú của Ban biên tập</p><p class="sheet__text">' + r.note + '</p></div>' +
+      '<div class="sheet__block"><p class="sheet__label">Góp ý cho bài viết</p><p class="sheet__text">' + r.note + '</p></div>' +
       '<div class="sheet__block"><p class="sheet__label">Hướng dẫn chỉnh sửa</p><p class="sheet__text">' + r.guide + '</p></div>' +
       '<div class="sheet__actions">' +
         '<button class="btn-block btn-block--brand" type="button" data-sheet-act="edit">Chỉnh sửa bài</button>' +
@@ -1197,7 +1197,7 @@
     openDialog('Hủy gửi duyệt?',
       'Bài viết sẽ trở về trạng thái bản nháp để bạn tiếp tục chỉnh sửa.',
       [
-        { label: 'Tiếp tục chờ duyệt', kind: 'soft' },
+        { label: 'Tiếp tục chờ', kind: 'soft' },
         { label: 'Hủy gửi duyệt', kind: 'outline', run: function () {
             setStatus(row, 'draft', nowStamp('Cập nhật lần cuối'));
             toast('Bài viết đã trở về bản nháp');
@@ -1208,11 +1208,11 @@
   function editPublished(row) {
     // Sửa bài đã xuất bản sẽ phải duyệt lại — phải nói trước khi người dùng bấm tiếp
     openDialog('Chỉnh sửa bài đã xuất bản?',
-      'Bài viết sẽ phải qua kiểm duyệt lại trước khi bản mới được xuất bản. Bản đang hiển thị vẫn giữ nguyên cho tới lúc đó.',
+      'Bản chỉnh sửa sẽ được xem xét trước khi hiển thị. Bản đang đăng vẫn giữ nguyên cho tới lúc đó.',
       [
         { label: 'Chỉnh sửa và gửi duyệt lại', kind: 'brand', run: function () {
-            setStatus(row, 'pending', nowStamp('Đã gửi Ban biên tập'));
-            toast('Bài viết đã được gửi lại cho Ban biên tập');
+            setStatus(row, 'pending', nowStamp('Đã gửi'));
+            toast('Đã gửi lại bài viết');
           } },
         { label: 'Để nguyên', kind: 'soft' }
       ]);
@@ -1269,8 +1269,8 @@
       case 'reason':    showReason(row); break;
       case 'cancel':    cancelReview(row); break;
       case 'resubmit':  resubmit(row); break;
-      case 'submit':    setStatus(row, 'pending', nowStamp('Đã gửi Ban biên tập'));
-                        toast('Bài viết đã được gửi cho Ban biên tập'); break;
+      case 'submit':    setStatus(row, 'pending', nowStamp('Đã gửi'));
+                        toast('Đã gửi bài viết'); break;
       case 'share':     toast('Đã mở bảng chia sẻ'); break;
       case 'copy':      toast('Đã sao chép liên kết bài viết'); break;
       /* Bài đã trả nhuận bút thì không cho yêu cầu gỡ nữa, chỉ báo lại lý do. */
@@ -1283,7 +1283,7 @@
             [{ label: 'Đã hiểu', kind: 'brand' }]);
         } else {
           openDialog('Yêu cầu gỡ bài viết?',
-            'Ban biên tập sẽ xem xét yêu cầu của bạn. Bài viết vẫn hiển thị trên Góc Nhìn Mới cho '
+            'Yêu cầu của bạn đang được xem xét. Bài viết vẫn hiển thị trên Góc Nhìn Mới cho '
             + 'tới khi yêu cầu được duyệt.',
             [{ label: 'Gửi yêu cầu', kind: 'brand', run: function () { toast('Đã gửi yêu cầu gỡ bài'); } },
              { label: 'Quay lại', kind: 'outline' }]);
@@ -1339,7 +1339,7 @@
   }
 
   /* ---------- Xem thử dưới góc nhìn người khác ----------
-     Trạng thái kiểm duyệt là dữ liệu riêng tư: ở chế độ khách, cả tab lẫn
+     Trạng thái xử lý bài là dữ liệu riêng tư: ở chế độ khách, cả tab lẫn
      toàn bộ nội dung của nó bị gỡ khỏi luồng, không chỉ ẩn bằng mắt. */
   var viewerBtn = $('[data-viewer-toggle]');  // đã chuyển vào menu phụ, giữ để tương thích
   var guestNote = $('#guestNote');
@@ -1356,7 +1356,7 @@
   /* ---------- Xem hồ sơ của tác giả khác ----------
      Bấm avatar hoặc tên trong byline sẽ mở chính trang này kèm ?tac-gia=<slug>.
      Cùng một trang, chỉ thay danh tính và ép về chế độ khách — hồ sơ người khác
-     không bao giờ được phép hiện khu vực kiểm duyệt. */
+     không bao giờ được phép hiện khu vực này. */
   var AUTHORS_REG = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-khoa.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@dangkhoa","joined":"Tham gia tháng 1, 2024","followers":"3.3k","following":"399","posts":"29","views":"262.5k","likes":"36.3k"},"duc-anh":{"name":"Đức Anh","avatar":"avatar-duc-anh.png","cover":"kp-ha-noi.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@ducanh","joined":"Tham gia tháng 2, 2025","followers":"10.4k","following":"251","posts":"48","views":"122k","likes":"74.5k"},"gnn":{"name":"Ban Biên Tập GNN","avatar":"avatar-gnn.png","cover":"cover-thanh-pho.png","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@gnn","joined":"Tham gia tháng 3, 2025","followers":"31.9k","following":"175","posts":"14","views":"141.7k","likes":"42.5k"},"hoai-nam":{"name":"Hoài Nam","avatar":"avatar-hoai-nam.png","cover":"kp-tay-nguyen.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@hoainam","joined":"Tham gia tháng 4, 2024","followers":"47.5k","following":"295","posts":"15","views":"55.5k","likes":"24.3k"},"hoang-nam":{"name":"PGS. Hoàng Nam","avatar":"avatar-hoang-nam.jpg","cover":"kp-song-cham.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@hoangnam","joined":"Tham gia tháng 5, 2025","followers":"26.2k","following":"588","posts":"22","views":"40.8k","likes":"11.3k"},"khanh-linh":{"name":"Khánh Linh","avatar":"avatar-khanh-linh.png","cover":"cover-du-lich.png","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@khanhlinh","joined":"Tham gia tháng 6, 2025","followers":"63.5k","following":"448","posts":"34","views":"66.1k","likes":"65.6k"},"lan-anh":{"name":"TS. Lan Anh","avatar":"avatar-lan-anh.png","cover":"kp-sai-gon-5h.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@lananh","joined":"Tham gia tháng 7, 2024","followers":"35k","following":"430","posts":"33","views":"180k","likes":"30.6k"},"lan-chi":{"name":"Lan Chi","avatar":"avatar-lan-chi.png","cover":"kp-ha-noi.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@lanchi","joined":"Tham gia tháng 8, 2025","followers":"45.2k","following":"163","posts":"5","views":"68.7k","likes":"28.1k"},"marco-rossi":{"name":"Marco Rossi","avatar":"avatar-marco-rossi.jpg","cover":"cover-thanh-pho.png","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@marcorossi","joined":"Tham gia tháng 9, 2025","followers":"50.4k","following":"220","posts":"45","views":"251.8k","likes":"67k"},"minh-duc":{"name":"Minh Đức","avatar":"avatar-minh-duc.png","cover":"kp-tay-nguyen.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@minhduc","joined":"Tham gia tháng 10, 2024","followers":"9.9k","following":"617","posts":"34","views":"279.2k","likes":"33.2k"},"minh-hieu":{"name":"TS. Minh Hiếu","avatar":"avatar-minh-hieu.jpg","cover":"kp-song-cham.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@minhhieu","joined":"Tham gia tháng 11, 2025","followers":"48.9k","following":"105","posts":"32","views":"295.4k","likes":"47.8k"},"minh-tuan":{"name":"Minh Tuấn","avatar":"avatar-minh-tuan.jpg","cover":"cover-du-lich.png","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@minhtuan","joined":"Tham gia tháng 12, 2025","followers":"23.7k","following":"364","posts":"31","views":"198.9k","likes":"30k"},"ngoc-han":{"name":"Ngọc Hân","avatar":"avatar-ngoc-han.jpg","cover":"kp-sai-gon-5h.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@ngochan","joined":"Tham gia tháng 1, 2024","followers":"55.3k","following":"329","posts":"58","views":"203.8k","likes":"65.5k"},"nguyen-thanh-binh":{"name":"GS. Nguyễn Thanh Bình","avatar":"avatar-nguyen-thanh-binh.png","cover":"kp-ha-noi.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@nguyenthanhbinh","joined":"Tham gia tháng 2, 2025","followers":"52.2k","following":"636","posts":"49","views":"85.4k","likes":"32.6k"},"nhat-minh":{"name":"Nhật Minh","avatar":"avatar-nhat-minh.png","cover":"cover-thanh-pho.png","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@nhatminh","joined":"Tham gia tháng 3, 2025","followers":"29k","following":"828","posts":"14","views":"310.7k","likes":"83.3k"},"phuong-anh":{"name":"Phương Anh","avatar":"avatar-phuong-anh.png","cover":"kp-tay-nguyen.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@phuonganh","joined":"Tham gia tháng 4, 2024","followers":"7.1k","following":"435","posts":"27","views":"307.3k","likes":"20.7k"},"quang-huy":{"name":"TS. Quang Huy","avatar":"avatar-quang-huy.jpg","cover":"kp-song-cham.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@quanghuy","joined":"Tham gia tháng 5, 2025","followers":"2.6k","following":"233","posts":"56","views":"173.9k","likes":"86.9k"},"quoc-bao":{"name":"Quốc Bảo","avatar":"avatar-quoc-bao.png","cover":"cover-du-lich.png","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@quocbao","joined":"Tham gia tháng 6, 2025","followers":"1.7k","following":"411","posts":"55","views":"125.2k","likes":"87.7k"},"quynh-chi":{"name":"Quỳnh Chi","avatar":"avatar-quynh-chi.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@quynhchi","joined":"Tham gia tháng 7, 2024","followers":"42.8k","following":"637","posts":"29","views":"280.9k","likes":"43.9k"},"thanh-ha":{"name":"Thanh Hà","avatar":"avatar-thanh-ha.jpg","cover":"kp-ha-noi.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@thanhha","joined":"Tham gia tháng 8, 2025","followers":"36.1k","following":"522","posts":"55","views":"274.8k","likes":"30.4k"},"thu-hang":{"name":"Thu Hằng","avatar":"avatar-thu-hang.png","cover":"cover-thanh-pho.png","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@thuhang","joined":"Tham gia tháng 9, 2025","followers":"35.4k","following":"141","posts":"22","views":"160.7k","likes":"74.1k"},"tran-bao":{"name":"Trần Bảo","avatar":"avatar-tran-bao.jpg","cover":"kp-tay-nguyen.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@tranbao","joined":"Tham gia tháng 10, 2024","followers":"32.1k","following":"817","posts":"17","views":"193.3k","likes":"22.1k"},"tran-bao-long":{"name":"Trần Bảo Long","avatar":"avatar-tran-bao-long.jpg","cover":"kp-song-cham.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@tranbaolong","joined":"Tham gia tháng 11, 2025","followers":"54.9k","following":"488","posts":"33","views":"90.3k","likes":"13.6k"},"van-duc":{"name":"GS. Văn Đức","avatar":"avatar-van-duc.jpg","cover":"cover-du-lich.png","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@vanduc","joined":"Tham gia tháng 12, 2025","followers":"40.2k","following":"389","posts":"7","views":"90.1k","likes":"11.9k"}};
   var ME = 'duc-anh';
 
@@ -1610,7 +1610,7 @@
     }
     close();
     setTimeout(function () {
-      toast('Đã gửi đóng góp tới Ban biên tập, bài sẽ được duyệt trước khi hiển thị');
+      toast('Đã gửi đóng góp, nội dung sẽ được xem xét trước khi hiển thị');
     }, reduced ? 0 : 280);
   });
 })();
@@ -2325,11 +2325,11 @@
   });
 
   /* --- Gửi bài: alert biên tập, hoặc alert hết lượt --- */
-  var ALERT_TEN = 'Bài viết có thể được biên tập trước khi đăng';
-  var ALERT_CHU = 'Đội ngũ Góc Nhìn Mới có thể điều chỉnh nội dung để đảm bảo phù hợp với '
-    + 'tiêu chuẩn cộng đồng, hạn chế nội dung nhạy cảm và tôn trọng quyền lợi của tác giả.\n\n'
-    + 'Sau khi gửi, bạn sẽ không thể chỉnh sửa hoặc xóa bài, trừ trường hợp bài không được duyệt. '
-    + 'Bài đã xuất bản cũng không thể tự gỡ khỏi Góc Nhìn Mới.';
+  var ALERT_TEN = 'Trước khi bạn gửi bài';
+  var ALERT_CHU = 'Bài viết sẽ được xem xét trước khi hiển thị công khai. Nội dung có thể được điều chỉnh '
+    + 'về hình thức cho phù hợp tiêu chuẩn cộng đồng của Góc Nhìn Mới.\n\n'
+    + 'Sau khi gửi, bạn chưa chỉnh sửa hoặc xoá được bài cho tới khi có kết quả. '
+    + 'Bài đã đăng cũng không tự gỡ được — khi cần, bạn gửi yêu cầu gỡ bài từ trang cá nhân.';
 
   $$('[data-vb-gui]').forEach(function (b) {
     b.addEventListener('click', function () {

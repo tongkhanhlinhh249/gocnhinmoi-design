@@ -781,11 +781,11 @@ input { font: inherit; }
   text-overflow: ellipsis;
 }
 .author-card__count {
+  padding-top: 2px;
   font-size: 11px;
   font-weight: 500;
   line-height: 16.5px;
-  color: var(--text-muted);
-  padding-top: 4px;
+  color: var(--ink-muted, var(--text-muted));
 }
 .btn-follow {
   width: 100%;
