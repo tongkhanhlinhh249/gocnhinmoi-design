@@ -2651,16 +2651,11 @@
 
   var TRONG = {
     all: ['Chưa có thông báo nào', 'Khi bài viết hoặc hoạt động của bạn có cập nhật, bạn sẽ thấy ở đây.'],
-    'chua-doc': ['Bạn đã đọc hết', 'Không còn thông báo nào chưa đọc.'],
-    'bai-viet': ['Chưa có thông báo về bài viết', 'Cập nhật về bài bạn gửi và bài đã đăng sẽ hiện ở đây.'],
-    'tuong-tac': ['Chưa có tương tác nào', 'Bình luận, lượt thích và người theo dõi mới sẽ hiện ở đây.'],
-    'tai-khoan': ['Chưa có thông báo về tài khoản', 'Thông tin đăng nhập và bảo mật sẽ hiện ở đây.']
+    'chua-doc': ['Bạn đã đọc hết', 'Không còn thông báo nào chưa đọc.']
   };
 
   function locDs(ds) {
-    if (loc === 'all') return ds;
-    if (loc === 'chua-doc') return ds.filter(function (x) { return !x.daDoc; });
-    return ds.filter(function (x) { return x.nhom === loc; });
+    return loc === 'chua-doc' ? ds.filter(function (x) { return !x.daDoc; }) : ds;
   }
 
   function thoat(s) {
@@ -2703,11 +2698,8 @@
     var hien = locDs(ds);
 
     // số trên chip
-    var dem = { all: ds.length, 'chua-doc': 0, 'bai-viet': 0, 'tuong-tac': 0, 'tai-khoan': 0 };
-    ds.forEach(function (x) {
-      if (!x.daDoc) dem['chua-doc']++;
-      dem[x.nhom] = (dem[x.nhom] || 0) + 1;
-    });
+    var dem = { all: ds.length, 'chua-doc': 0 };
+    ds.forEach(function (x) { if (!x.daDoc) dem['chua-doc']++; });
     chips.querySelectorAll('.chip').forEach(function (c) {
       var k = c.getAttribute('data-tb-loc');
       c.querySelector('.chip__n').textContent = dem[k] ? '(' + dem[k] + ')' : '';

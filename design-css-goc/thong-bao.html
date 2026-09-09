@@ -246,7 +246,7 @@
     </div>
   </aside>
 
-  <main id="main" class="tb-main" data-thu-tu="chot">
+  <main id="main" data-thu-tu="chot">
 
     <div class="deskbar">
       <label class="deskbar__search">
@@ -276,9 +276,6 @@
       <div class="chips" role="tablist" id="tbChips">
         <button class="chip" type="button" role="tab" aria-selected="true" data-tb-loc="all">Tất cả <span class="chip__n"></span></button>
         <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="chua-doc">Chưa đọc <span class="chip__n"></span></button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="bai-viet">Bài viết <span class="chip__n"></span></button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="tuong-tac">Tương tác <span class="chip__n"></span></button>
-        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="tai-khoan">Tài khoản <span class="chip__n"></span></button>
       </div>
     </nav>
 
@@ -295,6 +292,160 @@
       <p class="tb-cuoi" id="tbCuoi" hidden>Thông báo được lưu trong 30 ngày.</p>
     </div>
   </main>
+
+  <aside class="siderail" aria-label="Nội dung liên quan">
+    <section class="rail-card" aria-labelledby="rail-tags-title">
+      <h2 class="rail-title" id="rail-tags-title">Hashtag nổi bật</h2>
+      <ul class="rail-tags">
+        <li><a class="rail-tag" href="#">#AI</a></li>
+        <li><a class="rail-tag" href="#">#KinhTe</a></li>
+        <li><a class="rail-tag" href="#">#Startup</a></li>
+        <li><a class="rail-tag" href="#">#ChinhTri</a></li>
+        <li><a class="rail-tag" href="#">#GiaoDuc</a></li>
+      </ul>
+    </section>
+
+    <section class="rail-card rail-card--red" aria-labelledby="rail-red-title">
+      <h2 class="rail-title rail-title--on-red" id="rail-red-title">Thịnh hành</h2>
+      <ul class="rail-red">
+          <li class="rail-red__row">
+            <img src="assets/img/cover-hoi-huong.png" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=phuong-anh">Phương Anh</a><span class="rail-red__time">· 1 ngày trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Làn sóng hồi hương của người Việt trẻ từ nước ngoài: Cơ hội hay thách thức?</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/kp-dan-chu-so.jpg" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=hoang-nam">PGS. Hoàng Nam</a><span class="rail-red__time">· 5 giờ trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Dân chủ số: Khi mạng xã hội định hình lại chính trị toàn cầu</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/cover-nha-o-ha-noi.png" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=quang-huy">TS. Quang Huy</a><span class="rail-red__time">· 2 ngày trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Thị trường nhà ở Hà Nội: Giá đã chạm đỉnh hay còn tiếp tục leo thang?</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/kp-song-cham.jpg" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=lan-anh">TS. Lan Anh</a><span class="rail-red__time">· 3 giờ trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/cover-tang-truong-xanh.png" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=minh-duc">Minh Đức</a><span class="rail-red__time">· 2 ngày trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Tăng trưởng xanh: Việt Nam cần làm gì để đạt mục tiêu NetZero 2050?</a></h3>
+            </div>
+          </li>
+      </ul>
+    </section>
+
+    <section class="rail-card rail-card--flush" aria-labelledby="rail-place-title">
+      <a class="rail-place" href="dia-diem.html">
+        <img src="assets/img/place-workshop-coffee.png" alt="" width="280" height="140" loading="lazy">
+        <span class="rail-place__scrim" aria-hidden="true"></span>
+        <span class="rail-place__body">
+          <span class="rail-place__name">The Workshop Coffee</span>
+          <span class="rail-place__meta">
+            <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh
+          </span>
+        </span>
+      </a>
+      <div class="rail-head">
+        <h2 class="rail-title" id="rail-place-title">📍 Địa điểm</h2>
+        <a class="rail-more" href="dia-diem-list.html">Khám phá <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-authors-title">
+      <div class="rail-head">
+        <h2 class="rail-title" id="rail-authors-title">Gợi ý theo dõi</h2>
+        <a class="rail-more" href="bang-xep-hang.html">Xem tất cả</a>
+      </div>
+      <ul class="rail-rows">
+          <li class="rail-row">
+            <img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">GS. Nguyễn Thanh Bình</p>
+              <p class="rail-row__desc">42.9k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-thu-hang.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Thu Hằng</p>
+              <p class="rail-row__desc">28.7k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-lan-anh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">TS. Lan Anh</p>
+              <p class="rail-row__desc">19.3k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="true">Đang theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-nhat-minh.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Nhật Minh</p>
+              <p class="rail-row__desc">15.8k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-hoai-nam.png" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Hoài Nam</p>
+              <p class="rail-row__desc">67.4k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-hoang-nam.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">PGS. Hoàng Nam</p>
+              <p class="rail-row__desc">33.5k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Quỳnh Chi</p>
+              <p class="rail-row__desc">21.9k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+          <li class="rail-row">
+            <img src="assets/img/avatar-tran-bao-long.jpg" alt="" width="40" height="40" loading="lazy">
+            <div class="rail-row__body">
+              <p class="rail-row__name">Trần Bảo Long</p>
+              <p class="rail-row__desc">12.6k người theo dõi</p>
+            </div>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+          </li>
+      </ul>
+    </section>
+  </aside>
 
 
   <footer class="site-footer">
