@@ -2005,10 +2005,14 @@
  },
  "nut-chinh-sua": {
   "tw": "",
-  "keep": ".profile-id [data-owner-only]{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gnm-red);background:var(--surface);color:var(--gnm-red)}.profile-id [data-owner-only]:active{background:#ffefef}"
+  "keep": ".profile-id .btn-pill[data-owner-only]{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gnm-red);background:var(--surface);color:var(--gnm-red)}.profile-id .btn-pill[data-owner-only]:active{background:#ffefef}"
  },
  "act--xem": {
   "tw": "",
   "keep": ".act--xem{cursor:default}"
+ },
+ "profile-more": {
+  "tw": "",
+  "keep": ".profile-more{flex:none;display:grid;place-items:center;align-self:flex-start;width:30px;height:34px;margin-left:-6px;margin-right:-10px;border:0;border-radius:var(--r-pill);background:none;color:var(--icon-dark,var(--ink-strong));cursor:pointer;transition:background-color .15s var(--ease)}.profile-more:active{background:var(--fill-soft)}.profile-more .icon{width:18px;height:18px}@media (max-width:767.98px){.profile-head .profile-id{gap:10px}}"
  }
 }

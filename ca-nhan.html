@@ -231,7 +231,6 @@
       <ul class="desknav__list">
         <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
         <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
-        <li><button class="desknav__link desknav__link--sub desknav__link--mute" type="button" data-dang-xuat><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-logout"></use></svg>Đăng xuất</button></li>
       </ul>
 
       <a class="desknav__me" href="ca-nhan.html">
@@ -264,14 +263,10 @@
     <!-- ============ Thanh trên ============ -->
     <div class="profile-bar flex items-center justify-between shell w-full max-w-shell mx-auto px-4">
       <a class="btn-back size-5 grid place-items-center text-icon-dark" href="index.html" data-back aria-label="Quay lại"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      <div class="flex items-center gap-[2px]">
-        <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Chia sẻ trang cá nhân" data-share><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
-      <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Tuỳ chọn tài khoản" data-acc-menu data-owner-only><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
-      </div>
     </div>
 
     <!-- ============ Nhận diện ============ -->
-    <header class="pb-1 shell w-full max-w-shell mx-auto px-4">
+    <header class="profile-head pb-1 shell w-full max-w-shell mx-auto px-4">
       <div class="profile-id flex items-center gap-3 pt-2">
         <span class="flex-none grid place-items-center size-[78px] rounded-full bg-gradient-to-br from-primary-800 to-[#ff8a5c]">
           <img class="block size-[72px] border-[3px] border-surface rounded-full object-cover bg-surface-fill" data-me="ava" src="assets/img/avatar-duc-anh.png" alt="" width="72" height="72">
@@ -281,8 +276,9 @@
           <p class="pt-[1px] text-[13px] leading-[20px] text-ink-muted"><span data-me="handle">@ducanh</span></p>
           <p class="pt-[1px] text-[13px] leading-[20px] text-ink-action" data-me="role">Nhà báo công nghệ</p>
         </div>
-        <a class="flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" href="chinh-sua-ho-so.html" data-owner-only>Chỉnh sửa</a>
-        <button class="flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" data-guest-only hidden aria-pressed="false" data-follow-toggle><span class="btn-outline-sm__label">Theo dõi</span></button>
+        <a class="btn-pill flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" href="chinh-sua-ho-so.html" data-owner-only>Chỉnh sửa</a>
+        <button class="profile-more" type="button" aria-label="Tuỳ chọn tài khoản" data-acc-menu data-owner-only><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+        <button class="btn-pill flex-none self-start min-h-[34px] px-4 rounded-full bg-primary-800 text-surface text-[13px] font-bold transition-colors duration-[180] ease-out active:bg-[#b8232f] aria-pressed:bg-surface-fill aria-pressed:text-ink-action" type="button" data-guest-only hidden aria-pressed="false" data-follow-toggle><span class="btn-outline-sm__label">Theo dõi</span></button>
       </div>
 
       <p class="profile-bio mt-4 text-sm leading-[22px] text-ink-action line-clamp-3" data-me="bio">Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.</p>

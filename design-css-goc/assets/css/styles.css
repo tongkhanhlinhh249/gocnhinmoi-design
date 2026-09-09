@@ -1700,6 +1700,14 @@ input { font: inherit; }
 /* min-width: 0 để tên dài không đẩy nút hành động ra khỏi màn */
 .profile-id__body { flex: 1; min-width: 0; }
 
+/* Khổ điện thoại chỉ vừa đúng: thêm nút 3 chấm là chức danh rớt xuống dòng
+   thứ hai. Bớt 2px mỗi khe là đủ giữ một dòng. */
+/* Phải viết .profile-head .profile-id: utility gap-3 phát sau tầng component
+   nên rule cùng độ ưu tiên sẽ thua. */
+@media (max-width: 767.98px) {
+  .profile-head .profile-id { gap: 10px; }
+}
+
 .profile-head__name {
   display: flex;
   align-items: center;
@@ -4812,7 +4820,7 @@ input { font: inherit; }
 /* Nền trắng, viền và chữ đỏ, ở mọi khổ màn. Nhắm theo thuộc tính chứ không
    theo thẻ vì nút này đã đổi từ button sang thẻ a để dẫn sang trang chỉnh
    sửa; cũng phải tự canh chữ vì thẻ a không canh giữa sẵn như button. */
-.profile-id [data-owner-only] {
+.profile-id .btn-pill[data-owner-only] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4820,7 +4828,29 @@ input { font: inherit; }
   background: var(--surface);
   color: var(--gnm-red);
 }
-.profile-id [data-owner-only]:active { background: #ffefef; }
+.profile-id .btn-pill[data-owner-only]:active { background: #ffefef; }
+
+/* Nút 3 chấm đứng cạnh "Chỉnh sửa": cùng chiều cao, không viền, không nền. */
+.profile-more {
+  flex: none;
+  display: grid;
+  place-items: center;
+  /* Nút "Chỉnh sửa" bên cạnh đặt align-self: flex-start, không theo thì lệch
+     xuống 28px khi khối tên cao hơn nút. */
+  align-self: flex-start;
+  width: 30px;
+  height: 34px;
+  margin-left: -6px;
+  margin-right: -10px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--icon-dark, var(--ink-strong));
+  cursor: pointer;
+  transition: background-color .15s var(--ease);
+}
+.profile-more:active { background: var(--fill-soft); }
+.profile-more .icon { width: 18px; height: 18px; }
 
 /* ================= Trang viết bài ================= */
 /* Trang soạn thảo đứng riêng: không cột trái, không cột phải, không thanh bar

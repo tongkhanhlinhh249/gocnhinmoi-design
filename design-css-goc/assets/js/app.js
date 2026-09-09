@@ -132,7 +132,19 @@
      đăng ký sau nó. Ở đây thì chắc chắn chạy trên cả 16 trang.
      Tra phần tử sheet lúc gọi, không giữ tham chiếu: trong file có hai biến
      cùng tên `sheet` nên biến sau ghi đè biến trước. */
-  function moSheetMenu(tieuDe, items, xuLy) {
+  function datChoChung(neo) {
+    var sh = document.getElementById('sheet');
+    var panel = sh.querySelector('.sheet__panel');
+    panel.style.left = '0px';
+    panel.style.top = '0px';
+    var o = neo.getBoundingClientRect();
+    var cao = panel.offsetHeight, rong = panel.offsetWidth;
+    var tren = o.bottom + cao + 8 > window.innerHeight && o.top > cao + 8;
+    panel.style.left = Math.round(Math.max(8, Math.min(o.right - rong, window.innerWidth - rong - 8))) + 'px';
+    panel.style.top = Math.round(tren ? o.top - cao - 6 : o.bottom + 6) + 'px';
+  }
+
+  function moSheetMenu(tieuDe, items, xuLy, neo) {
     var sh = document.getElementById('sheet');
     var body = document.getElementById('sheetBody');
     var tit = document.getElementById('sheetTitle');
@@ -144,7 +156,11 @@
       return '<button type="button" data-card-act="' + x[1] + '"' + (x[2] ? ' data-danger' : '') + '>' +
         '<svg class="icon" aria-hidden="true"><use href="#i-' + x[0] + '"></use></svg>' + x[1] + '</button>';
     }).join('') + '</div>';
+    // Khổ rộng: hộp nhỏ bám vào nút. Khổ hẹp: tấm trượt từ đáy như cũ.
+    var bam = !!neo && window.matchMedia('(min-width: 1024px)').matches;
+    sh.classList.toggle('is-neo', bam);
     sh.hidden = false;
+    if (bam) datChoChung(neo);
     void sh.offsetWidth;
     sh.classList.add('is-open');
     var dau = sh.querySelector('button');
@@ -162,7 +178,7 @@
     var sh = document.getElementById('sheet');
     if (!sh) return;
     sh.classList.remove('is-open');
-    setTimeout(function () { sh.hidden = true; }, 260);
+    setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo'); }, 260);
   }
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('[data-sheet-close]')) dongSheetMenu();
@@ -237,7 +253,7 @@
       ], function (act) {
         if (act === 'Đăng xuất') { setTimeout(dangXuat, 260); return; }
         setTimeout(function () { toast(act); }, 260);
-      });
+      }, e.target.closest('[data-acc-menu]'));
     }
   });
 
