@@ -167,6 +167,11 @@
     <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24">
+    <path d="M9.5 20.5H5.5a2 2 0 01-2-2v-13a2 2 0 012-2h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 16.5l4.5-4.5L16 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.5 12h-11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
 </svg>
 
 <div class="page">
@@ -226,6 +231,7 @@
       <ul class="desknav__list">
         <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
         <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
+        <li><button class="desknav__link desknav__link--sub desknav__link--mute" type="button" data-dang-xuat><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-logout"></use></svg>Đăng xuất</button></li>
       </ul>
 
       <a class="desknav__me" href="ca-nhan.html">
@@ -261,6 +267,7 @@
       <div class="profile-bar__right">
         <button class="icon-btn" type="button" aria-label="Chia sẻ trang cá nhân" data-share><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
         <button class="icon-btn" type="button" aria-label="Thông báo (có thông báo mới)" data-toast="Bạn có 3 thông báo mới"><svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg><span class="icon-btn__dot" aria-hidden="true"></span></button>
+      <button class="icon-btn" type="button" aria-label="Tuỳ chọn tài khoản" data-acc-menu data-owner-only><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
       </div>
     </div>
 
@@ -290,7 +297,7 @@
           <button class="profile-num" type="button" data-ptab-go="bai-viet" data-owner-only><b data-me="posts">12</b><span>Bài viết</span></button>
           <span class="profile-num profile-num--flat" data-guest-only hidden><b data-me="posts-guest">12</b><span>Bài viết</span></span>
           <button class="profile-num" type="button" data-people="followers"><b data-me="followers">12,4K</b><span>Người theo dõi</span></button>
-          <span class="profile-num profile-num--flat"><b data-me="views">59,5K</b><span>Lượt xem</span></span>
+          <span class="profile-num profile-num--flat"><b data-me="views">280,1K</b><span>Lượt xem</span></span>
         </div>
     </header>
 

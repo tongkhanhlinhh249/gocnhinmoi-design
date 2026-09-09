@@ -187,6 +187,60 @@
     });
   });
 
+  /* ---------- Đăng xuất ---------- */
+  function moHopChung(tieuDe, chu, nut) {
+    var hop = document.getElementById('dialog');
+    if (!hop) { if (nut[0] && nut[0].run) nut[0].run(); return; }
+    document.getElementById('dialogTitle').textContent = tieuDe;
+    document.getElementById('dialogText').textContent = chu;
+    var o = document.getElementById('dialogActions');
+    o.innerHTML = '';
+    nut.forEach(function (n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'btn-block btn-block--' + (n.kind || 'outline');
+      b.textContent = n.label;
+      b.addEventListener('click', function () {
+        hop.classList.remove('is-open');
+        setTimeout(function () { hop.hidden = true; }, 200);
+        if (n.run) n.run();
+      });
+      o.appendChild(b);
+    });
+    hop.hidden = false;
+    void hop.offsetWidth;
+    hop.classList.add('is-open');
+    var dau = o.querySelector('button');
+    if (dau) dau.focus();
+  }
+
+  function dangXuat() {
+    moHopChung(
+      'Đăng xuất khỏi Góc Nhìn Mới?',
+      'Bản nháp của bạn vẫn được giữ lại. Bạn có thể đăng nhập lại bất cứ lúc nào.',
+      [
+        { label: 'Đăng xuất', kind: 'brand', run: function () { toast('Đã đăng xuất'); } },
+        { label: 'Ở lại', kind: 'outline' }
+      ]
+    );
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    if (e.target.closest('[data-dang-xuat]')) { e.preventDefault(); dangXuat(); return; }
+    if (e.target.closest('[data-acc-menu]')) {
+      moSheetMenu('Tài khoản', [
+        ['pencil', 'Chỉnh sửa hồ sơ'],
+        ['settings', 'Cài đặt'],
+        ['logout', 'Đăng xuất', true]
+      ], function (act) {
+        if (act === 'Chỉnh sửa hồ sơ') { location.href = 'chinh-sua-ho-so.html'; return; }
+        if (act === 'Đăng xuất') { setTimeout(dangXuat, 260); return; }
+        setTimeout(function () { toast(act); }, 260);
+      });
+    }
+  });
+
   /* ---------- Định dạng số lượt tương tác ---------- */
   function formatCount(n) {
     if (n >= 1000) {

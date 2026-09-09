@@ -4430,6 +4430,14 @@ input { font: inherit; }
     color: var(--text-action);
     transition: background-color .15s var(--ease), color .15s var(--ease);
   }
+  button.desknav__link {
+    width: 100%;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
   .v-web .desknav__link--sub { padding-block: 8px; font-size: 13px; }
   .v-web .desknav__link--mute { color: var(--text-muted); }
   .v-web .desknav__link:hover { background: var(--fill-soft); color: var(--ink-strong); }
