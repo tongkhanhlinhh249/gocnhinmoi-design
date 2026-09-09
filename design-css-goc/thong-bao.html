@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="Chỉnh sửa hồ sơ cá nhân trên Góc Nhìn Mới — ảnh đại diện, bút danh, giới thiệu và liên kết.">
-<title>Chỉnh sửa hồ sơ — Góc Nhìn Mới</title>
+<meta name="description" content="Thông báo trên Góc Nhìn Mới — cập nhật về bài viết, tương tác và tài khoản của bạn.">
+<title>Thông báo — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,7 +246,7 @@
     </div>
   </aside>
 
-  <main id="main" class="hs-main" data-thu-tu="chot">
+  <main id="main" class="tb-main" data-thu-tu="chot">
 
     <div class="deskbar">
       <label class="deskbar__search">
@@ -256,91 +256,44 @@
       <a class="deskbar__write" href="viet-bai.html">
         <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+      <a class="icon-btn is-active" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot" aria-hidden="true" hidden></span>
       </a>
     </div>
 
-    <div class="hs-top">
-      <a class="btn-back" href="ca-nhan.html" data-back aria-label="Quay lại trang cá nhân"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      <h1 class="hs-top__ten">Chỉnh sửa hồ sơ</h1>
-      <div class="hs-top__nut">
-        <a class="btn-outline-sm" href="ca-nhan.html">Huỷ</a>
-        <button class="btn-pill" type="button" data-hs-luu>Lưu thay đổi</button>
-      </div>
+    <!-- ============ Đầu trang ============ -->
+    <div class="tb-dau shell">
+      <h1 class="tb-dau__ten">Thông báo</h1>
+      <button class="tb-doc-het" type="button" id="tbDocHet">Đánh dấu tất cả đã đọc</button>
+      <button class="icon-btn tb-caidat" type="button" id="tbCaiDat" aria-label="Cài đặt thông báo">
+        <svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg>
+      </button>
     </div>
 
-    <form class="hs-form" id="hsForm" novalidate>
+    <!-- ============ Lọc theo nhóm ============ -->
+    <nav class="status-bar" aria-label="Lọc thông báo">
+      <div class="chips" role="tablist" id="tbChips">
+        <button class="chip" type="button" role="tab" aria-selected="true" data-tb-loc="all">Tất cả <span class="chip__n"></span></button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="chua-doc">Chưa đọc <span class="chip__n"></span></button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="bai-viet">Bài viết <span class="chip__n"></span></button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="tuong-tac">Tương tác <span class="chip__n"></span></button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-tb-loc="tai-khoan">Tài khoản <span class="chip__n"></span></button>
+      </div>
+    </nav>
 
-      <!-- ============ Ảnh ============ -->
-      <section class="hs-the" aria-labelledby="hs-anh-title">
-        <h2 class="hs-the__ten" id="hs-anh-title">Ảnh đại diện và ảnh bìa</h2>
+    <!-- ============ Danh sách ============ -->
+    <div class="shell">
+      <ul class="tb-list" id="tbList"></ul>
 
-        <div class="hs-anh">
-          <div class="hs-bia">
-            <img src="assets/img/hero-genz.png" alt="Ảnh bìa hiện tại" width="800" height="240" loading="lazy">
-            <button class="hs-anh__nut" type="button" data-toast="Mở thư viện ảnh bìa"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Đổi ảnh bìa</button>
-          </div>
-          <div class="hs-ava">
-            <img src="assets/img/avatar-duc-anh.png" alt="Ảnh đại diện hiện tại" width="96" height="96">
-            <button class="hs-anh__nut hs-anh__nut--tron" type="button" aria-label="Đổi ảnh đại diện" data-toast="Mở thư viện ảnh đại diện"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg></button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ Thông tin ============ -->
-      <section class="hs-the hs-the--luoi" aria-labelledby="hs-tt-title">
-        <h2 class="hs-the__ten" id="hs-tt-title">Thông tin cơ bản</h2>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Tên hiển thị</span>
-        <input class="hs-nhap" type="text" name="ten" value="Đức Anh" aria-label="Tên hiển thị">
+      <div class="tb-trong" id="tbTrong" hidden>
+        <span class="tb-trong__ico"><svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg></span>
+        <p class="tb-trong__ten" id="tbTrongTen">Chưa có thông báo nào</p>
+        <p class="tb-trong__dan" id="tbTrongDan">Khi bài viết hoặc hoạt động của bạn có cập nhật, bạn sẽ thấy ở đây.</p>
       </div>
 
-      <div class="hs-o">
-        <span class="hs-o__nhan">Tên người dùng</span>
-        <span class="hs-nhap hs-nhap--tiento"><span>@</span><input type="text" name="handle" value="ducanh" aria-label="Tên người dùng"></span>
-        <span class="hs-goi">Đường dẫn trang của bạn: gocnhinmoi.vn/@ducanh</span>
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Nghề nghiệp</span>
-        <input class="hs-nhap" type="text" name="nghe" value="Nhà báo công nghệ" aria-label="Nghề nghiệp">
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Giới thiệu</span>
-        <textarea class="hs-nhap hs-nhap--dai" name="gioi-thieu" rows="4" maxlength="280" aria-label="Giới thiệu" data-hs-dem>Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.</textarea>
-        <span class="hs-goi"><span id="hsDem">0</span>/280 ký tự</span>
-      </div>
-      </section>
-
-      <!-- ============ Liên kết ============ -->
-      <section class="hs-the hs-the--luoi" aria-labelledby="hs-lk-title">
-        <h2 class="hs-the__ten" id="hs-lk-title">Liên hệ và liên kết</h2>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Email</span>
-        <input class="hs-nhap" type="email" name="email" value="ducanh@gocnhinmoi.vn" aria-label="Email">
-      </div>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Số điện thoại</span>
-        <input class="hs-nhap" type="tel" name="dt" value="0912 345 678" aria-label="Số điện thoại">
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Website</span>
-        <input class="hs-nhap" type="url" name="web" placeholder="https://" aria-label="Website">
-      </div>
-      </section>
-
-      <div class="hs-day">
-        <a class="btn-outline-sm" href="ca-nhan.html">Huỷ</a>
-        <button class="btn-pill" type="button" data-hs-luu>Lưu thay đổi</button>
-      </div>
-    </form>
+      <p class="tb-cuoi" id="tbCuoi" hidden>Thông báo được lưu trong 30 ngày.</p>
+    </div>
   </main>
 
 

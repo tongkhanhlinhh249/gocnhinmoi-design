@@ -203,6 +203,26 @@
     });
   });
 
+  /* Xuất ra ngoài để các module đứng riêng (vd: Thông báo) dùng lại được;
+     openSheet của trang Cá nhân nằm trong khối chỉ chạy khi có #postList. */
+  window.gnmMoBangChon = moSheetMenu;
+
+  /* Bảng có tiêu đề, dòng phụ và ruột tự do — dùng cho Cài đặt thông báo. */
+  window.gnmMoBang = function (tieuDe, phu, html) {
+    var sh = document.getElementById('sheet');
+    var body = document.getElementById('sheetBody');
+    var tit = document.getElementById('sheetTitle');
+    var meta = document.getElementById('sheetMeta');
+    if (!sh || !body) return;
+    sh.classList.remove('is-neo');
+    tit.textContent = tieuDe;
+    if (meta) { meta.textContent = phu || ''; meta.hidden = !phu; }
+    body.innerHTML = html;
+    sh.hidden = false;
+    void sh.offsetWidth;
+    sh.classList.add('is-open');
+  };
+
   /* ---------- Đăng xuất ---------- */
   function moHopChung(tieuDe, chu, nut) {
     var hop = document.getElementById('dialog');
@@ -2418,6 +2438,21 @@
         { label: 'Đồng ý & Gửi bài', kind: 'brand', run: function () {
           ghiSo(docSo() + 1);
           veQuota();
+          /* NT-A01 — Gửi bài thành công. Đây là thông báo duy nhất của bước gửi;
+             SUBMITTED→IN_REVIEW và IN_REVIEW→READY_TO_PUBLISH không sinh thông báo
+             nào theo spec, người viết chỉ thấy trạng thái đổi trong Bài viết của tôi. */
+          if (window.gnmThemThongBao) {
+            var tenBai = (document.querySelector('.vb-tieude') || {}).textContent || '';
+            tenBai = tenBai.trim() || 'Bài viết mới của bạn';
+            window.gnmThemThongBao({
+              ma: 'NT-A01', nhom: 'bai-viet', co: 'send', mau: 'xam',
+              anh: 'assets/img/avatar-duc-anh.png',
+              ten: 'Bài viết của bạn đã được gửi',
+              chu: 'GNM sẽ thông báo cho bạn khi bài viết có cập nhật.',
+              link: 'ca-nhan.html',
+              khoa: 'NT-A01|' + tenBai + '|' + new Date().toISOString().slice(0, 10)
+            });
+          }
           dong(manXT);
           if (manXong) mo(manXong);
         } },
@@ -2431,4 +2466,395 @@
     if (hop && hop.classList.contains('is-open')) { dongHop(); return; }
     if (!manXT.hidden) dong(manXT);
   });
+})();
+
+
+/* =====================================================================
+   THÔNG BÁO
+   Theo [Feature Spec] Luồng thông báo GNM — Revised.
+   Nguyên tắc bám sát spec:
+   - BR-N01: chữ hướng tới người viết, không dùng từ vựng nội bộ của CMS.
+   - BR-N02: IN_REVIEW và READY_TO_PUBLISH đều chỉ hiện "Đang xem xét".
+   - Không tạo thông báo cho SUBMITTED→IN_REVIEW và IN_REVIEW→READY_TO_PUBLISH;
+     người viết chỉ thấy trạng thái đổi trong "Bài viết của tôi".
+   - Mở Notification Center KHÔNG tự đánh dấu tất cả đã đọc.
+   - Mỗi thông báo phải dẫn tới một màn cụ thể, không có thông báo "chết".
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  var KHO = 'gnm-thong-bao';       // trạng thái đọc + thông báo phát sinh khi dùng thử
+  var KHO_CD = 'gnm-tb-cai-dat';   // cài đặt nhóm thông báo
+  var PHUT = 60000, GIO = 3600000, NGAY = 86400000;
+
+  /* ---------- Bộ dữ liệu mẫu ----------
+     Mỗi mục là một sự kiện có thật trong catalog của spec; trường `ma` giữ lại
+     mã spec để đối chiếu khi dev dựng thật. */
+  function batDau() {
+    var n = Date.now();
+    return [
+      { id: 'n1', ma: 'NT-A03', nhom: 'bai-viet', co: 'verified', mau: 'xanh',
+        anh: 'assets/img/kp-gen-z.jpg', vuong: true,
+        ten: 'Bài viết của bạn đã được đăng 🎉',
+        chu: '“Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số” hiện đã xuất hiện trên Góc Nhìn Mới.',
+        luc: n - 11 * PHUT, link: 'bai-viet.html',
+        nut: [{ ten: 'Xem bài', link: 'bai-viet.html' }, { ten: 'Chia sẻ', act: 'chia-se', phu: true }] },
+
+      { id: 'n2', ma: 'NT-B01', nhom: 'tuong-tac', co: 'comment',
+        anh: 'assets/img/avatar-minh-duc.png',
+        ten: 'Minh Đức và 4 người khác đã bình luận bài viết của bạn',
+        chu: '“Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số”',
+        luc: n - 40 * PHUT, link: 'bai-viet.html' },
+
+      { id: 'n3', ma: 'NT-A02', nhom: 'bai-viet', co: 'alert', mau: 'vang',
+        anh: 'assets/img/cover-nha-o-ha-noi.png', vuong: true,
+        ten: 'Bài viết cần được điều chỉnh',
+        chu: 'Bài viết hiện chưa phù hợp để đăng trên GNM. Xem phản hồi để chỉnh sửa và gửi lại.',
+        luc: n - 5 * GIO, link: 'ca-nhan.html',
+        nut: [{ ten: 'Xem phản hồi', link: 'ca-nhan.html' }] },
+
+      { id: 'n4', ma: 'NT-B03', nhom: 'tuong-tac', co: 'heart',
+        anh: 'assets/img/kp-chatgpt.jpg', vuong: true,
+        ten: 'Bài viết của bạn đã nhận 5.000 lượt thích 🎉',
+        chu: '“ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng”',
+        luc: n - 9 * GIO, link: 'bai-viet.html' },
+
+      { id: 'n5', ma: 'NT-B05', nhom: 'tuong-tac', co: 'nav-user',
+        anh: 'assets/img/avatar-quynh-chi.jpg',
+        ten: '12 người mới đã theo dõi bạn',
+        chu: 'Quỳnh Chi, Minh Tuấn và 10 người khác.',
+        luc: n - 20 * GIO, link: 'ca-nhan.html' },
+
+      { id: 'n6', ma: 'NT-B02', nhom: 'tuong-tac', co: 'comment',
+        anh: 'assets/img/avatar-lan-chi.png',
+        ten: 'Lan Chi đã trả lời bình luận của bạn',
+        chu: '“Mình nghĩ điểm thứ ba của bạn mới là cái đáng bàn nhất...”',
+        luc: n - 1 * NGAY - 2 * GIO, link: 'bai-viet.html' },
+
+      { id: 'n7', ma: 'NT-B04', nhom: 'tuong-tac', co: 'eye',
+        anh: 'assets/img/cover-van-hoa-doc.png', vuong: true,
+        ten: '“Văn hoá đọc sách của người Việt trẻ” đã đạt 10.000 lượt xem 🎉',
+        chu: 'Bài viết đang được chia sẻ nhiều trong hôm nay.',
+        luc: n - 2 * NGAY, link: 'bai-viet.html' },
+
+      { id: 'n8', ma: 'NT-A07', nhom: 'bai-viet', co: 'alert', mau: 'vang',
+        anh: 'assets/img/kp-dan-chu-so.jpg', vuong: true,
+        ten: 'Yêu cầu gỡ bài chưa được chấp thuận',
+        chu: 'Xem phản hồi từ GNM để biết thêm thông tin.',
+        luc: n - 3 * NGAY, link: 'ca-nhan.html',
+        nut: [{ ten: 'Xem phản hồi', link: 'ca-nhan.html' }] },
+
+      { id: 'n9', ma: 'NT-A01', nhom: 'bai-viet', co: 'send', mau: 'xam',
+        anh: 'assets/img/kp-song-cham.jpg', vuong: true,
+        ten: 'Bài viết của bạn đã được gửi',
+        chu: 'GNM sẽ thông báo cho bạn khi bài viết có cập nhật.',
+        luc: n - 4 * NGAY, link: 'ca-nhan.html' },
+
+      { id: 'n10', ma: 'NT-A05', nhom: 'bai-viet', co: 'trash', mau: 'xam',
+        anh: 'assets/img/kp-he-sinh-thai.png', vuong: true,
+        ten: 'Bài viết đã được gỡ khỏi GNM',
+        chu: '“Khởi nghiệp Đông Nam Á: bức tranh toàn cảnh 2026” hiện không còn hiển thị công khai trên Góc Nhìn Mới.',
+        them: 'Lý do: Số liệu trong bài đã có bản cập nhật mới hơn từ nguồn gốc.',
+        luc: n - 6 * NGAY, link: 'ca-nhan.html' },
+
+      { id: 'n11', ma: 'NT-C01', nhom: 'tai-khoan', co: 'shield', mau: 'xam',
+        anh: 'assets/img/avatar-duc-anh.png',
+        ten: 'Có phiên đăng nhập mới vào tài khoản của bạn',
+        chu: 'Chrome trên macOS · Hà Nội · 14:22, 06/09/2026.',
+        luc: n - 8 * NGAY, link: 'chinh-sua-ho-so.html',
+        nut: [{ ten: 'Không phải bạn?', act: 'bao-mat', phu: true }] },
+
+      { id: 'n12', ma: 'NT-C03', nhom: 'tai-khoan', co: 'pencil', mau: 'vang',
+        anh: 'assets/img/avatar-duc-anh.png',
+        ten: 'Cần cập nhật bút danh của bạn',
+        chu: 'Bút danh hiện tại trùng với một tài khoản khác trên GNM.',
+        luc: n - 12 * NGAY, link: 'chinh-sua-ho-so.html',
+        nut: [{ ten: 'Cập nhật', link: 'chinh-sua-ho-so.html' }] }
+    ];
+  }
+
+  /* ---------- Lưu trữ ---------- */
+  function doc() {
+    var goc = batDau(), luu = {};
+    try { luu = JSON.parse(localStorage.getItem(KHO) || '{}') || {}; } catch (e) { luu = {}; }
+    // thông báo phát sinh trong lúc dùng thử (vd: vừa gửi bài) đứng lên đầu
+    var them = (luu.them || []).map(function (x) { return x; });
+    var ds = them.concat(goc);
+    var xoa = luu.xoa || [], daDoc = luu.daDoc || [];
+    ds = ds.filter(function (x) { return xoa.indexOf(x.id) < 0; });
+    ds.forEach(function (x) { x.daDoc = daDoc.indexOf(x.id) >= 0; });
+    ds.sort(function (a, b) { return b.luc - a.luc; });
+    return ds;
+  }
+  function ghi(sua) {
+    var luu = {};
+    try { luu = JSON.parse(localStorage.getItem(KHO) || '{}') || {}; } catch (e) { luu = {}; }
+    luu.daDoc = luu.daDoc || []; luu.xoa = luu.xoa || []; luu.them = luu.them || [];
+    sua(luu);
+    try { localStorage.setItem(KHO, JSON.stringify(luu)); } catch (e) {}
+  }
+  function demChuaDoc() {
+    return doc().filter(function (x) { return !x.daDoc; }).length;
+  }
+
+  /* Dùng được từ nơi khác: gửi bài xong thì sinh NT-A01.
+     Có khoá chống trùng đúng như Business Rule — Dedup của spec. */
+  window.gnmThemThongBao = function (tb) {
+    ghi(function (luu) {
+      var trung = luu.them.some(function (x) { return x.khoa && x.khoa === tb.khoa; });
+      if (trung) return;
+      tb.id = tb.id || ('u' + Date.now());
+      tb.luc = tb.luc || Date.now();
+      luu.them.unshift(tb);
+    });
+    veChuong();
+  };
+
+  /* ---------- Chuông trên thanh trên ---------- */
+  function veChuong() {
+    var so = demChuaDoc();
+    document.querySelectorAll('[data-chuong]').forEach(function (a) {
+      var dot = a.querySelector('.icon-btn__dot');
+      if (dot) dot.hidden = so === 0;
+      a.setAttribute('aria-label', so ? 'Thông báo (' + so + ' chưa đọc)' : 'Thông báo');
+    });
+  }
+
+  /* ---------- Định dạng thời gian ---------- */
+  function khiNao(luc) {
+    var d = Date.now() - luc;
+    if (d < PHUT) return 'vừa xong';
+    if (d < GIO) return Math.floor(d / PHUT) + ' phút trước';
+    if (d < NGAY) return Math.floor(d / GIO) + ' giờ trước';
+    if (d < 7 * NGAY) return Math.floor(d / NGAY) + ' ngày trước';
+    var t = new Date(luc);
+    return ('0' + t.getDate()).slice(-2) + '/' + ('0' + (t.getMonth() + 1)).slice(-2) + '/' + t.getFullYear();
+  }
+  function moc(luc) {
+    var d = Date.now() - luc;
+    if (d < NGAY) return 'Hôm nay';
+    if (d < 7 * NGAY) return 'Tuần này';
+    return 'Trước đó';
+  }
+
+  /* ================= Trang Thông báo ================= */
+  var list = document.getElementById('tbList');
+  if (!list) { veChuong(); return; }
+
+  var chips = document.getElementById('tbChips');
+  var trong = document.getElementById('tbTrong');
+  var trongTen = document.getElementById('tbTrongTen');
+  var trongDan = document.getElementById('tbTrongDan');
+  var cuoi = document.getElementById('tbCuoi');
+  var nutDocHet = document.getElementById('tbDocHet');
+  var loc = 'all';
+
+  var TRONG = {
+    all: ['Chưa có thông báo nào', 'Khi bài viết hoặc hoạt động của bạn có cập nhật, bạn sẽ thấy ở đây.'],
+    'chua-doc': ['Bạn đã đọc hết', 'Không còn thông báo nào chưa đọc.'],
+    'bai-viet': ['Chưa có thông báo về bài viết', 'Cập nhật về bài bạn gửi và bài đã đăng sẽ hiện ở đây.'],
+    'tuong-tac': ['Chưa có tương tác nào', 'Bình luận, lượt thích và người theo dõi mới sẽ hiện ở đây.'],
+    'tai-khoan': ['Chưa có thông báo về tài khoản', 'Thông tin đăng nhập và bảo mật sẽ hiện ở đây.']
+  };
+
+  function locDs(ds) {
+    if (loc === 'all') return ds;
+    if (loc === 'chua-doc') return ds.filter(function (x) { return !x.daDoc; });
+    return ds.filter(function (x) { return x.nhom === loc; });
+  }
+
+  function thoat(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function veMot(x) {
+    var nut = (x.nut || []).map(function (n) {
+      var cl = 'tb-cta' + (n.phu ? ' tb-cta--phu' : '');
+      return n.link
+        ? '<a class="' + cl + '" href="' + n.link + '">' + thoat(n.ten) + '</a>'
+        : '<button class="' + cl + '" type="button" data-tb-act="' + thoat(n.act) + '">' + thoat(n.ten) + '</button>';
+    }).join('');
+
+    return '<li class="tb-item' + (x.daDoc ? '' : ' is-moi') + '" data-tb-id="' + x.id + '" data-link="' + x.link + '">' +
+      '<span class="tb-item__anh' + (x.vuong ? ' tb-item__anh--vuong' : '') + '">' +
+        '<img src="' + x.anh + '" alt="" width="44" height="44" loading="lazy">' +
+        '<span class="tb-item__co' + (x.mau ? ' tb-item__co--' + x.mau : '') + '">' +
+          '<svg class="icon" aria-hidden="true"><use href="#i-' + x.co + '"></use></svg></span>' +
+      '</span>' +
+      '<span class="tb-item__than">' +
+        '<span class="tb-item__ten">' + thoat(x.ten) + '</span>' +
+        '<span class="tb-item__chu">' + thoat(x.chu) + '</span>' +
+        (x.them ? '<span class="tb-item__chu">' + thoat(x.them) + '</span>' : '') +
+        '<span class="tb-item__luc">' + khiNao(x.luc) + '</span>' +
+        (nut ? '<span class="tb-item__nut">' + nut + '</span>' : '') +
+      '</span>' +
+      '<span class="tb-item__phai">' +
+        '<span class="tb-cham" aria-label="Chưa đọc"></span>' +
+        '<button class="tb-more" type="button" data-tb-menu aria-label="Tuỳ chọn thông báo">' +
+          '<svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>' +
+      '</span>' +
+    '</li>';
+  }
+
+  function ve() {
+    var ds = doc();
+    var hien = locDs(ds);
+
+    // số trên chip
+    var dem = { all: ds.length, 'chua-doc': 0, 'bai-viet': 0, 'tuong-tac': 0, 'tai-khoan': 0 };
+    ds.forEach(function (x) {
+      if (!x.daDoc) dem['chua-doc']++;
+      dem[x.nhom] = (dem[x.nhom] || 0) + 1;
+    });
+    chips.querySelectorAll('.chip').forEach(function (c) {
+      var k = c.getAttribute('data-tb-loc');
+      c.querySelector('.chip__n').textContent = dem[k] ? '(' + dem[k] + ')' : '';
+    });
+
+    // danh sách, chèn mốc thời gian giữa các cụm
+    var html = '', mocTruoc = '';
+    hien.forEach(function (x) {
+      var m = moc(x.luc);
+      if (m !== mocTruoc) { html += '<li class="tb-moc">' + m + '</li>'; mocTruoc = m; }
+      html += veMot(x);
+    });
+    list.innerHTML = html;
+
+    var rong = hien.length === 0;
+    trong.hidden = !rong;
+    cuoi.hidden = rong;
+    if (rong) {
+      trongTen.textContent = TRONG[loc][0];
+      trongDan.textContent = TRONG[loc][1];
+    }
+    nutDocHet.disabled = dem['chua-doc'] === 0;
+    veChuong();
+  }
+
+  chips.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.querySelectorAll('.chip').forEach(function (o) { o.setAttribute('aria-selected', 'false'); });
+      c.setAttribute('aria-selected', 'true');
+      loc = c.getAttribute('data-tb-loc');
+      ve();
+    });
+  });
+
+  nutDocHet.addEventListener('click', function () {
+    ghi(function (luu) {
+      doc().forEach(function (x) { if (luu.daDoc.indexOf(x.id) < 0) luu.daDoc.push(x.id); });
+    });
+    ve();
+    if (window.toast) window.toast('Đã đánh dấu tất cả là đã đọc');
+  });
+
+  function danhDau(id, da) {
+    ghi(function (luu) {
+      var i = luu.daDoc.indexOf(id);
+      if (da && i < 0) luu.daDoc.push(id);
+      if (!da && i >= 0) luu.daDoc.splice(i, 1);
+    });
+  }
+
+  list.addEventListener('click', function (e) {
+    var item = e.target.closest('.tb-item');
+    if (!item) return;
+    var id = item.getAttribute('data-tb-id');
+
+    // menu từng dòng
+    var menu = e.target.closest('[data-tb-menu]');
+    if (menu) {
+      e.stopPropagation();
+      var daDoc = !item.classList.contains('is-moi');
+      window.gnmMoBangChon('Tuỳ chọn', [
+        daDoc ? ['bell', 'Đánh dấu chưa đọc'] : ['verified', 'Đánh dấu đã đọc'],
+        ['trash', 'Xoá thông báo này', true]
+      ], function (act) {
+        if (act === 'Xoá thông báo này') {
+          ghi(function (luu) { if (luu.xoa.indexOf(id) < 0) luu.xoa.push(id); });
+          ve();
+          setTimeout(function () { if (window.toast) window.toast('Đã xoá thông báo'); }, 260);
+          return;
+        }
+        danhDau(id, act === 'Đánh dấu đã đọc');
+        ve();
+      }, menu);
+      return;
+    }
+
+    // nút hành động không có link
+    var act = e.target.closest('[data-tb-act]');
+    if (act) {
+      e.stopPropagation();
+      danhDau(id, true);
+      ve();
+      var m = act.getAttribute('data-tb-act');
+      if (window.toast) window.toast(m === 'chia-se' ? 'Đã sao chép liên kết bài viết'
+        : 'Đã mở phần bảo mật tài khoản');
+      return;
+    }
+
+    // bấm vào nút có link, hoặc vào cả dòng: đánh dấu đã đọc rồi đi tiếp
+    danhDau(id, true);
+    var a = e.target.closest('a[href]');
+    if (a) return;              // để trình duyệt tự chuyển trang
+    location.href = item.getAttribute('data-link');
+  });
+
+  /* ---------- Cài đặt nhóm thông báo ---------- */
+  var CD = [
+    ['Bài viết của tôi', [
+      ['bai-dang', 'Bài được đăng hoặc cần điều chỉnh', 'Qua ứng dụng và email', true],
+      ['go-bai', 'Kết quả yêu cầu gỡ bài', 'Qua ứng dụng và email', true]
+    ]],
+    ['Tương tác', [
+      ['binh-luan', 'Bình luận và trả lời', 'Gộp các bình luận trong 30 phút'],
+      ['moc-thich', 'Mốc lượt thích', '10 · 50 · 100 · 500 · 1K · 5K'],
+      ['moc-xem', 'Mốc lượt xem', '100 · 1K · 10K · 100K'],
+      ['theo-doi', 'Người theo dõi mới', 'Gộp khi có nhiều người cùng lúc']
+    ]],
+    ['Tài khoản', [
+      ['bao-mat', 'Đăng nhập và bảo mật', 'Qua ứng dụng và email', true],
+      ['cap-nhat', 'Yêu cầu cập nhật thông tin', 'Qua ứng dụng']
+    ]]
+  ];
+
+  function docCd() {
+    try { return JSON.parse(localStorage.getItem(KHO_CD) || '{}') || {}; } catch (e) { return {}; }
+  }
+
+  document.getElementById('tbCaiDat').addEventListener('click', function () {
+    var cd = docCd();
+    var html = '<div class="tb-cd">' + CD.map(function (nhom) {
+      return '<p class="tb-cd__nhom">' + nhom[0] + '</p>' + nhom[1].map(function (d) {
+        var bat = cd[d[0]] !== false;
+        return '<div class="tb-cd__dong">' +
+          '<span class="tb-cd__than"><span class="tb-cd__ten">' + d[1] + '</span>' +
+          '<span class="tb-cd__phu">' + d[2] + '</span></span>' +
+          (d[3]
+            ? '<span class="tb-cd__khoa">Luôn bật</span>'
+            : '<button class="tb-gat" type="button" role="switch" aria-pressed="' + bat + '" ' +
+              'data-cd="' + d[0] + '" aria-label="' + d[1] + '"></button>') +
+          '</div>';
+      }).join('');
+    }).join('') + '</div>';
+
+    window.gnmMoBang('Cài đặt thông báo',
+      'Các thông báo quan trọng về bài viết và tài khoản luôn được gửi.', html);
+  });
+
+  // bật/tắt lưu ngay, không cần nút Lưu
+  document.addEventListener('click', function (e) {
+    var g = e.target.closest('.tb-gat');
+    if (!g) return;
+    var bat = g.getAttribute('aria-pressed') !== 'true';
+    g.setAttribute('aria-pressed', String(bat));
+    var cd = docCd();
+    cd[g.getAttribute('data-cd')] = bat;
+    try { localStorage.setItem(KHO_CD, JSON.stringify(cd)); } catch (er) {}
+  });
+
+  ve();
 })();

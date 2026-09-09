@@ -186,10 +186,10 @@
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
       </a>
 
-      <button class="icon-btn" type="button" aria-label="Thông báo (có thông báo mới)" data-toast="Bạn có 3 thông báo mới">
+      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
-        <span class="icon-btn__dot" aria-hidden="true"></span>
-      </button>
+        <span class="icon-btn__dot" aria-hidden="true" hidden></span>
+      </a>
     </div>
   </header>
 
@@ -254,10 +254,10 @@
       <a class="deskbar__write" href="viet-bai.html">
         <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <button class="icon-btn" type="button" aria-label="Thông báo (có thông báo mới)" data-toast="Bạn có 3 thông báo mới">
+      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
-        <span class="icon-btn__dot" aria-hidden="true"></span>
-      </button>
+        <span class="icon-btn__dot" aria-hidden="true" hidden></span>
+      </a>
     </div>
 
     <!-- ============ Thanh trên ============ -->
@@ -1013,6 +1013,7 @@
         <div class="chips" role="tablist" id="libChips">
           <button class="chip" type="button" role="tab" aria-selected="true" data-lib="bai-viet">Bài viết đã lưu</button>
           <button class="chip" type="button" role="tab" aria-selected="false" data-lib="video">Video đã lưu</button>
+          <button class="chip" type="button" role="tab" aria-selected="false" data-lib="video-ngan">Video ngắn đã lưu</button>
           <button class="chip" type="button" role="tab" aria-selected="false" data-lib="podcast">Podcast đã lưu</button>
           <button class="chip" type="button" role="tab" aria-selected="false" data-lib="playlist">Playlist của bạn</button>
         </div>
@@ -1107,6 +1108,95 @@
                 </div>
                 <p class="vcard__views"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>6.4K</p>
               </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="media-section shell" data-lib-panel="video-ngan" hidden aria-label="Video ngắn đã lưu">
+        <ul class="shortgrid">
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-ha-noi.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-lan-chi.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Lan Chi</span><span class="short__time">2 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Vịnh Hạ Long lúc bình minh — ba phút không lời</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-tay-nguyen.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-dang-khoa.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Đăng Khoa</span><span class="short__time">5 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Phiên chợ vùng cao trước giờ tan</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-sai-gon-5h.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-thu-hang.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Thu Hằng</span><span class="short__time">8 giờ</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Sài Gòn 5 giờ sáng qua ống kính điện thoại</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/cover-nong-nghiep.png" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-minh-tuan.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Minh Tuấn</span><span class="short__time">1 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Một ngày ở nông trại công nghệ cao</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Quỳnh Chi</span><span class="short__time">1 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Đô thị số nhìn từ tầng 30</a></h3>
+            </div>
+          </li>
+          <li class="short">
+            <a class="short__media" href="bai-viet.html">
+              <img src="assets/img/kp-song-cham.jpg" alt="" width="158" height="224" loading="lazy">
+              <span class="short__scrim" aria-hidden="true"></span>
+            </a>
+            <span class="short__play" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play-sm"></use></svg></span>
+            <div class="short__body">
+              <p class="short__by">
+                <img src="assets/img/avatar-hoai-nam.png" alt="" width="22" height="22" loading="lazy">
+                <span class="short__name">Hoài Nam</span><span class="short__time">2 ngày</span>
+              </p>
+              <h3 class="short__title"><a href="bai-viet.html">Sống chậm ở một thị trấn không đèn giao thông</a></h3>
             </div>
           </li>
         </ul>

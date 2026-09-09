@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="Chỉnh sửa hồ sơ cá nhân trên Góc Nhìn Mới — ảnh đại diện, bút danh, giới thiệu và liên kết.">
-<title>Chỉnh sửa hồ sơ — Góc Nhìn Mới</title>
+<meta name="description" content="Thông báo trên Góc Nhìn Mới — cập nhật về bài viết, tương tác và tài khoản của bạn.">
+<title>Thông báo — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
 <body class="v-web">
 
@@ -176,29 +176,29 @@
 
 <div class="page">
 
-  <header class="app-header" id="appHeader">
-    <div class="shell app-header__inner">
-      <button class="icon-btn icon-btn--menu" type="button" aria-label="Mở menu chuyên mục" aria-expanded="false" aria-controls="drawer" data-drawer-open>
-        <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+  <header class="app-header sticky top-0 z-50 bg-surface border-b border-line-3 shadow-header" id="appHeader">
+    <div class="shell w-full max-w-shell mx-auto px-4 app-header__inner h-[64px] flex items-center justify-between gap-2">
+      <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill icon-btn--menu" type="button" aria-label="Mở menu chuyên mục" aria-expanded="false" aria-controls="drawer" data-drawer-open>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-menu"></use></svg>
       </button>
 
       <a class="brand" href="#" aria-label="Góc Nhìn Mới — về trang chủ">
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
       </a>
 
-      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
-        <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
-        <span class="icon-btn__dot" aria-hidden="true" hidden></span>
+      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
+        <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
       </a>
     </div>
   </header>
 
 
-  <div class="searchbar shell">
-    <form class="search" role="search" onsubmit="return false">
+  <div class="searchbar pt-4 shell w-full max-w-shell mx-auto px-4">
+    <form class="search relative flex items-center h-9 px-[17px] bg-surface-fill border rounded-full" role="search" onsubmit="return false">
       <label class="sr-only" for="q">Tìm kiếm nội dung</label>
       <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off" data-search>
-      <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+      <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
     </form>
   </div>
 
@@ -210,29 +210,29 @@
 
     <nav aria-label="Khu vực chính">
       <ul class="desknav__list">
-        <li><a class="desknav__link is-active" href="index.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
-        <li><a class="desknav__link" href="nghe-va-xem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-media"></use></svg>Nghe & Xem</a></li>
-        <li><a class="desknav__link" href="kham-pha.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Khám phá</a></li>
+        <li><a class="desknav__link is-active" href="index.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
+        <li><a class="desknav__link" href="nghe-va-xem.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-nav-media"></use></svg>Nghe & Xem</a></li>
+        <li><a class="desknav__link" href="kham-pha.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Khám phá</a></li>
       </ul>
     </nav>
 
     <nav class="desknav__group" aria-label="Chuyên mục">
       <ul class="desknav__list">
-        <li><a class="desknav__link desknav__link--sub" href="moi-nhat.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="hot-hom-nay.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-flame"></use></svg>Hot hôm nay</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="tra-dam.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="spotlight.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-star-line"></use></svg>Spotlight</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="quan-diem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-comment-lines"></use></svg>Quan điểm</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="moi-nhat.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="hot-hom-nay.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-flame"></use></svg>Hot hôm nay</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="tra-dam.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="spotlight.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-star-line"></use></svg>Spotlight</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="quan-diem.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-comment-lines"></use></svg>Quan điểm</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
       </ul>
     </nav>
 
         <div class="desknav__foot">
       <ul class="desknav__list">
-        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
-        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
+        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
+        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
       </ul>
 
       <a class="desknav__me" href="ca-nhan.html">
@@ -241,175 +241,128 @@
           <span class="desknav__me__name">Đức Anh</span>
           <span class="desknav__me__handle">@ducanh</span>
         </span>
-        <svg class="icon desknav__me__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
+        <svg class="icon size-4 flex-none desknav__me__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
       </a>
     </div>
   </aside>
 
-  <main id="main" class="hs-main" data-thu-tu="chot">
+  <main id="main" class="" data-thu-tu="chot">
 
     <div class="deskbar">
       <label class="deskbar__search">
-        <svg class="icon deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
+        <svg class="icon size-4 flex-none deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
         <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
       </label>
       <a class="deskbar__write" href="viet-bai.html">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
-        <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
-        <span class="icon-btn__dot" aria-hidden="true" hidden></span>
+      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill is-active" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
+        <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
       </a>
     </div>
 
-    <div class="hs-top">
-      <a class="btn-back" href="ca-nhan.html" data-back aria-label="Quay lại trang cá nhân"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      <h1 class="hs-top__ten">Chỉnh sửa hồ sơ</h1>
-      <div class="hs-top__nut">
-        <a class="btn-outline-sm" href="ca-nhan.html">Huỷ</a>
-        <button class="btn-pill" type="button" data-hs-luu>Lưu thay đổi</button>
-      </div>
+    <!-- ============ Đầu trang ============ -->
+    <div class="tb-dau shell w-full max-w-shell mx-auto px-4">
+      <h1 class="tb-dau__ten">Thông báo</h1>
+      <button class="tb-doc-het" type="button" id="tbDocHet">Đánh dấu tất cả đã đọc</button>
+      <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill tb-caidat" type="button" id="tbCaiDat" aria-label="Cài đặt thông báo">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-settings"></use></svg>
+      </button>
     </div>
 
-    <form class="hs-form" id="hsForm" novalidate>
+    <!-- ============ Lọc theo nhóm ============ -->
+    <nav class="status-bar max-w-shell mx-auto" aria-label="Lọc thông báo">
+      <div class="chips flex gap-2 overflow-x-auto scrollbar-none px-4 py-3 max-w-shell mx-auto" role="tablist" id="tbChips">
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="true" data-tb-loc="all">Tất cả <span class="chip__n opacity-65 font-semibold"></span></button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-tb-loc="chua-doc">Chưa đọc <span class="chip__n opacity-65 font-semibold"></span></button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-tb-loc="bai-viet">Bài viết <span class="chip__n opacity-65 font-semibold"></span></button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-tb-loc="tuong-tac">Tương tác <span class="chip__n opacity-65 font-semibold"></span></button>
+        <button class="chip flex-none py-[6px] px-4 border border-line-2 rounded-full bg-surface text-ink-action text-[13px] font-semibold leading-[19.5px] whitespace-nowrap transition-colors duration-[180] ease-out aria-selected:bg-ink aria-selected:border-ink aria-selected:text-surface" type="button" role="tab" aria-selected="false" data-tb-loc="tai-khoan">Tài khoản <span class="chip__n opacity-65 font-semibold"></span></button>
+      </div>
+    </nav>
 
-      <!-- ============ Ảnh ============ -->
-      <section class="hs-the" aria-labelledby="hs-anh-title">
-        <h2 class="hs-the__ten" id="hs-anh-title">Ảnh đại diện và ảnh bìa</h2>
+    <!-- ============ Danh sách ============ -->
+    <div class="shell w-full max-w-shell mx-auto px-4">
+      <ul class="tb-list" id="tbList"></ul>
 
-        <div class="hs-anh">
-          <div class="hs-bia">
-            <img src="assets/img/hero-genz.png" alt="Ảnh bìa hiện tại" width="800" height="240" loading="lazy">
-            <button class="hs-anh__nut" type="button" data-toast="Mở thư viện ảnh bìa"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Đổi ảnh bìa</button>
-          </div>
-          <div class="hs-ava">
-            <img src="assets/img/avatar-duc-anh.png" alt="Ảnh đại diện hiện tại" width="96" height="96">
-            <button class="hs-anh__nut hs-anh__nut--tron" type="button" aria-label="Đổi ảnh đại diện" data-toast="Mở thư viện ảnh đại diện"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg></button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ Thông tin ============ -->
-      <section class="hs-the hs-the--luoi" aria-labelledby="hs-tt-title">
-        <h2 class="hs-the__ten" id="hs-tt-title">Thông tin cơ bản</h2>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Tên hiển thị</span>
-        <input class="hs-nhap" type="text" name="ten" value="Đức Anh" aria-label="Tên hiển thị">
+      <div class="tb-trong" id="tbTrong" hidden>
+        <span class="tb-trong__ico"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg></span>
+        <p class="tb-trong__ten" id="tbTrongTen">Chưa có thông báo nào</p>
+        <p class="tb-trong__dan" id="tbTrongDan">Khi bài viết hoặc hoạt động của bạn có cập nhật, bạn sẽ thấy ở đây.</p>
       </div>
 
-      <div class="hs-o">
-        <span class="hs-o__nhan">Tên người dùng</span>
-        <span class="hs-nhap hs-nhap--tiento"><span>@</span><input type="text" name="handle" value="ducanh" aria-label="Tên người dùng"></span>
-        <span class="hs-goi">Đường dẫn trang của bạn: gocnhinmoi.vn/@ducanh</span>
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Nghề nghiệp</span>
-        <input class="hs-nhap" type="text" name="nghe" value="Nhà báo công nghệ" aria-label="Nghề nghiệp">
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Giới thiệu</span>
-        <textarea class="hs-nhap hs-nhap--dai" name="gioi-thieu" rows="4" maxlength="280" aria-label="Giới thiệu" data-hs-dem>Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.</textarea>
-        <span class="hs-goi"><span id="hsDem">0</span>/280 ký tự</span>
-      </div>
-      </section>
-
-      <!-- ============ Liên kết ============ -->
-      <section class="hs-the hs-the--luoi" aria-labelledby="hs-lk-title">
-        <h2 class="hs-the__ten" id="hs-lk-title">Liên hệ và liên kết</h2>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Email</span>
-        <input class="hs-nhap" type="email" name="email" value="ducanh@gocnhinmoi.vn" aria-label="Email">
-      </div>
-
-      <div class="hs-o">
-        <span class="hs-o__nhan">Số điện thoại</span>
-        <input class="hs-nhap" type="tel" name="dt" value="0912 345 678" aria-label="Số điện thoại">
-      </div>
-
-      <div class="hs-o hs-o--rong">
-        <span class="hs-o__nhan">Website</span>
-        <input class="hs-nhap" type="url" name="web" placeholder="https://" aria-label="Website">
-      </div>
-      </section>
-
-      <div class="hs-day">
-        <a class="btn-outline-sm" href="ca-nhan.html">Huỷ</a>
-        <button class="btn-pill" type="button" data-hs-luu>Lưu thay đổi</button>
-      </div>
-    </form>
+      <p class="tb-cuoi" id="tbCuoi" hidden>Thông báo được lưu trong 30 ngày.</p>
+    </div>
   </main>
 
 
-  <footer class="site-footer">
-    <div class="shell">
-      <img class="footer__logo" src="assets/img/logo-gnm-footer.png" alt="Góc Nhìn Mới" width="107" height="32" loading="lazy">
+  <footer class="site-footer bg-surface border-t border-line-3 mt-[44px]">
+    <div class="shell w-full max-w-shell mx-auto px-4">
+      <img class="footer__logo w-[107px] h-[32px] object-contain" src="assets/img/logo-gnm-footer.png" alt="Góc Nhìn Mới" width="107" height="32" loading="lazy">
 
-      <h2 class="footer__title">Mạng xã hội Góc Nhìn Mới</h2>
-      <p class="footer__legal">
+      <h2 class="footer__title text-[15px] font-extrabold leading-[22px] pt-5">Mạng xã hội Góc Nhìn Mới</h2>
+      <p class="footer__legal text-[12px] leading-[20px] text-ink-action pt-[10px]">
         Công ty Cổ phần Công nghệ và Truyền thông Không gian số (NetSpace)<br>
         Giấy phép MXH số 93/GP-PTTH&amp;TTĐT do Cục PTTH&amp;TTĐT (Bộ VHTTDL) cấp ngày 25 tháng 5 năm 2026<br>
         Người chịu trách nhiệm: Nguyễn Văn Tuấn
       </p>
 
-      <h3 class="footer__subtitle">Thông tin liên hệ</h3>
-      <ul class="footer__list">
+      <h3 class="footer__subtitle text-[14px] font-extrabold leading-[22px] pt-5">Thông tin liên hệ</h3>
+      <ul class="footer__list grid gap-[10px] pt-[10px]">
         <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-map-pin"></use></svg>
           <span>Tầng 3, Tòa nhà Mipec, 229 Tây Sơn, Kim Liên, Hà Nội</span>
         </li>
         <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-phone"></use></svg>
           <span>Hotline: <a href="tel:+842438888888">0888.13.8888</a></span>
         </li>
         <li>
-          <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mail"></use></svg>
           <span><a href="mailto:lienhe@gocnhinmoi.vn">lienhe@gocnhinmoi.vn</a></span>
         </li>
       </ul>
 
-      <a class="btn-ad" href="tel:+842438888888">
-        <svg class="icon" aria-hidden="true"><use href="#i-phone-btn"></use></svg>
+      <a class="btn-ad flex items-center justify-center gap-[10px] mt-5 h-[42px] px-5 rounded-md bg-primary-800 text-surface text-[14px] font-semibold" href="tel:+842438888888">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-phone-btn"></use></svg>
         Liên hệ quảng cáo <strong>0888.13.8888</strong>
       </a>
 
-      <a class="social" href="#" aria-label="Trang Facebook của Góc Nhìn Mới">
-        <svg class="icon" aria-hidden="true"><use href="#i-facebook"></use></svg>
+      <a class="social grid place-items-center size-[34px] mt-5 border border-line-3 rounded-full text-icon-dark" href="#" aria-label="Trang Facebook của Góc Nhìn Mới">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg>
       </a>
     </div>
 
-    <div class="footer__bottom">
+    <div class="footer__bottom border-t border-line-3 text-center text-[12px] leading-[20px] text-ink-muted">
       <p>© 2026 Mạng xã hội Góc Nhìn Mới</p>
       <p>Vận hành bởi <a href="#">NetSpace</a></p>
     </div>
   </footer>
 </div><!-- /.page -->
 
-<nav class="bottom-nav" aria-label="Điều hướng chính">
-  <div class="bottom-nav__inner">
-    <div class="nav-pill" role="tablist">
-      <a class="nav-tab" href="index.html" role="tab" aria-current="page">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-home"></use></svg>
+<nav class="bottom-nav fixed inset-x-0 bottom-0 z-[60] flex justify-center pt-2 pointer-events-none" aria-label="Điều hướng chính">
+  <div class="bottom-nav__inner flex items-center w-full max-w-shell">
+    <div class="nav-pill flex-1 min-w-0 flex items-center h-[60px] p-1 border rounded-full" role="tablist">
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="index.html" role="tab" aria-current="page">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-home"></use></svg>
         Trang chủ
       </a>
-      <a class="nav-tab" href="nghe-va-xem.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-media"></use></svg>
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="nghe-va-xem.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-media"></use></svg>
         Nghe &amp; Xem
       </a>
 
-      <a class="nav-write" href="viet-bai.html" aria-label="Viết bài">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>
+      <a class="nav-write flex-none size-[52px] mx-1 grid place-items-center rounded-full text-surface transition duration-[180] ease-out" href="viet-bai.html" aria-label="Viết bài">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-write"></use></svg>
       </a>
 
-      <a class="nav-tab" href="kham-pha.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-explore"></use></svg>
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="kham-pha.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-explore"></use></svg>
         Khám phá
       </a>
-      <a class="nav-tab" href="ca-nhan.html" role="tab">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-user"></use></svg>
+      <a class="nav-tab flex-1 min-w-0 flex flex-col items-center justify-center gap-[3px] h-[52px] px-[2px] rounded-full text-[10px] font-normal leading-[14px] whitespace-nowrap transition-colors duration-[180] ease-out" href="ca-nhan.html" role="tab">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-user"></use></svg>
         Cá nhân
       </a>
     </div>
@@ -419,27 +372,27 @@
 <!-- ============ Drawer chuyên mục ============ -->
 
 <!-- ============ Bottom sheet dùng chung (menu hành động / lý do) ============ -->
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
-  <div class="sheet__backdrop" data-sheet-close></div>
-  <div class="sheet__panel">
-    <div class="sheet__grip" aria-hidden="true"></div>
-    <h2 class="sheet__title" id="sheetTitle"></h2>
-    <p class="sheet__meta" id="sheetMeta"></p>
+<div class="sheet fixed inset-0 z-[90]" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet__backdrop absolute inset-0 opacity-0 transition-opacity" data-sheet-close></div>
+  <div class="sheet__panel absolute left-0 right-0 bottom-0 max-w-shell mx-auto max-h-[82vh] overflow-y-auto rounded-t-lg bg-surface">
+    <div class="w-9 h-[4px] mx-auto mb-3 rounded-full bg-line-2" aria-hidden="true"></div>
+    <h2 class="text-base font-extrabold leading-[24px] text-ink" id="sheetTitle"></h2>
+    <p class="pt-1 text-[12px] leading-[18px] text-ink-muted" id="sheetMeta"></p>
     <div id="sheetBody"></div>
   </div>
 </div>
 
 <!-- ============ Dialog xác nhận ============ -->
-<div class="dialog" id="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogText" hidden>
-  <div class="dialog__backdrop" data-dialog-close></div>
-  <div class="dialog__panel">
-    <h2 class="dialog__title" id="dialogTitle"></h2>
-    <p class="dialog__text" id="dialogText"></p>
-    <div class="dialog__actions" id="dialogActions"></div>
+<div class="dialog fixed inset-0 z-[95]" id="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogText" hidden>
+  <div class="dialog__backdrop absolute inset-0 opacity-0 transition-opacity" data-dialog-close></div>
+  <div class="dialog__panel absolute left-[50%] top-[50%] p-5 rounded-lg bg-surface opacity-0">
+    <h2 class="text-base font-extrabold leading-[24px] text-ink" id="dialogTitle"></h2>
+    <p class="pt-2 text-[13px] leading-[20px] text-ink-action" id="dialogText"></p>
+    <div class="grid gap-2 pt-[18px]" id="dialogActions"></div>
   </div>
 </div>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="toast fixed left-1/2 z-[80] px-4 py-[10px] rounded-full text-surface text-[13px] opacity-0 pointer-events-none" id="toast" role="status" aria-live="polite"></div>
 
 
 <script src="assets/js/app.js"></script></body>
