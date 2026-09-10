@@ -2501,17 +2501,19 @@
     <section class="feed shell" data-limit="4"  data-view="all" aria-label="Dòng tin 3">
 
       <article class="card card--podcast">
-        <div class="podcast__head">
-          <img class="podcast__art" src="assets/img/cover-podcast-tra-dam.png" alt="" width="72" height="72" loading="lazy">
-          <div>
-            <p class="podcast__meta">PGS. Hoàng Nam · 1 ngày trước</p>
-            <h2 class="podcast__title"><a href="#">Trà Đàm — Ep.23: Văn hoá doanh nghiệp kiểu Việt — điểm mạnh hay điểm yếu?</a></h2>
-          </div>
+        <div class="card__media">
+          <img src="assets/img/cover-podcast-tra-dam.png" alt="" width="370" height="208" loading="lazy">
+          <span class="badge-time">44:18</span>
         </div>
+        <div class="card__body">
+          <h2 class="card__title"><a href="#">Trà Đàm — Ep.23: Văn hoá doanh nghiệp kiểu Việt — điểm mạnh hay điểm yếu?</a></h2>
+          <div class="byline">
+            <a class="byline__who" href="ca-nhan.html?tac-gia=hoang-nam" aria-label="Xem trang cá nhân của PGS. Hoàng Nam"><img src="assets/img/avatar-hoang-nam.jpg" alt="" width="32" height="32" loading="lazy"></a>
+            <p class="byline__names"><a class="byline__name" href="ca-nhan.html?tac-gia=hoang-nam">PGS. Hoàng Nam</a><span class="byline__time">· 1 ngày trước</span></p>
+          </div>
 
-        <div class="wave" data-wave data-progress="14" aria-hidden="true"></div>
-
-        <div class="podcast__controls">
+          <div class="wave" data-wave data-progress="14" aria-hidden="true"></div>
+          <div class="podcast__controls">
           <button class="btn-play" type="button" data-podcast data-duration="2658" data-elapsed="624">
             <svg class="icon icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
             <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
@@ -2520,7 +2522,7 @@
           <span class="podcast__time" data-time>10:24 / 44:18</span>
         </div>
 
-        <div class="actions">
+          <div class="actions">
             <button class="act" type="button" data-like data-count="987" aria-pressed="false" aria-label="Thích">
             <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">987</span>
           </button>
@@ -2536,6 +2538,7 @@
             <svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg>
           </button>
           </div>
+        </div>
       </article>
       <article class="card">
         <a class="card__media" href="bai-viet.html">

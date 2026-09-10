@@ -621,37 +621,14 @@ input { font: inherit; }
 .card--vertical .act[data-save][aria-pressed="true"] { color: #fff; }
 .card--vertical .act[data-save][aria-pressed="true"] .icon { fill: #fff; }
 
-/* Thẻ podcast */
-.card--podcast { padding: var(--gutter); }
-.podcast__head { display: flex; gap: 12px; align-items: flex-start; padding-bottom: var(--gutter); }
-.podcast__art {
-  width: 72px; height: 72px;
-  flex: none;
-  border-radius: var(--r-lg);
-  object-fit: cover;
-  background: var(--fill-soft);
-}
-.podcast__meta {
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 16.5px;
-  color: var(--text-muted-2);
-  padding-bottom: 4px;
-}
-.podcast__title {
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 20.625px;
-  letter-spacing: -.011em;
-  color: var(--ink);
-}
-
+/* Thẻ podcast — dựng như thẻ tin thường (ảnh lớn, tiêu đề, tác giả); dấu
+   hiệu nhận biết là dải sóng âm nằm ngay dưới dòng tác giả. */
 .wave {
   display: flex;
   align-items: flex-end;
   gap: 2px;
   height: 20px;
-  margin-bottom: var(--gutter);
+  margin-top: 12px;
 }
 .wave span {
   flex: 1 1 0;
@@ -665,7 +642,7 @@ input { font: inherit; }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-bottom: var(--gutter);
+  padding-top: 10px;
 }
 .btn-play {
   display: inline-flex;
@@ -690,7 +667,7 @@ input { font: inherit; }
   color: var(--text-muted-2);
   font-variant-numeric: tabular-nums;
 }
-.card--podcast .actions { margin-top: 0; }
+.card--podcast .actions { margin-top: 12px; }
 
 /* Thẻ album ảnh */
 .gallery {
