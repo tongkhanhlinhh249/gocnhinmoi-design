@@ -805,7 +805,23 @@
  },
  "card--podcast": {
   "tw": "p-4",
-  "keep": ".card--podcast .actions{margin-top:12px}"
+  "keep": ".card--podcast .actions{margin-top:0}"
+ },
+ "podcast__head": {
+  "tw": "flex gap-3 items-start pb-4",
+  "keep": ""
+ },
+ "podcast__art": {
+  "tw": "w-[72px] h-[72px] flex-none rounded-lg object-cover bg-surface-fill",
+  "keep": ""
+ },
+ "podcast__meta": {
+  "tw": "text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1",
+  "keep": ""
+ },
+ "podcast__title": {
+  "tw": "text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink",
+  "keep": ""
  },
  "wave": {
   "tw": "flex items-end gap-[2px] h-5 mb-4",
