@@ -2959,6 +2959,46 @@ input { font: inherit; }
 .tophero__author { font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .8); }
 .tophero__time { font-size: 11px; line-height: 16.5px; color: rgba(255, 255, 255, .5); }
 
+/* Tin nổi bật dạng podcast — vẫn là tin nổi bật, chỉ khác ở dải sóng âm nối
+   liền dải đen của dòng tác giả. Bỏ padding-bottom của dòng tác giả để hai
+   dải liền một mạch. */
+/* Dải sóng nằm trong lớp phủ ảnh, ngay dưới tiêu đề — không phải trên dải đen
+   của dòng tác giả, nên không cần nền riêng. */
+.tophero__song {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+.tophero__play {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .15s var(--ease);
+}
+.tophero__play:hover { background: rgba(255, 255, 255, .26); }
+.tophero__play .icon { width: 9px; height: 9px; fill: currentColor; }
+.tophero__play .icon--pause { display: none; }
+.tophero__play.is-playing .icon--play { display: none; }
+.tophero__play.is-playing .icon--pause { display: block; }
+/* Dải sóng trên nền đen: vạch chưa nghe sáng mờ thay vì màu đường kẻ. */
+.wave--hero { flex: 1; min-width: 0; height: 16px; margin: 0; }
+.wave--hero span { background: rgba(255, 255, 255, .28); }
+.wave--hero span.is-on { background: #fff; }
+.tophero__len {
+  flex: none;
+  font-size: 11px;
+  line-height: 16.5px;
+  color: rgba(255, 255, 255, .5);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ==========================================================================
    Mục "Thịnh hành" nền đỏ (Figma 198:1732)
    ========================================================================== */

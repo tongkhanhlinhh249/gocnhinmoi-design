@@ -2058,5 +2058,21 @@
  "tb-cuoi": {
   "tw": "",
   "keep": ""
+ },
+ "tophero__song": {
+  "tw": "",
+  "keep": ".tophero__song{display:flex;align-items:center;gap:10px;padding-top:10px}.tophero__play{flex:none;display:grid;place-items:center;width:26px;height:26px;border:0;border-radius:var(--r-pill);background:rgba(255,255,255,.16);color:#fff;cursor:pointer;transition:background-color .15s var(--ease)}.tophero__play:hover{background:rgba(255,255,255,.26)}.tophero__play .icon{width:9px;height:9px;fill:currentColor}.tophero__play .icon--pause{display:none}.tophero__play.is-playing .icon--play{display:none}.tophero__play.is-playing .icon--pause{display:block}.wave--hero{flex:1;min-width:0;height:16px;margin:0}.wave--hero span{background:rgba(255,255,255,.28)}.wave--hero span.is-on{background:#fff}.tophero__len{flex:none;font-size:11px;line-height:16.5px;color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums}"
+ },
+ "tophero__play": {
+  "tw": "",
+  "keep": ""
+ },
+ "tophero__len": {
+  "tw": "",
+  "keep": ""
+ },
+ "wave--hero": {
+  "tw": "",
+  "keep": ""
  }
 }

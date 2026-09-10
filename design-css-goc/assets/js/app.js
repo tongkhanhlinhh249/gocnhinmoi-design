@@ -419,7 +419,7 @@
   function miniBat(card, btn, layElapsed, duration, tiepTuc, dung) {
     if (!mini) return;
     var art = card && card.querySelector('img');
-    var tit = card && card.querySelector('.card__title, .podcast__title, .prow__title');
+    var tit = card && card.querySelector('.card__title, .podcast__title, .prow__title, .tophero__title');
     var a = mini.querySelector('[data-mini-art]');
     var h = mini.querySelector('[data-mini-title]');
     if (a && art) { a.src = art.getAttribute('src'); a.alt = ''; }
@@ -456,7 +456,7 @@
   var activePlayer = null;
 
   $$('[data-podcast]').forEach(function (btn) {
-    var card = btn.closest('.card');
+    var card = btn.closest('.card, .tophero__item, .prow');
     var wave = $('[data-wave]', card);
     var timeEl = $('[data-time]', card);
     var label = $('.btn-play__label', btn);
@@ -557,7 +557,7 @@
     var shareBtn = e.target.closest('[data-share]');
     if (shareBtn) {
       var card = shareBtn.closest('.card');
-      var titleEl = card ? $('.card__title, .podcast__title', card) : null;
+      var titleEl = card ? $('.card__title, .podcast__title, .tophero__title', card) : null;
       var title = titleEl ? titleEl.textContent.trim() : document.title;
 
       if (navigator.share) {
@@ -662,7 +662,7 @@
     theCards.forEach(function (card) {
       var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
       var matchCat = currentFilter === 'all' || cats.indexOf(currentFilter) !== -1;
-      var titleEl = $('.card__title, .podcast__title', card);
+      var titleEl = $('.card__title, .podcast__title, .tophero__title', card);
       var text = titleEl ? titleEl.textContent.toLowerCase() : '';
       var matchText = !q || text.indexOf(q) !== -1;
 
