@@ -5968,9 +5968,11 @@ input { font: inherit; }
 /* --- thông tin phủ lên video --- */
 .vn-phu {
   position: absolute;
-  left: 0; right: 76px; bottom: 0;
+  /* Nền chuyển sắc phải phủ hết bề ngang, nếu chặn ở 76px thì lộ một vệt dọc
+     chỗ cột hành động. Chừa chỗ cho cột bằng lề phải của phần chữ. */
+  left: 0; right: 0; bottom: 0;
   z-index: 2;
-  padding: 0 16px 58px;
+  padding: 0 84px 58px 16px;
   color: #fff;
   background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .45) 60%, rgba(0, 0, 0, 0) 100%);
 }
@@ -6141,20 +6143,26 @@ input { font: inherit; }
   .vn-main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 470px;
-    gap: 20px;
-    align-items: start;
+    /* Hàng trên co giãn, hàng dưới vừa ô bình luận. Cột trái trải hết hai
+       hàng nên hai cột luôn cao bằng nhau. */
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 20px;
+    row-gap: 0;
     max-width: 1240px;
     margin: 0 auto;
     padding: 20px;
-    min-height: 100dvh;
+    height: 100dvh;
   }
   .vn-bar { display: none; }
 
   /* --- sân khấu --- */
   .vn-san {
     position: relative;
+    grid-column: 1;
+    grid-row: 1 / -1;
+    min-height: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
     padding: 20px;
     border-radius: var(--r-card);
@@ -6169,9 +6177,9 @@ input { font: inherit; }
     flex: 1;
     min-width: 0;
     max-width: 372px;
+    max-height: 100%;
     margin-inline: auto;
     aspect-ratio: 9 / 16;
-    max-height: calc(100dvh - 120px);
     border-radius: var(--r-md);
     overflow: hidden;
   }
@@ -6224,11 +6232,13 @@ input { font: inherit; }
   /* --- cột phải --- */
   .vn-tin {
     display: block;
-    border-radius: var(--r-card);
-    background: var(--surface);
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 0;
     border: 1px solid var(--line);
-    overflow: hidden;
-    max-height: calc(100dvh - 40px);
+    border-bottom: 0;
+    border-radius: var(--r-card) var(--r-card) 0 0;
+    background: var(--surface);
     overflow-y: auto;
   }
   .vn-tg { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 14px; }
@@ -6275,10 +6285,9 @@ input { font: inherit; }
 
   /* ô bình luận nằm dưới cột phải */
   .vn-gui {
-    position: sticky;
-    bottom: 0;
+    position: static;
     grid-column: 2;
-    margin-top: -20px;
+    grid-row: 2;
     padding: 12px 20px;
     border: 1px solid var(--line);
     border-top: 0;
