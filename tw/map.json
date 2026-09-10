@@ -916,8 +916,8 @@
   "keep": ".vcard__scrim{background:linear-gradient(to top, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, 0) 100%)}"
  },
  "vcard__play": {
-  "tw": "absolute top-[50%] left-[50%] -translate-y-[50%] size-[44px] grid place-items-center rounded-full border text-surface backdrop-blur-[2px] transition duration-[180] ease-out",
-  "keep": ".vcard__play{background:rgba(183, 183, 188, .4);border-color:rgba(255, 255, 255, .4);-webkit-backdrop-filter:blur(2px)}.vcard__play .icon{width:14px;height:14px;fill:currentColor}.vcard__play:active{transform:translate(-50%, -50%) scale(.9)}.vcard__play .icon--pause{display:none}.vcard__play.is-playing .icon--play{display:none}.vcard__play.is-playing .icon--pause{display:block}"
+  "tw": "absolute top-[50%] left-[50%] size-[44px] grid place-items-center rounded-full border text-surface backdrop-blur-[2px] transition duration-[180] ease-out",
+  "keep": ".vcard__play{transform:translate(-50%,-50%)}.vcard__play{background:rgba(183, 183, 188, .4);border-color:rgba(255, 255, 255, .4);-webkit-backdrop-filter:blur(2px)}.vcard__play .icon{width:14px;height:14px;fill:currentColor}.vcard__play:active{transform:translate(-50%, -50%) scale(.9)}.vcard__play .icon--pause{display:none}.vcard__play.is-playing .icon--play{display:none}.vcard__play.is-playing .icon--pause{display:block}"
  },
  "vcard__body": {
   "tw": "absolute inset-x-0 bottom-0 p-2 text-surface",
