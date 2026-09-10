@@ -4253,8 +4253,9 @@ input { font: inherit; }
   /* Thẻ hero trải hết bề ngang mục, không nằm trong dải cuộn — nó có w-full
      riêng, ép 394px vào là nó co lại còn một phần ba. */
   .v-web .page .vcard:not(.vcard--hero) { width: 394px; }
-  /* Trong lưới hai cột thì để ô quyết định bề rộng, không ghim 394px. */
-  .v-web .page .mini-grid .vcard { width: auto; }
+  /* Trong lưới thì để ô quyết định bề rộng, không ghim 394px. */
+  .v-web .page .mini-grid .vcard,
+  .v-web .page .feed > .vcard { width: auto; }
 
   /* Bảng xếp hạng giữ một cột, nhưng ở 765px thì tên với hai con số không cần
      xếp chồng nữa — cho chúng cùng một hàng, hàng gọn lại hẳn một dòng. */

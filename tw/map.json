@@ -909,7 +909,7 @@
  },
  "vcard": {
   "tw": "relative flex-none w-[272px] aspect-[272/170] rounded-card overflow-hidden bg-surface-dark",
-  "keep": ".vcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}"
+  "keep": ".feed > .vcard{flex:none;width:auto}.vcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}"
  },
  "vcard__scrim": {
   "tw": "absolute inset-0",
@@ -997,7 +997,7 @@
  },
  "mini-grid": {
   "tw": "grid grid-cols-2 gap-3 pt-3",
-  "keep": ".mini-grid .vcard{flex:none;width:auto}@media (min-width:1024px){.v-web .page .mini-grid .vcard{width:auto}}"
+  "keep": ".mini-grid .vcard{flex:none;width:auto}@media (min-width:1024px){.v-web .page .mini-grid .vcard,.v-web .page .feed > .vcard{width:auto}}"
  },
  "place-detail": {
   "tw": "pt-[18px]",
