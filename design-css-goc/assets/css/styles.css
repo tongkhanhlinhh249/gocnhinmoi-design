@@ -2904,15 +2904,25 @@ input { font: inherit; }
   background: #000;
 }
 .tophero__meta img { width: 24px; height: 24px; border-radius: var(--r-pill); object-fit: cover; }
-.tophero__author { font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .8); }
+.tophero__who { flex: none; display: block; }
+.tophero__author {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: rgba(255, 255, 255, .8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .tophero__time { font-size: 11px; line-height: 16.5px; color: rgba(255, 255, 255, .5); }
 
 /* Tin nổi bật dạng podcast — vẫn là tin nổi bật, chỉ khác ở dải sóng âm nối
    liền dải đen của dòng tác giả. Bỏ padding-bottom của dòng tác giả để hai
    dải liền một mạch. */
-/* Podcast ở khối Tin nổi bật: huy hiệu mic giữa ảnh, cùng dáng với nút phát
-   của thẻ video để người đọc nhận ra ngay đây là nội dung nghe được. */
-.tophero__mic {
+/* Huy hiệu giữa ảnh của tin nổi bật: mic cho podcast, play cho video. Cùng
+   dáng với nút phát của thẻ video để nhận ra ngay đây là nội dung nghe/xem. */
+.tophero__item .badge-time { top: 12px; right: 12px; bottom: auto; }
+.tophero__fab {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -2926,7 +2936,7 @@ input { font: inherit; }
   backdrop-filter: blur(2px);
   color: #fff;
 }
-.tophero__mic .icon { width: 18px; height: 18px; }
+.tophero__fab .icon { width: 18px; height: 18px; fill: currentColor; }
 
 /* ==========================================================================
    Mục "Thịnh hành" nền đỏ (Figma 198:1732)
