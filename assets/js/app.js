@@ -2850,3 +2850,85 @@
 
   ve();
 })();
+
+
+/* =====================================================================
+   TRANG CHI TIẾT VIDEO NGẮN
+   ===================================================================== */
+(function () {
+  'use strict';
+  var san = document.querySelector('.vn-san');
+  if (!san) return;
+
+  var DAI = 10;                       // độ dài video mẫu, giây
+  var giay = 0, chay = null;
+
+  var nutPhat = document.querySelectorAll('.vn-play, .vn-dieu__nut[data-play]');
+  var thanhDa = document.querySelectorAll('[data-vn-da]');
+  var oGio = document.querySelectorAll('[data-vn-gio]');
+
+  function dinhDang(s) {
+    return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+  }
+  function ve() {
+    var pt = (giay / DAI) * 100;
+    thanhDa.forEach(function (x) { x.style.width = pt + '%'; });
+    oGio.forEach(function (x) { x.textContent = dinhDang(giay) + ' / ' + dinhDang(DAI); });
+  }
+  function datTrangThai(dang) {
+    nutPhat.forEach(function (b) {
+      b.classList.toggle('is-playing', dang);
+      b.setAttribute('aria-label', dang ? 'Tạm dừng' : 'Phát video');
+    });
+  }
+  function dung() {
+    clearInterval(chay); chay = null; datTrangThai(false);
+  }
+  function phat() {
+    datTrangThai(true);
+    chay = setInterval(function () {
+      giay += 1;
+      if (giay >= DAI) { giay = 0; ve(); dung(); return; }   // hết thì quay lại đầu
+      ve();
+    }, 1000);
+  }
+  nutPhat.forEach(function (b) {
+    b.addEventListener('click', function () { chay ? dung() : phat(); });
+  });
+  ve();
+
+  /* Tắt/bật tiếng — chỉ đổi trạng thái nút, video mẫu không có tiếng thật */
+  var nutTieng = document.querySelector('[data-vn-tieng]');
+  if (nutTieng) {
+    nutTieng.addEventListener('click', function () {
+      var tat = nutTieng.getAttribute('aria-pressed') === 'true';
+      nutTieng.setAttribute('aria-pressed', String(!tat));
+      nutTieng.setAttribute('aria-label', tat ? 'Bật tiếng' : 'Tắt tiếng');
+      if (window.toast) window.toast(tat ? 'Đã bật tiếng' : 'Đã tắt tiếng');
+    });
+  }
+
+  /* Xem thêm / Thu gọn phần mô tả. Có hai bản (phủ lên video và cột phải),
+     mỗi nút chỉ mở đúng đoạn mô tả nằm cùng khối với nó. */
+  document.querySelectorAll('[data-vn-them]').forEach(function (b) {
+    var mo = b.parentElement.querySelector('[data-vn-mo]');
+    if (!mo) return;
+    b.addEventListener('click', function () {
+      var dangMo = mo.classList.toggle('is-mo');
+      b.textContent = dangMo ? 'Thu gọn' : 'Xem thêm';
+      b.setAttribute('aria-expanded', String(dangMo));
+    });
+  });
+
+  /* Nút bình luận: khổ rộng thì kéo tới danh sách, khổ hẹp thì đưa con trỏ
+     vào ô nhập vì danh sách bình luận không dựng ở bản điện thoại. */
+  var nutCmt = document.querySelector('[data-vn-cmt]');
+  if (nutCmt) {
+    nutCmt.addEventListener('click', function () {
+      var ds = document.querySelector('.vn-cmt');
+      if (ds && ds.offsetParent) { ds.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      var o = document.getElementById('vnCmt');
+      if (o) o.focus();
+    });
+  }
+})();
