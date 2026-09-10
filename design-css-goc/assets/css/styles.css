@@ -5899,7 +5899,14 @@ input { font: inherit; }
 .vn-body .site-footer,
 .vn-body .drawer { display: none; }
 .vn-body .page { min-height: 100dvh; padding-bottom: 0; }
-.vn-main { display: flex; flex-direction: column; min-height: 100dvh; }
+/* Lưới hai hàng thay vì flex: ô lưới có chiều cao xác định nên lát video
+   bên trong mới quy được height: 100%. Với flex thì cả flex-basis: 100%
+   lẫn height: 100% đều ra 0. */
+.vn-main {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  height: 100dvh;
+}
 
 /* --- thanh trên --- */
 .vn-bar {
@@ -5936,8 +5943,23 @@ input { font: inherit; }
 }
 
 /* --- sân khấu --- */
-.vn-san { position: relative; flex: 1; min-height: 0; }
-/* Phủ kín sân khấu bằng inset thay vì height:100%: cha là khối flex không có
+/* Sân khấu là khối cuộn dọc bắt điểm: mỗi lần cuộn nhảy trọn một video. */
+.vn-san {
+  position: relative;
+  min-height: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+.vn-san::-webkit-scrollbar { display: none; }
+.vn-slide {
+  position: relative;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* Phủ kín lát cắt bằng inset thay vì height:100%: cha là khối flex không có
    chiều cao tường minh nên phần trăm không quy ra được, khung sẽ tụt về đúng
    tỉ lệ ảnh và để hở một mảng đen phía dưới. */
 .vn-khung { position: absolute; inset: 0; background: #000; }
@@ -6161,13 +6183,19 @@ input { font: inherit; }
     grid-column: 1;
     grid-row: 1 / -1;
     min-height: 0;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px;
+    display: block;
+    padding: 0;
     border-radius: var(--r-card);
     background: var(--surface);
     border: 1px solid var(--line);
+  }
+  /* Mỗi lát là một khung xem trọn chiều cao cột, cuộn tới đâu bắt điểm tới đó */
+  .vn-slide {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    padding: 20px;
   }
   .vn-khung {
     /* Trả lại dòng chảy bình thường: bản điện thoại đặt absolute + inset để
@@ -6183,7 +6211,9 @@ input { font: inherit; }
     border-radius: var(--r-md);
     overflow: hidden;
   }
-  .vn-anh { object-fit: contain; background: #000; }
+  /* Lấp đầy khung dọc như video ngắn thật; ảnh mẫu có cái ngang cái dọc,
+     để contain thì lát nào ảnh ngang sẽ trơ hai vệt đen trên dưới. */
+  .vn-anh { object-fit: cover; background: #000; }
 
   /* thông tin đã có ở cột phải, không phủ lên video nữa */
   .vn-phu { display: none; }

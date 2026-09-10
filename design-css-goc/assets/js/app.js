@@ -2854,62 +2854,98 @@
 
 /* =====================================================================
    TRANG CHI TIẾT VIDEO NGẮN
+   Chuỗi video cuộn bắt điểm: mỗi lát là một video, cuộn tới đâu thì cột
+   thông tin bên phải đổi theo tới đó.
    ===================================================================== */
 (function () {
   'use strict';
-  var san = document.querySelector('.vn-san');
+  var san = document.getElementById('vnSan');
   if (!san) return;
 
-  var DAI = 10;                       // độ dài video mẫu, giây
-  var giay = 0, chay = null;
-
-  var nutPhat = document.querySelectorAll('.vn-play, .vn-dieu__nut[data-play]');
-  var thanhDa = document.querySelectorAll('[data-vn-da]');
-  var oGio = document.querySelectorAll('[data-vn-gio]');
+  var DAI = 10;                                   // độ dài video mẫu, giây
+  var lat = [].slice.call(san.querySelectorAll('.vn-slide'));
+  var khoiTin = [].slice.call(document.querySelectorAll('[data-vn-tin]'));
 
   function dinhDang(s) {
     return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
   }
-  function ve() {
-    var pt = (giay / DAI) * 100;
-    thanhDa.forEach(function (x) { x.style.width = pt + '%'; });
-    oGio.forEach(function (x) { x.textContent = dinhDang(giay) + ' / ' + dinhDang(DAI); });
-  }
-  function datTrangThai(dang) {
-    nutPhat.forEach(function (b) {
-      b.classList.toggle('is-playing', dang);
-      b.setAttribute('aria-label', dang ? 'Tạm dừng' : 'Phát video');
+
+  /* ---------- Mỗi lát một trình phát riêng ---------- */
+  var may = lat.map(function (o) {
+    var m = { giay: 0, chay: null, o: o };
+    var nut = [].slice.call(o.querySelectorAll('[data-play]'));
+    var thanh = [].slice.call(o.querySelectorAll('[data-vn-da]'));
+    var gio = [].slice.call(o.querySelectorAll('[data-vn-gio]'));
+
+    m.ve = function () {
+      thanh.forEach(function (x) { x.style.width = (m.giay / DAI) * 100 + '%'; });
+      gio.forEach(function (x) { x.textContent = dinhDang(m.giay) + ' / ' + dinhDang(DAI); });
+    };
+    m.dung = function () {
+      clearInterval(m.chay); m.chay = null;
+      nut.forEach(function (b) { b.classList.remove('is-playing'); b.setAttribute('aria-label', 'Phát video'); });
+    };
+    m.phat = function () {
+      if (m.chay) return;
+      nut.forEach(function (b) { b.classList.add('is-playing'); b.setAttribute('aria-label', 'Tạm dừng'); });
+      m.chay = setInterval(function () {
+        m.giay += 1;
+        if (m.giay >= DAI) { m.giay = 0; }      // video ngắn thì lặp lại
+        m.ve();
+      }, 1000);
+    };
+    nut.forEach(function (b) {
+      b.addEventListener('click', function () { m.chay ? m.dung() : m.phat(); });
     });
-  }
-  function dung() {
-    clearInterval(chay); chay = null; datTrangThai(false);
-  }
-  function phat() {
-    datTrangThai(true);
-    chay = setInterval(function () {
-      giay += 1;
-      if (giay >= DAI) { giay = 0; ve(); dung(); return; }   // hết thì quay lại đầu
-      ve();
-    }, 1000);
-  }
-  nutPhat.forEach(function (b) {
-    b.addEventListener('click', function () { chay ? dung() : phat(); });
+    m.ve();
+    return m;
   });
-  ve();
 
-  /* Tắt/bật tiếng — chỉ đổi trạng thái nút, video mẫu không có tiếng thật */
-  var nutTieng = document.querySelector('[data-vn-tieng]');
-  if (nutTieng) {
-    nutTieng.addEventListener('click', function () {
-      var tat = nutTieng.getAttribute('aria-pressed') === 'true';
-      nutTieng.setAttribute('aria-pressed', String(!tat));
-      nutTieng.setAttribute('aria-label', tat ? 'Bật tiếng' : 'Tắt tiếng');
-      if (window.toast) window.toast(tat ? 'Đã bật tiếng' : 'Đã tắt tiếng');
-    });
+  /* ---------- Đổi cột thông tin theo lát đang xem ---------- */
+  var dangXem = -1;
+  function chon(i) {
+    if (i === dangXem || i < 0 || i >= lat.length) return;
+    if (dangXem >= 0) may[dangXem].dung();       // rời video nào thì dừng video đó
+    dangXem = i;
+    khoiTin.forEach(function (k, n) { k.hidden = n !== i; });
+    var tin = document.getElementById('vnTin');
+    if (tin) tin.scrollTop = 0;
   }
 
-  /* Xem thêm / Thu gọn phần mô tả. Có hai bản (phủ lên video và cột phải),
-     mỗi nút chỉ mở đúng đoạn mô tả nằm cùng khối với nó. */
+  /* Lát nào chiếm phần lớn khung nhìn thì lát đó đang được xem. */
+  if ('IntersectionObserver' in window) {
+    var doi = new IntersectionObserver(function (muc) {
+      muc.forEach(function (e) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.6) {
+          chon(lat.indexOf(e.target));
+        }
+      });
+    }, { root: san, threshold: [0.6] });
+    lat.forEach(function (o) { doi.observe(o); });
+  }
+  chon(0);
+
+  /* Bàn phím: mũi tên lên xuống cũng chuyển video */
+  document.addEventListener('keydown', function (e) {
+    if (e.target.matches('input, textarea, [contenteditable]')) return;
+    var b = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
+    if (!b) return;
+    var ke = lat[dangXem + b];
+    if (!ke) return;
+    e.preventDefault();
+    ke.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  /* ---------- Tắt/bật tiếng ---------- */
+  document.querySelectorAll('[data-vn-tieng]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var tat = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', String(!tat));
+      b.setAttribute('aria-label', tat ? 'Bật tiếng' : 'Tắt tiếng');
+    });
+  });
+
+  /* ---------- Xem thêm / Thu gọn ---------- */
   document.querySelectorAll('[data-vn-them]').forEach(function (b) {
     var mo = b.parentElement.querySelector('[data-vn-mo]');
     if (!mo) return;
@@ -2920,15 +2956,13 @@
     });
   });
 
-  /* Nút bình luận: khổ rộng thì kéo tới danh sách, khổ hẹp thì đưa con trỏ
-     vào ô nhập vì danh sách bình luận không dựng ở bản điện thoại. */
-  var nutCmt = document.querySelector('[data-vn-cmt]');
-  if (nutCmt) {
-    nutCmt.addEventListener('click', function () {
-      var ds = document.querySelector('.vn-cmt');
+  /* ---------- Nút bình luận ---------- */
+  document.querySelectorAll('[data-vn-cmt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var ds = document.querySelector('[data-vn-tin]:not([hidden]) .vn-cmt');
       if (ds && ds.offsetParent) { ds.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
       var o = document.getElementById('vnCmt');
       if (o) o.focus();
     });
-  }
+  });
 })();

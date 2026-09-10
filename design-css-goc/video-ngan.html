@@ -262,94 +262,254 @@
       <button class="vn-bar__nut" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button>
     </header>
 
-    <!-- ============ Sân khấu ============ -->
-    <div class="vn-san">
-      <div class="vn-khung">
-        <img class="vn-anh" src="assets/img/cover-sai-gon.png" alt="Khoảnh khắc đường phố Sài Gòn qua gương chiếu hậu">
+    <!-- ============ Chuỗi video, cuộn tới đâu bắt điểm tới đó ============ -->
+    <div class="vn-san" id="vnSan">
+      <section class="vn-slide" data-vn-slide="0" aria-label="Video 1 trên 4">
+        <div class="vn-khung">
+          <img class="vn-anh" src="assets/img/cover-sai-gon.png" alt="">
+          <button class="vn-play" type="button" data-play aria-label="Phát video">
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vn-phu">
+            <p class="vn-phu__who">
+              <a class="vn-phu__ten" href="ca-nhan.html">Minh Đức</a>
+              <span class="vn-cham" aria-hidden="true"></span>
+              <span class="vn-phu__vai">Phóng viên văn hoá</span>
+            </p>
+            <p class="vn-muc"><a href="hot-hom-nay.html">Hot hôm nay</a></p>
+            <h2 class="vn-ten">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</h2>
+            <p class="vn-mo" data-vn-mo>Những khoảnh khắc đời thường, không gian quen thuộc và nhịp sống đặc trưng của thành phố được ghi lại qua một góc nhìn gần gũi.</p>
+            <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+            <p class="vn-tags"><a href="#">#SàiGòn</a> <a href="#">#ĐườngPhố</a> <a href="#">#VănHóa</a></p>
+          </div>
+          <div class="vn-tien">
+            <span class="vn-tien__thanh"><span class="vn-tien__da" data-vn-da></span></span>
+            <span class="vn-tien__gio" data-vn-gio>0:00 / 0:10</span>
+          </div>
+          <div class="vn-dieu">
+            <button class="vn-dieu__nut" type="button" data-play aria-label="Phát video">
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+            </button>
+            <button class="vn-dieu__nut" type="button" data-vn-tieng aria-pressed="true" aria-label="Tắt tiếng"><svg class="icon" aria-hidden="true"><use href="#i-volume"></use></svg></button>
+            <span class="vn-dieu__gio" data-vn-gio>0:00 / 0:10</span>
+            <span class="vn-dieu__thanh"><span class="vn-dieu__da" data-vn-da></span></span>
+            <button class="vn-dieu__nut" type="button" data-toast="Mở toàn màn hình" aria-label="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
+          </div>
+        </div>
 
-        <button class="vn-play" type="button" data-play aria-label="Phát video">
-          <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-          <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-        </button>
+        <div class="vn-acts">
+          <a class="vn-acts__ava" href="ca-nhan.html" aria-label="Xem trang cá nhân của Minh Đức">
+            <img src="assets/img/avatar-minh-duc.png" alt="" width="44" height="44">
+            <span class="vn-acts__theo" aria-hidden="true">+</span>
+          </a>
+          <button class="vn-act" type="button" data-like data-count="1200" aria-pressed="false" aria-label="Thích">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.2K</span>
+          </button>
+          <button class="vn-act" type="button" data-vn-cmt aria-label="Bình luận">
+            <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">287</span>
+          </button>
+          <button class="vn-act" type="button" data-share aria-label="Chia sẻ">
+            <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg><span class="act__n">36</span>
+          </button>
+          <button class="vn-act" type="button" data-save aria-pressed="false" aria-label="Lưu video">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg><span class="act__n">Lưu</span>
+          </button>
+        </div>
+      </section>
 
-        <!-- Thông tin phủ lên video, chỉ hiện ở bản điện thoại -->
-        <div class="vn-phu">
-          <p class="vn-phu__who">
-            <a class="vn-phu__ten" href="ca-nhan.html?tac-gia=minh-duc">Minh Đức</a>
-            <span class="vn-cham" aria-hidden="true"></span>
-            <span class="vn-phu__vai">Phóng viên văn hoá</span>
-          </p>
+      <section class="vn-slide" data-vn-slide="1" aria-label="Video 2 trên 4">
+        <div class="vn-khung">
+          <img class="vn-anh" src="assets/img/kp-ha-noi.jpg" alt="">
+          <button class="vn-play" type="button" data-play aria-label="Phát video">
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vn-phu">
+            <p class="vn-phu__who">
+              <a class="vn-phu__ten" href="ca-nhan.html">Lan Chi</a>
+              <span class="vn-cham" aria-hidden="true"></span>
+              <span class="vn-phu__vai">Nhà quay phim tự do</span>
+            </p>
+            <p class="vn-muc"><a href="photo.html">Photo</a></p>
+            <h2 class="vn-ten">Vịnh Hạ Long lúc bình minh — ba phút không lời</h2>
+            <p class="vn-mo" data-vn-mo>Không lời bình, không nhạc nền. Chỉ có tiếng nước, tiếng gió và ánh sáng đầu ngày trên mặt vịnh.</p>
+            <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+            <p class="vn-tags"><a href="#">#HạLong</a> <a href="#">#BìnhMinh</a> <a href="#">#KhôngLời</a></p>
+          </div>
+          <div class="vn-tien">
+            <span class="vn-tien__thanh"><span class="vn-tien__da" data-vn-da></span></span>
+            <span class="vn-tien__gio" data-vn-gio>0:00 / 0:10</span>
+          </div>
+          <div class="vn-dieu">
+            <button class="vn-dieu__nut" type="button" data-play aria-label="Phát video">
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+            </button>
+            <button class="vn-dieu__nut" type="button" data-vn-tieng aria-pressed="true" aria-label="Tắt tiếng"><svg class="icon" aria-hidden="true"><use href="#i-volume"></use></svg></button>
+            <span class="vn-dieu__gio" data-vn-gio>0:00 / 0:10</span>
+            <span class="vn-dieu__thanh"><span class="vn-dieu__da" data-vn-da></span></span>
+            <button class="vn-dieu__nut" type="button" data-toast="Mở toàn màn hình" aria-label="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
+          </div>
+        </div>
+
+        <div class="vn-acts">
+          <a class="vn-acts__ava" href="ca-nhan.html" aria-label="Xem trang cá nhân của Lan Chi">
+            <img src="assets/img/avatar-lan-chi.png" alt="" width="44" height="44">
+            <span class="vn-acts__theo" aria-hidden="true">+</span>
+          </a>
+          <button class="vn-act" type="button" data-like data-count="984" aria-pressed="false" aria-label="Thích">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">984</span>
+          </button>
+          <button class="vn-act" type="button" data-vn-cmt aria-label="Bình luận">
+            <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">142</span>
+          </button>
+          <button class="vn-act" type="button" data-share aria-label="Chia sẻ">
+            <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg><span class="act__n">58</span>
+          </button>
+          <button class="vn-act" type="button" data-save aria-pressed="false" aria-label="Lưu video">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg><span class="act__n">Lưu</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="vn-slide" data-vn-slide="2" aria-label="Video 3 trên 4">
+        <div class="vn-khung">
+          <img class="vn-anh" src="assets/img/kp-sai-gon-5h.jpg" alt="">
+          <button class="vn-play" type="button" data-play aria-label="Phát video">
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vn-phu">
+            <p class="vn-phu__who">
+              <a class="vn-phu__ten" href="ca-nhan.html">Thu Hằng</a>
+              <span class="vn-cham" aria-hidden="true"></span>
+              <span class="vn-phu__vai">Nhà báo · Công nghệ</span>
+            </p>
+            <p class="vn-muc"><a href="tra-dam.html">Trà đàm</a></p>
+            <h2 class="vn-ten">Sài Gòn 5 giờ sáng qua ống kính điện thoại</h2>
+            <p class="vn-mo" data-vn-mo>Thành phố trước khi đông người: xe rác, hàng bánh mì, mấy người tập thể dục và một quán cà phê mở sớm nhất khu.</p>
+            <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+            <p class="vn-tags"><a href="#">#SàiGòn</a> <a href="#">#5GiờSáng</a> <a href="#">#ĐờiThường</a></p>
+          </div>
+          <div class="vn-tien">
+            <span class="vn-tien__thanh"><span class="vn-tien__da" data-vn-da></span></span>
+            <span class="vn-tien__gio" data-vn-gio>0:00 / 0:10</span>
+          </div>
+          <div class="vn-dieu">
+            <button class="vn-dieu__nut" type="button" data-play aria-label="Phát video">
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+            </button>
+            <button class="vn-dieu__nut" type="button" data-vn-tieng aria-pressed="true" aria-label="Tắt tiếng"><svg class="icon" aria-hidden="true"><use href="#i-volume"></use></svg></button>
+            <span class="vn-dieu__gio" data-vn-gio>0:00 / 0:10</span>
+            <span class="vn-dieu__thanh"><span class="vn-dieu__da" data-vn-da></span></span>
+            <button class="vn-dieu__nut" type="button" data-toast="Mở toàn màn hình" aria-label="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
+          </div>
+        </div>
+
+        <div class="vn-acts">
+          <a class="vn-acts__ava" href="ca-nhan.html" aria-label="Xem trang cá nhân của Thu Hằng">
+            <img src="assets/img/avatar-thu-hang.png" alt="" width="44" height="44">
+            <span class="vn-acts__theo" aria-hidden="true">+</span>
+          </a>
+          <button class="vn-act" type="button" data-like data-count="1600" aria-pressed="false" aria-label="Thích">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.6K</span>
+          </button>
+          <button class="vn-act" type="button" data-vn-cmt aria-label="Bình luận">
+            <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">203</span>
+          </button>
+          <button class="vn-act" type="button" data-share aria-label="Chia sẻ">
+            <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg><span class="act__n">41</span>
+          </button>
+          <button class="vn-act" type="button" data-save aria-pressed="false" aria-label="Lưu video">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg><span class="act__n">Lưu</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="vn-slide" data-vn-slide="3" aria-label="Video 4 trên 4">
+        <div class="vn-khung">
+          <img class="vn-anh" src="assets/img/kp-tay-nguyen.jpg" alt="">
+          <button class="vn-play" type="button" data-play aria-label="Phát video">
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vn-phu">
+            <p class="vn-phu__who">
+              <a class="vn-phu__ten" href="ca-nhan.html">Đăng Khoa</a>
+              <span class="vn-cham" aria-hidden="true"></span>
+              <span class="vn-phu__vai">Phóng viên ảnh</span>
+            </p>
+            <p class="vn-muc"><a href="kham-pha.html">Khám phá</a></p>
+            <h2 class="vn-ten">Phiên chợ vùng cao trước giờ tan</h2>
+            <p class="vn-mo" data-vn-mo>Nửa tiếng cuối của phiên chợ, khi người bán dọn hàng và người mua cuối cùng còn mặc cả bên mấy rổ măng.</p>
+            <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+            <p class="vn-tags"><a href="#">#TâyNguyên</a> <a href="#">#PhiênChợ</a> <a href="#">#VùngCao</a></p>
+          </div>
+          <div class="vn-tien">
+            <span class="vn-tien__thanh"><span class="vn-tien__da" data-vn-da></span></span>
+            <span class="vn-tien__gio" data-vn-gio>0:00 / 0:10</span>
+          </div>
+          <div class="vn-dieu">
+            <button class="vn-dieu__nut" type="button" data-play aria-label="Phát video">
+              <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
+              <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+            </button>
+            <button class="vn-dieu__nut" type="button" data-vn-tieng aria-pressed="true" aria-label="Tắt tiếng"><svg class="icon" aria-hidden="true"><use href="#i-volume"></use></svg></button>
+            <span class="vn-dieu__gio" data-vn-gio>0:00 / 0:10</span>
+            <span class="vn-dieu__thanh"><span class="vn-dieu__da" data-vn-da></span></span>
+            <button class="vn-dieu__nut" type="button" data-toast="Mở toàn màn hình" aria-label="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
+          </div>
+        </div>
+
+        <div class="vn-acts">
+          <a class="vn-acts__ava" href="ca-nhan.html" aria-label="Xem trang cá nhân của Đăng Khoa">
+            <img src="assets/img/avatar-dang-khoa.jpg" alt="" width="44" height="44">
+            <span class="vn-acts__theo" aria-hidden="true">+</span>
+          </a>
+          <button class="vn-act" type="button" data-like data-count="872" aria-pressed="false" aria-label="Thích">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">872</span>
+          </button>
+          <button class="vn-act" type="button" data-vn-cmt aria-label="Bình luận">
+            <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">96</span>
+          </button>
+          <button class="vn-act" type="button" data-share aria-label="Chia sẻ">
+            <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg><span class="act__n">27</span>
+          </button>
+          <button class="vn-act" type="button" data-save aria-pressed="false" aria-label="Lưu video">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg><span class="act__n">Lưu</span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ Cột thông tin và bình luận (khổ rộng) ============ -->
+    <aside class="vn-tin" id="vnTin" aria-label="Thông tin video">
+      <div class="vn-tin__khoi" data-vn-tin="0">
+        <div class="vn-tg">
+          <a class="vn-tg__ava" href="ca-nhan.html"><img src="assets/img/avatar-minh-duc.png" alt="" width="44" height="44"></a>
+          <div class="vn-tg__than">
+            <p class="vn-tg__ten"><a href="ca-nhan.html">Minh Đức</a><svg class="icon vn-tick" aria-hidden="true"><use href="#i-verified"></use></svg></p>
+            <p class="vn-tg__vai">Phóng viên văn hoá</p>
+            <p class="vn-tg__luc">3 giờ trước</p>
+          </div>
+          <button class="btn-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+        </div>
+
+        <div class="vn-noi">
           <p class="vn-muc"><a href="hot-hom-nay.html">Hot hôm nay</a></p>
           <h1 class="vn-ten">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</h1>
           <p class="vn-mo" data-vn-mo>Những khoảnh khắc đời thường, không gian quen thuộc và nhịp sống đặc trưng của thành phố được ghi lại qua một góc nhìn gần gũi.</p>
           <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
           <p class="vn-tags"><a href="#">#SàiGòn</a> <a href="#">#ĐườngPhố</a> <a href="#">#VănHóa</a></p>
+          <p class="vn-so">48,2K lượt xem<span aria-hidden="true">·</span>02:18</p>
         </div>
 
-        <!-- Thanh tiến độ -->
-        <div class="vn-tien">
-          <span class="vn-tien__thanh"><span class="vn-tien__da" data-vn-da></span></span>
-          <span class="vn-tien__gio" data-vn-gio>0:00 / 0:10</span>
-        </div>
-
-        <!-- Thanh điều khiển, chỉ hiện ở khổ rộng -->
-        <div class="vn-dieu">
-          <button class="vn-dieu__nut" type="button" data-play aria-label="Phát video">
-            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
-          <button class="vn-dieu__nut" type="button" data-vn-tieng aria-pressed="true" aria-label="Tắt tiếng"><svg class="icon" aria-hidden="true"><use href="#i-volume"></use></svg></button>
-          <span class="vn-dieu__gio" data-vn-gio>0:00 / 0:10</span>
-          <span class="vn-dieu__thanh"><span class="vn-dieu__da" data-vn-da></span></span>
-          <button class="vn-dieu__nut" type="button" data-toast="Mở toàn màn hình" aria-label="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
-        </div>
-      </div>
-
-      <!-- ============ Cột hành động ============ -->
-      <div class="vn-acts">
-        <a class="vn-acts__ava" href="ca-nhan.html?tac-gia=minh-duc" aria-label="Xem trang cá nhân của Minh Đức">
-          <img src="assets/img/avatar-minh-duc.png" alt="" width="44" height="44">
-          <span class="vn-acts__theo" data-follow aria-hidden="true">+</span>
-        </a>
-        <button class="vn-act" type="button" data-like data-count="1200" aria-pressed="false" aria-label="Thích">
-          <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.2K</span>
-        </button>
-        <button class="vn-act" type="button" data-vn-cmt aria-label="Bình luận">
-          <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">287</span>
-        </button>
-        <button class="vn-act" type="button" data-share aria-label="Chia sẻ">
-          <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg><span class="act__n">36</span>
-        </button>
-        <button class="vn-act" type="button" data-save aria-pressed="false" aria-label="Lưu video">
-          <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg><span class="act__n">Lưu</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- ============ Cột thông tin và bình luận (khổ rộng) ============ -->
-    <aside class="vn-tin" aria-label="Thông tin video">
-      <div class="vn-tg">
-        <a class="vn-tg__ava" href="ca-nhan.html?tac-gia=minh-duc"><img src="assets/img/avatar-minh-duc.png" alt="" width="44" height="44"></a>
-        <div class="vn-tg__than">
-          <p class="vn-tg__ten"><a href="ca-nhan.html?tac-gia=minh-duc">Minh Đức</a><svg class="icon vn-tick" aria-hidden="true"><use href="#i-verified"></use></svg></p>
-          <p class="vn-tg__vai">Phóng viên văn hoá</p>
-          <p class="vn-tg__luc">3 giờ trước</p>
-        </div>
-        <button class="btn-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
-      </div>
-
-      <div class="vn-noi">
-        <p class="vn-muc"><a href="hot-hom-nay.html">Hot hôm nay</a></p>
-        <h1 class="vn-ten">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</h1>
-        <p class="vn-mo" data-vn-mo>Những khoảnh khắc đời thường, không gian quen thuộc và nhịp sống đặc trưng của thành phố được ghi lại qua một góc nhìn gần gũi.</p>
-        <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
-        <p class="vn-tags"><a href="#">#SàiGòn</a> <a href="#">#ĐườngPhố</a> <a href="#">#VănHóa</a></p>
-        <p class="vn-so">48,2K lượt xem<span aria-hidden="true">·</span>02:18</p>
-      </div>
-
-      <section class="vn-cmt" aria-labelledby="vn-cmt-title">
-        <h2 class="vn-cmt__ten" id="vn-cmt-title">Bình luận (287)</h2>
-        <ul class="vn-cmt__ds">
+        <section class="vn-cmt" aria-label="Bình luận">
+          <h2 class="vn-cmt__ten">Bình luận (287)</h2>
+          <ul class="vn-cmt__ds">
           <li class="cmt">
             <img src="assets/img/avatar-thanh-ha.jpg" alt="" width="34" height="34" loading="lazy">
             <div class="cmt__body">
@@ -395,8 +555,191 @@
               </div>
             </div>
           </li>
-        </ul>
-      </section>
+          </ul>
+        </section>
+      </div>
+
+      <div class="vn-tin__khoi" data-vn-tin="1" hidden>
+        <div class="vn-tg">
+          <a class="vn-tg__ava" href="ca-nhan.html"><img src="assets/img/avatar-lan-chi.png" alt="" width="44" height="44"></a>
+          <div class="vn-tg__than">
+            <p class="vn-tg__ten"><a href="ca-nhan.html">Lan Chi</a><svg class="icon vn-tick" aria-hidden="true"><use href="#i-verified"></use></svg></p>
+            <p class="vn-tg__vai">Nhà quay phim tự do</p>
+            <p class="vn-tg__luc">2 giờ trước</p>
+          </div>
+          <button class="btn-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+        </div>
+
+        <div class="vn-noi">
+          <p class="vn-muc"><a href="photo.html">Photo</a></p>
+          <h1 class="vn-ten">Vịnh Hạ Long lúc bình minh — ba phút không lời</h1>
+          <p class="vn-mo" data-vn-mo>Không lời bình, không nhạc nền. Chỉ có tiếng nước, tiếng gió và ánh sáng đầu ngày trên mặt vịnh.</p>
+          <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+          <p class="vn-tags"><a href="#">#HạLong</a> <a href="#">#BìnhMinh</a> <a href="#">#KhôngLời</a></p>
+          <p class="vn-so">31,6K lượt xem<span aria-hidden="true">·</span>03:04</p>
+        </div>
+
+        <section class="vn-cmt" aria-label="Bình luận">
+          <h2 class="vn-cmt__ten">Bình luận (142)</h2>
+          <ul class="vn-cmt__ds">
+          <li class="cmt">
+            <img src="assets/img/avatar-ngoc-han.jpg" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Ngọc Hân</span><span class="cmt__time">1 giờ trước</span></p>
+              <p class="cmt__text">Ba phút mà xem hết không rời mắt. Tiếng nước thật sự là điểm cộng.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="46" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">46</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-van-duc.jpg" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">GS. Văn Đức</span><span class="cmt__time">2 giờ trước</span></p>
+              <p class="cmt__text">Cảm ơn bạn đã không thêm nhạc. Để nguyên tiếng thật hay hơn nhiều.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="29" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">29</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+              <button class="cmt__more" type="button" data-toast="Mở câu trả lời">Xem 1 câu trả lời</button>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-phuong-linh.png" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Phương Linh</span><span class="cmt__time">3 giờ trước</span></p>
+              <p class="cmt__text">Quay lúc mấy giờ vậy bạn? Ánh sáng đẹp quá.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="11" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">11</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="vn-tin__khoi" data-vn-tin="2" hidden>
+        <div class="vn-tg">
+          <a class="vn-tg__ava" href="ca-nhan.html"><img src="assets/img/avatar-thu-hang.png" alt="" width="44" height="44"></a>
+          <div class="vn-tg__than">
+            <p class="vn-tg__ten"><a href="ca-nhan.html">Thu Hằng</a><svg class="icon vn-tick" aria-hidden="true"><use href="#i-verified"></use></svg></p>
+            <p class="vn-tg__vai">Nhà báo · Công nghệ</p>
+            <p class="vn-tg__luc">8 giờ trước</p>
+          </div>
+          <button class="btn-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+        </div>
+
+        <div class="vn-noi">
+          <p class="vn-muc"><a href="tra-dam.html">Trà đàm</a></p>
+          <h1 class="vn-ten">Sài Gòn 5 giờ sáng qua ống kính điện thoại</h1>
+          <p class="vn-mo" data-vn-mo>Thành phố trước khi đông người: xe rác, hàng bánh mì, mấy người tập thể dục và một quán cà phê mở sớm nhất khu.</p>
+          <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+          <p class="vn-tags"><a href="#">#SàiGòn</a> <a href="#">#5GiờSáng</a> <a href="#">#ĐờiThường</a></p>
+          <p class="vn-so">22,9K lượt xem<span aria-hidden="true">·</span>01:47</p>
+        </div>
+
+        <section class="vn-cmt" aria-label="Bình luận">
+          <h2 class="vn-cmt__ten">Bình luận (203)</h2>
+          <ul class="vn-cmt__ds">
+          <li class="cmt">
+            <img src="assets/img/avatar-hoai-nam.png" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Hoài Nam</span><span class="cmt__time">4 giờ trước</span></p>
+              <p class="cmt__text">Đúng cái Sài Gòn mà mình nhớ. Giờ này đường còn thở được.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="63" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">63</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Quỳnh Chi</span><span class="cmt__time">6 giờ trước</span></p>
+              <p class="cmt__text">Quay bằng điện thoại mà ra chất phim thế này thì nể thật.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="38" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">38</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-minh-hieu.jpg" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">TS. Minh Hiếu</span><span class="cmt__time">7 giờ trước</span></p>
+              <p class="cmt__text">Đoạn hàng bánh mì là hay nhất. Rất đời.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="17" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">17</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="vn-tin__khoi" data-vn-tin="3" hidden>
+        <div class="vn-tg">
+          <a class="vn-tg__ava" href="ca-nhan.html"><img src="assets/img/avatar-dang-khoa.jpg" alt="" width="44" height="44"></a>
+          <div class="vn-tg__than">
+            <p class="vn-tg__ten"><a href="ca-nhan.html">Đăng Khoa</a><svg class="icon vn-tick" aria-hidden="true"><use href="#i-verified"></use></svg></p>
+            <p class="vn-tg__vai">Phóng viên ảnh</p>
+            <p class="vn-tg__luc">5 giờ trước</p>
+          </div>
+          <button class="btn-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+        </div>
+
+        <div class="vn-noi">
+          <p class="vn-muc"><a href="kham-pha.html">Khám phá</a></p>
+          <h1 class="vn-ten">Phiên chợ vùng cao trước giờ tan</h1>
+          <p class="vn-mo" data-vn-mo>Nửa tiếng cuối của phiên chợ, khi người bán dọn hàng và người mua cuối cùng còn mặc cả bên mấy rổ măng.</p>
+          <button class="vn-them" type="button" data-vn-them aria-expanded="false">Xem thêm</button>
+          <p class="vn-tags"><a href="#">#TâyNguyên</a> <a href="#">#PhiênChợ</a> <a href="#">#VùngCao</a></p>
+          <p class="vn-so">18,4K lượt xem<span aria-hidden="true">·</span>02:35</p>
+        </div>
+
+        <section class="vn-cmt" aria-label="Bình luận">
+          <h2 class="vn-cmt__ten">Bình luận (96)</h2>
+          <ul class="vn-cmt__ds">
+          <li class="cmt">
+            <img src="assets/img/avatar-lan-chi.png" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Lan Chi</span><span class="cmt__time">3 giờ trước</span></p>
+              <p class="cmt__text">Mê nhất đoạn cuối, lúc mọi người dọn hàng mà vẫn cười nói.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="52" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">52</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-dang-khoa.jpg" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Đăng Khoa</span><span class="cmt__time">4 giờ trước</span></p>
+              <p class="cmt__text">Cảm ơn mọi người. Mình quay ở chợ phiên Măng Đen, sáng thứ bảy.</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="24" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">24</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+              <button class="cmt__more" type="button" data-toast="Mở câu trả lời">Xem 1 câu trả lời</button>
+            </div>
+          </li>
+          <li class="cmt">
+            <img src="assets/img/avatar-thu-hang.png" alt="" width="34" height="34" loading="lazy">
+            <div class="cmt__body">
+              <p class="cmt__who"><span class="cmt__name">Thu Hằng</span><span class="cmt__time">4 giờ trước</span></p>
+              <p class="cmt__text">Màu phim đẹp quá. Có chỉnh nhiều không bạn?</p>
+              <div class="cmt__acts">
+                <button type="button" data-like data-count="9" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">9</span></button>
+                <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              </div>
+            </div>
+          </li>
+          </ul>
+        </section>
+      </div>
     </aside>
 
     <!-- ============ Ô bình luận ============ -->
