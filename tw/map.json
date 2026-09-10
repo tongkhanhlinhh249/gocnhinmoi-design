@@ -2058,5 +2058,13 @@
  "tb-cuoi": {
   "tw": "",
   "keep": ""
+ },
+ "pcard__media": {
+  "tw": "",
+  "keep": ".pcard__media{position:relative;display:block}"
+ },
+ "pcard__mic": {
+  "tw": "",
+  "keep": ".pcard__mic{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r-pill);background:rgba(183,183,188,.4);border:1px solid rgba(255,255,255,.4);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);color:#fff}.pcard__mic .icon{width:18px;height:18px}"
  }
 }
