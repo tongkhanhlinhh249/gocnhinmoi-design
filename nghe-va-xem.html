@@ -78,6 +78,11 @@
   <symbol id="i-play" viewBox="0 0 17.9867 17.9867">
     <path d="M3.74723 2.24834L14.2395 8.99335L3.74723 15.7384V2.24834Z" fill="currentColor"/>
   </symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24">
+    <rect x="9" y="2.5" width="6" height="11.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M5.5 11v1a6.5 6.5 0 0 0 13 0v-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M12 18.5v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
   <symbol id="i-play-sm" viewBox="0 0 10.9919 10.9919">
     <path d="M2.28998 1.37399L8.70192 5.49595L2.28998 9.61791V1.37399Z" fill="currentColor"/>
   </symbol>
@@ -394,35 +399,41 @@
         </div>
       </div>
 
-      <ul class="grid grid-cols-2 gap-3 pt-3">
-        <li class="mcard">
-          <div class="mcard__media relative block aspect-[178/100] rounded-card overflow-hidden bg-surface-dark">
-            <img src="assets/img/cover-shark-viet.png" alt="" width="178" height="100" loading="lazy">
-            <button class="play-fab absolute top-1/2 left-1/2 w-[56px] h-[56px] grid place-items-center rounded-full text-surface backdrop-blur-[2px] transition duration-[180] ease-out" type="button" aria-label="Phát video" data-play>
-              <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-              <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-            </button>
-            <span class="badge-time absolute right-3 bottom-3 px-[10px] py-[4px] rounded-md text-surface text-[10px] font-bold leading-[15px] tracking-[.25px]">32:17</span>
-          </div>
-          <h3 class="pt-3 text-[12px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
-          <div class="mcard__author flex items-center gap-2 pt-1">
-            <img src="assets/img/avatar-nhat-minh.png" alt="" width="32" height="32" loading="lazy">
-            <p><b>Nhật Minh</b><span>10 giờ trước</span></p>
+      <ul class="mini-grid grid grid-cols-2 gap-3 pt-3">
+        <li class="vcard relative flex-none w-[272px] aspect-[272/170] rounded-card overflow-hidden bg-surface-dark">
+          <img src="assets/img/cover-shark-viet.png" alt="" width="272" height="170" loading="lazy">
+          <span class="vcard__scrim absolute inset-0" aria-hidden="true"></span>
+          <button class="vcard__play absolute top-[50%] left-[50%] -translate-y-[50%] size-[44px] grid place-items-center rounded-full border text-surface backdrop-blur-[2px] transition duration-[180] ease-out" type="button" aria-label="Phát video" data-play>
+            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vcard__body absolute inset-x-0 bottom-0 p-2 text-surface">
+            <h3 class="vcard__title text-[12px] font-bold leading-[20px] tracking-[-.012em] line-clamp-2"><a href="#">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
+            <div class="flex items-center justify-between gap-2 pt-3">
+              <div class="vcard__author flex items-center gap-2 min-w-0">
+                <img src="assets/img/avatar-nhat-minh.png" alt="" width="20" height="20" loading="lazy">
+                <p><strong>Nhật Minh</strong> <span>· 10 giờ trước</span></p>
+              </div>
+              <p class="vcard__views flex items-center gap-[6px] flex-none text-[12px] font-medium leading-[16px]"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>32.1K</p>
+            </div>
           </div>
         </li>
-        <li class="mcard">
-          <div class="mcard__media relative block aspect-[178/100] rounded-card overflow-hidden bg-surface-dark">
-            <img src="assets/img/cover-sai-gon.png" alt="" width="178" height="100" loading="lazy">
-            <button class="play-fab absolute top-1/2 left-1/2 w-[56px] h-[56px] grid place-items-center rounded-full text-surface backdrop-blur-[2px] transition duration-[180] ease-out" type="button" aria-label="Phát video" data-play>
-              <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play"></use></svg>
-              <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-            </button>
-            <span class="badge-time absolute right-3 bottom-3 px-[10px] py-[4px] rounded-md text-surface text-[10px] font-bold leading-[15px] tracking-[.25px]">02:18</span>
-          </div>
-          <h3 class="pt-3 text-[12px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</a></h3>
-          <div class="mcard__author flex items-center gap-2 pt-1">
-            <img src="assets/img/avatar-minh-duc.png" alt="" width="32" height="32" loading="lazy">
-            <p><b>Minh Đức</b><span>3 giờ trước</span></p>
+        <li class="vcard relative flex-none w-[272px] aspect-[272/170] rounded-card overflow-hidden bg-surface-dark">
+          <img src="assets/img/cover-sai-gon.png" alt="" width="272" height="170" loading="lazy">
+          <span class="vcard__scrim absolute inset-0" aria-hidden="true"></span>
+          <button class="vcard__play absolute top-[50%] left-[50%] -translate-y-[50%] size-[44px] grid place-items-center rounded-full border text-surface backdrop-blur-[2px] transition duration-[180] ease-out" type="button" aria-label="Phát video" data-play>
+            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
+            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+          </button>
+          <div class="vcard__body absolute inset-x-0 bottom-0 p-2 text-surface">
+            <h3 class="vcard__title text-[12px] font-bold leading-[20px] tracking-[-.012em] line-clamp-2"><a href="#">Khám phá một Sài Gòn rất khác qua góc nhìn đường phố</a></h3>
+            <div class="flex items-center justify-between gap-2 pt-3">
+              <div class="vcard__author flex items-center gap-2 min-w-0">
+                <img src="assets/img/avatar-minh-duc.png" alt="" width="20" height="20" loading="lazy">
+                <p><strong>Minh Đức</strong> <span>· 3 giờ trước</span></p>
+              </div>
+              <p class="vcard__views flex items-center gap-[6px] flex-none text-[12px] font-medium leading-[16px]"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>8.7K</p>
+            </div>
           </div>
         </li>
       </ul>
@@ -434,7 +445,7 @@
         <img src="assets/img/nx-podcast-banner.png" alt="" width="367" height="237" loading="lazy">
         <span class="pod-glass">
           <span class="pod-glass__title">Làm remote cho startup Singapore 2 năm và đây là sự thật không ai kể với bạn</span>
-          <span class="pod-glass__play"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play"></use></svg></span>
+          <span class="pod-glass__play"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </span>
       </a>
     </section>
@@ -933,10 +944,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Thu Hằng · 8 giờ trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.89: Trí tuệ nhân tạo có thay thế nhà báo không?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="567" aria-pressed="false" aria-label="Thích">
@@ -958,10 +966,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">PGS. Hoàng Nam · 1 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.23: Văn hoá doanh nghiệp kiểu Việt — điểm mạnh hay điểm yếu?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="987" aria-pressed="false" aria-label="Thích">
@@ -983,10 +988,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">GS. Nguyễn Thanh Bình · 4 giờ trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.12: Bất động sản hay chứng khoán năm 2026?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1300" aria-pressed="false" aria-label="Thích">
@@ -1008,10 +1010,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Thu Hằng · 8 giờ trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.89: Trí tuệ nhân tạo có thay thế nhà báo không?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="567" aria-pressed="false" aria-label="Thích">
@@ -1483,10 +1482,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Thu Hằng · 1 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.88: Vì sao tin giả lan nhanh hơn tin thật?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="812" aria-pressed="false" aria-label="Thích">
@@ -1508,10 +1504,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">PGS. Hoàng Nam · 1 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.22: Làm sếp ở tuổi 28, được và mất</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="640" aria-pressed="false" aria-label="Thích">
@@ -1533,10 +1526,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">GS. Nguyễn Thanh Bình · 2 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.11: Vàng, đất hay gửi tiết kiệm?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1500" aria-pressed="false" aria-label="Thích">
@@ -1558,10 +1548,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Lan Anh · 2 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.87: Nghề báo trong toà soạn không giấy</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="733" aria-pressed="false" aria-label="Thích">
@@ -1911,10 +1898,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Minh Đức · 3 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.21: Người Việt và thói quen xin lỗi</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="905" aria-pressed="false" aria-label="Thích">
@@ -1936,10 +1920,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Quang Huy · 3 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.10: Đọc báo cáo tài chính trong 15 phút</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1180" aria-pressed="false" aria-label="Thích">
@@ -1961,10 +1942,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Quốc Bảo · 4 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.86: Thành phố nào đáng sống nhất?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="690" aria-pressed="false" aria-label="Thích">
@@ -1986,10 +1964,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Phương Anh · 4 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.20: Khi con cái chọn nghề khác cha mẹ</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1420" aria-pressed="false" aria-label="Thích">
@@ -2011,10 +1986,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Trần Bảo · 5 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.09: Bẫy lãi kép mà ai cũng từng mắc</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1760" aria-pressed="false" aria-label="Thích">
@@ -2036,10 +2008,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Khánh Linh · 6 ngày trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.85: Dữ liệu cá nhân đang ở đâu?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="842" aria-pressed="false" aria-label="Thích">
@@ -2061,10 +2030,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Ngọc Hân · 1 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.19: Sống một mình ở tuổi ba mươi</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="2100" aria-pressed="false" aria-label="Thích">
@@ -2086,10 +2052,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Nhật Minh · 1 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.08: Mua nhà lần đầu, sai ở đâu nhiều nhất?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1330" aria-pressed="false" aria-label="Thích">
@@ -2111,10 +2074,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Hoài Nam · 1 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.84: Học nghề hay học đại học?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="978" aria-pressed="false" aria-label="Thích">
@@ -2136,10 +2096,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Phương Linh · 2 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Trà Đàm — Ep.18: Bữa cơm gia đình còn lại gì?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1580" aria-pressed="false" aria-label="Thích">
@@ -2161,10 +2118,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Đức Anh · 2 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Đầu tư thông minh — Ep.07: Danh mục cho người mới, đơn giản nhất</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1120" aria-pressed="false" aria-label="Thích">
@@ -2186,10 +2140,7 @@
             <p class="text-[11px] font-medium leading-[16.5px] text-ink-faint pb-1">Lan Chi · 3 tuần trước</p>
             <h3 class="text-[15px] font-extrabold leading-[20.625px] tracking-[-.011em] text-ink line-clamp-3"><a href="#">Góc Nhìn Mới Podcast — Ep.83: Ai đang viết lịch sử trên mạng?</a></h3>
           </div>
-          <button class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" type="button" aria-label="Phát tập này" data-play>
-            <svg class="icon size-4 flex-none icon--play" aria-hidden="true"><use href="#i-play-sm"></use></svg>
-            <svg class="icon size-4 flex-none icon--pause" aria-hidden="true"><use href="#i-pause"></use></svg>
-          </button>
+          <span class="prow__play size-[28px] flex-none grid place-items-center rounded-full bg-surface-fill text-ink-strong" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-mic"></use></svg></span>
         </div>
         <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line">
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="760" aria-pressed="false" aria-label="Thích">

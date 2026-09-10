@@ -1336,64 +1336,15 @@ input { font: inherit; }
 }
 .vcard--hero .vcard__body { padding: 12px; }
 
+/* Hai video dưới video nổi bật dùng .vcard, mà .vcard vốn dựng cho dải cuộn
+   ngang (flex: 0 0 272px). Trong lưới phải cho co giãn theo ô. */
+.mini-grid .vcard { flex: none; width: auto; }
+
 .mini-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding-top: 12px;
-}
-.mcard__media {
-  position: relative;
-  display: block;
-  aspect-ratio: 178 / 100;
-  border-radius: var(--r-card);
-  overflow: hidden;
-  background: var(--surface-dark);
-}
-.mcard__media img { width: 100%; height: 100%; object-fit: cover; }
-.mcard .play-fab {
-  width: 32px; height: 32px;
-  border-width: 0;
-  background: rgba(255, 255, 255, .25);
-}
-.mcard .play-fab .icon { width: 13px; height: 13px; }
-.mcard__title {
-  padding-top: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: -.011em;
-  color: var(--ink);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.mcard__author {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-top: 4px;
-}
-.mcard__author img {
-  width: 32px; height: 32px;
-  flex: none;
-  border-radius: var(--r-pill);
-  object-fit: cover;
-  background: var(--fill-soft);
-}
-.mcard__author b {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 19.5px;
-  color: var(--ink);
-}
-.mcard__author span {
-  display: block;
-  font-size: 11px;
-  line-height: 16.5px;
-  color: var(--text-muted);
 }
 
 /* ---------- Chế độ "Podcast": banner + hàng tập podcast ---------- */
@@ -1515,10 +1466,7 @@ input { font: inherit; }
   background: var(--fill-soft);
   color: var(--ink-strong);
 }
-.prow__play .icon { width: 11px; height: 11px; fill: currentColor; }
-.prow__play .icon--pause { display: none; }
-.prow__play.is-playing .icon--play { display: none; }
-.prow__play.is-playing .icon--pause { display: block; }
+.prow__play .icon { width: 13px; height: 13px; }
 .prow .actions { margin-top: 8px; }
 
 /* ---------- Thẻ Spotlight (ảnh vuông + thanh tương tác tối) ---------- */
@@ -2962,42 +2910,23 @@ input { font: inherit; }
 /* Tin nổi bật dạng podcast — vẫn là tin nổi bật, chỉ khác ở dải sóng âm nối
    liền dải đen của dòng tác giả. Bỏ padding-bottom của dòng tác giả để hai
    dải liền một mạch. */
-/* Dải sóng nằm trong lớp phủ ảnh, ngay dưới tiêu đề — không phải trên dải đen
-   của dòng tác giả, nên không cần nền riêng. */
-.tophero__song {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-top: 10px;
-}
-.tophero__play {
-  flex: none;
+/* Podcast ở khối Tin nổi bật: huy hiệu mic giữa ảnh, cùng dáng với nút phát
+   của thẻ video để người đọc nhận ra ngay đây là nội dung nghe được. */
+.tophero__mic {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
   display: grid;
   place-items: center;
-  width: 26px; height: 26px;
-  border: 0;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, .16);
+  background: rgba(183, 183, 188, .4);
+  border: 1px solid rgba(255, 255, 255, .4);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   color: #fff;
-  cursor: pointer;
-  transition: background-color .15s var(--ease);
 }
-.tophero__play:hover { background: rgba(255, 255, 255, .26); }
-.tophero__play .icon { width: 9px; height: 9px; fill: currentColor; }
-.tophero__play .icon--pause { display: none; }
-.tophero__play.is-playing .icon--play { display: none; }
-.tophero__play.is-playing .icon--pause { display: block; }
-/* Dải sóng trên nền đen: vạch chưa nghe sáng mờ thay vì màu đường kẻ. */
-.wave--hero { flex: 1; min-width: 0; height: 16px; margin: 0; }
-.wave--hero span { background: rgba(255, 255, 255, .28); }
-.wave--hero span.is-on { background: #fff; }
-.tophero__len {
-  flex: none;
-  font-size: 11px;
-  line-height: 16.5px;
-  color: rgba(255, 255, 255, .5);
-  font-variant-numeric: tabular-nums;
-}
+.tophero__mic .icon { width: 18px; height: 18px; }
 
 /* ==========================================================================
    Mục "Thịnh hành" nền đỏ (Figma 198:1732)
@@ -4242,9 +4171,7 @@ input { font: inherit; }
      của bản gốc đọc rất bé. */
   .v-web .vcard--hero .vcard__title { font-size: 20px; line-height: 28px; }
   .v-web .vcard__title { font-size: 15px; line-height: 22px; }
-  .v-web .mcard h3 { font-size: 15px; line-height: 22px; }
-  .v-web .mcard__author p { font-size: 13px; line-height: 20px; }
-
+  .v-web   .v-web 
   .v-web .page .tophero {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-inline: 24px;
@@ -4326,6 +4253,8 @@ input { font: inherit; }
   /* Thẻ hero trải hết bề ngang mục, không nằm trong dải cuộn — nó có w-full
      riêng, ép 394px vào là nó co lại còn một phần ba. */
   .v-web .page .vcard:not(.vcard--hero) { width: 394px; }
+  /* Trong lưới hai cột thì để ô quyết định bề rộng, không ghim 394px. */
+  .v-web .page .mini-grid .vcard { width: auto; }
 
   /* Bảng xếp hạng giữ một cột, nhưng ở 765px thì tên với hai con số không cần
      xếp chồng nữa — cho chúng cùng một hàng, hàng gọn lại hẳn một dòng. */
