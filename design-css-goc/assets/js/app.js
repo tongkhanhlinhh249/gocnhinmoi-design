@@ -3276,10 +3276,9 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
 
   function veMot(a, laToi) {
     var nhanTrangThai = '';
-    if (laToi) {
-      nhanTrangThai = a.trangThai === 'VISIBLE'
-        ? '<p class="cht-trang-thai"><svg class="icon" aria-hidden="true"><use href="#i-verified"></use></svg>Câu trả lời của bạn đã được đăng</p>'
-        : '<p class="cht-trang-thai cht-trang-thai--cho"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>Đang được rà soát · chỉ bạn nhìn thấy</p>';
+    // Đã đăng thì không cần nhãn; chỉ báo khi câu trả lời còn đang rà soát
+    if (laToi && a.trangThai !== 'VISIBLE') {
+      nhanTrangThai = '<p class="cht-trang-thai cht-trang-thai--cho"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>Đang được rà soát · chỉ bạn nhìn thấy</p>';
     }
     var tim = laToi && a.trangThai !== 'VISIBLE' ? '' :
       '<div class="cht-tl__cuoi"><button class="cht-tim" type="button" data-cht-tim aria-pressed="' + !!a.daTim + '"' +
