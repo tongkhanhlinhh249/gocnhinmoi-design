@@ -319,6 +319,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(canhThoiGianTg);
 
   /* ---------- Đăng xuất ---------- */
+  window.gnmHop = function (t, c, n) { moHopChung(t, c, n); };
   function moHopChung(tieuDe, chu, nut) {
     var hop = document.getElementById('dialog');
     if (!hop) { if (nut[0] && nut[0].run) nut[0].run(); return; }
@@ -2674,6 +2675,13 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
         chu: '“Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số”',
         luc: n - 40 * PHUT, link: 'bai-viet.html' },
 
+      { id: 'n15', ma: 'NT-Q03+Q04', nhom: 'bai-viet', co: 'verified', mau: 'xanh',
+        anh: 'assets/img/kp-ha-noi.jpg', vuong: true,
+        ten: 'Góc nhìn của bạn được GNM lựa chọn 🎉',
+        chu: 'Câu trả lời của bạn được lựa chọn cho nội dung tuần này. Bạn có muốn phát triển góc nhìn này thành một bài viết đầy đủ?',
+        luc: n - 30 * GIO, link: 'ca-nhan.html',
+        nut: [{ ten: 'Viết bài', link: 'viet-bai.html?tu=cau-hoi-tuan' }] },
+
       { id: 'n4', ma: 'NT-B03', nhom: 'tuong-tac', co: 'heart',
         anh: 'assets/img/kp-chatgpt.jpg', vuong: true,
         ten: 'Bài viết của bạn đã nhận 5.000 lượt thích 🎉',
@@ -3100,4 +3108,420 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       if (o) o.focus();
     });
   });
+})();
+
+
+/* =====================================================================
+   CÂU HỎI TUẦN
+   Theo [Feature Spec] Câu hỏi tuần GNM — Revised.
+   - Câu trả lời 200–800 ký tự, không định dạng, không ảnh; nháp tự lưu trên máy.
+   - Kiểm tra (link, số điện thoại, email) chạy trước kiểm duyệt; lỗi thì không gửi.
+   - Kiểm duyệt tự động giả lập: Đăng ngay / Chờ rà soát (chỉ người viết thấy) /
+     Chặn (giữ nội dung để sửa). Tối đa 5 lần bị chặn mỗi ngày cho một câu hỏi.
+   - Mỗi tài khoản một câu trả lời; sửa thì kiểm duyệt lại; không trả lời lồng nhau.
+   - Thả tim một lần, không thả tim câu trả lời của mình; Báo cáo một lần.
+   Thử nhanh: "mua ngay" → bị chặn, "lừa đảo" → chờ rà soát,
+   ?trang-thai=dong → câu hỏi đã đóng, ?kill-switch=1 → mọi câu trả lời chờ rà soát.
+   ===================================================================== */
+(function () {
+  'use strict';
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+  var PHUT = 60000, GIO = 3600000, NGAY = 86400000;
+  var MIN = 200, MAX = 800, CHAN_TOI_DA = 5;
+  var KHO = 'gnm-cau-hoi-tuan';
+  var ME = 'duc-anh';
+  var REG = window.GNM_TAC_GIA || {};
+  var DA_DONG = /[?&]trang-thai=dong/.test(location.search);
+  var KILL_SWITCH = /[?&]kill-switch=1/.test(location.search);
+  var toast = function (t) { if (window.toast) window.toast(t); };
+
+  var Q = { id: 'q-2026-38', ten: 'Bạn có cho con đi học thêm không? Vì sao?', soTraLoi: 128 };
+  // Hạn đóng mẫu: cuối ngày Chủ nhật gần nhất, chỉ để bản mẫu luôn còn hạn.
+  // Hệ thống thật đọc opens_at / closes_at từ CMS, không gắn cứng thứ trong tuần.
+  var HAN = (function () {
+    var d = new Date();
+    d.setDate(d.getDate() + ((7 - d.getDay()) % 7));
+    d.setHours(23, 59, 0, 0);
+    if (d.getTime() <= Date.now()) d.setDate(d.getDate() + 7);
+    return d.getTime();
+  })();
+  function daDong() { return DA_DONG || Date.now() >= HAN; }
+
+  var MAU = [
+    { id: 'a1', slug: 'thu-hang', gio: 20, tim: 214, chon: true,
+      noi: 'Tôi là giáo viên và cũng là mẹ của hai con, nên câu trả lời của tôi hơi mâu thuẫn: tôi không cho con học thêm các môn chính, nhưng cho con học bơi và học vẽ. Sau nhiều năm đứng lớp, tôi thấy học sinh giỏi nhất không phải em học thêm nhiều nhất, mà là em có thói quen tự đặt câu hỏi. Học thêm dày đặc khiến các con quen được giảng lại, được đưa sẵn đáp án. Tôi chỉ nghĩ tới học thêm khi con thật sự hổng kiến thức và chính con muốn gỡ, chứ không phải vì cả lớp ai cũng đi.' },
+    { id: 'a2', slug: 'minh-tuan', gio: 5, tim: 96,
+      noi: 'Có, và tôi không thấy ngại khi nói điều đó. Vợ chồng tôi đi làm đến bảy giờ tối, không đủ thời gian lẫn kiến thức để kèm con môn Toán lớp 9. Lớp học thêm với chúng tôi là nơi con có chỗ học, có người giải đáp, có bạn cùng tiến. Điều tôi để ý là chọn lớp ít người, thầy cô chịu dạy cách nghĩ chứ không luyện mẹo. Mỗi gia đình một hoàn cảnh, đừng vội gắn học thêm với chạy theo thành tích.' },
+    { id: 'a3', slug: 'quynh-chi', gio: 2, tim: 58,
+      noi: 'Hồi cấp ba tôi học thêm bốn buổi một tuần, và điều tôi nhớ nhất không phải kiến thức mà là cảm giác lúc nào cũng mệt. Lên đại học phải tự học, tôi mất gần một năm mới quen việc không có ai giao bài. Vì vậy nếu sau này có con, tôi muốn con có những buổi tối trống để đọc sách, chơi thể thao hoặc chỉ đơn giản là thấy chán một chút. Chán cũng là lúc người ta tự tìm việc để làm.' },
+    { id: 'a4', slug: 'hoang-nam', gio: 30, tim: 171, chon: true,
+      noi: 'Tranh luận có nên học thêm hay không dễ bỏ qua một câu hỏi quan trọng hơn: vì sao phụ huynh thấy cần? Khi kỳ thi chuyển cấp vẫn quyết định lớn đến tương lai của trẻ, học thêm là phản ứng hợp lý của từng gia đình trước một áp lực chung. Siết dạy thêm trong trường có thể giảm tình trạng ép buộc, nhưng không làm giảm nhu cầu. Muốn việc học bớt nặng nề, cần đổi cách đánh giá chứ không chỉ đổi nơi dạy.' },
+    { id: 'a5', slug: 'lan-chi', gio: 1, tim: 23,
+      noi: 'Con tôi học lớp 3 và hiện chưa đi học thêm. Tôi từng cho con học một khoá tiếng Anh cuối tuần, được hai tháng thì con bắt đầu sợ ngày thứ Bảy. Chúng tôi dừng lại, chuyển sang đọc truyện tiếng Anh cùng nhau mười lăm phút mỗi tối. Con tiến bộ chậm hơn nhưng vui hơn và tự hỏi nghĩa từ mới. Tôi nghĩ với trẻ nhỏ, giữ được sự tò mò quan trọng hơn học trước chương trình.' },
+    { id: 'a6', slug: 'dang-khoa', gio: 0.4, tim: 12,
+      noi: 'Tôi từng dạy thêm để trang trải khi còn là sinh viên, nên xin nhìn từ phía người dạy: phần lớn học sinh đến lớp không thiếu thông minh, mà thiếu một người kiên nhẫn ngồi cùng. Một buổi học thêm tốt nên giúp con tự làm được bài mà không cần mình nữa. Nếu sau vài tháng con vẫn phụ thuộc vào lớp học thêm, phụ huynh nên xem lại cách học chứ không phải tăng thêm số buổi.' },
+    { id: 'a7', slug: 'phuong-anh', gio: 9, tim: 41,
+      noi: 'Nhà tôi ở huyện, trường cách nhà tám cây số, và lớp học thêm gần như là nơi duy nhất con được tiếp cận đề thi và cách ôn giống các bạn ở thành phố. Với nhiều gia đình ở quê, học thêm không phải lựa chọn giữa có và không, mà là cách để con không bị bỏ lại phía sau. Tôi mong có thêm những lớp học trực tuyến miễn phí chất lượng tốt, để trẻ ở đâu cũng có cơ hội như nhau.' }
+  ];
+  var CU = {
+    cau: 'Làm việc tại thành phố lớn hay trở về quê — lựa chọn nào phù hợp hơn với bạn?',
+    noi: 'Tôi rời Sài Gòn về Quy Nhơn sau mười năm, và điều bất ngờ nhất không phải thu nhập giảm mà là thời gian dư ra. Không còn hai tiếng kẹt xe mỗi ngày, tôi có buổi sáng để chạy bộ và buổi tối ăn cơm cùng bố mẹ. Đổi lại, cơ hội nghề nghiệp ít hơn hẳn và tôi phải tự tạo việc qua làm từ xa. Tôi nghĩ câu hỏi không phải thành phố hay quê, mà là bạn cần gì nhất ở giai đoạn này của cuộc đời.',
+    tim: 86
+  };
+
+  /* ---------- Lưu trữ ---------- */
+  function doc() { try { return JSON.parse(localStorage.getItem(KHO) || '{}') || {}; } catch (e) { return {}; } }
+  var st = doc();
+  st.tim = st.tim || {};
+  st.baoCao = st.baoCao || {};
+  function ghi() { try { localStorage.setItem(KHO, JSON.stringify(st)); } catch (e) {} }
+  function cuaToi() {
+    var t = st.traLoi;
+    return t && t.q === Q.id && t.trangThai !== 'DELETED_BY_USER' ? t : null;
+  }
+  var NHAP = 'gnm-cau-hoi-tuan-nhap-' + Q.id;
+  function docNhap() { try { return localStorage.getItem(NHAP) || ''; } catch (e) { return ''; } }
+  function ghiNhap(v) { try { v.trim() ? localStorage.setItem(NHAP, v) : localStorage.removeItem(NHAP); } catch (e) {} }
+
+  /* ---------- Định dạng ---------- */
+  function thoat(s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+  function khiNao(luc) {
+    var d = Date.now() - luc;
+    if (d < PHUT) return 'vừa xong';
+    if (d < GIO) return Math.floor(d / PHUT) + ' phút trước';
+    if (d < NGAY) return Math.floor(d / GIO) + ' giờ trước';
+    return Math.floor(d / NGAY) + ' ngày trước';
+  }
+  function conLai() {
+    if (daDong()) return 'Đã kết thúc';
+    var d = HAN - Date.now();
+    var ngay = Math.floor(d / NGAY), gio = Math.floor((d % NGAY) / GIO), phut = Math.floor((d % GIO) / PHUT);
+    return 'Còn ' + (ngay ? ngay + ' ngày ' + gio + ' giờ' : gio ? gio + ' giờ ' + phut + ' phút' : Math.max(phut, 1) + ' phút');
+  }
+  function soTraLoi() {
+    var t = cuaToi();
+    return Q.soTraLoi + (t && t.trangThai === 'VISIBLE' ? 1 : 0);
+  }
+  function homNay() { return new Date().toISOString().slice(0, 10); }
+  function soLanChan() {
+    var c = st.chan;
+    return c && c.q === Q.id && c.ngay === homNay() ? c.so : 0;
+  }
+
+  /* ---------- Số liệu và nút dẫn dùng chung (Trang chủ + trang Câu hỏi tuần) ---------- */
+  function veChung() {
+    $$('[data-cht-dem]').forEach(function (el) { el.textContent = soTraLoi(); });
+    $$('[data-cht-con]').forEach(function (el) { el.textContent = conLai(); });
+    var t = cuaToi();
+    $$('[data-cht-cta]').forEach(function (a) {
+      a.textContent = t ? 'Xem câu trả lời của bạn' : daDong() ? 'Xem các câu trả lời' : 'Tham gia trả lời';
+      a.setAttribute('href', t ? 'cau-hoi-tuan.html#cua-toi' : daDong() ? 'cau-hoi-tuan.html' : 'cau-hoi-tuan.html#tra-loi');
+    });
+  }
+  veChung();
+  setInterval(veChung, 30000);
+
+  /* ---------- Trang cá nhân: Câu trả lời của tôi ---------- */
+  var toiDs = $('#chtToiDs');
+  if (toiDs) {
+    var muc = function (cau, noi, nhan, kieu, phu, link) {
+      return '<li class="cht-toi__muc"><a class="cht-toi__cau" href="' + link + '">' + thoat(cau) + '</a>' +
+        '<p class="cht-toi__noi">' + thoat(noi) + '</p>' +
+        '<p class="cht-toi__phu"><span class="cht-huy-hieu' + (kieu ? ' cht-huy-hieu--' + kieu : '') + '">' + nhan + '</span>' +
+        phu.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</p></li>';
+    };
+    var t0 = cuaToi(), html = '';
+    if (t0) {
+      html += muc(Q.ten, t0.noi, t0.trangThai === 'VISIBLE' ? 'Đang hiển thị' : 'Đang rà soát',
+        t0.trangThai === 'VISIBLE' ? '' : 'cho', [khiNao(t0.luc), conLai()], 'cau-hoi-tuan.html#cua-toi');
+    }
+    html += muc(CU.cau, CU.noi, 'GNM chọn', '', ['Tuần 37 · Đã kết thúc', CU.tim + ' lượt thả tim'], 'bai-viet.html');
+    toiDs.innerHTML = html;
+  }
+
+  /* ---------- Trang Viết bài: nhận lời mời phát triển câu trả lời thành bài ---------- */
+  var vbSoan = $('.vb-soan');
+  if (vbSoan && /[?&]tu=cau-hoi-tuan/.test(location.search)) {
+    var tieuDe = $('.vb-tieude', vbSoan);
+    if (tieuDe) tieuDe.textContent = 'Về quê sau mười năm ở Sài Gòn: điều tôi không ngờ tới';
+    var daCo = false;
+    $$('[data-vb-khoi]', vbSoan).forEach(function (k) {
+      var sapo = $('.vb-sapo', k), doan = $('.vb-doan', k);
+      if (sapo) { sapo.textContent = ''; return; }
+      if (doan && !daCo) { doan.textContent = CU.noi; daCo = true; return; }
+      k.parentNode.removeChild(k);
+    });
+    setTimeout(function () { toast('Câu trả lời của bạn đã được đưa vào bài viết. Hãy phát triển thêm nhé.'); }, 500);
+  }
+
+  /* ================= Trang Câu hỏi tuần ================= */
+  var trang = $('[data-cht-trang]');
+  if (!trang) return;
+
+  var list = $('#chtList'), trong = $('#chtTrong'), chips = $('#chtSapXep');
+  var soan = $('[data-cht-soan]'), o = $('#chtO'), dem = $('#chtDem'), goiY = $('#chtGoiY'), loi = $('#chtLoi');
+  var nutGui = $('[data-cht-gui]'), cta = $('[data-cht-viet]'), dongMsg = $('[data-cht-dong]');
+  var xep = 'moi-nhat', dangSua = false;
+
+  function veCta() {
+    var t = cuaToi();
+    cta.hidden = daDong() && !t;
+    dongMsg.hidden = !daDong();
+    cta.textContent = t ? 'Xem câu trả lời của bạn' : 'Viết câu trả lời';
+    cta.classList.toggle('is-phu', !!t);
+  }
+
+  function veMot(a, laToi) {
+    var nhanTrangThai = '';
+    if (laToi) {
+      nhanTrangThai = a.trangThai === 'VISIBLE'
+        ? '<p class="cht-trang-thai"><svg class="icon" aria-hidden="true"><use href="#i-verified"></use></svg>Câu trả lời của bạn đã được đăng</p>'
+        : '<p class="cht-trang-thai cht-trang-thai--cho"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>Đang được rà soát · chỉ bạn nhìn thấy</p>';
+    }
+    var tim = laToi && a.trangThai !== 'VISIBLE' ? '' :
+      '<div class="cht-tl__cuoi"><button class="cht-tim" type="button" data-cht-tim aria-pressed="' + !!a.daTim + '"' +
+      (laToi ? ' disabled aria-label="Không thể thả tim câu trả lời của chính bạn"' : ' aria-label="Thả tim"') + '>' +
+      '<svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span>' + a.tim + '</span></button></div>';
+    return '<li class="cht-tl' + (laToi ? ' cht-tl--toi" id="cua-toi' : '') + '" data-id="' + a.id + '">' +
+      '<div class="cht-tl__dau"><a class="cht-tl__ava" href="' + a.link + '"><img src="' + a.anh + '" alt="" width="36" height="36" loading="lazy"></a>' +
+      '<div class="cht-tl__ai"><p class="cht-tl__dong1"><a class="cht-tl__ten" href="' + a.link + '">' + thoat(a.ten) + '</a>' +
+      (a.chon ? '<span class="cht-nhan-chon"><svg class="icon" aria-hidden="true"><use href="#i-verified"></use></svg>GNM chọn</span>' : '') + '</p>' +
+      '<p class="cht-tl__phu">' + (a.vai ? thoat(a.vai) + ' · ' : '') + khiNao(a.luc) + (a.sua ? ' · đã chỉnh sửa' : '') + '</p></div>' +
+      '<button class="cht-tl__menu" type="button" data-cht-menu aria-label="Tuỳ chọn câu trả lời"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button></div>' +
+      nhanTrangThai + '<p class="cht-tl__noi">' + thoat(a.noi) + '</p>' + tim + '</li>';
+  }
+
+  function nguoi(slug) {
+    var r = REG[slug] || {};
+    return { ten: r.name || slug, anh: 'assets/img/' + (r.avatar || 'avatar-gnn.png'), vai: r.role, link: 'ca-nhan.html?tac-gia=' + slug };
+  }
+
+  function veDs() {
+    var ds = MAU.map(function (m) {
+      var p = nguoi(m.slug);
+      return { id: m.id, ten: p.ten, anh: p.anh, vai: p.vai, link: p.link, luc: Date.now() - m.gio * GIO,
+        noi: m.noi, tim: m.tim + (st.tim[m.id] ? 1 : 0), daTim: !!st.tim[m.id], chon: m.chon };
+    });
+    if (xep === 'moi-nhat') ds.sort(function (a, b) { return b.luc - a.luc; });
+    // Nổi bật: không chỉ đếm tim — trộn tim với độ mới và lựa chọn của GNM
+    if (xep === 'noi-bat') {
+      var diem = function (a) { return (a.tim + (a.chon ? 60 : 0)) / Math.pow((Date.now() - a.luc) / GIO + 2, 0.6); };
+      ds.sort(function (a, b) { return diem(b) - diem(a); });
+    }
+    if (xep === 'gnm-chon') ds = ds.filter(function (a) { return a.chon; });
+
+    var html = '', t = cuaToi();
+    if (t && xep !== 'gnm-chon') {
+      var p = nguoi(ME);
+      html += veMot({ id: 'toi', ten: p.ten, anh: p.anh, vai: p.vai, link: p.link, luc: t.luc, noi: t.noi,
+        tim: 0, trangThai: t.trangThai, sua: t.sua }, true);
+    }
+    html += ds.map(function (a) { return veMot(a, false); }).join('');
+    list.innerHTML = html;
+    trong.hidden = !!html;
+    trong.textContent = 'GNM chưa chọn câu trả lời nào cho câu hỏi này.';
+    veChung();
+    veCta();
+  }
+
+  function chonChip() {
+    $$('[data-cht-xep]', chips).forEach(function (c) {
+      c.setAttribute('aria-selected', String(c.getAttribute('data-cht-xep') === xep));
+    });
+  }
+  chips.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-cht-xep]');
+    if (!c) return;
+    xep = c.getAttribute('data-cht-xep');
+    chonChip();
+    veDs();
+  });
+
+  function cuonToi(el) {
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 88, behavior: 'smooth' });
+  }
+  function nhayToi() {
+    var li = $('#cua-toi');
+    if (!li) return;
+    cuonToi(li);
+    li.classList.remove('is-nhay');
+    void li.offsetWidth;
+    li.classList.add('is-nhay');
+  }
+
+  /* ---------- Soạn ---------- */
+  function kiemTra(v) {
+    var s = v.trim(), l = '';
+    if (/[^\s@]+@[^\s@]+\.[a-z]{2,}/i.test(s)) l = 'Câu trả lời không được chứa địa chỉ email.';
+    else if (/(https?:\/\/|www\.)\S+|\b[a-z0-9-]+\.(com|vn|net|org|io|info|me)\b/i.test(s)) l = 'Câu trả lời không hỗ trợ liên kết ngoài.';
+    else if (/(\+84|\b0)[\s.-]?\d(?:[\s.-]?\d){8,9}\b/.test(s)) l = 'Câu trả lời không được chứa số điện thoại.';
+    return { n: s.length, loi: l };
+  }
+  function hienLoi(chu, kieu) { loi.textContent = chu; loi.hidden = false; loi.setAttribute('data-kieu', kieu); }
+  function anLoi() { loi.hidden = true; loi.textContent = ''; loi.setAttribute('data-kieu', ''); }
+
+  function veSoan() {
+    var k = kiemTra(o.value), het = soLanChan() >= CHAN_TOI_DA;
+    dem.textContent = k.n + '/' + MAX;
+    dem.classList.toggle('is-du', k.n >= MIN && k.n <= MAX);
+    dem.classList.toggle('is-qua', k.n > MAX);
+    goiY.classList.toggle('is-qua', k.n > MAX);
+    goiY.textContent = k.n > MAX ? 'Câu trả lời tối đa 800 ký tự · đang thừa ' + (k.n - MAX) + ' ký tự'
+      : k.n >= MIN ? 'Độ dài phù hợp'
+      : 'Câu trả lời cần ít nhất 200 ký tự' + (k.n ? ' · còn thiếu ' + (MIN - k.n) : '');
+    var kieu = loi.getAttribute('data-kieu');
+    if (het) hienLoi('Bạn đã thử gửi quá nhiều lần hôm nay. Hãy quay lại sau.', 'het-luot');
+    else if (k.loi) hienLoi(k.loi, 'kiem-tra');
+    else if (kieu === 'kiem-tra') anLoi();
+    o.classList.toggle('is-loi', !!k.loi || k.n > MAX);
+    nutGui.disabled = !!k.loi || k.n < MIN || k.n > MAX || het;
+  }
+
+  function moSoan(sua) {
+    var t = cuaToi();
+    dangSua = !!(sua && t);
+    o.value = dangSua ? t.noi : docNhap();
+    $('#chtSoanTen').textContent = dangSua ? 'Chỉnh sửa câu trả lời' : 'Câu trả lời của bạn';
+    nutGui.textContent = dangSua ? 'Lưu và gửi lại' : 'Gửi câu trả lời';
+    soan.hidden = false;
+    anLoi();
+    veSoan();
+    cuonToi(soan);
+    setTimeout(function () { try { o.focus({ preventScroll: true }); } catch (e) { o.focus(); } }, 350);
+  }
+
+  cta.addEventListener('click', function () {
+    if (cuaToi()) nhayToi();
+    else if (!daDong()) moSoan(false);
+  });
+
+  o.addEventListener('input', function () {
+    if (!dangSua) ghiNhap(o.value);
+    veSoan();
+  });
+
+  $('[data-cht-huy]').addEventListener('click', function () {
+    soan.hidden = true;
+    if (!dangSua && o.value.trim()) toast('Bản nháp được giữ trên thiết bị này.');
+    dangSua = false;
+  });
+
+  function kiemDuyet(noi) {
+    var s = ' ' + noi.toLowerCase().replace(/\s+/g, ' ') + ' ';
+    var chan = ['mua ngay', 'khuyến mãi', 'kiếm tiền online', 'nhắn zalo', 'inbox ngay', 'cá độ'];
+    var giu = [' ngu ', ' ngu,', ' ngu.', 'lừa đảo', 'vô học', 'cút đi', 'đồ điên'];
+    var co = function (ds) { return ds.some(function (w) { return s.indexOf(w) >= 0; }); };
+    if (co(chan)) return { ket: 'BLOCK', lyDo: 'Nội dung có dấu hiệu quảng cáo hoặc spam.' };
+    if (/(.)\1{9,}/.test(noi)) return { ket: 'BLOCK', lyDo: 'Nội dung có ký tự lặp bất thường.' };
+    if (KILL_SWITCH || co(giu)) return { ket: 'PENDING_REVIEW' };
+    return { ket: 'VISIBLE' };
+  }
+
+  nutGui.addEventListener('click', function () {
+    if (nutGui.disabled) return;
+    if (daDong()) {
+      ghiNhap(o.value);
+      hienLoi('Câu hỏi này vừa kết thúc. Nội dung bạn đang viết vẫn được giữ trên thiết bị.', 'dong');
+      nutGui.disabled = true;
+      return;
+    }
+    var noi = o.value.trim(), nhan = nutGui.textContent;
+    nutGui.disabled = true;
+    o.readOnly = true;
+    nutGui.textContent = 'Đang gửi…';
+    setTimeout(function () {
+      o.readOnly = false;
+      nutGui.textContent = nhan;
+      var kq = kiemDuyet(noi);
+      if (kq.ket === 'BLOCK') {
+        st.chan = { q: Q.id, ngay: homNay(), so: soLanChan() + 1 };
+        ghi();
+        if (st.chan.so < CHAN_TOI_DA) hienLoi('Câu trả lời chưa thể đăng. ' + kq.lyDo + ' Hãy kiểm tra lại nội dung và thử lại.', 'kiem-duyet');
+        veSoan();
+        return;
+      }
+      var cu = cuaToi();
+      st.traLoi = { q: Q.id, noi: noi, trangThai: kq.ket, luc: dangSua && cu ? cu.luc : Date.now(), sua: !!(dangSua && cu) };
+      ghi();
+      if (!dangSua) ghiNhap('');
+      soan.hidden = true;
+      dangSua = false;
+      if (xep === 'gnm-chon') { xep = 'moi-nhat'; chonChip(); }
+      veDs();
+      toast(kq.ket === 'VISIBLE' ? 'Câu trả lời của bạn đã được đăng.' : 'Câu trả lời của bạn đang được rà soát.');
+      setTimeout(nhayToi, 80);
+    }, 900);
+  });
+
+  /* ---------- Thả tim, menu ---------- */
+  function xacNhanXoa() {
+    if (!window.gnmHop) return;
+    window.gnmHop('Xoá câu trả lời?',
+      'Câu trả lời sẽ không còn hiển thị công khai. Nếu GNM đã đưa câu trả lời vào bài tổng hợp, bài viết đó không tự thay đổi.',
+      [
+        { label: 'Xoá câu trả lời', kind: 'brand', run: function () {
+          var t = cuaToi();
+          if (!t) return;
+          t.trangThai = 'DELETED_BY_USER';
+          ghi();
+          veDs();
+          toast('Đã xoá câu trả lời của bạn.');
+        } },
+        { label: 'Huỷ', kind: 'outline' }
+      ]);
+  }
+
+  list.addEventListener('click', function (e) {
+    var li = e.target.closest('.cht-tl');
+    if (!li) return;
+    var id = li.getAttribute('data-id');
+
+    var tim = e.target.closest('[data-cht-tim]');
+    if (tim) {
+      if (tim.disabled) return;
+      var bat = !st.tim[id];
+      if (bat) st.tim[id] = 1; else delete st.tim[id];
+      ghi();
+      tim.setAttribute('aria-pressed', String(bat));
+      var so = tim.querySelector('span');
+      so.textContent = +so.textContent + (bat ? 1 : -1);
+      return;
+    }
+
+    var menu = e.target.closest('[data-cht-menu]');
+    if (!menu || !window.gnmMoBangChon) return;
+    if (id === 'toi') {
+      var muc = [];
+      if (!daDong()) muc.push(['pencil', 'Chỉnh sửa câu trả lời']);
+      muc.push(['trash', 'Xoá câu trả lời', true]);
+      window.gnmMoBangChon('Câu trả lời của bạn', muc, function (act) {
+        setTimeout(function () { act === 'Xoá câu trả lời' ? xacNhanXoa() : moSoan(true); }, 300);
+      }, menu);
+      return;
+    }
+    if (st.baoCao[id]) { toast('Bạn đã báo cáo câu trả lời này.'); return; }
+    window.gnmMoBangChon('Tuỳ chọn', [['alert', 'Báo cáo câu trả lời', true]], function () {
+      setTimeout(function () {
+        window.gnmMoBangChon('Lý do báo cáo', [
+          ['alert', 'Spam hoặc quảng cáo'],
+          ['alert', 'Công kích, xúc phạm người khác'],
+          ['alert', 'Thông tin sai sự thật'],
+          ['alert', 'Vi phạm Tiêu chuẩn cộng đồng']
+        ], function (lyDo) {
+          st.baoCao[id] = lyDo;
+          ghi();
+          setTimeout(function () { toast('Cảm ơn bạn đã báo cáo. GNM sẽ xem xét câu trả lời này.'); }, 280);
+        }, menu);
+      }, 300);
+    }, menu);
+  });
+
+  /* ---------- Khởi động ---------- */
+  veDs();
+  if (location.hash === '#tra-loi' && !cuaToi() && !daDong()) setTimeout(function () { moSoan(false); }, 200);
+  if (location.hash === '#cua-toi') setTimeout(nhayToi, 300);
 })();
