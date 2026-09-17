@@ -3275,22 +3275,20 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   }
 
   function veMot(a, laToi) {
-    var nhanTrangThai = '';
-    // Đã đăng thì không cần nhãn; chỉ báo khi câu trả lời còn đang rà soát
-    if (laToi && a.trangThai !== 'VISIBLE') {
-      nhanTrangThai = '<p class="cht-trang-thai cht-trang-thai--cho"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>Đang được rà soát · chỉ bạn nhìn thấy</p>';
-    }
     var tim = laToi && a.trangThai !== 'VISIBLE' ? '' :
       '<div class="cht-tl__cuoi"><button class="cht-tim" type="button" data-cht-tim aria-pressed="' + !!a.daTim + '"' +
       (laToi ? ' disabled aria-label="Không thể thả tim câu trả lời của chính bạn"' : ' aria-label="Thả tim"') + '>' +
       '<svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span>' + a.tim + '</span></button></div>';
-    return '<li class="cht-tl' + (laToi ? ' cht-tl--toi" id="cua-toi' : '') + '" data-id="' + a.id + '">' +
+    // Đang rà soát tự động: không gắn nhãn, chỉ làm mờ (trình đọc màn hình vẫn được báo)
+    var dangRaSoat = laToi && a.trangThai !== 'VISIBLE';
+    return '<li class="cht-tl' + (dangRaSoat ? ' cht-tl--cho' : '') + (laToi ? ' cht-tl--toi" id="cua-toi' : '') + '" data-id="' + a.id + '">' +
       '<div class="cht-tl__dau"><a class="cht-tl__ava" href="' + a.link + '"><img src="' + a.anh + '" alt="" width="36" height="36" loading="lazy"></a>' +
       '<div class="cht-tl__ai"><p class="cht-tl__dong1"><a class="cht-tl__ten" href="' + a.link + '">' + thoat(a.ten) + '</a>' +
       (a.chon ? '<span class="cht-nhan-chon" role="img" aria-label="GNM chọn, được ghim lên đầu" title="GNM chọn"><svg class="icon" aria-hidden="true"><use href="#i-ghim"></use></svg></span>' : '') + '</p>' +
-      '<p class="cht-tl__phu">' + (a.vai ? thoat(a.vai) + ' · ' : '') + khiNao(a.luc) + (a.sua ? ' · đã chỉnh sửa' : '') + '</p></div>' +
+      '<p class="cht-tl__phu">' + (a.vai ? thoat(a.vai) + ' · ' : '') + khiNao(a.luc) + (a.sua ? ' · đã chỉnh sửa' : '') +
+      (dangRaSoat ? '<span class="sr-only"> · Đang được rà soát, chỉ bạn nhìn thấy</span>' : '') + '</p></div>' +
       '<button class="cht-tl__menu" type="button" data-cht-menu aria-label="Tuỳ chọn câu trả lời"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button></div>' +
-      nhanTrangThai + '<p class="cht-tl__noi">' + thoat(a.noi) + '</p>' + tim + '</li>';
+      '<p class="cht-tl__noi">' + thoat(a.noi) + '</p>' + tim + '</li>';
   }
 
   function nguoi(slug) {
