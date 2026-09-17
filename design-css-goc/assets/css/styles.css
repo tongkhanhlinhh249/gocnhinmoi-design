@@ -6545,9 +6545,10 @@ input { font: inherit; }
 }
 
 /* ================= Chia sẻ góc nhìn ================= */
-/* Nhóm chia sẻ cuối bài viết */
+/* Khung "Chia sẻ góc nhìn của bạn" cuối bài viết: một CTA duy nhất */
 .cs-nhom { margin-top: 28px; padding: 16px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
 .cs-nhom__ten { font-size: 14px; font-weight: 800; line-height: 20px; color: var(--ink-strong); }
+.cs-nhom__chu { padding-top: 2px; font-size: 13px; line-height: 20px; color: var(--text-action); }
 .cs-nhom__nut { display: flex; align-items: center; gap: 8px; padding-top: 12px; }
 .cs-nut { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; padding: 0 18px; border: 1px solid transparent; border-radius: var(--r-pill); font-family: inherit; font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: background-color .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease); }
 .cs-nut .icon { width: 16px; height: 16px; flex: none; }
@@ -6557,8 +6558,6 @@ input { font: inherit; }
 .cs-nut--phu { background: var(--fill-soft); color: var(--text-action); }
 .cs-nut--vien { border-color: var(--line-2); background: var(--surface); color: var(--ink); }
 .cs-nut--nguy { background: #B42318; color: #fff; }
-.cs-nut--tron { width: 42px; padding: 0; border-color: var(--line-2); background: var(--surface); color: var(--icon-dark); }
-.cs-nut--tron:hover { border-color: #FFC9C9; color: var(--gnm-red); }
 .cs-nhom__nut .cs-nut--chinh { flex: 1; }
 
 /* Hộp thoại: bottom sheet trên điện thoại, hộp giữa màn trên màn rộng */

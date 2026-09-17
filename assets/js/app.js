@@ -3929,7 +3929,8 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     e.preventDefault();
     e.stopPropagation();
     var laBai = nut.getAttribute('data-chia-se') === 'bai';
-    var bai = laBai ? baiTuThe(nut) : null;
+    // Nút chia sẻ ở thanh trái trang chi tiết dùng đúng bài đang đọc
+    var bai = laBai ? (nut.closest('.art-share') && baiHienTai ? baiHienTai : baiTuThe(nut)) : null;
     var muc = [];
     if (laBai) muc.push(['nav-user', 'Chia sẻ về trang cá nhân']);
     muc.push(['link', 'Sao chép liên kết'], ['facebook', 'Facebook'], ['x', 'X']);
@@ -3953,7 +3954,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function veNutBai() {
     if (!baiHienTai) return;
     var s = cuaBai(baiHienTai.id);
-    $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ về trang cá nhân'; });
+    $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ kèm góc nhìn'; });
   }
 
   /* ---------- Trang cá nhân: chia sẻ nằm lẫn trong "Bài viết đã xuất bản" ----------

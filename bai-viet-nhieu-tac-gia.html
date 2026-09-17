@@ -43,6 +43,9 @@
   <symbol id="i-comment" viewBox="0 0 15.9882 15.9882">
     <path d="M13.9897 9.99262C13.9897 10.346 13.8493 10.6849 13.5994 10.9347C13.3496 11.1846 13.0107 11.325 12.6573 11.325H4.66322L1.99852 13.9897V3.33087C1.99852 2.97751 2.1389 2.63863 2.38876 2.38876C2.63863 2.1389 2.97751 1.99852 3.33087 1.99852H12.6573C13.0107 1.99852 13.3496 2.1389 13.5994 2.38876C13.8493 2.63863 13.9897 2.97751 13.9897 3.33087V9.99262Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-x" viewBox="0 0 16 16">
+    <path d="M12.2 1.5h2.3L9.5 7.2l5.9 7.3h-4.6L7.2 9.9l-4.1 4.6H.8l5.3-6.1L.4 1.5h4.7l3.3 4.2zm-.8 11.7h1.3L4.4 2.7H3z" fill="currentColor"/>
+  </symbol>
   <symbol id="i-share" viewBox="0 0 15.9882 15.9882">
     <path d="M5.72244 9.00002L10.2724 11.6514M10.2658 4.3368L5.72244 6.98818M11.9912 5.3294C12.5212 5.3294 13.0295 5.11884 13.4043 4.74405C13.7791 4.36925 13.9897 3.86092 13.9897 3.33087C13.9897 2.80083 13.7791 2.2925 13.4043 1.9177C13.0295 1.54291 12.5212 1.33235 11.9912 1.33235C11.4611 1.33235 10.9528 1.54291 10.578 1.9177C10.2032 2.2925 9.99262 2.80083 9.99262 3.33087C9.99262 3.86092 10.2032 4.36925 10.578 4.74405C10.9528 5.11884 11.4611 5.3294 11.9912 5.3294ZM3.99705 7.9941C4.52709 7.9941 5.03542 7.78354 5.41022 7.40875C5.78502 7.03395 5.99557 6.52562 5.99557 5.99557C5.99557 5.46553 5.78502 4.9572 5.41022 4.5824C5.03542 4.20761 4.52709 3.99705 3.99705 3.99705C3.46701 3.99705 2.95868 4.20761 2.58388 4.5824C2.20908 4.9572 1.99852 5.46553 1.99852 5.99557C1.99852 6.52562 2.20908 7.03395 2.58388 7.40875C2.95868 7.78354 3.46701 7.9941 3.99705 7.9941ZM11.9912 10.6588C11.4611 10.6588 10.9528 10.8694 10.578 11.2442C10.2032 11.619 9.99262 12.1273 9.99262 12.6573C9.99262 13.1874 10.2032 13.6957 10.578 14.0705C10.9528 14.4453 11.4611 14.6559 11.9912 14.6559C12.5212 14.6559 13.0295 14.4453 13.4043 14.0705C13.7791 13.6957 13.9897 13.1874 13.9897 12.6573C13.9897 12.1273 13.7791 11.619 13.4043 11.2442C13.0295 10.8694 12.5212 10.6588 11.9912 10.6588Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -214,9 +217,7 @@
       <div class="art-body">
       <!-- Cột chia sẻ dính bên trái thân bài — chỉ hiện ở desktop -->
       <aside class="art-share" aria-label="Chia sẻ và tương tác">
-        <button class="art-share__nut" type="button" data-cs-mo aria-label="Chia sẻ về trang cá nhân" title="Chia sẻ về trang cá nhân"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
-        <button class="art-share__nut" type="button" data-toast="Đã mở chia sẻ lên Facebook" aria-label="Chia sẻ lên Facebook"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg></button>
-        <button class="art-share__nut" type="button" data-toast="Đã sao chép liên kết bài viết" aria-label="Sao chép liên kết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-link"></use></svg></button>
+        <button class="art-share__nut" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ" title="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
         <a class="art-share__nut" href="#cmt-title" aria-label="Tới phần bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg></a>
         <button class="art-share__nut" type="button" data-like data-count="0" aria-pressed="false" aria-label="Thích bài viết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
         <button class="art-share__nut" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo bài viết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-flag"></use></svg></button>
@@ -240,13 +241,12 @@
       </div>
       </div>
       <!-- ============ Chia sẻ bài viết ============ -->
-      <!-- "Chia sẻ về trang cá nhân" mở hộp soạn; chia sẻ đạt kiểm duyệt hiện trên trang cá nhân. -->
+      <!-- "Chia sẻ kèm góc nhìn" mở hộp soạn; chia sẻ đạt kiểm duyệt hiện trên trang cá nhân. -->
       <section class="cs-nhom" aria-labelledby="csNhomTen" data-cs-bai='{"id":"bai-genz-nhieu-tac-gia","ten":"Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có","anh":"assets/img/hero-genz.png","tacGia":"Chân Diệu, Ngọc Linh, Nguyễn Đức Việt","link":"bai-viet-nhieu-tac-gia.html"}'>
-        <h2 class="cs-nhom__ten" id="csNhomTen">Chia sẻ bài viết</h2>
+        <h2 class="cs-nhom__ten" id="csNhomTen">Chia sẻ góc nhìn của bạn</h2>
+        <p class="cs-nhom__chu">Chia sẻ bài viết về trang cá nhân kèm suy nghĩ của bạn.</p>
         <div class="cs-nhom__nut">
-          <button class="cs-nut cs-nut--chinh" type="button" data-cs-mo><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg><span data-cs-nhan>Chia sẻ về trang cá nhân</span></button>
-          <button class="cs-nut cs-nut--tron" type="button" data-toast="Đã sao chép liên kết bài viết" aria-label="Sao chép liên kết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-link"></use></svg></button>
-          <button class="cs-nut cs-nut--tron" type="button" data-toast="Đã mở chia sẻ lên Facebook" aria-label="Chia sẻ lên Facebook"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg></button>
+          <button class="cs-nut cs-nut--chinh" type="button" data-cs-mo><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg><span data-cs-nhan>Chia sẻ kèm góc nhìn</span></button>
         </div>
       </section>
     </article>
@@ -502,6 +502,17 @@
 
     <p class="drawer__foot mt-auto p-4 border-t border-line-3 text-[12px] leading-[20px] text-ink-muted">© 2026 Mạng xã hội Góc Nhìn Mới</p>
   </nav>
+</div>
+
+<!-- ============ Bottom sheet dùng chung (menu chia sẻ) ============ -->
+<div class="sheet fixed inset-0 z-[90]" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet__backdrop absolute inset-0 opacity-0 transition-opacity" data-sheet-close></div>
+  <div class="sheet__panel absolute left-0 right-0 bottom-0 max-w-shell mx-auto max-h-[82vh] overflow-y-auto rounded-t-lg bg-surface">
+    <div class="w-9 h-[4px] mx-auto mb-3 rounded-full bg-line-2" aria-hidden="true"></div>
+    <h2 class="text-base font-extrabold leading-[24px] text-ink" id="sheetTitle"></h2>
+    <p class="pt-1 text-[12px] leading-[18px] text-ink-muted" id="sheetMeta"></p>
+    <div id="sheetBody"></div>
+  </div>
 </div>
 
 <div class="toast fixed left-1/2 z-[80] px-4 py-[10px] rounded-full text-surface text-[13px] opacity-0 pointer-events-none" id="toast" role="status" aria-live="polite"></div>
