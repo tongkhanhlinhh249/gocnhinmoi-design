@@ -7,7 +7,9 @@ GOC = pathlib.Path(__file__).resolve().parent
 css = (GOC / '../design-css-goc/assets/css/styles.css').read_text(encoding='utf-8')
 i = css.find('/* ================= Trang Thông báo ================= */')
 if i < 0: sys.exit('không thấy khối CSS trang Thông báo')
-g = re.sub(r'/\*[\s\S]*?\*/', '', css[i:])
+# chỉ lấy tới đầu khối kế tiếp, không thì kéo cả CSS trang khác vào
+j = css.find('/* ================= ', i + 1)
+g = re.sub(r'/\*[\s\S]*?\*/', '', css[i:j if j > 0 else None])
 g = re.sub(r'\s*([{}:;,>])\s*', r'\1', g)
 g = re.sub(r';}', '}', g)
 g = re.sub(r'\s+', ' ', g).strip()

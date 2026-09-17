@@ -629,6 +629,8 @@
      nữa thì sang trang riêng của chuyên mục đang chọn, thay vì kéo dài mãi một
      danh sách trộn lẫn mọi thứ. */
   var PAGE_SIZE = 12;
+  // số thẻ đang được bày; "Xem thêm" tại chỗ nâng dần mốc này
+  var limit = PAGE_SIZE;
   var CAT_PAGES = {
     'all': 'moi-nhat.html',
     'hot': 'hot-hom-nay.html',
@@ -669,7 +671,7 @@
       var ok = matchCat && matchText;
       if (ok) matched++;
 
-      var visible = ok && shown < PAGE_SIZE;
+      var visible = ok && shown < limit;
       if (visible) shown++;
 
       card.classList.toggle('is-filtered', !visible);
@@ -678,7 +680,8 @@
     if (emptyEl) emptyEl.classList.toggle('is-visible', shown === 0);
 
     var page = CAT_PAGES[currentFilter];
-    var overflow = !!page && matched > PAGE_SIZE;
+    // chỉ dẫn sang trang chuyên mục khi còn thanh chip để chọn chuyên mục
+    var overflow = !!chipsWrap && !!page && matched > limit;
 
     if (catMore) {
       catMore.hidden = !overflow;
@@ -691,7 +694,7 @@
     // Trang chủ luôn dừng ở 12 thẻ rồi dẫn sang trang chuyên mục, nên nút nạp
     // thêm tại chỗ không còn việc gì; trang con không có #feedSecondary thì vẫn
     // giữ nút đó để bày tiếp danh sách.
-    if (loadMoreBtn) loadMoreBtn.hidden = !!$('#feedSecondary') || q !== '';
+    if (loadMoreBtn) loadMoreBtn.hidden = !!(chipsWrap && $('#feedSecondary')) || q !== '';
     if (loadWrap) {
       loadWrap.hidden = (!loadMoreBtn || loadMoreBtn.hidden) && (!catMore || catMore.hidden);
     }
@@ -871,6 +874,36 @@
      "Xem thêm" ở các trang đó sẽ không làm gì cả. */
   var loadTarget = feed || primaryFeed;
 
+  /* Trang chủ (không có #feedPrimary): thẻ đã có sẵn trong dòng tin, chỉ bị giấu
+     sau mốc 12. Bấm "Xem thêm" thì bày tiếp 12 thẻ ngay tại chỗ, không chuyển trang. */
+  if (loadBtn && !primaryFeed && feed) {
+    var conAn = function () {
+      return feedParts.some(function (part) { return !!$('.card.is-filtered', part); });
+    };
+    var hetBai = function (label) {
+      loadBtn.disabled = true;
+      if (label) label.textContent = 'Bạn đã xem hết nội dung';
+    };
+
+    applyFilters();
+    if (!chipsWrap && !conAn()) hetBai($('.btn-outline__label', loadBtn));
+
+    loadBtn.addEventListener('click', function () {
+      if (loadBtn.disabled) return;
+      var label = $('.btn-outline__label', loadBtn);
+      loadBtn.classList.add('is-loading');
+      if (label) label.textContent = 'Đang tải…';
+
+      setTimeout(function () {
+        limit += PAGE_SIZE;
+        loadBtn.classList.remove('is-loading');
+        applyFilters();
+        if (conAn()) { if (label) label.textContent = 'Xem thêm'; }
+        else hetBai(label);
+      }, 600);
+    });
+  }
+
   if (loadBtn && loadTarget && primaryFeed) {
     var pool = $$('.card', primaryFeed);
     var poolIndex = 0;
@@ -893,6 +926,7 @@
           poolIndex++;
           added++;
         }
+        limit += added;
 
         loadBtn.classList.remove('is-loading');
         applyFilters();
@@ -2484,7 +2518,6 @@
   'use strict';
 
   var KHO = 'gnm-thong-bao';       // trạng thái đọc + thông báo phát sinh khi dùng thử
-  var KHO_CD = 'gnm-tb-cai-dat';   // cài đặt nhóm thông báo
   var PHUT = 60000, GIO = 3600000, NGAY = 86400000;
 
   /* ---------- Bộ dữ liệu mẫu ----------
@@ -2505,13 +2538,6 @@
         ten: 'Minh Đức và 4 người khác đã bình luận bài viết của bạn',
         chu: '“Gen Z tiếp quản: lãnh đạo Việt Nam thời kỷ nguyên số”',
         luc: n - 40 * PHUT, link: 'bai-viet.html' },
-
-      { id: 'n3', ma: 'NT-A02', nhom: 'bai-viet', co: 'alert', mau: 'vang',
-        anh: 'assets/img/cover-nha-o-ha-noi.png', vuong: true,
-        ten: 'Bài viết cần được điều chỉnh',
-        chu: 'Bài viết hiện chưa phù hợp để đăng trên GNM. Xem phản hồi để chỉnh sửa và gửi lại.',
-        luc: n - 5 * GIO, link: 'ca-nhan.html',
-        nut: [{ ten: 'Xem phản hồi', link: 'ca-nhan.html' }] },
 
       { id: 'n4', ma: 'NT-B03', nhom: 'tuong-tac', co: 'heart',
         anh: 'assets/img/kp-chatgpt.jpg', vuong: true,
@@ -2541,8 +2567,9 @@
         anh: 'assets/img/kp-dan-chu-so.jpg', vuong: true,
         ten: 'Yêu cầu gỡ bài chưa được chấp thuận',
         chu: 'Xem phản hồi từ GNM để biết thêm thông tin.',
+        phanHoi: 'Bài viết đang được trích dẫn trong chuyên đề “Dân chủ số” nên chưa thể gỡ. Bạn có thể gửi bản cập nhật để GNM thay nội dung.',
         luc: n - 3 * NGAY, link: 'ca-nhan.html',
-        nut: [{ ten: 'Xem phản hồi', link: 'ca-nhan.html' }] },
+        nut: [{ ten: 'Xem bài', link: 'ca-nhan.html' }] },
 
       { id: 'n9', ma: 'NT-A01', nhom: 'bai-viet', co: 'send', mau: 'xam',
         anh: 'assets/img/kp-song-cham.jpg', vuong: true,
@@ -2557,6 +2584,13 @@
         them: 'Lý do: Số liệu trong bài đã có bản cập nhật mới hơn từ nguồn gốc.',
         luc: n - 6 * NGAY, link: 'ca-nhan.html' },
 
+      { id: 'n13', ma: 'NT-A06', nhom: 'bai-viet', co: 'trash', mau: 'xam',
+        anh: 'assets/img/kp-khong-tu.jpg', vuong: true,
+        ten: 'Bài viết đã được gỡ khỏi GNM',
+        chu: 'Bài viết không còn hiển thị công khai trên Góc Nhìn Mới.',
+        them: 'Theo yêu cầu gỡ bài bạn gửi ngày 01/09/2026.',
+        luc: n - 7 * NGAY, link: 'ca-nhan.html' },
+
       { id: 'n11', ma: 'NT-C01', nhom: 'tai-khoan', co: 'shield', mau: 'xam',
         anh: 'assets/img/avatar-duc-anh.png',
         ten: 'Có phiên đăng nhập mới vào tài khoản của bạn',
@@ -2569,7 +2603,14 @@
         ten: 'Cần cập nhật bút danh của bạn',
         chu: 'Bút danh hiện tại trùng với một tài khoản khác trên GNM.',
         luc: n - 12 * NGAY, link: 'chinh-sua-ho-so.html',
-        nut: [{ ten: 'Cập nhật', link: 'chinh-sua-ho-so.html' }] }
+        nut: [{ ten: 'Cập nhật', link: 'chinh-sua-ho-so.html' }] },
+
+      { id: 'n14', ma: 'NT-C02', nhom: 'tai-khoan', co: 'alert',
+        anh: 'assets/img/avatar-duc-anh.png',
+        ten: 'Tài khoản của bạn đang bị hạn chế',
+        chu: 'Bạn tạm thời chưa thể bình luận đến 20/08/2026 do nhiều bình luận bị báo cáo vi phạm Tiêu chuẩn cộng đồng.',
+        luc: n - 16 * NGAY, link: 'ca-nhan.html',
+        nut: [{ ten: 'Xem chi tiết', link: 'ca-nhan.html' }] }
     ];
   }
 
@@ -2615,7 +2656,11 @@
     var so = demChuaDoc();
     document.querySelectorAll('[data-chuong]').forEach(function (a) {
       var dot = a.querySelector('.icon-btn__dot');
-      if (dot) dot.hidden = so === 0;
+      if (dot) {
+        dot.hidden = so === 0;
+        dot.textContent = so > 99 ? '99+' : so;
+        dot.classList.add('is-so');
+      }
       a.setAttribute('aria-label', so ? 'Thông báo (' + so + ' chưa đọc)' : 'Thông báo');
     });
   }
@@ -2630,11 +2675,10 @@
     var t = new Date(luc);
     return ('0' + t.getDate()).slice(-2) + '/' + ('0' + (t.getMonth() + 1)).slice(-2) + '/' + t.getFullYear();
   }
+  // chỉ tách cụm "Hôm nay"; thông báo cũ hơn nối tiếp bên dưới, không có mốc riêng
+  // hai mốc: trong 24 giờ qua là "Hôm nay", còn lại là "Trước đó"
   function moc(luc) {
-    var d = Date.now() - luc;
-    if (d < NGAY) return 'Hôm nay';
-    if (d < 7 * NGAY) return 'Tuần này';
-    return 'Trước đó';
+    return Date.now() - luc < NGAY ? 'Hôm nay' : 'Trước đó';
   }
 
   /* ================= Trang Thông báo ================= */
@@ -2651,11 +2695,14 @@
 
   var TRONG = {
     all: ['Chưa có thông báo nào', 'Khi bài viết hoặc hoạt động của bạn có cập nhật, bạn sẽ thấy ở đây.'],
-    'chua-doc': ['Bạn đã đọc hết', 'Không còn thông báo nào chưa đọc.']
+    'chua-doc': ['Bạn đã đọc hết', 'Không còn thông báo nào chưa đọc.'],
+    'bai-viet': ['Chưa có cập nhật về bài viết', 'Khi bài viết của bạn được đăng hoặc gỡ, bạn sẽ thấy ở đây.']
   };
 
   function locDs(ds) {
-    return loc === 'chua-doc' ? ds.filter(function (x) { return !x.daDoc; }) : ds;
+    if (loc === 'all') return ds;
+    if (loc === 'chua-doc') return ds.filter(function (x) { return !x.daDoc; });
+    return ds.filter(function (x) { return x.nhom === loc; });
   }
 
   function thoat(s) {
@@ -2682,6 +2729,8 @@
         '<span class="tb-item__ten">' + thoat(x.ten) + '</span>' +
         '<span class="tb-item__chu">' + thoat(x.chu) + '</span>' +
         (x.them ? '<span class="tb-item__chu">' + thoat(x.them) + '</span>' : '') +
+        (x.phanHoi ? '<span class="tb-phan-hoi"><span class="tb-phan-hoi__nhan">Phản hồi từ GNM</span>' +
+          thoat(x.phanHoi) + '</span>' : '') +
         '<span class="tb-item__luc">' + khiNao(x.luc) + '</span>' +
         (nut ? '<span class="tb-item__nut">' + nut + '</span>' : '') +
       '</span>' +
@@ -2698,8 +2747,9 @@
     var hien = locDs(ds);
 
     // số trên chip
-    var dem = { all: ds.length, 'chua-doc': 0 };
-    ds.forEach(function (x) { if (!x.daDoc) dem['chua-doc']++; });
+    // chip nhóm đếm số chưa đọc trong nhóm, không đếm tổng
+    var dem = { all: ds.length, 'chua-doc': 0, 'bai-viet': 0 };
+    ds.forEach(function (x) { if (!x.daDoc) { dem['chua-doc']++; if (x.nhom === 'bai-viet') dem['bai-viet']++; } });
     chips.querySelectorAll('.chip').forEach(function (c) {
       var k = c.getAttribute('data-tb-loc');
       c.querySelector('.chip__n').textContent = dem[k] ? '(' + dem[k] + ')' : '';
@@ -2709,7 +2759,8 @@
     var html = '', mocTruoc = '';
     hien.forEach(function (x) {
       var m = moc(x.luc);
-      if (m !== mocTruoc) { html += '<li class="tb-moc">' + m + '</li>'; mocTruoc = m; }
+      if (m && m !== mocTruoc) html += '<li class="tb-moc">' + m + '</li>';
+      mocTruoc = m;
       html += veMot(x);
     });
     list.innerHTML = html;
@@ -2729,6 +2780,8 @@
     c.addEventListener('click', function () {
       chips.querySelectorAll('.chip').forEach(function (o) { o.setAttribute('aria-selected', 'false'); });
       c.setAttribute('aria-selected', 'true');
+      // chip nhóm nằm khuất bên phải trên điện thoại: kéo vào tầm nhìn
+      chips.scrollTo({ left: c.offsetLeft - chips.clientWidth / 2 + c.offsetWidth / 2, behavior: 'smooth' });
       loc = c.getAttribute('data-tb-loc');
       ve();
     });
@@ -2793,59 +2846,6 @@
     var a = e.target.closest('a[href]');
     if (a) return;              // để trình duyệt tự chuyển trang
     location.href = item.getAttribute('data-link');
-  });
-
-  /* ---------- Cài đặt nhóm thông báo ---------- */
-  var CD = [
-    ['Bài viết của tôi', [
-      ['bai-dang', 'Bài được đăng hoặc cần điều chỉnh', 'Qua ứng dụng và email', true],
-      ['go-bai', 'Kết quả yêu cầu gỡ bài', 'Qua ứng dụng và email', true]
-    ]],
-    ['Tương tác', [
-      ['binh-luan', 'Bình luận và trả lời', 'Gộp các bình luận trong 30 phút'],
-      ['moc-thich', 'Mốc lượt thích', '10 · 50 · 100 · 500 · 1K · 5K'],
-      ['moc-xem', 'Mốc lượt xem', '100 · 1K · 10K · 100K'],
-      ['theo-doi', 'Người theo dõi mới', 'Gộp khi có nhiều người cùng lúc']
-    ]],
-    ['Tài khoản', [
-      ['bao-mat', 'Đăng nhập và bảo mật', 'Qua ứng dụng và email', true],
-      ['cap-nhat', 'Yêu cầu cập nhật thông tin', 'Qua ứng dụng']
-    ]]
-  ];
-
-  function docCd() {
-    try { return JSON.parse(localStorage.getItem(KHO_CD) || '{}') || {}; } catch (e) { return {}; }
-  }
-
-  document.getElementById('tbCaiDat').addEventListener('click', function () {
-    var cd = docCd();
-    var html = '<div class="tb-cd">' + CD.map(function (nhom) {
-      return '<p class="tb-cd__nhom">' + nhom[0] + '</p>' + nhom[1].map(function (d) {
-        var bat = cd[d[0]] !== false;
-        return '<div class="tb-cd__dong">' +
-          '<span class="tb-cd__than"><span class="tb-cd__ten">' + d[1] + '</span>' +
-          '<span class="tb-cd__phu">' + d[2] + '</span></span>' +
-          (d[3]
-            ? '<span class="tb-cd__khoa">Luôn bật</span>'
-            : '<button class="tb-gat" type="button" role="switch" aria-pressed="' + bat + '" ' +
-              'data-cd="' + d[0] + '" aria-label="' + d[1] + '"></button>') +
-          '</div>';
-      }).join('');
-    }).join('') + '</div>';
-
-    window.gnmMoBang('Cài đặt thông báo',
-      'Các thông báo quan trọng về bài viết và tài khoản luôn được gửi.', html);
-  });
-
-  // bật/tắt lưu ngay, không cần nút Lưu
-  document.addEventListener('click', function (e) {
-    var g = e.target.closest('.tb-gat');
-    if (!g) return;
-    var bat = g.getAttribute('aria-pressed') !== 'true';
-    g.setAttribute('aria-pressed', String(bat));
-    var cd = docCd();
-    cd[g.getAttribute('data-cd')] = bat;
-    try { localStorage.setItem(KHO_CD, JSON.stringify(cd)); } catch (er) {}
   });
 
   ve();
