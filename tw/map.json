@@ -2085,6 +2085,6 @@
  },
  "zz-dong-tac-gia-ca-nhan": {
   "tw": "",
-  "keep": ".tg-time--duoi{flex-basis:100%}.tg-chu .tg-names{row-gap:0}.tg-khac{position:relative;flex:none;padding:0;border:0;background:none;font-family:inherit;font-size:13px;font-weight:600;line-height:19.5px;color:var(--ink);white-space:nowrap;cursor:pointer}.tg-khac::after{content:\"\";position:absolute;inset:-10px -4px}.tg-khac:hover{text-decoration:underline}.tg-who:has(.tg-khac){gap:4px}@media (min-width:768px){.v-web .feat .hscroll>li:first-child .byline.tg-chu{padding-top:4px;padding-bottom:4px}.v-web .feat .hscroll>li:first-child .tg-khac{color:#fff}}"
+  "keep": ".tg-time--duoi{flex-basis:100%}.tg-chu .tg-names{row-gap:0}@media (min-width:768px){.v-web .feat .hscroll>li:first-child .byline.tg-chu{padding-top:4px;padding-bottom:4px}.v-web .feat .hscroll>li:first-child .tg-more{background:rgba(255,255,255,.18);color:#fff}.v-web .feat .hscroll>li:first-child .tg-more:hover{background:rgba(255,255,255,.3)}}"
  }
 }
