@@ -3305,12 +3305,10 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       return { id: m.id, ten: p.ten, anh: p.anh, vai: p.vai, link: p.link, luc: Date.now() - m.gio * GIO,
         noi: m.noi, tim: m.tim + (st.tim[m.id] ? 1 : 0), daTim: !!st.tim[m.id], chon: m.chon };
     });
+    // Mới nhất: đăng gần đây nhất lên trước. Nổi bật: nhiều tim nhất lên trước,
+    // bằng tim thì câu mới hơn đứng trước.
     if (xep === 'moi-nhat') ds.sort(function (a, b) { return b.luc - a.luc; });
-    // Nổi bật: không chỉ đếm tim — trộn tim với độ mới
-    if (xep === 'noi-bat') {
-      var diem = function (a) { return a.tim / Math.pow((Date.now() - a.luc) / GIO + 2, 0.6); };
-      ds.sort(function (a, b) { return diem(b) - diem(a); });
-    }
+    if (xep === 'noi-bat') ds.sort(function (a, b) { return (b.tim - a.tim) || (b.luc - a.luc); });
     // GNM chọn: ban biên tập ghim lên đầu ở mọi cách sắp xếp, giữ thứ tự ghim
     var ghim = MAU.filter(function (m) { return m.chon; }).map(function (m) {
       return ds.filter(function (a) { return a.id === m.id; })[0];
