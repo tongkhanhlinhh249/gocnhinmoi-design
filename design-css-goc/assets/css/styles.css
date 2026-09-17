@@ -6503,8 +6503,8 @@ input { font: inherit; }
 .cht-tl__ai { flex: 1; min-width: 0; }
 .cht-tl__dong1 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 6px; }
 .cht-tl__ten { font-size: 14px; font-weight: 700; line-height: 20px; color: var(--ink-strong); }
-.cht-nhan-chon { display: inline-flex; align-items: center; gap: 3px; padding: 1px 7px; border-radius: var(--r-pill); background: #E6F4EC; color: #0F7B45; font-size: 11px; font-weight: 700; line-height: 18px; }
-.cht-nhan-chon .icon { width: 11px; height: 11px; }
+.cht-nhan-chon { display: inline-grid; place-items: center; width: 18px; height: 18px; color: var(--gnm-red); }
+.cht-nhan-chon .icon { width: 14px; height: 14px; }
 .cht-tl__phu { padding-top: 1px; font-size: 12px; line-height: 17px; color: var(--text-muted); }
 .cht-tl__menu { flex: none; display: grid; place-items: center; width: 32px; height: 32px; margin: -4px -6px 0 0; border: 0; border-radius: var(--r-pill); background: none; color: var(--text-muted); cursor: pointer; }
 .cht-tl__menu:hover { background: var(--fill-soft); color: var(--ink-strong); }

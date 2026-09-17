@@ -3288,7 +3288,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     return '<li class="cht-tl' + (laToi ? ' cht-tl--toi" id="cua-toi' : '') + '" data-id="' + a.id + '">' +
       '<div class="cht-tl__dau"><a class="cht-tl__ava" href="' + a.link + '"><img src="' + a.anh + '" alt="" width="36" height="36" loading="lazy"></a>' +
       '<div class="cht-tl__ai"><p class="cht-tl__dong1"><a class="cht-tl__ten" href="' + a.link + '">' + thoat(a.ten) + '</a>' +
-      (a.chon ? '<span class="cht-nhan-chon"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>GNM chọn</span>' : '') + '</p>' +
+      (a.chon ? '<span class="cht-nhan-chon" role="img" aria-label="GNM chọn, được ghim lên đầu" title="GNM chọn"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg></span>' : '') + '</p>' +
       '<p class="cht-tl__phu">' + (a.vai ? thoat(a.vai) + ' · ' : '') + khiNao(a.luc) + (a.sua ? ' · đã chỉnh sửa' : '') + '</p></div>' +
       '<button class="cht-tl__menu" type="button" data-cht-menu aria-label="Tuỳ chọn câu trả lời"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button></div>' +
       nhanTrangThai + '<p class="cht-tl__noi">' + thoat(a.noi) + '</p>' + tim + '</li>';
