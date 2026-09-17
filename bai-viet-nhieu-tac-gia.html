@@ -10,9 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
-<body>
+<body class="v-web art-desk">
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -130,6 +131,9 @@
     <path d="M9.1 1.9H4.4C3.85 1.9 3.4 2.35 3.4 2.9V13.1C3.4 13.65 3.85 14.1 4.4 14.1H11.6C12.15 14.1 12.6 13.65 12.6 13.1V5.4L9.1 1.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
     <path d="M9.1 1.9V5.4H12.6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
   </symbol>
+  <symbol id="i-flag" viewBox="0 0 16 16">
+    <path d="M3 14.5V2.5M3 2.5C3 2.5 4 1.75 6 1.75C8 1.75 9 3.25 11 3.25C13 3.25 13.5 2.5 13.5 2.5V9C13.5 9 13 9.75 11 9.75C9 9.75 8 8.25 6 8.25C4 8.25 3 9 3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
   <symbol id="i-link" viewBox="0 0 16 16">
     <path d="M6.7 8.65C6.98 9.02 7.34 9.33 7.75 9.55C8.16 9.77 8.62 9.9 9.08 9.93C9.55 9.96 10.01 9.89 10.45 9.73C10.88 9.56 11.28 9.31 11.6 8.98L13.6 6.98C14.18 6.38 14.5 5.58 14.49 4.75C14.48 3.92 14.15 3.13 13.56 2.54C12.97 1.95 12.18 1.62 11.35 1.61C10.52 1.6 9.72 1.92 9.13 2.5L7.98 3.64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     <path d="M9.3 7.35C9.02 6.98 8.66 6.67 8.25 6.45C7.84 6.23 7.38 6.1 6.92 6.07C6.45 6.04 5.99 6.11 5.55 6.27C5.12 6.44 4.72 6.69 4.4 7.02L2.4 9.02C1.82 9.62 1.5 10.42 1.51 11.25C1.52 12.08 1.85 12.87 2.44 13.46C3.03 14.05 3.82 14.38 4.65 14.39C5.48 14.4 6.28 14.08 6.87 13.5L8.02 12.36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -163,6 +167,22 @@
 
   <main id="main">
 
+    <!-- ============ Thanh trên — chỉ hiện ở desktop ============ -->
+    <div class="deskbar">
+      <a class="art-bar__logo" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ"><img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32"></a>
+      <label class="deskbar__search">
+        <svg class="icon size-4 flex-none deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
+        <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
+      </label>
+      <a class="deskbar__write" href="viet-bai.html">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
+      </a>
+      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
+        <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
+      </a>
+    </div>
+
     <!-- ============ Ảnh mở đầu ============ -->
     <section class="article-hero sticky top-0 z-0 aspect-[375/250] overflow-hidden bg-surface-dark" aria-label="Ảnh bài viết">
       <img src="assets/img/hero-genz.png" alt="Nhóm bạn trẻ làm việc trong không gian mở" width="375" height="250">
@@ -173,26 +193,33 @@
     <div class="relative z-[1] bg-surface">
     <!-- ============ Đầu bài ============ -->
     <article class="shell w-full max-w-shell mx-auto px-4">
-      <header class="pt-5">
-        <a class="inline-block text-[13px] font-bold leading-5 text-primary-800" href="#">#GenZ</a>
-        <h1 class="pt-[10px] text-2xl font-extrabold leading-[33px] tracking-[-.015em] text-ink">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có</h1>
+      <header class="article-head pt-5">
+        <a class="article__tag inline-block text-[13px] font-bold leading-5 text-primary-800" href="#">#GenZ</a>
+        <h1 class="article__title pt-[10px] text-2xl font-extrabold leading-[33px] tracking-[-.015em] text-ink">Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có</h1>
 
-        <p class="mt-4 pl-[14px] border-l-[3px] border-line-3 text-[15px] leading-6 text-ink-action">Họ không mua thứ rẻ nhất, cũng không mua thứ đắt nhất. Họ mua thứ kể được một câu chuyện mà họ muốn kể lại.</p>
+        <p class="article__sapo mt-4 pl-[14px] border-l-[3px] border-line-3 text-[15px] leading-6 text-ink-action">Họ không mua thứ rẻ nhất, cũng không mua thứ đắt nhất. Họ mua thứ kể được một câu chuyện mà họ muốn kể lại.</p>
 
-        <!-- Đồng tác giả: 1–3 bút danh theo đúng thứ tự đã lưu. Không rút gọn
-             thành "và cộng sự" trên trang chi tiết; màn hẹp thì xuống dòng. -->
-        <div class="article__meta flex items-center gap-[10px] pt-[18px]">
-          <span class="byline__stack flex flex-none" aria-hidden="true">
-            <img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36">
-            <img src="assets/img/avatar-minh-hieu.jpg" alt="" width="36" height="36">
-            <img src="assets/img/avatar-hoang-nam.jpg" alt="" width="36" height="36">
-          </span>
-          <div>
-            <p class="text-[14px] font-bold leading-5 text-ink article__authors flex flex-wrap"><a href="ca-nhan.html?tac-gia=an-nhien">An Nhiên</a><span class="font-normal text-ink-muted" aria-hidden="true">–</span><a href="ca-nhan.html?tac-gia=minh-an">Minh An</a><span class="font-normal text-ink-muted" aria-hidden="true">–</span><a href="ca-nhan.html?tac-gia=hai-phong">Hải Phong</a></p>
-            <p class="text-[12px] leading-[18px] text-ink-muted">Thứ năm, 21/08/2026 15:17 (GMT+7)</p>
-          </div>
+        <!-- Đồng tác giả: mỗi cụm ảnh + tên mở trang tác giả, theo đúng thứ tự đã lưu.
+             Thiếu chỗ thì xuống dòng theo cả cụm, không cắt tên. ?so=2 để xem trường hợp 2 tác giả. -->
+        <div class="tg-dau">
+          <ul class="tg-list" data-tg-list>
+            <li><a class="tg-cum" href="ca-nhan.html?tac-gia=chan-dieu"><img src="assets/img/avatar-thu-hang.png" alt="" width="30" height="30"><span class="tg-cum__ten">Chân Diệu</span></a></li>
+            <li><a class="tg-cum" href="ca-nhan.html?tac-gia=ngoc-linh"><img src="assets/img/avatar-ngoc-han.jpg" alt="" width="30" height="30"><span class="tg-cum__ten">Ngọc Linh</span></a></li>
+            <li><a class="tg-cum" href="ca-nhan.html?tac-gia=nguyen-duc-viet"><img src="assets/img/avatar-van-duc.jpg" alt="" width="30" height="30"><span class="tg-cum__ten">Nguyễn Đức Việt</span></a></li>
+          </ul>
+          <p class="article__date text-[12px] leading-[18px] text-ink-muted">15/08/2026 16:00</p>
         </div>
       </header>
+
+      <div class="art-body">
+      <!-- Cột chia sẻ dính bên trái thân bài — chỉ hiện ở desktop -->
+      <aside class="art-share" aria-label="Chia sẻ và tương tác">
+        <button class="art-share__nut" type="button" data-toast="Đã mở chia sẻ lên Facebook" aria-label="Chia sẻ lên Facebook"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg></button>
+        <button class="art-share__nut" type="button" data-toast="Đã sao chép liên kết bài viết" aria-label="Sao chép liên kết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-link"></use></svg></button>
+        <a class="art-share__nut" href="#cmt-title" aria-label="Tới phần bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg></a>
+        <button class="art-share__nut" type="button" data-like data-count="0" aria-pressed="false" aria-label="Thích bài viết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+        <button class="art-share__nut" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo bài viết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-flag"></use></svg></button>
+      </aside>
 
       <div class="article__body pt-[22px]">
         <h2>Mua để kể chuyện, không phải để sở hữu</h2>
@@ -209,6 +236,7 @@
         <h2>Kênh mua sắm dịch chuyển</h2>
         <p>Thương mại điện tử vẫn tăng, nhưng phần tăng mạnh nhất đến từ các phiên bán hàng trực tiếp và cửa hàng nhỏ có mặt tiền xã hội rõ ràng. Ba trong bốn người được hỏi cho biết họ mua lần đầu sau khi xem một nội dung dài hơn ba phút về thương hiệu đó.</p>
         <p>Với các doanh nghiệp truyền thống, thay đổi này buộc họ viết lại ngân sách tiếp thị: chi phí sản xuất nội dung nay chiếm phần lớn hơn cả chi phí quảng cáo trả tiền.</p>
+      </div>
       </div>
     </article>
 
@@ -271,6 +299,98 @@
 
     </div>
   </main>
+
+  <!-- ============ Cột phải — chỉ hiện ở desktop rộng ============ -->
+  <aside class="siderail" aria-label="Nội dung liên quan">
+    <section class="rail-card art-rail-plain" aria-labelledby="rail-spot-title">
+      <h2 class="rail-title art-rail-do" id="rail-spot-title">Spotlight</h2>
+      <ul class="rail-spot">
+        <li class="rail-spot__row">
+          <img src="assets/img/kp-chatgpt.jpg" alt="" width="68" height="52" loading="lazy">
+          <div>
+            <h3 class="rail-spot__title"><a href="spotlight.html">ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng</a></h3>
+            <p class="rail-spot__meta"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>199.6K<span aria-hidden="true">·</span>10/09/2026</p>
+          </div>
+        </li>
+        <li class="rail-spot__row">
+          <img src="assets/img/cover-shark-viet.png" alt="" width="68" height="52" loading="lazy">
+          <div>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
+            <p class="rail-spot__meta"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>226.6K<span aria-hidden="true">·</span>06/09/2026</p>
+          </div>
+        </li>
+        <li class="rail-spot__row">
+          <img src="assets/img/kp-khong-tu.jpg" alt="" width="68" height="52" loading="lazy">
+          <div>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Khổng Tử và bài học quản trị cho doanh nghiệp Việt hôm nay</a></h3>
+            <p class="rail-spot__meta"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>158.8K<span aria-hidden="true">·</span>03/09/2026</p>
+          </div>
+        </li>
+        <li class="rail-spot__row">
+          <img src="assets/img/cover-emag-ai.png" alt="" width="68" height="52" loading="lazy">
+          <div>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Kinh tế AI: Việt Nam đứng ở đâu trên bản đồ công nghệ châu Á?</a></h3>
+            <p class="rail-spot__meta"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>168.4K<span aria-hidden="true">·</span>03/09/2026</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-tags-title">
+      <h2 class="rail-title" id="rail-tags-title">Hashtag nổi bật</h2>
+      <ul class="rail-tags">
+        <li><a class="rail-tag" href="#">#AI</a></li>
+        <li><a class="rail-tag" href="#">#GenZ</a></li>
+        <li><a class="rail-tag" href="#">#KinhTe</a></li>
+        <li><a class="rail-tag" href="#">#Startup</a></li>
+        <li><a class="rail-tag" href="#">#SongCham</a></li>
+        <li><a class="rail-tag" href="#">#GiaoDuc</a></li>
+        <li><a class="rail-tag" href="#">#ChinhTri</a></li>
+      </ul>
+    </section>
+
+    <section class="rail-card rail-card--red" aria-labelledby="rail-red-title">
+      <h2 class="rail-title" id="rail-red-title">Thịnh hành</h2>
+      <ul class="rail-red">
+          <li class="rail-red__row">
+            <img src="assets/img/cover-hoi-huong.png" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=phuong-anh">Phương Anh</a><span class="rail-red__time">· 1 ngày trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Làn sóng hồi hương của người Việt trẻ từ nước ngoài: Cơ hội hay thách thức?</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/kp-dan-chu-so.jpg" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=hoang-nam">PGS. Hoàng Nam</a><span class="rail-red__time">· 5 giờ trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Dân chủ số: Khi mạng xã hội định hình lại chính trị toàn cầu</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/cover-nha-o-ha-noi.png" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=quang-huy">TS. Quang Huy</a><span class="rail-red__time">· 2 ngày trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Thị trường nhà ở Hà Nội: Giá đã chạm đỉnh hay còn tiếp tục leo thang?</a></h3>
+            </div>
+          </li>
+          <li class="rail-red__row">
+            <img src="assets/img/kp-song-cham.jpg" alt="" width="56" height="56" loading="lazy">
+            <div class="rail-red__body">
+              <p class="rail-red__by">
+                <a class="rail-red__name" href="ca-nhan.html?tac-gia=lan-anh">TS. Lan Anh</a><span class="rail-red__time">· 3 giờ trước</span>
+              </p>
+              <h3 class="rail-red__title"><a href="bai-viet.html">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</a></h3>
+            </div>
+          </li>
+      </ul>
+    </section>
+  </aside>
 
   <!-- ============ Footer ============ -->
   <footer class="site-footer bg-surface border-t border-line-3 mt-[44px]">

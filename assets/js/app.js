@@ -150,6 +150,7 @@
     var tit = document.getElementById('sheetTitle');
     var meta = document.getElementById('sheetMeta');
     if (!sh || !body) return;
+    sh.classList.remove('is-tg');
     tit.textContent = tieuDe;
     if (meta) { meta.textContent = ''; meta.hidden = true; }
     body.innerHTML = '<div class="sheet-menu">' + items.map(function (x) {
@@ -178,7 +179,7 @@
     var sh = document.getElementById('sheet');
     if (!sh) return;
     sh.classList.remove('is-open');
-    setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo'); }, 260);
+    setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo', 'is-tg'); }, 260);
   }
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('[data-sheet-close]')) dongSheetMenu();
@@ -214,7 +215,7 @@
     var tit = document.getElementById('sheetTitle');
     var meta = document.getElementById('sheetMeta');
     if (!sh || !body) return;
-    sh.classList.remove('is-neo');
+    sh.classList.remove('is-neo', 'is-tg');
     tit.textContent = tieuDe;
     if (meta) { meta.textContent = phu || ''; meta.hidden = !phu; }
     body.innerHTML = html;
@@ -222,6 +223,79 @@
     void sh.offsetWidth;
     sh.classList.add('is-open');
   };
+
+  /* ---------- Đồng tác giả ----------
+     Nút +N trên card mở danh sách đủ tác giả theo đúng thứ tự đã lưu của bài:
+     hộp bám nút trên desktop, tấm trượt từ đáy trên điện thoại. Bấm/chạm, không
+     dựa vào hover. */
+  function moTacGia(ds, neo) {
+    var sh = document.getElementById('sheet');
+    var body = document.getElementById('sheetBody');
+    var tit = document.getElementById('sheetTitle');
+    var meta = document.getElementById('sheetMeta');
+    if (!sh || !body) return;
+    tit.textContent = 'Tác giả bài viết';
+    if (meta) { meta.textContent = ''; meta.hidden = true; }
+    var ul = document.createElement('ul');
+    ul.className = 'tg-ds';
+    ds.forEach(function (a) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      link.className = 'tg-ds__dong';
+      link.href = a.link;
+      var img = document.createElement('img');
+      img.src = a.anh; img.alt = ''; img.width = 36; img.height = 36;
+      var ten = document.createElement('span');
+      ten.textContent = a.ten;
+      link.appendChild(img); link.appendChild(ten);
+      li.appendChild(link); ul.appendChild(li);
+    });
+    body.innerHTML = '';
+    body.appendChild(ul);
+    var bam = !!neo && window.matchMedia('(min-width: 1024px)').matches;
+    sh.classList.toggle('is-neo', bam);
+    sh.classList.add('is-tg');
+    sh.hidden = false;
+    if (bam) datChoChung(neo);
+    void sh.offsetWidth;
+    sh.classList.add('is-open');
+    var dau = ul.querySelector('a');
+    if (dau) dau.focus();
+  }
+  document.addEventListener('click', function (e) {
+    var nut = e.target.closest && e.target.closest('[data-tac-gia]');
+    if (!nut) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var ds;
+    try { ds = JSON.parse(nut.getAttribute('data-tac-gia')); } catch (er) { return; }
+    moTacGia(ds, nut);
+  });
+  document.addEventListener('keydown', function (e) {
+    var sh = document.getElementById('sheet');
+    if (e.key === 'Escape' && sh && sh.classList.contains('is-tg') && sh.classList.contains('is-open')) dongSheetMenu();
+  });
+
+  // Trang mẫu nhiều tác giả: ?so=2 để xem trường hợp 2 tác giả
+  var tgSo = (location.search.match(/[?&]so=([23])/) || [])[1];
+  if (tgSo) {
+    [].forEach.call(document.querySelectorAll('[data-tg-list]'), function (ul) {
+      [].slice.call(ul.children, +tgSo).forEach(function (li) { ul.removeChild(li); });
+    });
+  }
+
+  // Thời gian rơi xuống dòng thì bỏ dấu "·" ở đầu dòng
+  function canhThoiGianTg() {
+    [].forEach.call(document.querySelectorAll('.tg-time'), function (t) {
+      t.classList.remove('is-xuong');
+      var truoc = t.previousElementSibling;
+      if (truoc && t.offsetTop > truoc.offsetTop + 4) t.classList.add('is-xuong');
+    });
+  }
+  canhThoiGianTg();
+  var tgHen;
+  window.addEventListener('resize', function () { clearTimeout(tgHen); tgHen = setTimeout(canhThoiGianTg, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(canhThoiGianTg);
 
   /* ---------- Đăng xuất ---------- */
   function moHopChung(tieuDe, chu, nut) {
@@ -1481,7 +1555,7 @@
      Bấm avatar hoặc tên trong byline sẽ mở chính trang này kèm ?tac-gia=<slug>.
      Cùng một trang, chỉ thay danh tính và ép về chế độ khách — hồ sơ người khác
      không bao giờ được phép hiện khu vực này. */
-  var AUTHORS_REG = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-khoa.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@dangkhoa","joined":"Tham gia tháng 1, 2024","followers":"3.3k","following":"399","posts":"29","views":"262.5k","likes":"36.3k"},"duc-anh":{"name":"Đức Anh","avatar":"avatar-duc-anh.png","cover":"kp-ha-noi.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@ducanh","joined":"Tham gia tháng 2, 2025","followers":"10.4k","following":"251","posts":"48","views":"122k","likes":"74.5k"},"gnn":{"name":"Ban Biên Tập GNN","avatar":"avatar-gnn.png","cover":"cover-thanh-pho.png","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@gnn","joined":"Tham gia tháng 3, 2025","followers":"31.9k","following":"175","posts":"14","views":"141.7k","likes":"42.5k"},"hoai-nam":{"name":"Hoài Nam","avatar":"avatar-hoai-nam.png","cover":"kp-tay-nguyen.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@hoainam","joined":"Tham gia tháng 4, 2024","followers":"47.5k","following":"295","posts":"15","views":"55.5k","likes":"24.3k"},"hoang-nam":{"name":"PGS. Hoàng Nam","avatar":"avatar-hoang-nam.jpg","cover":"kp-song-cham.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@hoangnam","joined":"Tham gia tháng 5, 2025","followers":"26.2k","following":"588","posts":"22","views":"40.8k","likes":"11.3k"},"khanh-linh":{"name":"Khánh Linh","avatar":"avatar-khanh-linh.png","cover":"cover-du-lich.png","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@khanhlinh","joined":"Tham gia tháng 6, 2025","followers":"63.5k","following":"448","posts":"34","views":"66.1k","likes":"65.6k"},"lan-anh":{"name":"TS. Lan Anh","avatar":"avatar-lan-anh.png","cover":"kp-sai-gon-5h.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@lananh","joined":"Tham gia tháng 7, 2024","followers":"35k","following":"430","posts":"33","views":"180k","likes":"30.6k"},"lan-chi":{"name":"Lan Chi","avatar":"avatar-lan-chi.png","cover":"kp-ha-noi.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@lanchi","joined":"Tham gia tháng 8, 2025","followers":"45.2k","following":"163","posts":"5","views":"68.7k","likes":"28.1k"},"marco-rossi":{"name":"Marco Rossi","avatar":"avatar-marco-rossi.jpg","cover":"cover-thanh-pho.png","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@marcorossi","joined":"Tham gia tháng 9, 2025","followers":"50.4k","following":"220","posts":"45","views":"251.8k","likes":"67k"},"minh-duc":{"name":"Minh Đức","avatar":"avatar-minh-duc.png","cover":"kp-tay-nguyen.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@minhduc","joined":"Tham gia tháng 10, 2024","followers":"9.9k","following":"617","posts":"34","views":"279.2k","likes":"33.2k"},"minh-hieu":{"name":"TS. Minh Hiếu","avatar":"avatar-minh-hieu.jpg","cover":"kp-song-cham.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@minhhieu","joined":"Tham gia tháng 11, 2025","followers":"48.9k","following":"105","posts":"32","views":"295.4k","likes":"47.8k"},"minh-tuan":{"name":"Minh Tuấn","avatar":"avatar-minh-tuan.jpg","cover":"cover-du-lich.png","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@minhtuan","joined":"Tham gia tháng 12, 2025","followers":"23.7k","following":"364","posts":"31","views":"198.9k","likes":"30k"},"ngoc-han":{"name":"Ngọc Hân","avatar":"avatar-ngoc-han.jpg","cover":"kp-sai-gon-5h.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@ngochan","joined":"Tham gia tháng 1, 2024","followers":"55.3k","following":"329","posts":"58","views":"203.8k","likes":"65.5k"},"nguyen-thanh-binh":{"name":"GS. Nguyễn Thanh Bình","avatar":"avatar-nguyen-thanh-binh.png","cover":"kp-ha-noi.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@nguyenthanhbinh","joined":"Tham gia tháng 2, 2025","followers":"52.2k","following":"636","posts":"49","views":"85.4k","likes":"32.6k"},"nhat-minh":{"name":"Nhật Minh","avatar":"avatar-nhat-minh.png","cover":"cover-thanh-pho.png","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@nhatminh","joined":"Tham gia tháng 3, 2025","followers":"29k","following":"828","posts":"14","views":"310.7k","likes":"83.3k"},"phuong-anh":{"name":"Phương Anh","avatar":"avatar-phuong-anh.png","cover":"kp-tay-nguyen.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@phuonganh","joined":"Tham gia tháng 4, 2024","followers":"7.1k","following":"435","posts":"27","views":"307.3k","likes":"20.7k"},"quang-huy":{"name":"TS. Quang Huy","avatar":"avatar-quang-huy.jpg","cover":"kp-song-cham.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@quanghuy","joined":"Tham gia tháng 5, 2025","followers":"2.6k","following":"233","posts":"56","views":"173.9k","likes":"86.9k"},"quoc-bao":{"name":"Quốc Bảo","avatar":"avatar-quoc-bao.png","cover":"cover-du-lich.png","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@quocbao","joined":"Tham gia tháng 6, 2025","followers":"1.7k","following":"411","posts":"55","views":"125.2k","likes":"87.7k"},"quynh-chi":{"name":"Quỳnh Chi","avatar":"avatar-quynh-chi.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@quynhchi","joined":"Tham gia tháng 7, 2024","followers":"42.8k","following":"637","posts":"29","views":"280.9k","likes":"43.9k"},"thanh-ha":{"name":"Thanh Hà","avatar":"avatar-thanh-ha.jpg","cover":"kp-ha-noi.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@thanhha","joined":"Tham gia tháng 8, 2025","followers":"36.1k","following":"522","posts":"55","views":"274.8k","likes":"30.4k"},"thu-hang":{"name":"Thu Hằng","avatar":"avatar-thu-hang.png","cover":"cover-thanh-pho.png","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@thuhang","joined":"Tham gia tháng 9, 2025","followers":"35.4k","following":"141","posts":"22","views":"160.7k","likes":"74.1k"},"tran-bao":{"name":"Trần Bảo","avatar":"avatar-tran-bao.jpg","cover":"kp-tay-nguyen.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@tranbao","joined":"Tham gia tháng 10, 2024","followers":"32.1k","following":"817","posts":"17","views":"193.3k","likes":"22.1k"},"tran-bao-long":{"name":"Trần Bảo Long","avatar":"avatar-tran-bao-long.jpg","cover":"kp-song-cham.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@tranbaolong","joined":"Tham gia tháng 11, 2025","followers":"54.9k","following":"488","posts":"33","views":"90.3k","likes":"13.6k"},"van-duc":{"name":"GS. Văn Đức","avatar":"avatar-van-duc.jpg","cover":"cover-du-lich.png","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@vanduc","joined":"Tham gia tháng 12, 2025","followers":"40.2k","following":"389","posts":"7","views":"90.1k","likes":"11.9k"}};
+  var AUTHORS_REG = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-khoa.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@dangkhoa","joined":"Tham gia tháng 1, 2024","followers":"3.3k","following":"399","posts":"29","views":"262.5k","likes":"36.3k"},"duc-anh":{"name":"Đức Anh","avatar":"avatar-duc-anh.png","cover":"kp-ha-noi.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@ducanh","joined":"Tham gia tháng 2, 2025","followers":"10.4k","following":"251","posts":"48","views":"122k","likes":"74.5k"},"gnn":{"name":"Ban Biên Tập GNN","avatar":"avatar-gnn.png","cover":"cover-thanh-pho.png","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@gnn","joined":"Tham gia tháng 3, 2025","followers":"31.9k","following":"175","posts":"14","views":"141.7k","likes":"42.5k"},"hoai-nam":{"name":"Hoài Nam","avatar":"avatar-hoai-nam.png","cover":"kp-tay-nguyen.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@hoainam","joined":"Tham gia tháng 4, 2024","followers":"47.5k","following":"295","posts":"15","views":"55.5k","likes":"24.3k"},"hoang-nam":{"name":"PGS. Hoàng Nam","avatar":"avatar-hoang-nam.jpg","cover":"kp-song-cham.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@hoangnam","joined":"Tham gia tháng 5, 2025","followers":"26.2k","following":"588","posts":"22","views":"40.8k","likes":"11.3k"},"khanh-linh":{"name":"Khánh Linh","avatar":"avatar-khanh-linh.png","cover":"cover-du-lich.png","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@khanhlinh","joined":"Tham gia tháng 6, 2025","followers":"63.5k","following":"448","posts":"34","views":"66.1k","likes":"65.6k"},"lan-anh":{"name":"TS. Lan Anh","avatar":"avatar-lan-anh.png","cover":"kp-sai-gon-5h.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@lananh","joined":"Tham gia tháng 7, 2024","followers":"35k","following":"430","posts":"33","views":"180k","likes":"30.6k"},"lan-chi":{"name":"Lan Chi","avatar":"avatar-lan-chi.png","cover":"kp-ha-noi.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@lanchi","joined":"Tham gia tháng 8, 2025","followers":"45.2k","following":"163","posts":"5","views":"68.7k","likes":"28.1k"},"marco-rossi":{"name":"Marco Rossi","avatar":"avatar-marco-rossi.jpg","cover":"cover-thanh-pho.png","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@marcorossi","joined":"Tham gia tháng 9, 2025","followers":"50.4k","following":"220","posts":"45","views":"251.8k","likes":"67k"},"minh-duc":{"name":"Minh Đức","avatar":"avatar-minh-duc.png","cover":"kp-tay-nguyen.jpg","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@minhduc","joined":"Tham gia tháng 10, 2024","followers":"9.9k","following":"617","posts":"34","views":"279.2k","likes":"33.2k"},"minh-hieu":{"name":"TS. Minh Hiếu","avatar":"avatar-minh-hieu.jpg","cover":"kp-song-cham.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@minhhieu","joined":"Tham gia tháng 11, 2025","followers":"48.9k","following":"105","posts":"32","views":"295.4k","likes":"47.8k"},"minh-tuan":{"name":"Minh Tuấn","avatar":"avatar-minh-tuan.jpg","cover":"cover-du-lich.png","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@minhtuan","joined":"Tham gia tháng 12, 2025","followers":"23.7k","following":"364","posts":"31","views":"198.9k","likes":"30k"},"ngoc-han":{"name":"Ngọc Hân","avatar":"avatar-ngoc-han.jpg","cover":"kp-sai-gon-5h.jpg","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@ngochan","joined":"Tham gia tháng 1, 2024","followers":"55.3k","following":"329","posts":"58","views":"203.8k","likes":"65.5k"},"nguyen-thanh-binh":{"name":"GS. Nguyễn Thanh Bình","avatar":"avatar-nguyen-thanh-binh.png","cover":"kp-ha-noi.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@nguyenthanhbinh","joined":"Tham gia tháng 2, 2025","followers":"52.2k","following":"636","posts":"49","views":"85.4k","likes":"32.6k"},"nhat-minh":{"name":"Nhật Minh","avatar":"avatar-nhat-minh.png","cover":"cover-thanh-pho.png","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@nhatminh","joined":"Tham gia tháng 3, 2025","followers":"29k","following":"828","posts":"14","views":"310.7k","likes":"83.3k"},"phuong-anh":{"name":"Phương Anh","avatar":"avatar-phuong-anh.png","cover":"kp-tay-nguyen.jpg","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@phuonganh","joined":"Tham gia tháng 4, 2024","followers":"7.1k","following":"435","posts":"27","views":"307.3k","likes":"20.7k"},"quang-huy":{"name":"TS. Quang Huy","avatar":"avatar-quang-huy.jpg","cover":"kp-song-cham.jpg","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@quanghuy","joined":"Tham gia tháng 5, 2025","followers":"2.6k","following":"233","posts":"56","views":"173.9k","likes":"86.9k"},"quoc-bao":{"name":"Quốc Bảo","avatar":"avatar-quoc-bao.png","cover":"cover-du-lich.png","role":"Cây bút kinh tế","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@quocbao","joined":"Tham gia tháng 6, 2025","followers":"1.7k","following":"411","posts":"55","views":"125.2k","likes":"87.7k"},"quynh-chi":{"name":"Quỳnh Chi","avatar":"avatar-quynh-chi.jpg","cover":"kp-sai-gon-5h.jpg","role":"Nhà nghiên cứu xã hội","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@quynhchi","joined":"Tham gia tháng 7, 2024","followers":"42.8k","following":"637","posts":"29","views":"280.9k","likes":"43.9k"},"thanh-ha":{"name":"Thanh Hà","avatar":"avatar-thanh-ha.jpg","cover":"kp-ha-noi.jpg","role":"Phóng viên ảnh","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@thanhha","joined":"Tham gia tháng 8, 2025","followers":"36.1k","following":"522","posts":"55","views":"274.8k","likes":"30.4k"},"thu-hang":{"name":"Thu Hằng","avatar":"avatar-thu-hang.png","cover":"cover-thanh-pho.png","role":"Chuyên gia giáo dục","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@thuhang","joined":"Tham gia tháng 9, 2025","followers":"35.4k","following":"141","posts":"22","views":"160.7k","likes":"74.1k"},"tran-bao":{"name":"Trần Bảo","avatar":"avatar-tran-bao.jpg","cover":"kp-tay-nguyen.jpg","role":"Nhà bình luận thời sự","bio":"Theo dõi chuyển động kinh tế Việt Nam hơn mười năm. Thích những con số biết kể chuyện.","handle":"@tranbao","joined":"Tham gia tháng 10, 2024","followers":"32.1k","following":"817","posts":"17","views":"193.3k","likes":"22.1k"},"tran-bao-long":{"name":"Trần Bảo Long","avatar":"avatar-tran-bao-long.jpg","cover":"kp-song-cham.jpg","role":"Biên tập viên","bio":"Quan tâm tới cách xã hội thay đổi qua từng thế hệ, và những gì bị bỏ lại phía sau.","handle":"@tranbaolong","joined":"Tham gia tháng 11, 2025","followers":"54.9k","following":"488","posts":"33","views":"90.3k","likes":"13.6k"},"van-duc":{"name":"GS. Văn Đức","avatar":"avatar-van-duc.jpg","cover":"cover-du-lich.png","role":"Nhà báo môi trường","bio":"Đi và ghi lại. Mỗi bức ảnh là một lát cắt của đời sống thường ngày.","handle":"@vanduc","joined":"Tham gia tháng 12, 2025","followers":"40.2k","following":"389","posts":"7","views":"90.1k","likes":"11.9k"},"chan-dieu":{"name":"Chân Diệu","avatar":"avatar-thu-hang.png","cover":"cover-thanh-pho.png","role":"Biên tập viên","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@chandieu","joined":"Tham gia tháng 3, 2025","followers":"12.4k","following":"210","posts":"18","views":"96.2k","likes":"21.5k"},"dinh-ngoc-dinh":{"name":"Đinh Ngọc Định","avatar":"avatar-quang-huy.jpg","cover":"cover-thanh-pho.png","role":"Nhà báo công nghệ","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@dinhngocdinh","joined":"Tham gia tháng 3, 2025","followers":"12.4k","following":"210","posts":"18","views":"96.2k","likes":"21.5k"},"ngoc-linh":{"name":"Ngọc Linh","avatar":"avatar-ngoc-han.jpg","cover":"cover-thanh-pho.png","role":"Cây bút kinh tế","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@ngoclinh","joined":"Tham gia tháng 3, 2025","followers":"12.4k","following":"210","posts":"18","views":"96.2k","likes":"21.5k"},"nguyen-duc-viet":{"name":"Nguyễn Đức Việt","avatar":"avatar-van-duc.jpg","cover":"cover-thanh-pho.png","role":"Nhà nghiên cứu xã hội","bio":"Viết về công nghệ và người trẻ. Tin rằng mọi câu chuyện đều đáng được nhìn từ một góc khác.","handle":"@nguyenducviet","joined":"Tham gia tháng 3, 2025","followers":"12.4k","following":"210","posts":"18","views":"96.2k","likes":"21.5k"}};
   var ME = 'duc-anh';
 
   function applyGuest(on) {
