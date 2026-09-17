@@ -6455,8 +6455,8 @@ input { font: inherit; }
 .cht-so li { display: inline-flex; align-items: center; gap: 6px; }
 .cht-so .icon { width: 15px; height: 15px; color: var(--icon-grey); }
 .cht-so b { color: var(--ink-strong); }
-.cht-cta { width: 100%; height: 46px; margin-top: 16px; border: 1px solid #FFD6D6; border-radius: var(--r-pill); background: #FFEFEF; color: var(--gnm-red); font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: background-color .15s var(--ease); }
-.cht-cta:hover { background: #FFE4E4; }
+.cht-cta { width: 100%; height: 46px; margin-top: 16px; border: 1px solid var(--gnm-red); border-radius: var(--r-pill); background: var(--gnm-red); color: #fff; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: background-color .15s var(--ease); }
+.cht-cta:hover { background: #940809; border-color: #940809; }
 .cht-cta.is-phu { background: var(--surface); color: var(--gnm-red); }
 .cht-dong { margin-top: 16px; padding: 12px 14px; border-radius: var(--r-md); background: var(--fill-soft); font-size: 14px; line-height: 21px; color: var(--text-action); text-align: center; }
 
