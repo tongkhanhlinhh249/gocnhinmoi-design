@@ -3288,7 +3288,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     return '<li class="cht-tl' + (laToi ? ' cht-tl--toi" id="cua-toi' : '') + '" data-id="' + a.id + '">' +
       '<div class="cht-tl__dau"><a class="cht-tl__ava" href="' + a.link + '"><img src="' + a.anh + '" alt="" width="36" height="36" loading="lazy"></a>' +
       '<div class="cht-tl__ai"><p class="cht-tl__dong1"><a class="cht-tl__ten" href="' + a.link + '">' + thoat(a.ten) + '</a>' +
-      (a.chon ? '<span class="cht-nhan-chon"><svg class="icon" aria-hidden="true"><use href="#i-verified"></use></svg>GNM chọn</span>' : '') + '</p>' +
+      (a.chon ? '<span class="cht-nhan-chon"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>GNM chọn</span>' : '') + '</p>' +
       '<p class="cht-tl__phu">' + (a.vai ? thoat(a.vai) + ' · ' : '') + khiNao(a.luc) + (a.sua ? ' · đã chỉnh sửa' : '') + '</p></div>' +
       '<button class="cht-tl__menu" type="button" data-cht-menu aria-label="Tuỳ chọn câu trả lời"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button></div>' +
       nhanTrangThai + '<p class="cht-tl__noi">' + thoat(a.noi) + '</p>' + tim + '</li>';
@@ -3306,23 +3306,30 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
         noi: m.noi, tim: m.tim + (st.tim[m.id] ? 1 : 0), daTim: !!st.tim[m.id], chon: m.chon };
     });
     if (xep === 'moi-nhat') ds.sort(function (a, b) { return b.luc - a.luc; });
-    // Nổi bật: không chỉ đếm tim — trộn tim với độ mới và lựa chọn của GNM
+    // Nổi bật: không chỉ đếm tim — trộn tim với độ mới
     if (xep === 'noi-bat') {
-      var diem = function (a) { return (a.tim + (a.chon ? 60 : 0)) / Math.pow((Date.now() - a.luc) / GIO + 2, 0.6); };
+      var diem = function (a) { return a.tim / Math.pow((Date.now() - a.luc) / GIO + 2, 0.6); };
       ds.sort(function (a, b) { return diem(b) - diem(a); });
     }
-    if (xep === 'gnm-chon') ds = ds.filter(function (a) { return a.chon; });
+    // GNM chọn: ban biên tập ghim lên đầu ở mọi cách sắp xếp, giữ thứ tự ghim
+    var ghim = MAU.filter(function (m) { return m.chon; }).map(function (m) {
+      return ds.filter(function (a) { return a.id === m.id; })[0];
+    });
+    ds = ghim.concat(ds.filter(function (a) { return !a.chon; }));
 
     var html = '', t = cuaToi();
-    if (t && xep !== 'gnm-chon') {
+    if (t) {
       var p = nguoi(ME);
       html += veMot({ id: 'toi', ten: p.ten, anh: p.anh, vai: p.vai, link: p.link, luc: t.luc, noi: t.noi,
         tim: 0, trangThai: t.trangThai, sua: t.sua }, true);
     }
-    html += ds.map(function (a) { return veMot(a, false); }).join('');
+    // Ghim của GNM đứng trên cùng, câu trả lời của chính mình ngay sau đó
+    var soGhim = ghim.length;
+    html = ds.slice(0, soGhim).map(function (a) { return veMot(a, false); }).join('') + html +
+      ds.slice(soGhim).map(function (a) { return veMot(a, false); }).join('');
     list.innerHTML = html;
     trong.hidden = !!html;
-    trong.textContent = 'GNM chưa chọn câu trả lời nào cho câu hỏi này.';
+    trong.textContent = 'Chưa có câu trả lời nào.';
     veChung();
     veCta();
   }
@@ -3450,7 +3457,6 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       if (!dangSua) ghiNhap('');
       soan.hidden = true;
       dangSua = false;
-      if (xep === 'gnm-chon') { xep = 'moi-nhat'; chonChip(); }
       veDs();
       toast(kq.ket === 'VISIBLE' ? 'Câu trả lời của bạn đã được đăng.' : 'Câu trả lời của bạn đang được rà soát.');
       setTimeout(nhayToi, 80);
