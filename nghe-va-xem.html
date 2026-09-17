@@ -64,6 +64,9 @@
   <symbol id="i-comment" viewBox="0 0 15.9882 15.9882">
     <path d="M13.9897 9.99262C13.9897 10.346 13.8493 10.6849 13.5994 10.9347C13.3496 11.1846 13.0107 11.325 12.6573 11.325H4.66322L1.99852 13.9897V3.33087C1.99852 2.97751 2.1389 2.63863 2.38876 2.38876C2.63863 2.1389 2.97751 1.99852 3.33087 1.99852H12.6573C13.0107 1.99852 13.3496 2.1389 13.5994 2.38876C13.8493 2.63863 13.9897 2.97751 13.9897 3.33087V9.99262Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-x" viewBox="0 0 16 16">
+    <path d="M12.2 1.5h2.3L9.5 7.2l5.9 7.3h-4.6L7.2 9.9l-4.1 4.6H.8l5.3-6.1L.4 1.5h4.7l3.3 4.2zm-.8 11.7h1.3L4.4 2.7H3z" fill="currentColor"/>
+  </symbol>
   <symbol id="i-share" viewBox="0 0 15.9882 15.9882">
     <path d="M5.72244 9.00002L10.2724 11.6514M10.2658 4.3368L5.72244 6.98818M11.9912 5.3294C12.5212 5.3294 13.0295 5.11884 13.4043 4.74405C13.7791 4.36925 13.9897 3.86092 13.9897 3.33087C13.9897 2.80083 13.7791 2.2925 13.4043 1.9177C13.0295 1.54291 12.5212 1.33235 11.9912 1.33235C11.4611 1.33235 10.9528 1.54291 10.578 1.9177C10.2032 2.2925 9.99262 2.80083 9.99262 3.33087C9.99262 3.86092 10.2032 4.36925 10.578 4.74405C10.9528 5.11884 11.4611 5.3294 11.9912 5.3294ZM3.99705 7.9941C4.52709 7.9941 5.03542 7.78354 5.41022 7.40875C5.78502 7.03395 5.99557 6.52562 5.99557 5.99557C5.99557 5.46553 5.78502 4.9572 5.41022 4.5824C5.03542 4.20761 4.52709 3.99705 3.99705 3.99705C3.46701 3.99705 2.95868 4.20761 2.58388 4.5824C2.20908 4.9572 1.99852 5.46553 1.99852 5.99557C1.99852 6.52562 2.20908 7.03395 2.58388 7.40875C2.95868 7.78354 3.46701 7.9941 3.99705 7.9941ZM11.9912 10.6588C11.4611 10.6588 10.9528 10.8694 10.578 11.2442C10.2032 11.619 9.99262 12.1273 9.99262 12.6573C9.99262 13.1874 10.2032 13.6957 10.578 14.0705C10.9528 14.4453 11.4611 14.6559 11.9912 14.6559C12.5212 14.6559 13.0295 14.4453 13.4043 14.0705C13.7791 13.6957 13.9897 13.1874 13.9897 12.6573C13.9897 12.1273 13.7791 11.619 13.4043 11.2442C13.0295 10.8694 12.5212 10.6588 11.9912 10.6588Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -954,6 +957,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">1.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -976,6 +980,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -998,6 +1003,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1020,6 +1026,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">1.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1052,6 +1059,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">34.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1081,6 +1089,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">8.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1110,6 +1119,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">7.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1139,6 +1149,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1374,6 +1385,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">28.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1403,6 +1415,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">15.1k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1432,6 +1445,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">9.8k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1461,6 +1475,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">6k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1492,6 +1507,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1514,6 +1530,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">1.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1536,6 +1553,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">4.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1558,6 +1576,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1590,6 +1609,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">13.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1619,6 +1639,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">8.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1648,6 +1669,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">16.4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1677,6 +1699,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.1k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1790,6 +1813,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">24.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1819,6 +1843,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">22.4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1848,6 +1873,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">14.6k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1877,6 +1903,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">21.8k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -1908,6 +1935,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1930,6 +1958,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1952,6 +1981,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.1k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1974,6 +2004,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">4.3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -1996,6 +2027,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2018,6 +2050,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2040,6 +2073,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">6.3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2062,6 +2096,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2084,6 +2119,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2106,6 +2142,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">4.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2128,6 +2165,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3.4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2150,6 +2188,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2182,6 +2221,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.1k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2211,6 +2251,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">20.8k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2240,6 +2281,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">11.4k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2269,6 +2311,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">16.1k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2298,6 +2341,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">6.8k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2327,6 +2371,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">10.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2356,6 +2401,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">8.8k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2385,6 +2431,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2414,6 +2461,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">16.6k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu video"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2479,6 +2527,7 @@
           </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu tập podcast">
             <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
           </button>
@@ -2507,6 +2556,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">8.6k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2543,6 +2593,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">3.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="khac" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu album">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2572,6 +2623,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">5.5k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2601,6 +2653,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">11.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2630,6 +2683,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">2.7k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2659,6 +2713,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">20.9k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài">
               <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg>
             </button>
@@ -2688,6 +2743,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">51.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2713,6 +2769,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">49.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2738,6 +2795,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">52.3k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2763,6 +2821,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">35.6k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>
@@ -2788,6 +2847,7 @@
             </button>
             <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">37.2k</span></span>
             <span class="flex-1"></span>
+            <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
             <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon ml-3" type="button" data-card-menu aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
           </div>

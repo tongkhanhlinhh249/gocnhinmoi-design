@@ -6686,3 +6686,13 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .cs-thong-bao { bottom: 24px; }
   .art-desk .cs-nhom { max-width: 760px; margin-left: 80px; }
 }
+
+/* Menu chia sẻ của card: tách "Chia sẻ về trang cá nhân" khỏi nhóm mạng xã hội */
+.sheet-menu button[data-card-act="Chia sẻ về trang cá nhân"] { position: relative; margin-bottom: 7px; }
+.sheet-menu button[data-card-act="Chia sẻ về trang cá nhân"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: -5px; border-bottom: 1px solid var(--line); }
+.sheet-menu button[data-card-act="Facebook"] .icon { color: #1877F2; }
+.sheet-menu button[data-card-act="X"] .icon { color: #000; }
+
+/* Thêm nút chia sẻ làm thanh action dài hơn: khép nhóm biểu tượng bên phải cho khỏi tràn ở 375px */
+.actions > [data-chia-se],
+.actions > [data-chia-se] + [data-save] { margin-left: -8px; }

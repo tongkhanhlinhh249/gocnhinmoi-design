@@ -3768,7 +3768,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (s && s.cho && s.cho.kq === 'REJECTED') trangThai = '<div class="cs-bao-trang cs-bao-trang--an"><b>' + (s.cong ? 'Bản chỉnh sửa chưa được đăng' : 'Chia sẻ chưa được đăng') + '</b>' +
       thoat(s.cho.lyDo) + (s.cong ? ' Nội dung đã đăng trước đó vẫn hiển thị.' : '') + '</div>';
 
-    moHop(s ? 'Sửa chia sẻ' : 'Chia sẻ kèm góc nhìn',
+    moHop(s ? 'Sửa chia sẻ' : 'Chia sẻ về trang cá nhân',
       '<div class="cs-nguoi"><img src="assets/img/' + me.avatar + '" alt="" width="36" height="36"><div><b>' + thoat(me.name) + '</b><span>Chia sẻ lên trang cá nhân · công khai</span></div></div>' +
       trangThai +
       '<label class="sr-only" for="csO">Góc nhìn của bạn</label>' +
@@ -3915,6 +3915,43 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     });
   }
 
+  /* ---------- Nút chia sẻ trên thanh action của card ----------
+     Card bài viết có thêm "Chia sẻ về trang cá nhân"; video, podcast, album chỉ
+     có sao chép liên kết và mạng xã hội. Hộp bám nút trên desktop, bottom sheet
+     trên điện thoại (dùng chung menu của card). */
+  function baiTuThe(nut) {
+    var the = nut.closest('article, li') || document;
+    var tieuDe = $('.card__title a, .card__title, .tophero__title a, h2 a, h3 a, h2, h3', the);
+    var anh = $('img', the);
+    var tacGia = $('.byline__name, .tophero__author', the);
+    var ten = tieuDe ? tieuDe.textContent.trim() : 'Bài viết trên Góc Nhìn Mới';
+    var ma = 0;
+    for (var i = 0; i < ten.length; i++) ma = (ma * 31 + ten.charCodeAt(i)) >>> 0;
+    return {
+      id: 'bai-' + ma.toString(36), ten: ten,
+      anh: anh ? anh.getAttribute('src') : 'assets/img/logo-gnm.png',
+      tacGia: tacGia ? tacGia.textContent.trim() : 'Góc Nhìn Mới',
+      link: tieuDe && tieuDe.getAttribute('href') ? tieuDe.getAttribute('href') : 'bai-viet.html'
+    };
+  }
+  document.addEventListener('click', function (e) {
+    var nut = e.target.closest && e.target.closest('[data-chia-se]');
+    if (!nut || !window.gnmMoBangChon) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var laBai = nut.getAttribute('data-chia-se') === 'bai';
+    var bai = laBai ? baiTuThe(nut) : null;
+    var muc = [];
+    if (laBai) muc.push(['nav-user', 'Chia sẻ về trang cá nhân']);
+    muc.push(['link', 'Sao chép liên kết'], ['facebook', 'Facebook'], ['x', 'X']);
+    window.gnmMoBangChon('Chia sẻ', muc, function (act) {
+      setTimeout(function () {
+        if (act === 'Chia sẻ về trang cá nhân') moSoan(bai);
+        else toast(act === 'Sao chép liên kết' ? 'Đã sao chép liên kết' : 'Đã mở chia sẻ lên ' + act);
+      }, 280);
+    }, nut);
+  });
+
   /* ---------- Trang bài viết ---------- */
   var baiEl = $('[data-cs-bai]'), baiHienTai = null;
   if (baiEl) { try { baiHienTai = JSON.parse(baiEl.getAttribute('data-cs-bai')); } catch (e) {} }
@@ -3927,7 +3964,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function veNutBai() {
     if (!baiHienTai) return;
     var s = cuaBai(baiHienTai.id);
-    $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ kèm góc nhìn'; });
+    $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ về trang cá nhân'; });
   }
 
   /* ---------- Trang cá nhân: tab Chia sẻ ---------- */
@@ -3981,7 +4018,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     dsEl.innerHTML = ds.map(function (s) { return veThe(s, nguoi); }).join('');
     trongEl.hidden = ds.length > 0;
     $('#csTrongChu').textContent = laChu
-      ? 'Khi đọc một bài viết, chọn “Chia sẻ kèm góc nhìn” để đưa bài lên trang cá nhân cùng suy nghĩ của bạn.'
+      ? 'Khi đọc một bài viết, chọn “Chia sẻ về trang cá nhân” để đưa bài lên trang cá nhân cùng suy nghĩ của bạn.'
       : nguoi.name + ' chưa chia sẻ bài viết nào.';
   }
 
