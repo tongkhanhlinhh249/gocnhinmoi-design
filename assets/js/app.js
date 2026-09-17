@@ -46,6 +46,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var web = false;
     function doThe(c) {
       var f = c.parentElement;
+      if (!f) return;               // thẻ đã bị gỡ khỏi trang
       if (!web || getComputedStyle(f).display !== 'grid') { c.style.gridRowEnd = ''; return; }
       var h = c.getBoundingClientRect().height;
       if (!h) return;
@@ -68,6 +69,12 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     }
     window.addEventListener('resize', xep);
     window.addEventListener('load', xep);
+    // Thẻ chèn thêm sau khi tải trang (vd chia sẻ trên trang cá nhân) cũng phải được theo dõi
+    window.gnmXepSoLe = function () {
+      feeds.forEach(function (f) {
+        Array.prototype.forEach.call(f.children, function (c) { if (ro) ro.observe(c); doThe(c); });
+      });
+    };
     xep();
     return xep;
   })();
@@ -3231,24 +3238,6 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   veChung();
   setInterval(veChung, 30000);
 
-  /* ---------- Trang cá nhân: Câu trả lời của tôi ---------- */
-  var toiDs = $('#chtToiDs');
-  if (toiDs) {
-    var muc = function (cau, noi, nhan, kieu, phu, link) {
-      return '<li class="cht-toi__muc"><a class="cht-toi__cau" href="' + link + '">' + thoat(cau) + '</a>' +
-        '<p class="cht-toi__noi">' + thoat(noi) + '</p>' +
-        '<p class="cht-toi__phu"><span class="cht-huy-hieu' + (kieu ? ' cht-huy-hieu--' + kieu : '') + '">' + nhan + '</span>' +
-        phu.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</p></li>';
-    };
-    var t0 = cuaToi(), html = '';
-    if (t0) {
-      html += muc(Q.ten, t0.noi, t0.trangThai === 'VISIBLE' ? 'Đang hiển thị' : 'Đang rà soát',
-        t0.trangThai === 'VISIBLE' ? '' : 'cho', [khiNao(t0.luc), conLai()], 'cau-hoi-tuan.html#cua-toi');
-    }
-    html += muc(CU.cau, CU.noi, 'GNM chọn', '', ['Tuần 37 · Đã kết thúc', CU.tim + ' lượt thả tim'], 'bai-viet.html');
-    toiDs.innerHTML = html;
-  }
-
   /* ---------- Trang Viết bài: nhận lời mời phát triển câu trả lời thành bài ---------- */
   var vbSoan = $('.vb-soan');
   if (vbSoan && /[?&]tu=cau-hoi-tuan/.test(location.search)) {
@@ -3568,9 +3557,9 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   var MAU = [
     { id: 'm1', bai: 'song-cham', ngay: 2, daSua: true,
       cong: 'Mình đồng tình với phần lớn bài viết, nhưng muốn kể thêm một trải nghiệm. Hai năm trước mình nghỉ công việc lương cao ở Hà Nội để về Đà Lạt, và “sống chậm” hoá ra không phải là làm ít đi. Mình vẫn làm việc tám tiếng mỗi ngày, chỉ là không còn những cuộc họp kéo dài và hai tiếng kẹt xe. Điều bài viết chưa nói tới là cái giá phải trả: thu nhập giảm gần một nửa, và không phải ai cũng có khoản tiết kiệm để đánh đổi như vậy. Với nhiều người, sống chậm vẫn là một lựa chọn xa xỉ.' },
-    { id: 'm2', bai: 'nha-o', ngay: 6,
+    { id: 'm2', bai: 'nha-o', ngay: 30,
       cong: 'Mình có ý kiến hơi khác tác giả. Giá rao bán tăng không có nghĩa là người mua chấp nhận mức giá đó. Ở khu mình đang thuê, nhiều căn treo biển bán gần một năm vẫn chưa có giao dịch. Có lẽ cần nhìn thêm số giao dịch thành công chứ không chỉ giá chào bán.' },
-    { id: 'm3', bai: 'chatgpt', ngay: 9,
+    { id: 'm3', bai: 'chatgpt', ngay: 36,
       an: { lyDo: 'Chia sẻ nhắc tới một cá nhân cụ thể theo cách có thể gây hiểu lầm. GNM có thể khôi phục sau khi rà soát lại.' },
       cong: 'Bài viết nói đúng với trường hợp lớp mình. Nhiều bạn nộp bài luận viết bằng AI mà không đọc lại, đến lúc thầy hỏi thì không trả lời được. Mình nghĩ vấn đề không nằm ở công cụ mà ở việc chúng ta có chịu suy nghĩ trước khi dùng nó hay không.' }
   ];
@@ -3967,8 +3956,10 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ về trang cá nhân'; });
   }
 
-  /* ---------- Trang cá nhân: tab Chia sẻ ---------- */
-  var dsEl = $('#csDs'), trongEl = $('#csTrong');
+  /* ---------- Trang cá nhân: chia sẻ nằm lẫn trong "Bài viết đã xuất bản" ----------
+     Không tách tab riêng: mỗi chia sẻ chèn vào danh sách bài theo thời điểm công
+     khai lần đầu, trước bài đầu tiên cũ hơn nó. */
+  var dsEl = $('#pubFeed');
   var who = (location.search.match(/[?&]tac-gia=([a-z0-9-]+)/) || [])[1];
   var chuTrang = who && REG[who] ? who : ME;
   var laChu = chuTrang === ME;
@@ -3992,7 +3983,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     }
     hienTai[s.id] = noi;
     var dai = noi.length > TRICH;
-    return '<li class="cs-the' + (coCong ? '' : ' cs-the--rieng') + '" id="chia-se-' + s.id + '" data-cs-id="' + s.id + '">' +
+    return '<article class="cs-the' + (coCong ? '' : ' cs-the--rieng') + '" id="chia-se-' + s.id + '" data-cs-id="' + s.id + '">' +
       '<div class="cs-the__dau"><img src="assets/img/' + nguoi.avatar + '" alt="" width="36" height="36" loading="lazy">' +
       '<div class="cs-the__ai"><p class="cs-the__ten">' + thoat(nguoi.name) +
       (coCong ? '<span class="cs-nhan"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>Đã chia sẻ</span>' : '') + '</p>' +
@@ -4002,7 +3993,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       '<p class="cs-the__noi">' + thoat(dai ? catTu(noi) : noi) + '</p>' +
       (dai ? '<button class="cs-xem-them" type="button" data-cs-mo-rong aria-expanded="false">Xem thêm</button>' : '') +
       theBai(s.bai, true) +
-      (ghiChu ? '<p class="cs-ghi-chu">' + thoat(ghiChu) + '</p>' : '') + '</li>';
+      (ghiChu ? '<p class="cs-ghi-chu">' + thoat(ghiChu) + '</p>' : '') + '</article>';
   }
 
   function veDsCaNhan() {
@@ -4015,11 +4006,19 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     // Mới nhất trước theo lúc công khai lần đầu; sửa không đẩy lên đầu
     ds.sort(function (a, b) { return (b.congLuc || b.tao) - (a.congLuc || a.tao); });
     hienTai = {};
-    dsEl.innerHTML = ds.map(function (s) { return veThe(s, nguoi); }).join('');
-    trongEl.hidden = ds.length > 0;
-    $('#csTrongChu').textContent = laChu
-      ? 'Khi đọc một bài viết, chọn “Chia sẻ về trang cá nhân” để đưa bài lên trang cá nhân cùng suy nghĩ của bạn.'
-      : nguoi.name + ' chưa chia sẻ bài viết nào.';
+    $$('.cs-the', dsEl).forEach(function (el) { el.parentNode.removeChild(el); });
+    var bai = $$('.card', dsEl).map(function (c) {
+      var m = (c.textContent.match(/(\d{2})\/(\d{2})\/(\d{4})/) || []);
+      return { el: c, luc: m[0] ? new Date(+m[3], +m[2] - 1, +m[1]).getTime() : 0 };
+    });
+    ds.forEach(function (s) {
+      var tam = document.createElement('div');
+      tam.innerHTML = veThe(s, nguoi);
+      var luc = s.congLuc || s.tao;
+      var sau = bai.filter(function (x) { return x.luc < luc; })[0];
+      dsEl.insertBefore(tam.firstChild, sau ? sau.el : null);
+    });
+    if (window.gnmXepSoLe) window.gnmXepSoLe();
   }
 
   if (dsEl) {
@@ -4060,8 +4059,6 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
 
   // Mở từ thông báo hoặc nút "Xem chia sẻ": ca-nhan.html#chia-se-<id>
   if (dsEl && /^#chia-se/.test(location.hash)) {
-    var tab = $('[data-ptab="chia-se"]');
-    if (tab) tab.click();
     var maId = location.hash.slice('#chia-se-'.length);
     if (maId) {
       setTimeout(function () {
