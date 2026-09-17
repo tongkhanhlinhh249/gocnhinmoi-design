@@ -1588,7 +1588,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (on) selectTab('ho-so');
     // Khách chỉ còn đúng một tab — bày một tab đơn độc trông như lỗi, ẩn cả thanh đi.
     var bar = $('.ptabs');
-    if (bar) bar.hidden = on;
+    if (bar) bar.hidden = $$('.ptab', bar).filter(function (t) { return !t.hidden; }).length <= 1;
   }
 
   var who = (location.search.match(/[?&]tac-gia=([a-z0-9-]+)/) || [])[1];
@@ -2682,6 +2682,13 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
         luc: n - 30 * GIO, link: 'ca-nhan.html',
         nut: [{ ten: 'Viết bài', link: 'viet-bai.html?tu=cau-hoi-tuan' }] },
 
+      { id: 'n16', ma: 'NT-S03', nhom: 'bai-viet', co: 'alert', mau: 'xam',
+        anh: 'assets/img/kp-chatgpt.jpg', vuong: true,
+        ten: 'Chia sẻ của bạn đã bị ẩn',
+        chu: 'GNM đã ẩn chia sẻ của bạn về “ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng”. Xem lý do trên trang cá nhân.',
+        luc: n - 3 * NGAY - 4 * GIO, link: 'ca-nhan.html#chia-se-m3',
+        nut: [{ ten: 'Xem chia sẻ', link: 'ca-nhan.html#chia-se-m3' }] },
+
       { id: 'n4', ma: 'NT-B03', nhom: 'tuong-tac', co: 'heart',
         anh: 'assets/img/kp-chatgpt.jpg', vuong: true,
         ten: 'Bài viết của bạn đã nhận 5.000 lượt thích 🎉',
@@ -3525,4 +3532,507 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   veDs();
   if (location.hash === '#tra-loi' && !cuaToi() && !daDong()) setTimeout(function () { moSoan(false); }, 200);
   if (location.hash === '#cua-toi') setTimeout(nhayToi, 300);
+})();
+
+
+/* =====================================================================
+   CHIA SẺ GÓC NHÌN
+   Theo [Feature Spec] CHIA SẺ GÓC NHÌN.
+   - Chia sẻ bài đang xuất bản lên trang cá nhân kèm góc nhìn 100–1.000 ký tự,
+     văn bản thuần. Mỗi tài khoản một chia sẻ chưa xoá cho mỗi bài; có rồi thì
+     mở lại chia sẻ đó thay vì tạo mới.
+   - Kiểm tra dữ liệu + chống spam trước, rồi kiểm duyệt tự động (giả lập):
+     Đạt → công khai ngay; Cần xem xét → chỉ chủ nội dung thấy; Vi phạm → chưa
+     đăng, giữ nguyên nội dung để sửa.
+   - Sửa: bản công khai giữ nguyên tới khi bản sửa được duyệt.
+   - Xoá mềm; BBT ẩn thì chỉ xem lý do và xoá, không tự sửa để vượt quyết định.
+   - Không tự chuyển trang sau khi chia sẻ; thông báo có nút "Xem chia sẻ".
+   Thử nhanh: có "mua ngay" → chưa được đăng; có "lừa đảo" → chờ xem xét.
+   ===================================================================== */
+(function () {
+  'use strict';
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+  var PHUT = 60000, GIO = 3600000, NGAY = 86400000, BAY_GIO = Date.now();
+  var MIN = 100, MAX = 1000, TRICH = 300, HAN_MUC_NGAY = 10;
+  var KHO = 'gnm-chia-se';
+  var ME = 'duc-anh';
+  var REG = window.GNM_TAC_GIA || {};
+  var toast = function (t) { if (window.toast) window.toast(t); };
+
+  var BAI = {
+    'song-cham': { id: 'song-cham', ten: 'Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?', anh: 'assets/img/kp-song-cham.jpg', tacGia: 'TS. Lan Anh', link: 'bai-viet.html' },
+    'nha-o': { id: 'nha-o', ten: 'Thị trường nhà ở Hà Nội: Giá đã chạm đỉnh hay còn tiếp tục leo thang?', anh: 'assets/img/cover-nha-o-ha-noi.png', tacGia: 'TS. Quang Huy', link: 'bai-viet.html' },
+    'chatgpt': { id: 'chatgpt', ten: 'ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng', anh: 'assets/img/kp-chatgpt.jpg', tacGia: 'Minh Tuấn', link: 'bai-viet.html' }
+  };
+  var MAU = [
+    { id: 'm1', bai: 'song-cham', ngay: 2, daSua: true,
+      cong: 'Mình đồng tình với phần lớn bài viết, nhưng muốn kể thêm một trải nghiệm. Hai năm trước mình nghỉ công việc lương cao ở Hà Nội để về Đà Lạt, và “sống chậm” hoá ra không phải là làm ít đi. Mình vẫn làm việc tám tiếng mỗi ngày, chỉ là không còn những cuộc họp kéo dài và hai tiếng kẹt xe. Điều bài viết chưa nói tới là cái giá phải trả: thu nhập giảm gần một nửa, và không phải ai cũng có khoản tiết kiệm để đánh đổi như vậy. Với nhiều người, sống chậm vẫn là một lựa chọn xa xỉ.' },
+    { id: 'm2', bai: 'nha-o', ngay: 6,
+      cong: 'Mình có ý kiến hơi khác tác giả. Giá rao bán tăng không có nghĩa là người mua chấp nhận mức giá đó. Ở khu mình đang thuê, nhiều căn treo biển bán gần một năm vẫn chưa có giao dịch. Có lẽ cần nhìn thêm số giao dịch thành công chứ không chỉ giá chào bán.' },
+    { id: 'm3', bai: 'chatgpt', ngay: 9,
+      an: { lyDo: 'Chia sẻ nhắc tới một cá nhân cụ thể theo cách có thể gây hiểu lầm. GNM có thể khôi phục sau khi rà soát lại.' },
+      cong: 'Bài viết nói đúng với trường hợp lớp mình. Nhiều bạn nộp bài luận viết bằng AI mà không đọc lại, đến lúc thầy hỏi thì không trả lời được. Mình nghĩ vấn đề không nằm ở công cụ mà ở việc chúng ta có chịu suy nghĩ trước khi dùng nó hay không.' }
+  ];
+  function tuMau(m) {
+    var luc = BAY_GIO - m.ngay * NGAY;
+    return { id: m.id, bai: BAI[m.bai], tao: luc, congLuc: luc, cong: m.cong, cho: null, daSua: !!m.daSua, an: m.an || null, xoa: false };
+  }
+
+  /* ---------- Lưu trữ ---------- */
+  var st;
+  try { st = JSON.parse(localStorage.getItem(KHO) || '{}') || {}; } catch (e) { st = {}; }
+  if (!st.khoiTao) { st.ds = MAU.map(tuMau); st.khoiTao = 1; }
+  st.ds = st.ds || [];
+  st.baoCao = st.baoCao || {};
+  function ghi() { try { localStorage.setItem(KHO, JSON.stringify(st)); } catch (e) {} }
+  function cuaBai(id) { return st.ds.filter(function (s) { return s.bai.id === id && !s.xoa; })[0] || null; }
+  function homNay() { return new Date().toISOString().slice(0, 10); }
+  function soLanHomNay() { return st.luot && st.luot.ngay === homNay() ? st.luot.so : 0; }
+  function ghiLuot() { st.luot = { ngay: homNay(), so: soLanHomNay() + 1 }; }
+
+  /* ---------- Định dạng ---------- */
+  function thoat(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+  function soDem(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function khiNao(luc) {
+    var d = Date.now() - luc;
+    if (d < PHUT) return 'vừa xong';
+    if (d < GIO) return Math.floor(d / PHUT) + ' phút trước';
+    if (d < NGAY) return Math.floor(d / GIO) + ' giờ trước';
+    if (d < 7 * NGAY) return Math.floor(d / NGAY) + ' ngày trước';
+    var t = new Date(luc);
+    return ('0' + t.getDate()).slice(-2) + '/' + ('0' + (t.getMonth() + 1)).slice(-2) + '/' + t.getFullYear();
+  }
+  // Thu gọn ở ranh giới từ, không cắt ngang chữ
+  function catTu(t) {
+    var c = t.slice(0, TRICH), k = c.lastIndexOf(' ');
+    return (k > TRICH * 0.6 ? c.slice(0, k) : c).replace(/[\s,.;:–-]+$/, '') + '…';
+  }
+  function theBai(bai, laLink) {
+    var tag = laLink ? 'a' : 'div';
+    return '<' + tag + ' class="cs-bai"' + (laLink ? ' href="' + bai.link + '"' : '') + '>' +
+      '<img src="' + bai.anh + '" alt="" width="72" height="54" loading="lazy">' +
+      '<span class="cs-bai__than"><span class="cs-bai__ten">' + thoat(bai.ten) + '</span>' +
+      '<span class="cs-bai__phu">' + thoat(bai.tacGia) + ' · Góc Nhìn Mới</span></span></' + tag + '>';
+  }
+
+  /* ---------- Thông báo nhỏ có nút ---------- */
+  var baoEl, baoHen;
+  function bao(chu, link, nhan) {
+    if (!baoEl) {
+      baoEl = document.createElement('div');
+      baoEl.className = 'cs-thong-bao';
+      baoEl.setAttribute('role', 'status');
+      baoEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(baoEl);
+    }
+    baoEl.innerHTML = '<span>' + thoat(chu) + '</span>' + (link ? '<a href="' + link + '">' + thoat(nhan) + '</a>' : '');
+    void baoEl.offsetWidth;
+    baoEl.classList.add('is-hien');
+    clearTimeout(baoHen);
+    baoHen = setTimeout(function () { baoEl.classList.remove('is-hien'); }, 6000);
+  }
+
+  /* ---------- Hộp thoại và hộp xác nhận ---------- */
+  var hop, hopThan, hopTen, truocKhiDong = null, moTu = null;
+  function taoHop() {
+    if (hop) return;
+    hop = document.createElement('div');
+    hop.className = 'cs-hop';
+    hop.hidden = true;
+    hop.setAttribute('role', 'dialog');
+    hop.setAttribute('aria-modal', 'true');
+    hop.setAttribute('aria-labelledby', 'csHopTen');
+    hop.innerHTML = '<div class="cs-hop__nen" data-cs-dong></div><div class="cs-hop__khung">' +
+      '<div class="cs-hop__dau"><h2 class="cs-hop__ten" id="csHopTen"></h2>' +
+      '<button class="cs-hop__x" type="button" data-cs-dong aria-label="Đóng"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>' +
+      '<div class="cs-hop__than"></div></div>';
+    document.body.appendChild(hop);
+    hopThan = $('.cs-hop__than', hop);
+    hopTen = $('#csHopTen', hop);
+    hop.addEventListener('click', function (e) { if (e.target.closest('[data-cs-dong]')) yeuCauDong(); });
+  }
+  function moHop(ten, html, chan) {
+    taoHop();
+    if (hop.hidden) moTu = document.activeElement;
+    hopTen.textContent = ten;
+    hopThan.innerHTML = html;
+    hopThan.onchange = null;
+    truocKhiDong = chan || null;
+    hop.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function dongHop() {
+    if (!hop || hop.hidden) return;
+    hop.hidden = true;
+    document.body.style.overflow = '';
+    truocKhiDong = null;
+    if (moTu && moTu.focus) moTu.focus();
+  }
+  function yeuCauDong() {
+    if (truocKhiDong && truocKhiDong() === false) return;
+    dongHop();
+  }
+
+  var xn;
+  function xacNhan(ten, chu, nhanPhu, nhanChinh, lam) {
+    if (!xn) {
+      xn = document.createElement('div');
+      xn.className = 'cs-xn';
+      xn.hidden = true;
+      xn.setAttribute('role', 'alertdialog');
+      xn.setAttribute('aria-modal', 'true');
+      document.body.appendChild(xn);
+    }
+    xn.innerHTML = '<div class="cs-xn__nen" data-xn="phu"></div><div class="cs-xn__khung">' +
+      '<h2 class="cs-xn__ten">' + thoat(ten) + '</h2>' + (chu ? '<p class="cs-xn__chu">' + thoat(chu) + '</p>' : '') +
+      '<div class="cs-xn__nut"><button class="cs-nut cs-nut--nguy" type="button" data-xn="chinh">' + thoat(nhanChinh) + '</button>' +
+      '<button class="cs-nut cs-nut--vien" type="button" data-xn="phu">' + thoat(nhanPhu) + '</button></div></div>';
+    xn.hidden = false;
+    $('button[data-xn="phu"]', xn).focus();
+    xn.onclick = function (e) {
+      var b = e.target.closest('[data-xn]');
+      if (!b) return;
+      xn.hidden = true;
+      if (b.getAttribute('data-xn') === 'chinh') lam();
+    };
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (xn && !xn.hidden) { xn.hidden = true; return; }
+    if (hop && !hop.hidden) yeuCauDong();
+  });
+
+  /* ---------- Kiểm tra dữ liệu, chống spam, kiểm duyệt ---------- */
+  function kiemTraDuLieu(noi, s) {
+    if (/(.)\1{9,}/.test(noi)) return 'Góc nhìn có chuỗi ký tự lặp bất thường. Hãy chỉnh lại nội dung.';
+    if ((noi.match(/https?:\/\/|www\./gi) || []).length > 2) return 'Góc nhìn chứa quá nhiều liên kết.';
+    if (s && (s.cho ? s.cho.noi : s.cong) === noi) return 'Nội dung chưa có thay đổi so với bản trước.';
+    var trung = st.ds.some(function (x) { return !x.xoa && x !== s && (x.cong === noi || (x.cho && x.cho.noi === noi)); });
+    if (trung) return 'Nội dung này trùng với một chia sẻ khác của bạn.';
+    if (!s && soLanHomNay() >= HAN_MUC_NGAY) return 'Bạn đã chia sẻ nhiều lần hôm nay. Hãy thử lại vào ngày mai.';
+    return '';
+  }
+  // Giả lập kiểm duyệt AI: đánh giá hành vi trong ngữ cảnh, không chấm văn,
+  // không yêu cầu đồng quan điểm với bài gốc.
+  function kiemDuyet(noi) {
+    var s = ' ' + noi.toLowerCase().replace(/\s+/g, ' ') + ' ';
+    var co = function (ds) { return ds.some(function (w) { return s.indexOf(w) >= 0; }); };
+    if (co(['mua ngay', 'cá độ', 'kiếm tiền online', 'đồ ngu', 'cút đi']))
+      return { kq: 'REJECTED', lyDo: 'Góc nhìn có nội dung công kích hoặc quảng cáo, chưa phù hợp Tiêu chuẩn cộng đồng.' };
+    if (co(['lừa đảo', 'bịa đặt', 'tẩy chay'])) return { kq: 'REVIEW' };
+    return { kq: 'PASS' };
+  }
+
+  function themThongBao(s, kq, sua) {
+    if (!window.gnmThemThongBao) return;
+    var link = 'ca-nhan.html#chia-se-' + s.id;
+    var ten = '“' + s.bai.ten + '”';
+    window.gnmThemThongBao(kq === 'REVIEW' ? {
+      ma: 'NT-S01', nhom: 'bai-viet', co: 'clock', mau: 'vang', anh: s.bai.anh, vuong: true,
+      ten: sua ? 'Bản chỉnh sửa chia sẻ đang chờ xem xét' : 'Chia sẻ của bạn đang chờ xem xét',
+      chu: 'Góc nhìn bạn chia sẻ về ' + ten + ' cần được GNM xem xét thêm trước khi hiển thị.',
+      link: link, khoa: 'NT-S01|' + s.id + '|' + s.cho.luc
+    } : {
+      ma: 'NT-S02', nhom: 'bai-viet', co: 'alert', mau: 'vang', anh: s.bai.anh, vuong: true,
+      ten: sua ? 'Bản chỉnh sửa chia sẻ chưa được đăng' : 'Chia sẻ của bạn chưa được đăng',
+      chu: 'Góc nhìn bạn chia sẻ về ' + ten + ' chưa phù hợp Tiêu chuẩn cộng đồng. Bạn có thể sửa lại và gửi lại.',
+      link: link, khoa: 'NT-S02|' + s.id + '|' + s.cho.luc,
+      nut: [{ ten: 'Xem chia sẻ', link: link }]
+    });
+  }
+
+  /* ---------- Soạn / sửa chia sẻ ---------- */
+  function moSoan(bai) {
+    var s = cuaBai(bai.id);
+    var me = REG[ME] || { name: 'Đức Anh', avatar: 'avatar-duc-anh.png' };
+
+    if (s && s.an) {
+      moHop('Chia sẻ đã bị ẩn',
+        '<div class="cs-bao-trang cs-bao-trang--an"><b>GNM đã ẩn chia sẻ này</b>' + thoat(s.an.lyDo) + '</div>' +
+        '<p class="cs-luu-y">Bạn không thể chỉnh sửa chia sẻ đã bị ẩn. Bạn vẫn có thể xoá chia sẻ.</p>' + theBai(s.bai, false) +
+        '<div class="cs-hop__nut"><button class="cs-nut cs-nut--vien" type="button" data-cs-dong>Đóng</button>' +
+        '<button class="cs-nut cs-nut--nguy" type="button" data-cs-xoa>Xoá chia sẻ</button></div>');
+      $('[data-cs-xoa]', hopThan).addEventListener('click', function () { xoa(s); });
+      return;
+    }
+
+    var goc = s ? (s.cho ? s.cho.noi : s.cong) : '';
+    var trangThai = '';
+    if (s && !s.cho) trangThai = '<div class="cs-bao-trang cs-bao-trang--ok"><b>Bạn đã chia sẻ bài viết này</b>Bản sửa sẽ được kiểm tra lại trước khi thay thế nội dung đang hiển thị.</div>';
+    if (s && s.cho && s.cho.kq === 'REVIEW') trangThai = '<div class="cs-bao-trang"><b>' + (s.cong ? 'Bản chỉnh sửa đang chờ xem xét' : 'Chia sẻ đang chờ xem xét') + '</b>' +
+      (s.cong ? 'Nội dung đã đăng vẫn hiển thị trên trang cá nhân.' : 'Chỉ bạn nhìn thấy chia sẻ này cho tới khi có kết quả.') + '</div>';
+    if (s && s.cho && s.cho.kq === 'REJECTED') trangThai = '<div class="cs-bao-trang cs-bao-trang--an"><b>' + (s.cong ? 'Bản chỉnh sửa chưa được đăng' : 'Chia sẻ chưa được đăng') + '</b>' +
+      thoat(s.cho.lyDo) + (s.cong ? ' Nội dung đã đăng trước đó vẫn hiển thị.' : '') + '</div>';
+
+    moHop(s ? 'Sửa chia sẻ' : 'Chia sẻ kèm góc nhìn',
+      '<div class="cs-nguoi"><img src="assets/img/' + me.avatar + '" alt="" width="36" height="36"><div><b>' + thoat(me.name) + '</b><span>Chia sẻ lên trang cá nhân · công khai</span></div></div>' +
+      trangThai +
+      '<label class="sr-only" for="csO">Góc nhìn của bạn</label>' +
+      '<textarea class="cs-o" id="csO" rows="6" placeholder="Bạn nghĩ gì về bài viết này? Bạn có thể đồng tình, kể thêm trải nghiệm hoặc nêu một ý kiến khác…" aria-describedby="csGoiY csLoi"></textarea>' +
+      '<div class="cs-do"><p class="cs-goi-y" id="csGoiY" aria-live="polite"></p><span class="cs-dem" id="csDem"></span></div>' +
+      '<p class="cs-loi" id="csLoi" role="alert" hidden></p>' +
+      theBai(bai, false) +
+      '<p class="cs-luu-y">Góc nhìn sẽ được kiểm tra tự động theo Tiêu chuẩn cộng đồng trước khi hiển thị trên trang cá nhân của bạn.</p>' +
+      '<div class="cs-hop__nut"><button class="cs-nut cs-nut--phu" type="button" data-cs-dong>Huỷ</button>' +
+      '<button class="cs-nut cs-nut--chinh" type="button" id="csGui" disabled>' + (s ? 'Lưu thay đổi' : 'Chia sẻ') + '</button></div>',
+      function () {
+        var o = $('#csO', hopThan);
+        if (!o || o.readOnly) return true;
+        if (o.value.trim() && o.value.trim() !== goc) {
+          xacNhan('Bỏ nội dung đang viết?', 'Nội dung bạn vừa nhập sẽ không được lưu.', 'Tiếp tục viết', 'Bỏ nội dung', dongHop);
+          return false;
+        }
+        return true;
+      });
+
+    var o = $('#csO', hopThan), dem = $('#csDem', hopThan), goiY = $('#csGoiY', hopThan);
+    var loi = $('#csLoi', hopThan), gui = $('#csGui', hopThan);
+    o.value = goc;
+
+    function ve() {
+      var n = o.value.trim().length;
+      dem.textContent = soDem(n) + '/' + soDem(MAX);
+      dem.classList.toggle('is-du', n >= MIN && n <= MAX);
+      dem.classList.toggle('is-qua', n > MAX);
+      goiY.classList.toggle('is-qua', n > MAX);
+      goiY.textContent = n > MAX ? 'Tối đa 1.000 ký tự · đang thừa ' + soDem(n - MAX)
+        : n >= MIN ? 'Độ dài phù hợp'
+        : 'Góc nhìn cần ít nhất 100 ký tự' + (n ? ' · còn thiếu ' + (MIN - n) : '');
+      o.classList.toggle('is-loi', n > MAX);
+      gui.disabled = o.readOnly || n < MIN || n > MAX;
+    }
+    o.addEventListener('input', function () {
+      if (loi.getAttribute('data-kieu') === 'du-lieu') loi.hidden = true;
+      ve();
+    });
+    ve();
+    setTimeout(function () { o.focus(); }, 60);
+
+    gui.addEventListener('click', function () {
+      if (gui.disabled) return;
+      var noi = o.value.trim();
+      var truoc = cuaBai(bai.id);
+      var loiDL = kiemTraDuLieu(noi, truoc);
+      if (loiDL) {
+        loi.textContent = loiDL;
+        loi.hidden = false;
+        loi.setAttribute('data-kieu', 'du-lieu');
+        return;
+      }
+      loi.hidden = true;
+      o.readOnly = true;
+      gui.disabled = true;
+      gui.textContent = 'Đang kiểm tra…';
+
+      setTimeout(function () {
+        var s3 = cuaBai(bai.id);
+        // Đã xoá trong lúc đang kiểm tra: kết quả trả về sau không khôi phục chia sẻ
+        if (truoc && s3 !== truoc) return;
+        var kq = kiemDuyet(noi);
+        if (!s3) {
+          s3 = { id: 'cs' + Date.now(), bai: bai, tao: Date.now(), congLuc: null, cong: null, cho: null, daSua: false, an: null, xoa: false };
+          st.ds.unshift(s3);
+          ghiLuot();
+        }
+        var sua = !!s3.cong;
+        if (kq.kq === 'PASS') {
+          if (sua) s3.daSua = true; else s3.congLuc = Date.now();
+          s3.cong = noi;
+          s3.cho = null;
+        } else {
+          s3.cho = { noi: noi, kq: kq.kq, lyDo: kq.lyDo || '', luc: Date.now() };
+        }
+        ghi();
+        veDsCaNhan();
+        var link = 'ca-nhan.html#chia-se-' + s3.id;
+
+        if (kq.kq === 'PASS') {
+          dongHop();
+          bao(sua ? 'Đã cập nhật chia sẻ.' : 'Đã chia sẻ lên trang cá nhân.', link, 'Xem chia sẻ');
+          return;
+        }
+        themThongBao(s3, kq.kq, sua);
+        if (kq.kq === 'REVIEW') {
+          truocKhiDong = null;
+          hopTen.textContent = 'Đã tiếp nhận chia sẻ';
+          hopThan.innerHTML = '<div class="cs-ket-qua"><span class="cs-ket-qua__ico"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></span>' +
+            '<p class="cs-ket-qua__ten">' + (sua ? 'Bản chỉnh sửa đang chờ xem xét' : 'Chia sẻ đang chờ xem xét') + '</p>' +
+            '<p class="cs-ket-qua__chu">' + (sua ? 'GNM cần xem xét thêm bản chỉnh sửa. Nội dung đã đăng trước đó vẫn hiển thị.'
+              : 'GNM cần xem xét thêm góc nhìn của bạn. Chỉ bạn nhìn thấy chia sẻ này cho tới khi có kết quả.') + '</p></div>' +
+            '<div class="cs-hop__nut"><button class="cs-nut cs-nut--vien" type="button" data-cs-dong>Đóng</button>' +
+            '<a class="cs-nut cs-nut--chinh" href="' + link + '">Xem chia sẻ</a></div>';
+          return;
+        }
+        // Chưa được đăng: giữ nội dung trong ô để sửa rồi gửi lại
+        goc = noi;
+        o.readOnly = false;
+        gui.textContent = 'Gửi lại';
+        ve();
+        loi.innerHTML = '<b>' + (sua ? 'Bản chỉnh sửa chưa được đăng.' : 'Chia sẻ chưa được đăng.') + '</b> ' + thoat(kq.lyDo) +
+          (sua ? ' Nội dung đã đăng trước đó vẫn hiển thị.' : ' Bạn có thể sửa lại nội dung rồi gửi lại.');
+        loi.hidden = false;
+        loi.setAttribute('data-kieu', 'kiem-duyet');
+      }, 1200);
+    });
+  }
+
+  function xoa(s) {
+    xacNhan('Xóa chia sẻ này?', 'Chia sẻ sẽ bị gỡ khỏi trang cá nhân của bạn. Bài viết gốc không bị ảnh hưởng.', 'Huỷ', 'Xoá chia sẻ', function () {
+      s.xoa = true;
+      s.cho = null;
+      ghi();
+      dongHop();
+      veDsCaNhan();
+      toast('Đã xoá chia sẻ.');
+    });
+  }
+
+  /* ---------- Báo cáo ---------- */
+  var LY_DO = ['Công kích hoặc đe dọa', 'Nội dung không phù hợp', 'Tiết lộ thông tin riêng tư', 'Spam hoặc lừa đảo', 'Khác'];
+  function moBaoCao(khoa) {
+    if (st.baoCao[khoa]) { toast('Bạn đã báo cáo chia sẻ này. GNM đang xem xét.'); return; }
+    moHop('Báo cáo chia sẻ',
+      '<p class="cs-luu-y cs-luu-y--dau">Chọn lý do phù hợp nhất. Người chia sẻ không biết ai đã báo cáo.</p>' +
+      '<div class="cs-bc" role="radiogroup" aria-label="Lý do báo cáo">' +
+      LY_DO.map(function (l, i) { return '<label class="cs-bc__dong"><input type="radio" name="csLyDo" value="' + i + '">' + l + '</label>'; }).join('') +
+      '</div><label class="cs-nhan-o" for="csMoTa">Mô tả thêm <span>(không bắt buộc)</span></label>' +
+      '<textarea class="cs-o cs-o--nho" id="csMoTa" rows="3" maxlength="500" placeholder="Cho GNM biết thêm chi tiết…"></textarea>' +
+      '<div class="cs-hop__nut"><button class="cs-nut cs-nut--phu" type="button" data-cs-dong>Huỷ</button>' +
+      '<button class="cs-nut cs-nut--chinh" type="button" id="csGuiBc" disabled>Gửi báo cáo</button></div>');
+    var nut = $('#csGuiBc', hopThan);
+    hopThan.onchange = function () { nut.disabled = !$('input[name="csLyDo"]:checked', hopThan); };
+    nut.addEventListener('click', function () {
+      var c = $('input[name="csLyDo"]:checked', hopThan);
+      if (!c) return;
+      st.baoCao[khoa] = { lyDo: LY_DO[+c.value], moTa: $('#csMoTa', hopThan).value.trim(), luc: Date.now() };
+      ghi();
+      dongHop();
+      toast('Đã nhận báo cáo. GNM sẽ xem xét nội dung này.');
+    });
+  }
+
+  /* ---------- Trang bài viết ---------- */
+  var baiEl = $('[data-cs-bai]'), baiHienTai = null;
+  if (baiEl) { try { baiHienTai = JSON.parse(baiEl.getAttribute('data-cs-bai')); } catch (e) {} }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-cs-mo]');
+    if (!b || !baiHienTai) return;
+    e.preventDefault();
+    moSoan(baiHienTai);
+  });
+  function veNutBai() {
+    if (!baiHienTai) return;
+    var s = cuaBai(baiHienTai.id);
+    $$('[data-cs-nhan]').forEach(function (el) { el.textContent = s ? 'Sửa chia sẻ của bạn' : 'Chia sẻ kèm góc nhìn'; });
+  }
+
+  /* ---------- Trang cá nhân: tab Chia sẻ ---------- */
+  var dsEl = $('#csDs'), trongEl = $('#csTrong');
+  var who = (location.search.match(/[?&]tac-gia=([a-z0-9-]+)/) || [])[1];
+  var chuTrang = who && REG[who] ? who : ME;
+  var laChu = chuTrang === ME;
+  var hienTai = {};
+
+  function chip(kieu, ico, chu) {
+    return '<p class="cs-chip cs-chip--' + kieu + '"><svg class="icon" aria-hidden="true"><use href="#i-' + ico + '"></use></svg>' + chu + '</p>';
+  }
+  function veThe(s, nguoi) {
+    var coCong = !!s.cong && !s.an;
+    var noi = s.cong || (s.cho && s.cho.noi) || '';
+    var nhan = '', lyDo = '', ghiChu = '';
+    if (laChu) {
+      if (s.an) { nhan = chip('an', 'alert', 'Đã bị ẩn · chỉ bạn nhìn thấy'); lyDo = s.an.lyDo; }
+      else if (!s.cong && s.cho && s.cho.kq === 'REVIEW') nhan = chip('cho', 'clock', 'Đang chờ xem xét · chỉ bạn nhìn thấy');
+      else if (!s.cong && s.cho && s.cho.kq === 'REJECTED') { nhan = chip('tu-choi', 'alert', 'Chưa được đăng · chỉ bạn nhìn thấy'); lyDo = s.cho.lyDo; }
+      else if (s.cong && s.cho) {
+        ghiChu = s.cho.kq === 'REVIEW' ? 'Bản chỉnh sửa đang chờ xem xét. Nội dung đã đăng vẫn hiển thị.'
+          : 'Bản chỉnh sửa chưa được đăng. Nội dung đã đăng trước đó vẫn hiển thị. ' + s.cho.lyDo;
+      }
+    }
+    hienTai[s.id] = noi;
+    var dai = noi.length > TRICH;
+    return '<li class="cs-the' + (coCong ? '' : ' cs-the--rieng') + '" id="chia-se-' + s.id + '" data-cs-id="' + s.id + '">' +
+      '<div class="cs-the__dau"><img src="assets/img/' + nguoi.avatar + '" alt="" width="36" height="36" loading="lazy">' +
+      '<div class="cs-the__ai"><p class="cs-the__ten">' + thoat(nguoi.name) +
+      (coCong ? '<span class="cs-nhan"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>Đã chia sẻ</span>' : '') + '</p>' +
+      '<p class="cs-the__phu">' + khiNao(s.congLuc || s.tao) + (coCong && s.daSua ? ' · Đã chỉnh sửa' : '') + '</p></div>' +
+      '<button class="cs-the__menu" type="button" data-cs-menu aria-label="Tuỳ chọn chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-more"></use></svg></button></div>' +
+      nhan + (lyDo ? '<p class="cs-ly-do">Lý do: ' + thoat(lyDo) + '</p>' : '') +
+      '<p class="cs-the__noi">' + thoat(dai ? catTu(noi) : noi) + '</p>' +
+      (dai ? '<button class="cs-xem-them" type="button" data-cs-mo-rong aria-expanded="false">Xem thêm</button>' : '') +
+      theBai(s.bai, true) +
+      (ghiChu ? '<p class="cs-ghi-chu">' + thoat(ghiChu) + '</p>' : '') + '</li>';
+  }
+
+  function veDsCaNhan() {
+    veNutBai();
+    if (!dsEl) return;
+    var nguoi = REG[chuTrang] || { name: 'Đức Anh', avatar: 'avatar-duc-anh.png' };
+    // Chủ trang thấy mọi chia sẻ chưa xoá của mình; người xem chỉ thấy chia sẻ đang công khai
+    var ds = laChu ? st.ds.filter(function (s) { return !s.xoa; })
+      : MAU.map(tuMau).filter(function (s) { return s.cong && !s.an; });
+    // Mới nhất trước theo lúc công khai lần đầu; sửa không đẩy lên đầu
+    ds.sort(function (a, b) { return (b.congLuc || b.tao) - (a.congLuc || a.tao); });
+    hienTai = {};
+    dsEl.innerHTML = ds.map(function (s) { return veThe(s, nguoi); }).join('');
+    trongEl.hidden = ds.length > 0;
+    $('#csTrongChu').textContent = laChu
+      ? 'Khi đọc một bài viết, chọn “Chia sẻ kèm góc nhìn” để đưa bài lên trang cá nhân cùng suy nghĩ của bạn.'
+      : nguoi.name + ' chưa chia sẻ bài viết nào.';
+  }
+
+  if (dsEl) {
+    dsEl.addEventListener('click', function (e) {
+      var li = e.target.closest('.cs-the');
+      if (!li) return;
+      var id = li.getAttribute('data-cs-id');
+
+      var moRong = e.target.closest('[data-cs-mo-rong]');
+      if (moRong) {
+        var mo = moRong.getAttribute('aria-expanded') !== 'true';
+        $('.cs-the__noi', li).textContent = mo ? hienTai[id] : catTu(hienTai[id]);
+        moRong.setAttribute('aria-expanded', String(mo));
+        moRong.textContent = mo ? 'Thu gọn' : 'Xem thêm';
+        return;
+      }
+
+      var menu = e.target.closest('[data-cs-menu]');
+      if (!menu || !window.gnmMoBangChon) return;
+      if (!laChu) {
+        window.gnmMoBangChon('Tuỳ chọn', [['alert', 'Báo cáo', true]], function () {
+          setTimeout(function () { moBaoCao(chuTrang + '|' + id); }, 300);
+        }, menu);
+        return;
+      }
+      var s = st.ds.filter(function (x) { return x.id === id; })[0];
+      if (!s) return;
+      var muc = [];
+      if (!s.an) muc.push(['pencil', 'Sửa chia sẻ']);
+      muc.push(['trash', 'Xoá chia sẻ', true]);
+      window.gnmMoBangChon('Chia sẻ của bạn', muc, function (act) {
+        setTimeout(function () { act === 'Sửa chia sẻ' ? moSoan(s.bai) : xoa(s); }, 300);
+      }, menu);
+    });
+  }
+
+  veDsCaNhan();
+
+  // Mở từ thông báo hoặc nút "Xem chia sẻ": ca-nhan.html#chia-se-<id>
+  if (dsEl && /^#chia-se/.test(location.hash)) {
+    var tab = $('[data-ptab="chia-se"]');
+    if (tab) tab.click();
+    var maId = location.hash.slice('#chia-se-'.length);
+    if (maId) {
+      setTimeout(function () {
+        var the = document.getElementById('chia-se-' + maId);
+        if (!the) { bao('Chia sẻ không còn tồn tại.'); return; }
+        window.scrollTo({ top: the.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+        the.classList.add('is-nhay');
+      }, 250);
+    }
+  }
 })();

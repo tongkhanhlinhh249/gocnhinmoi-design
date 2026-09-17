@@ -300,6 +300,7 @@
     <nav class="ptabs" role="tablist" aria-label="Khu vực trang cá nhân">
       <button class="ptab" type="button" role="tab" aria-selected="true" data-ptab="ho-so">Hồ sơ</button>
       <button class="ptab" type="button" role="tab" aria-selected="false" data-ptab="bai-viet" data-owner-only>Bài viết</button>
+      <button class="ptab" type="button" role="tab" aria-selected="false" data-ptab="chia-se">Chia sẻ</button>
       <button class="ptab" type="button" role="tab" aria-selected="false" data-ptab="thu-vien" data-owner-only>Thư viện</button>
     </nav>
 
@@ -1012,6 +1013,19 @@
           <div class="blank__cta" id="mineBlankCta" hidden>
             <button class="btn-block btn-block--brand" type="button" data-blank-act="">Viết bài đầu tiên</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Tab: Chia sẻ ============ -->
+    <!-- Bài viết người dùng chia sẻ kèm góc nhìn. Người xem chỉ thấy chia sẻ đang công khai;
+         chờ xem xét, chưa được đăng hoặc bị ẩn chỉ chủ tài khoản thấy. -->
+    <div class="ppanel" data-ppanel="chia-se" hidden>
+      <div class="shell cs-ds-wrap">
+        <ul class="cs-ds" id="csDs"></ul>
+        <div class="cs-trong" id="csTrong" hidden>
+          <p class="cs-trong__ten">Chưa có chia sẻ nào</p>
+          <p class="cs-trong__chu" id="csTrongChu">Khi đọc một bài viết, chọn “Chia sẻ kèm góc nhìn” để đưa bài lên trang cá nhân cùng suy nghĩ của bạn.</p>
         </div>
       </div>
     </div>

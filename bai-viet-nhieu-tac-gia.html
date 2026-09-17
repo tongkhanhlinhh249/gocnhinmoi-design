@@ -214,6 +214,7 @@
       <div class="art-body">
       <!-- Cột chia sẻ dính bên trái thân bài — chỉ hiện ở desktop -->
       <aside class="art-share" aria-label="Chia sẻ và tương tác">
+        <button class="art-share__nut" type="button" data-cs-mo aria-label="Chia sẻ kèm góc nhìn" title="Chia sẻ kèm góc nhìn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
         <button class="art-share__nut" type="button" data-toast="Đã mở chia sẻ lên Facebook" aria-label="Chia sẻ lên Facebook"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg></button>
         <button class="art-share__nut" type="button" data-toast="Đã sao chép liên kết bài viết" aria-label="Sao chép liên kết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-link"></use></svg></button>
         <a class="art-share__nut" href="#cmt-title" aria-label="Tới phần bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg></a>
@@ -238,6 +239,16 @@
         <p>Với các doanh nghiệp truyền thống, thay đổi này buộc họ viết lại ngân sách tiếp thị: chi phí sản xuất nội dung nay chiếm phần lớn hơn cả chi phí quảng cáo trả tiền.</p>
       </div>
       </div>
+      <!-- ============ Chia sẻ bài viết ============ -->
+      <!-- "Chia sẻ kèm góc nhìn" mở hộp soạn; chia sẻ đạt kiểm duyệt hiện trên trang cá nhân. -->
+      <section class="cs-nhom" aria-labelledby="csNhomTen" data-cs-bai='{"id":"bai-genz-nhieu-tac-gia","ten":"Thế hệ Gen Z Việt Nam đang định hình lại thị trường tiêu dùng theo cách chưa từng có","anh":"assets/img/hero-genz.png","tacGia":"Chân Diệu, Ngọc Linh, Nguyễn Đức Việt","link":"bai-viet-nhieu-tac-gia.html"}'>
+        <h2 class="cs-nhom__ten" id="csNhomTen">Chia sẻ bài viết</h2>
+        <div class="cs-nhom__nut">
+          <button class="cs-nut cs-nut--chinh" type="button" data-cs-mo><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg><span data-cs-nhan>Chia sẻ kèm góc nhìn</span></button>
+          <button class="cs-nut cs-nut--tron" type="button" data-toast="Đã sao chép liên kết bài viết" aria-label="Sao chép liên kết"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-link"></use></svg></button>
+          <button class="cs-nut cs-nut--tron" type="button" data-toast="Đã mở chia sẻ lên Facebook" aria-label="Chia sẻ lên Facebook"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-facebook"></use></svg></button>
+        </div>
+      </section>
     </article>
 
     <!-- ============ Bình luận ============ -->
