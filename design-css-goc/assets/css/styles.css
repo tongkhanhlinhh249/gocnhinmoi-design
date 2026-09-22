@@ -6414,15 +6414,15 @@ input { font: inherit; }
   .art-desk .article__body figcaption { font-size: 14px; line-height: 21px; }
   .art-desk .profile-section { margin-top: 40px; padding-bottom: 40px; border-top: 1px solid var(--line); }
   /* Cột phải */
-  .v-web.art-desk .art-rail-plain { padding: 4px 2px 0; background: none; box-shadow: none; }
-  .v-web.art-desk .rail-title.art-rail-do { font-size: 15px; line-height: 22px; color: var(--gnm-red); }
+  .v-web .rail-card.art-rail-plain { padding: 4px 2px 0; background: none; box-shadow: none; }
+  .v-web .rail-title.art-rail-do { font-size: 15px; line-height: 22px; color: var(--gnm-red); }
   .rail-spot { display: grid; gap: 16px; padding-top: 12px; }
   .rail-spot__row { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 10px; align-items: start; }
   .rail-spot__row > img { width: 68px; height: 52px; border-radius: var(--r-card); object-fit: cover; background: var(--fill-soft); }
   .rail-spot__title { font-size: 12.5px; font-weight: 700; line-height: 17px; color: var(--ink-strong); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .rail-spot__title a:hover { color: var(--gnm-red); }
   .rail-spot__meta { display: flex; align-items: center; gap: 4px; padding-top: 4px; font-size: 11px; line-height: 16px; color: var(--text-muted); }
-  .art-desk .rail-spot__meta .icon { width: 12px; height: 12px; }
+  .v-web .rail-spot__meta .icon { width: 12px; height: 12px; }
 }
 
 /* ---------- Đồng tác giả trên trang cá nhân ---------- */
@@ -6704,3 +6704,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .spotrow__title a:hover { color: var(--gnm-red); }
 .spotrow__meta { display: flex; align-items: center; gap: 4px; padding-top: 6px; font-size: 12px; line-height: 17px; color: var(--text-muted); }
 .spotrow__meta .icon { width: 13px; height: 13px; flex: none; }
+
+/* Từ 1180px Spotlight nằm ở cột phải, bỏ khối trong dòng tin của Trang chủ */
+@media (min-width: 1180px) {
+  .v-web .page:has(> .siderail .rail-spot) > main > .spotlist { display: none; }
+}
