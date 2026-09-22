@@ -2098,5 +2098,9 @@
  "zz-trang-chu-tra-dam": {
   "tw": "",
   "keep": ".page .tra-dam-khoi{padding-top:0;padding-bottom:20px}.page .tra-dam-khoi .hscroll{padding-top:16px}"
+ },
+ "zz-trang-chu-spotlight": {
+  "tw": "",
+  "keep": ".spotlist{padding:20px 0;background:#FFEFEF}.spotlist__title{font-size:15px;font-weight:800;line-height:22.5px;letter-spacing:-.011em;color:var(--gnm-red)}.spotlist__list{display:grid;padding-top:12px}.spotrow{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-top:1px solid rgba(184,0,1,.14)}.spotrow:first-child{padding-top:4px;border-top:0}.spotrow:last-child{padding-bottom:0}.spotrow__thumb{width:64px;height:64px;flex:none;border-radius:var(--r-card);object-fit:cover;background:rgba(184,0,1,.08)}.spotrow__body{flex:1;min-width:0}.spotrow__title{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;font-weight:800;line-height:20px;letter-spacing:-.011em;color:var(--ink-strong)}.spotrow__title a:hover{color:var(--gnm-red)}.spotrow__meta{display:flex;align-items:center;gap:4px;padding-top:6px;font-size:12px;line-height:17px;color:var(--text-muted)}.spotrow__meta .icon{width:13px;height:13px;flex:none}"
  }
 }
