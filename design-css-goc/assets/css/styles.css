@@ -3997,6 +3997,8 @@ input { font: inherit; }
 @media (max-width: 767.98px) {
   main:not([data-thu-tu]) { display: flex; flex-direction: column; }
   main:not([data-thu-tu]) > .leaderboard { order: 1; }
+  /* Trà đàm đứng ngay trên Thịnh hành: cùng bậc order, đứng trước trong DOM */
+  main:not([data-thu-tu]) > .tra-dam-khoi { order: 2; }
   main:not([data-thu-tu]) > .redlist { order: 2; }
   main:not([data-thu-tu]) > .discussed { order: 3; }
   main:not([data-thu-tu]) > .panel { order: 4; }

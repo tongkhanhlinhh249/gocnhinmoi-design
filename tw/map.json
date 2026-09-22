@@ -669,7 +669,7 @@
  },
  "page": {
   "tw": "",
-  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}@media (max-width:767.98px){main:not([data-thu-tu]){display:flex;flex-direction:column}main:not([data-thu-tu])>.leaderboard{order:1}main:not([data-thu-tu])>.redlist{order:2}main:not([data-thu-tu])>.discussed{order:3}main:not([data-thu-tu])>.panel{order:4}main:not([data-thu-tu])>.authors{order:5}main:not([data-thu-tu])>.places{order:6}}[data-feed-loc]:not(:has(.card:not(.is-filtered))){display:none}"
+  "keep": ".page{padding-bottom:calc(96px + env(safe-area-inset-bottom))}@media (min-width:520px){.page{max-width:480px;margin-inline:auto;min-height:100vh;background:#FAFAFA;box-shadow:0 0 0 1px rgba(16,24,40,.05),0 16px 40px rgba(16,24,40,.1)}}@media (max-width:767.98px){main:not([data-thu-tu]){display:flex;flex-direction:column}main:not([data-thu-tu])>.leaderboard{order:1}main:not([data-thu-tu])>.tra-dam-khoi{order:2}main:not([data-thu-tu])>.redlist{order:2}main:not([data-thu-tu])>.discussed{order:3}main:not([data-thu-tu])>.panel{order:4}main:not([data-thu-tu])>.authors{order:5}main:not([data-thu-tu])>.places{order:6}}[data-feed-loc]:not(:has(.card:not(.is-filtered))){display:none}"
  },
  "profile-bar": {
   "tw": "flex items-center justify-between",
