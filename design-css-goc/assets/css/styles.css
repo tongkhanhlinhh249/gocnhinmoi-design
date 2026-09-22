@@ -2945,7 +2945,7 @@ input { font: inherit; }
    ========================================================================== */
 .redlist {
   padding-block: 16px;
-  background: linear-gradient(to bottom, #b80001 0%, #520000 20.192%);
+  background: #BE1F0D;
 }
 .redlist > .shell { display: grid; gap: 16px; }
 .redlist__title {

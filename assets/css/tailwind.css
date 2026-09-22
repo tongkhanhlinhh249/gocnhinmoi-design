@@ -295,7 +295,7 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .rank-row + .rank-row{border-top:1px solid #ECECEC}
 .rank-row__name span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rank-row__name .icon{width:13px;height:13px;color:#B80001;flex:none}
 .rank__ava img{width:64px;height:64px;border-radius:999px;object-fit:cover;background:var(--fill-soft)}
-.redlist{background:linear-gradient(to bottom,#b80001 0%,#520000 20.192%)}.redlist > .shell{display:grid;gap:16px}
+.redlist{background:#BE1F0D}.redlist > .shell{display:grid;gap:16px}
 .redrow__name{color:inherit}
 .row-section .section-head__row{padding-top:0}
 .search{border-color:transparent}.search:focus-within{border-color:var(--line-2);background:var(--surface)}.search input{flex:1;min-width:0;border:0;background:none;font-size:14px;color:var(--ink);outline:none;-webkit-appearance:none}.search input::placeholder{color:rgba(55,65,81,.5)}.search input::-webkit-search-cancel-button{-webkit-appearance:none}.search .icon{width:20px;height:20px;color:var(--icon-dark);margin-left:8px}
