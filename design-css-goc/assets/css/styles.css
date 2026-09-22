@@ -6686,3 +6686,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 /* Thêm nút chia sẻ làm thanh action dài hơn: khép nhóm biểu tượng bên phải cho khỏi tràn ở 375px */
 .actions > [data-chia-se],
 .actions > [data-chia-se] + [data-save] { margin-left: -8px; }
+
+/* Trà đàm ở Trang chủ: cùng nhịp khoảng cách với các mục cuộn ngang khác (.discussed) */
+.page .tra-dam-khoi { padding-top: 0; padding-bottom: 20px; }
+.page .tra-dam-khoi .hscroll { padding-top: 16px; }
