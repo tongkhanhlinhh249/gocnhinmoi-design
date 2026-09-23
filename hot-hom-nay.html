@@ -55,6 +55,12 @@
     <path d="M9.15943 15.8208C12.8384 15.8208 15.8208 12.8384 15.8208 9.15943C15.8208 5.48044 12.8384 2.49803 9.15943 2.49803C5.48044 2.49803 2.49803 5.48044 2.49803 9.15943C2.49803 12.8384 5.48044 15.8208 9.15943 15.8208Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M17.4862 17.4862L13.9057 13.9057" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-them" viewBox="0 0 16 16">
+    <path d="M8 3.5v9M3.5 8h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 16 16">
+    <path d="M3.2 8.6l3.1 3.1 6.5-7.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
   <symbol id="i-chevron" viewBox="0 0 12.9904 12.9904">
     <path d="M4.8714 9.7428L8.119 6.4952L4.8714 3.2476" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -301,7 +307,7 @@
           <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
           <span class="tophero__fab" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-play"></use></svg></span>
           <span class="badge-time absolute right-3 bottom-3 px-[10px] py-[4px] rounded-md text-surface text-[10px] font-bold leading-[15px] tracking-[.25px]">15:33</span>
-          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-like data-count="1900" aria-pressed="false" aria-label="Thích bài viết này"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
           <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
             <h2 class="tophero__title text-[16px] font-extrabold leading-[22px] tracking-[-.011em]"><a href="bai-viet.html">Startup Việt gọi vốn triệu đô: Câu chuyện thật và những điều chưa kể</a></h2>
           </div>
@@ -310,6 +316,8 @@
           <a class="tophero__who" href="ca-nhan.html?tac-gia=lan-chi" aria-label="Xem trang cá nhân của Lan Chi"><img src="assets/img/avatar-lan-chi.png" alt="" width="24" height="24" loading="lazy"></a>
           <a class="text-[12px] font-semibold leading-[18px] text-[rgba(255,255,255,.8)]" href="ca-nhan.html?tac-gia=lan-chi">Lan Chi</a>
           <span class="text-[11px] leading-[16.5px] text-[rgba(255,255,255,.5)]">· 1 ngày trước</span>
+        <span class="tophero__xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>52,3K</span>
+        <button class="tophero__chia-se" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
         </p>
       </article>
 
@@ -317,7 +325,7 @@
         <div class="tophero__media relative block overflow-hidden">
           <img class="w-full h-full object-cover" src="assets/img/kp-startup-ky-lan.jpg" alt="" width="400" height="240" loading="lazy">
           <span class="tophero__scrim absolute inset-0" aria-hidden="true"></span>
-          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-like data-count="1600" aria-pressed="false" aria-label="Thích bài viết này"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+          <button class="tophero__like absolute top-3 right-3 z-[1] size-[34px] grid place-items-center rounded-full backdrop-blur-[4px] text-surface transition-colors duration-[180] ease-out aria-pressed:text-primary-800" type="button" data-save aria-pressed="false" aria-label="Lưu bài"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
           <div class="absolute left-0 right-0 bottom-0 px-4 pb-4 text-surface">
             <h2 class="tophero__title text-[16px] font-extrabold leading-[22px] tracking-[-.011em]"><a href="bai-viet.html">Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế</a></h2>
           </div>
@@ -326,6 +334,8 @@
           <a class="tophero__who" href="ca-nhan.html?tac-gia=lan-chi" aria-label="Xem trang cá nhân của Lan Chi"><img src="assets/img/avatar-lan-chi.png" alt="" width="24" height="24" loading="lazy"></a>
           <a class="text-[12px] font-semibold leading-[18px] text-[rgba(255,255,255,.8)]" href="ca-nhan.html?tac-gia=lan-chi">Lan Chi</a>
           <span class="text-[11px] leading-[16.5px] text-[rgba(255,255,255,.5)]">· 2 giờ trước</span>
+        <span class="tophero__xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg>11,3K</span>
+        <button class="tophero__chia-se" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
         </p>
       </article>
     </section>
@@ -1152,7 +1162,7 @@
               <p class="rail-row__name">GS. Nguyễn Thanh Bình</p>
               <p class="rail-row__desc">42.9k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-thu-hang.png" alt="" width="40" height="40" loading="lazy">
@@ -1160,7 +1170,7 @@
               <p class="rail-row__name">Thu Hằng</p>
               <p class="rail-row__desc">28.7k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-lan-anh.png" alt="" width="40" height="40" loading="lazy">
@@ -1168,7 +1178,7 @@
               <p class="rail-row__name">TS. Lan Anh</p>
               <p class="rail-row__desc">19.3k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="true">Đang theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="true" aria-label="Đang theo dõi" title="Đang theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-nhat-minh.png" alt="" width="40" height="40" loading="lazy">
@@ -1176,7 +1186,7 @@
               <p class="rail-row__name">Nhật Minh</p>
               <p class="rail-row__desc">15.8k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-hoai-nam.png" alt="" width="40" height="40" loading="lazy">
@@ -1184,7 +1194,7 @@
               <p class="rail-row__name">Hoài Nam</p>
               <p class="rail-row__desc">67.4k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-hoang-nam.jpg" alt="" width="40" height="40" loading="lazy">
@@ -1192,7 +1202,7 @@
               <p class="rail-row__name">PGS. Hoàng Nam</p>
               <p class="rail-row__desc">33.5k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="40" height="40" loading="lazy">
@@ -1200,7 +1210,7 @@
               <p class="rail-row__name">Quỳnh Chi</p>
               <p class="rail-row__desc">21.9k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
           <li class="rail-row">
             <img src="assets/img/avatar-tran-bao-long.jpg" alt="" width="40" height="40" loading="lazy">
@@ -1208,7 +1218,7 @@
               <p class="rail-row__name">Trần Bảo Long</p>
               <p class="rail-row__desc">12.6k người theo dõi</p>
             </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false">Theo dõi</button>
+            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon size-4 flex-none icon--them" aria-hidden="true"><use href="#i-them"></use></svg><svg class="icon size-4 flex-none icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
           </li>
       </ul>
     </section>

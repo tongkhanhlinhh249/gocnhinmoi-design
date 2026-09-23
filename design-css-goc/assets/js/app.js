@@ -653,7 +653,14 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (followBtn) {
       var following = followBtn.getAttribute('aria-pressed') === 'true';
       followBtn.setAttribute('aria-pressed', following ? 'false' : 'true');
-      followBtn.textContent = following ? '+ Theo dõi' : 'Đang theo dõi';
+      var nhan = following ? 'Theo dõi' : 'Đang theo dõi';
+      // Nút ở cột phải chỉ có biểu tượng: đổi nhãn trợ năng, không ghi đè ruột nút
+      if (followBtn.querySelector('svg')) {
+        followBtn.setAttribute('aria-label', nhan);
+        followBtn.setAttribute('title', nhan);
+      } else {
+        followBtn.textContent = following ? '+ Theo dõi' : nhan;
+      }
       return;
     }
 

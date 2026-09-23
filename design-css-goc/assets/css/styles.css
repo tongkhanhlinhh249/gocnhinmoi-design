@@ -4765,16 +4765,23 @@ input { font: inherit; }
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  /* Nút theo dõi ở cột phải: chỉ còn biểu tượng, nhường chỗ cho tên tác giả */
   .v-web .rail-follow {
     flex: none;
-    padding: 6px 10px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     border-radius: var(--r-pill);
     background: var(--gnm-red);
     color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 16px;
+    transition: background-color .15s var(--ease), color .15s var(--ease);
   }
+  .v-web .rail-follow .icon { width: 15px; height: 15px; }
+  .v-web .rail-follow .icon--da,
+  .v-web .rail-follow[aria-pressed="true"] .icon--them { display: none; }
+  .v-web .rail-follow[aria-pressed="true"] .icon--da { display: block; }
   .v-web .rail-follow[aria-pressed="true"] { background: var(--fill-soft); color: var(--text-muted); }
 }
 
@@ -6709,3 +6716,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 @media (min-width: 1180px) {
   .v-web .page:has(> .siderail .rail-spot) > main > .spotlist { display: none; }
 }
+
+/* Tin nổi bật: lượt xem và nút chia sẻ nằm cuối dòng tác giả */
+.tophero__xem { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 11px; line-height: 16.5px; color: rgba(255, 255, 255, .62); }
+.tophero__xem .icon { width: 13px; height: 13px; }
+.tophero__chia-se { flex: none; display: grid; place-items: center; width: 26px; height: 26px; margin-right: -4px; border: 0; border-radius: var(--r-pill); background: none; color: rgba(255, 255, 255, .7); cursor: pointer; transition: background-color .15s var(--ease), color .15s var(--ease); }
+.tophero__chia-se:hover { background: rgba(255, 255, 255, .14); color: #fff; }
+.tophero__chia-se .icon { width: 15px; height: 15px; }
