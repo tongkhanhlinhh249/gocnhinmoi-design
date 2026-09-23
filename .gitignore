@@ -3,3 +3,6 @@
 node_modules/
 .venv/
 __pycache__/
+
+# Tài liệu đặc tả — không đưa lên repo
+[Feature Spec]*.md
