@@ -4078,3 +4078,51 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     }
   }
 })();
+
+
+/* =====================================================================
+   DẢI CUỘN NGANG — NÚT LÙI/TIẾN Ở DESKTOP
+   Chuột không kéo ngang tiện như chạm, nên từ 1024px mỗi dải cuộn có hai nút
+   hiện khi rê chuột. Nút tự ẩn ở đầu/cuối dải và khi dải không tràn (vd khối
+   "Thảo luận nhiều" chuyển thành lưới ở bản web).
+   ===================================================================== */
+(function () {
+  'use strict';
+  if (!document.body.classList.contains('v-web')) return;
+  var ds = [].slice.call(document.querySelectorAll('.hscroll'));
+  if (!ds.length) return;
+  var web = window.matchMedia('(min-width: 1024px)');
+
+  ds.forEach(function (ul) {
+    var boc = document.createElement('div');
+    boc.className = 'hs-boc';
+    ul.parentNode.insertBefore(boc, ul);
+    boc.appendChild(ul);
+
+    var nut = ['truoc', 'sau'].map(function (huong) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hs-nut hs-nut--' + huong;
+      b.setAttribute('aria-label', huong === 'truoc' ? 'Xem mục trước' : 'Xem mục tiếp theo');
+      b.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>';
+      b.addEventListener('click', function () {
+        var muc = ul.firstElementChild;
+        var buoc = muc ? muc.getBoundingClientRect().width + 12 : ul.clientWidth * 0.8;
+        ul.scrollBy({ left: huong === 'truoc' ? -buoc : buoc, behavior: 'smooth' });
+      });
+      boc.appendChild(b);
+      return b;
+    });
+
+    function ve() {
+      var tran = web.matches && ul.scrollWidth > ul.clientWidth + 2;
+      nut[0].hidden = !tran || ul.scrollLeft <= 2;
+      nut[1].hidden = !tran || ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 2;
+    }
+    ul.addEventListener('scroll', ve, { passive: true });
+    window.addEventListener('resize', ve);
+    if (web.addEventListener) web.addEventListener('change', ve);
+    if (window.ResizeObserver) new ResizeObserver(ve).observe(ul);
+    ve();
+  });
+})();

@@ -6718,3 +6718,34 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .page:has(> .siderail .rail-spot) > main > .spotlist { display: none; }
 }
 
+/* Dải cuộn ngang ở desktop: nút lùi/tiến hiện khi rê chuột */
+.hs-nut { display: none; }
+@media (min-width: 1024px) {
+  .v-web .hs-boc { position: relative; }
+  .v-web .hs-nut {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    color: var(--ink-strong);
+    box-shadow: 0 4px 12px rgba(16, 24, 40, .14);
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    transition: opacity .15s var(--ease), background-color .15s var(--ease);
+  }
+  .v-web .hs-nut--truoc { left: 2px; }
+  .v-web .hs-nut--sau { right: 2px; }
+  .v-web .hs-boc:hover .hs-nut { opacity: 1; pointer-events: auto; }
+  .v-web .hs-boc:hover .hs-nut[hidden] { opacity: 0; pointer-events: none; }
+  .v-web .hs-nut:hover { background: var(--fill-soft); }
+  .v-web .hs-nut .icon { width: 16px; height: 16px; }
+  .v-web .hs-nut--truoc .icon { transform: rotate(180deg); }
+}
