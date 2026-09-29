@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="Dấu chân tôi qua — ảnh bạn đọc gửi về Góc Nhìn Mới, mỗi tuần một khoảnh khắc được chọn.">
+<meta name="description" content="Dấu chân tôi qua — ảnh bạn đọc gửi về Góc Nhìn Mới.">
 <title>Dấu chân tôi qua — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="v-web">
+<body class="v-web art-desk">
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -21,23 +22,17 @@
     <path d="M0.75 6.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <path d="M0.75 12.75H14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24">
+    <path d="M9.5 20.5H5.5a2 2 0 01-2-2v-13a2 2 0 012-2h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 16.5l4.5-4.5L16 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.5 12h-11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
   <symbol id="i-bell" viewBox="0 0 18.986 18.986">
     <path d="M10.8616 16.6128C10.7225 16.8525 10.5229 17.0515 10.2827 17.1899C10.0425 17.3282 9.77018 17.401 9.493 17.401C9.21582 17.401 8.94351 17.3282 8.70332 17.1899C8.46313 17.0515 8.26351 16.8525 8.12443 16.6128M14.2395 6.32867C14.2395 5.06982 13.7394 3.86253 12.8493 2.97238C11.9591 2.08224 10.7519 1.58217 9.493 1.58217C8.23415 1.58217 7.02686 2.08224 6.13672 2.97238C5.24658 3.86253 4.7465 5.06982 4.7465 6.32867C4.7465 11.8663 2.37325 13.4484 2.37325 13.4484H16.6128C16.6128 13.4484 14.2395 11.8663 14.2395 6.32867Z" stroke="currentColor" stroke-width="1.42395" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
   <symbol id="i-search" viewBox="0 0 19.9842 19.9842">
     <path d="M9.15943 15.8208C12.8384 15.8208 15.8208 12.8384 15.8208 9.15943C15.8208 5.48044 12.8384 2.49803 9.15943 2.49803C5.48044 2.49803 2.49803 5.48044 2.49803 9.15943C2.49803 12.8384 5.48044 15.8208 9.15943 15.8208Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M17.4862 17.4862L13.9057 13.9057" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-them-nguoi" viewBox="0 0 20 20">
-    <circle cx="8" cy="6" r="3.1" stroke="currentColor" stroke-width="1.7" fill="none"/>
-    <path d="M2.6 17.2v-.8A4.4 4.4 0 0 1 7 12h2a4.4 4.4 0 0 1 4.4 4.4v.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/>
-    <path d="M16.4 4.4v4.4M14.2 6.6h4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-  </symbol>
-  <symbol id="i-them" viewBox="0 0 16 16">
-    <path d="M8 3.5v9M3.5 8h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-  </symbol>
-  <symbol id="i-check" viewBox="0 0 16 16">
-    <path d="M3.2 8.6l3.1 3.1 6.5-7.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </symbol>
   <symbol id="i-chevron" viewBox="0 0 12.9904 12.9904">
     <path d="M4.8714 9.7428L8.119 6.4952L4.8714 3.2476" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -48,11 +43,11 @@
   <symbol id="i-comment" viewBox="0 0 15.9882 15.9882">
     <path d="M13.9897 9.99262C13.9897 10.346 13.8493 10.6849 13.5994 10.9347C13.3496 11.1846 13.0107 11.325 12.6573 11.325H4.66322L1.99852 13.9897V3.33087C1.99852 2.97751 2.1389 2.63863 2.38876 2.38876C2.63863 2.1389 2.97751 1.99852 3.33087 1.99852H12.6573C13.0107 1.99852 13.3496 2.1389 13.5994 2.38876C13.8493 2.63863 13.9897 2.97751 13.9897 3.33087V9.99262Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-x" viewBox="0 0 16 16">
+    <path d="M12.2 1.5h2.3L9.5 7.2l5.9 7.3h-4.6L7.2 9.9l-4.1 4.6H.8l5.3-6.1L.4 1.5h4.7l3.3 4.2zm-.8 11.7h1.3L4.4 2.7H3z" fill="currentColor"/>
+  </symbol>
   <symbol id="i-share" viewBox="0 0 15.9882 15.9882">
     <path d="M5.72244 9.00002L10.2724 11.6514M10.2658 4.3368L5.72244 6.98818M11.9912 5.3294C12.5212 5.3294 13.0295 5.11884 13.4043 4.74405C13.7791 4.36925 13.9897 3.86092 13.9897 3.33087C13.9897 2.80083 13.7791 2.2925 13.4043 1.9177C13.0295 1.54291 12.5212 1.33235 11.9912 1.33235C11.4611 1.33235 10.9528 1.54291 10.578 1.9177C10.2032 2.2925 9.99262 2.80083 9.99262 3.33087C9.99262 3.86092 10.2032 4.36925 10.578 4.74405C10.9528 5.11884 11.4611 5.3294 11.9912 5.3294ZM3.99705 7.9941C4.52709 7.9941 5.03542 7.78354 5.41022 7.40875C5.78502 7.03395 5.99557 6.52562 5.99557 5.99557C5.99557 5.46553 5.78502 4.9572 5.41022 4.5824C5.03542 4.20761 4.52709 3.99705 3.99705 3.99705C3.46701 3.99705 2.95868 4.20761 2.58388 4.5824C2.20908 4.9572 1.99852 5.46553 1.99852 5.99557C1.99852 6.52562 2.20908 7.03395 2.58388 7.40875C2.95868 7.78354 3.46701 7.9941 3.99705 7.9941ZM11.9912 10.6588C11.4611 10.6588 10.9528 10.8694 10.578 11.2442C10.2032 11.619 9.99262 12.1273 9.99262 12.6573C9.99262 13.1874 10.2032 13.6957 10.578 14.0705C10.9528 14.4453 11.4611 14.6559 11.9912 14.6559C12.5212 14.6559 13.0295 14.4453 13.4043 14.0705C13.7791 13.6957 13.9897 13.1874 13.9897 12.6573C13.9897 12.1273 13.7791 11.619 13.4043 11.2442C13.0295 10.8694 12.5212 10.6588 11.9912 10.6588Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-flag" viewBox="0 0 16 16">
-    <path d="M3 14.5V2.5M3 2.5C3 2.5 4 1.75 6 1.75C8 1.75 9 3.25 11 3.25C13 3.25 13.5 2.5 13.5 2.5V9C13.5 9 13 9.75 11 9.75C9 9.75 8 8.25 6 8.25C4 8.25 3 9 3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </symbol>
   <symbol id="i-bookmark" viewBox="0 0 15.9882 15.9882">
     <path d="M12.6573 13.9897L7.9941 10.6588L3.33087 13.9897V3.33087C3.33087 2.97751 3.47125 2.63863 3.72111 2.38876C3.97098 2.1389 4.30986 1.99852 4.66322 1.99852H11.325C11.6783 1.99852 12.0172 2.1389 12.2671 2.38876C12.517 2.63863 12.6573 2.97751 12.6573 3.33087V13.9897Z" stroke="currentColor" stroke-width="1.19912" stroke-linecap="round" stroke-linejoin="round"/>
@@ -71,11 +66,6 @@
   <symbol id="i-pause" viewBox="0 0 16 16">
     <rect x="3.5" y="2.5" width="3.4" height="11" rx="1.2" fill="currentColor"/>
     <rect x="9.1" y="2.5" width="3.4" height="11" rx="1.2" fill="currentColor"/>
-  </symbol>
-  <!-- Đinh ghim: đánh dấu câu trả lời GNM chọn (khác biểu tượng địa điểm i-pin) -->
-  <symbol id="i-ghim" viewBox="0 0 24 24">
-    <path d="M12 17v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </symbol>
   <symbol id="i-pin" viewBox="0 0 10.9919 10.9919">
     <path d="M9.61791 4.57996C9.61791 7.78593 5.49595 10.5339 5.49595 10.5339C5.49595 10.5339 1.37399 7.78593 1.37399 4.57996C1.37399 3.48675 1.80826 2.43831 2.58128 1.66529C3.3543 0.892273 4.40274 0.457996 5.49595 0.457996C6.58916 0.457996 7.6376 0.892273 8.41062 1.66529C9.18364 2.43831 9.61791 3.48675 9.61791 4.57996ZM5.49595 4.57996C5.67638 4.57996 5.85505 4.54442 6.02175 4.47537C6.18845 4.40632 6.33992 4.30511 6.46751 4.17753C6.59509 4.04994 6.6963 3.89847 6.76535 3.73177C6.8344 3.56507 6.86994 3.38641 6.86994 3.20597C6.86994 3.02554 6.8344 2.84687 6.76535 2.68017C6.6963 2.51347 6.59509 2.362 6.46751 2.23442C6.33992 2.10683 6.18845 2.00562 6.02175 1.93657C5.85505 1.86752 5.67638 1.83198 5.49595 1.83198C5.13155 1.83198 4.78207 1.97674 4.52439 2.23442C4.26672 2.49209 4.12196 2.84157 4.12196 3.20597C4.12196 3.57038 4.26672 3.91985 4.52439 4.17753C4.78207 4.4352 5.13155 4.57996 5.49595 4.57996Z" stroke="currentColor" stroke-width="0.915992" stroke-linecap="round" stroke-linejoin="round"/>
@@ -144,6 +134,9 @@
     <path d="M9.1 1.9H4.4C3.85 1.9 3.4 2.35 3.4 2.9V13.1C3.4 13.65 3.85 14.1 4.4 14.1H11.6C12.15 14.1 12.6 13.65 12.6 13.1V5.4L9.1 1.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
     <path d="M9.1 1.9V5.4H12.6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
   </symbol>
+  <symbol id="i-flag" viewBox="0 0 16 16">
+    <path d="M3 14.5V2.5M3 2.5C3 2.5 4 1.75 6 1.75C8 1.75 9 3.25 11 3.25C13 3.25 13.5 2.5 13.5 2.5V9C13.5 9 13 9.75 11 9.75C9 9.75 8 8.25 6 8.25C4 8.25 3 9 3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
   <symbol id="i-link" viewBox="0 0 16 16">
     <path d="M6.7 8.65C6.98 9.02 7.34 9.33 7.75 9.55C8.16 9.77 8.62 9.9 9.08 9.93C9.55 9.96 10.01 9.89 10.45 9.73C10.88 9.56 11.28 9.31 11.6 8.98L13.6 6.98C14.18 6.38 14.5 5.58 14.49 4.75C14.48 3.92 14.15 3.13 13.56 2.54C12.97 1.95 12.18 1.62 11.35 1.61C10.52 1.6 9.72 1.92 9.13 2.5L7.98 3.64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     <path d="M9.3 7.35C9.02 6.98 8.66 6.67 8.25 6.45C7.84 6.23 7.38 6.1 6.92 6.07C6.45 6.04 5.99 6.11 5.55 6.27C5.12 6.44 4.72 6.69 4.4 7.02L2.4 9.02C1.82 9.62 1.5 10.42 1.51 11.25C1.52 12.08 1.85 12.87 2.44 13.46C3.03 14.05 3.82 14.38 4.65 14.39C5.48 14.4 6.28 14.08 6.87 13.5L8.02 12.36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -164,110 +157,22 @@
   <symbol id="i-facebook" viewBox="0 0 15.9882 15.9882">
     <path d="M11.9912 1.33235H9.99263C9.10922 1.33235 8.262 1.68328 7.63734 2.30794C7.01268 2.9326 6.66175 3.77982 6.66175 4.66322V6.66175H4.66323V9.32645H6.66175V14.6559H9.32645V9.32645H11.325L11.9912 6.66175H9.32645V4.66322C9.32645 4.48654 9.39664 4.3171 9.52157 4.19217C9.6465 4.06724 9.81594 3.99705 9.99263 3.99705H11.9912V1.33235Z" fill="currentColor"/>
   </symbol>
-  <symbol id="i-flame" viewBox="0 0 24 24">
-    <path d="M13 2s-4 4-4 8a4 4 0 008 0c0-1.5-.5-3-1-4 0 0-1 2-2 2s-1-2-1-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M12 18a4 4 0 01-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-star-line" viewBox="0 0 24 24">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-comment-lines" viewBox="0 0 24 24">
-    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9 10h6M9 14h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-  </symbol>
-  <symbol id="i-pencil" viewBox="0 0 24 24">
-    <path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-settings" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
-    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24">
-    <path d="M9.5 20.5H5.5a2 2 0 01-2-2v-13a2 2 0 012-2h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M16 16.5l4.5-4.5L16 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20.5 12h-11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-  </symbol>
 </svg>
 
 <div class="page">
 
-  <header class="app-header" id="appHeader">
-    <div class="shell app-header__inner">
-      <button class="icon-btn icon-btn--menu" type="button" aria-label="Mở menu chuyên mục" aria-expanded="false" aria-controls="drawer" data-drawer-open>
-        <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
-      </button>
-
-      <a class="brand" href="#" aria-label="Góc Nhìn Mới — về trang chủ">
-        <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
-      </a>
-
-      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
-        <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
-        <span class="icon-btn__dot" aria-hidden="true" hidden></span>
-      </a>
-    </div>
-  </header>
-
-
-  <div class="searchbar shell">
-    <form class="search" role="search" onsubmit="return false">
-      <label class="sr-only" for="q">Tìm kiếm nội dung</label>
-      <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off" data-search>
-      <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
-    </form>
-  </div>
-
-
-  <aside class="desknav" aria-label="Điều hướng chính">
-    <a class="desknav__brand" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ">
-      <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
-    </a>
-
-    <nav aria-label="Khu vực chính">
-      <ul class="desknav__list">
-        <li><a class="desknav__link is-active" href="index.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
-        <li><a class="desknav__link" href="kham-pha.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Khám phá</a></li>
-        <li><a class="desknav__link" href="nghe-va-xem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-media"></use></svg>Nghe & Xem</a></li>
-      </ul>
-    </nav>
-
-    <nav class="desknav__group" aria-label="Chuyên mục">
-      <ul class="desknav__list">
-        <li><a class="desknav__link desknav__link--sub" href="moi-nhat.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="hot-hom-nay.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-flame"></use></svg>Hot hôm nay</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="tra-dam.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="spotlight.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-star-line"></use></svg>Spotlight</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="quan-diem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-comment-lines"></use></svg>Quan điểm</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
-        <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
-      </ul>
-    </nav>
-
-        <div class="desknav__foot">
-      <ul class="desknav__list">
-        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Chính sách</a></li>
-        <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
-      </ul>
-
-      <a class="desknav__me" href="ca-nhan.html">
-        <img src="assets/img/avatar-duc-anh.png" alt="" width="36" height="36" loading="lazy">
-        <span class="desknav__me__body">
-          <span class="desknav__me__name">Đức Anh</span>
-          <span class="desknav__me__handle">@ducanh</span>
-        </span>
-        <svg class="icon desknav__me__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-      </a>
-    </div>
-  </aside>
+  <header class="article-topbar" id="artBar">
+    <a class="article-topbar__back" href="index.html" aria-label="Quay lại"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+    <p class="article-topbar__title">Một sớm trên mặt hồ</p>
+  
+      <button class="icon-btn" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer" data-drawer-open><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+    </header>
 
   <main id="main">
 
+    <!-- ============ Thanh trên — chỉ hiện ở desktop ============ -->
     <div class="deskbar">
+      <a class="art-bar__logo" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ"><img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32"></a>
       <label class="deskbar__search">
         <svg class="icon deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
         <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
@@ -281,27 +186,48 @@
       </a>
     </div>
 
+    <div class="article-scroll">
     <!-- ============ Ảnh được chọn ============ -->
-    <article class="dcq-ct shell" aria-labelledby="dcqCtTen">
-      <h1 class="dcq-ct__ten" id="dcqCtTen">Một sớm trên mặt hồ</h1>
-      <p class="dcq-ct__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
-      <div class="dcq-ct__anh"><img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405"></div>
-      <div class="dcq-ct__nguoi">
-        <img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36">
-        <div>
-          <b>Minh Anh</b>
-          <span>Ảnh của bạn đọc · 2 ngày trước</span>
-        </div>
-      </div>
-      <p class="dcq-ct__mo-ta">Năm giờ sáng, mặt hồ còn chưa gợn sóng, sương chưa kịp tan khỏi chân núi. Người lái đò bảo mùa này nước trong nhất năm, đi chừng mười phút là hết tiếng động cơ, chỉ còn tiếng mái chèo. Tôi giơ máy lên khi nắng vừa chạm tới rặng núi phía xa.</p>
+    <article class="shell">
+      <header class="article-head">
+        <h1 class="article__title">Một sớm trên mặt hồ</h1>
+        <p class="dcq-ct__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
 
+        <div class="article__meta">
+          <a class="byline__who" href="ca-nhan.html?tac-gia=minh-anh" aria-label="Xem trang cá nhân của Minh Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36"></a>
+          <div>
+            <p class="article__author"><a href="ca-nhan.html?tac-gia=minh-anh">Minh Anh</a></p>
+            <p class="article__date">Ảnh của bạn đọc · 2 ngày trước</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="art-body">
+      <!-- Cột tương tác dính bên trái — chỉ hiện ở desktop -->
+      <aside class="art-share" aria-label="Chia sẻ và tương tác">
+        <button class="art-share__nut" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ" title="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
+        <a class="art-share__nut" href="#cmt-title" aria-label="Tới phần bình luận"><svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg></a>
+        <button class="art-share__nut" type="button" data-like data-count="1240" aria-pressed="false" aria-label="Thích ảnh"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+        <button class="art-share__nut" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh" title="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+        <button class="art-share__nut" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo ảnh"><svg class="icon" aria-hidden="true"><use href="#i-flag"></use></svg></button>
+      </aside>
+
+      <div class="article__body">
+        <figure class="dcq-ct__anh">
+          <img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405">
+        </figure>
+        <p>Năm giờ sáng, mặt hồ còn chưa gợn sóng, sương chưa kịp tan khỏi chân núi. Người lái đò bảo mùa này nước trong nhất năm, đi chừng mười phút là hết tiếng động cơ, chỉ còn tiếng mái chèo. Tôi giơ máy lên khi nắng vừa chạm tới rặng núi phía xa.</p>
+      </div>
+      </div>
+
+      <!-- ============ Thanh tương tác — bản điện thoại ============ -->
       <div class="actions dcq-ct__act">
         <button class="act" type="button" data-like data-count="1240" aria-pressed="false" aria-label="Thích">
           <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.2k</span>
         </button>
-        <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
+        <a class="act" href="#cmt-title" aria-label="Tới phần bình luận">
           <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">36</span>
-        </button>
+        </a>
         <span class="act act--xem" aria-label="Lượt xem"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n">8.4k</span></span>
         <span class="actions__spacer"></span>
         <button class="act act--icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
@@ -309,6 +235,63 @@
         <button class="act act--icon" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo ảnh"><svg class="icon" aria-hidden="true"><use href="#i-flag"></use></svg></button>
       </div>
     </article>
+
+    <!-- ============ Bình luận ============ -->
+    <section class="shell profile-section" aria-labelledby="cmt-title">
+      <div class="cmt-head">
+        <h2 class="section-title" id="cmt-title">Bình luận (36)</h2>
+        <div class="cmt-sort" role="tablist">
+          <button type="button" role="tab" aria-selected="true">Nổi bật</button>
+          <button type="button" role="tab" aria-selected="false">Mới nhất</button>
+        </div>
+      </div>
+
+      <form class="cmt-form" onsubmit="return false">
+        <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
+        <label class="sr-only" for="dcqCmtO">Nói gì đó về bức ảnh này</label>
+        <input id="dcqCmtO" type="text" placeholder="Nói gì đó về bức ảnh này...">
+        <button type="button" data-toast="Đã gửi bình luận" aria-label="Gửi bình luận"><svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg></button>
+      </form>
+
+      <ul>
+        <li class="cmt">
+          <img src="assets/img/avatar-minh-tuan.jpg" alt="" width="34" height="34" loading="lazy">
+          <div class="cmt__body">
+            <p class="cmt__who"><span class="cmt__name">Nguyễn Văn Khôi</span><span class="cmt__time">1 ngày trước</span></p>
+            <p class="cmt__text">Mình đi hồ này tháng trước mà không gặp được sương thế này. Chắc phải dậy sớm hơn nữa.</p>
+            <div class="cmt__acts">
+              <button type="button" data-like data-count="24" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">24</span></button>
+              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              <button type="button" data-toast="Đã gửi báo cáo">Báo cáo</button>
+            </div>
+          </div>
+        </li>
+        <li class="cmt cmt--reply">
+          <img src="assets/img/avatar-lan-anh.png" alt="" width="34" height="34" loading="lazy">
+          <div class="cmt__body">
+            <p class="cmt__who"><span class="cmt__name">Minh Anh</span><span class="cmt__time">20 giờ trước</span></p>
+            <p class="cmt__text">Khoảng 5h kém là sương còn dày, tầm 5h15 nắng lên là tan rất nhanh. Bạn đi mùa này thì nước trong hơn hẳn.</p>
+            <div class="cmt__acts">
+              <button type="button" data-like data-count="11" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">11</span></button>
+              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              <button type="button" data-toast="Đã gửi báo cáo">Báo cáo</button>
+            </div>
+          </div>
+        </li>
+        <li class="cmt">
+          <img src="assets/img/avatar-phuong-anh.png" alt="" width="34" height="34" loading="lazy">
+          <div class="cmt__body">
+            <p class="cmt__who"><span class="cmt__name">Phạm Hương Giang</span><span class="cmt__time">2 ngày trước</span></p>
+            <p class="cmt__text">Cái hay là ảnh không chỉnh màu quá tay, nhìn đúng như mắt thấy lúc sáng sớm.</p>
+            <div class="cmt__acts">
+              <button type="button" data-like data-count="9" aria-pressed="false" aria-label="Hữu ích"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">9</span></button>
+              <button type="button" data-toast="Mở khung phản hồi">Phản hồi</button>
+              <button type="button" data-toast="Đã gửi báo cáo">Báo cáo</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
     <!-- ============ Gửi ảnh về GNM ============ -->
     <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
@@ -354,38 +337,39 @@
         </form>
       </div>
     </section>
+    </div>
   </main>
 
+  <!-- ============ Cột phải — chỉ hiện ở desktop rộng ============ -->
   <aside class="siderail" aria-label="Nội dung liên quan">
-    <!-- Spotlight đứng đầu cột phải -->
     <section class="rail-card art-rail-plain" aria-labelledby="rail-spot-title">
       <h2 class="rail-title art-rail-do" id="rail-spot-title">Spotlight</h2>
       <ul class="rail-spot">
         <li class="rail-spot__row">
           <img src="assets/img/kp-chatgpt.jpg" alt="" width="68" height="52" loading="lazy">
           <div>
-            <h3 class="rail-spot__title"><a href="bai-viet.html">ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng</a></h3>
+            <h3 class="rail-spot__title"><a href="spotlight.html">ChatGPT không giết sáng tạo, nó phơi bày sự lười biếng</a></h3>
             <p class="rail-spot__meta"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>199.6K<span aria-hidden="true">·</span>10/09/2026</p>
           </div>
         </li>
         <li class="rail-spot__row">
           <img src="assets/img/cover-shark-viet.png" alt="" width="68" height="52" loading="lazy">
           <div>
-            <h3 class="rail-spot__title"><a href="bai-viet.html">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Phỏng vấn Shark Việt: “Tôi đã sai khi từ chối deal 20 triệu USD đó”</a></h3>
             <p class="rail-spot__meta"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>226.6K<span aria-hidden="true">·</span>06/09/2026</p>
           </div>
         </li>
         <li class="rail-spot__row">
           <img src="assets/img/kp-khong-tu.jpg" alt="" width="68" height="52" loading="lazy">
           <div>
-            <h3 class="rail-spot__title"><a href="bai-viet.html">Khổng Tử và bài học quản trị cho doanh nghiệp Việt hôm nay</a></h3>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Khổng Tử và bài học quản trị cho doanh nghiệp Việt hôm nay</a></h3>
             <p class="rail-spot__meta"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>158.8K<span aria-hidden="true">·</span>03/09/2026</p>
           </div>
         </li>
         <li class="rail-spot__row">
           <img src="assets/img/cover-emag-ai.png" alt="" width="68" height="52" loading="lazy">
           <div>
-            <h3 class="rail-spot__title"><a href="bai-viet.html">Kinh tế AI: Việt Nam đứng ở đâu trên bản đồ công nghệ châu Á?</a></h3>
+            <h3 class="rail-spot__title"><a href="spotlight.html">Kinh tế AI: Việt Nam đứng ở đâu trên bản đồ công nghệ châu Á?</a></h3>
             <p class="rail-spot__meta"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>168.4K<span aria-hidden="true">·</span>03/09/2026</p>
           </div>
         </li>
@@ -396,10 +380,12 @@
       <h2 class="rail-title" id="rail-tags-title">Hashtag nổi bật</h2>
       <ul class="rail-tags">
         <li><a class="rail-tag" href="#">#AI</a></li>
+        <li><a class="rail-tag" href="#">#GenZ</a></li>
         <li><a class="rail-tag" href="#">#KinhTe</a></li>
         <li><a class="rail-tag" href="#">#Startup</a></li>
-        <li><a class="rail-tag" href="#">#ChinhTri</a></li>
+        <li><a class="rail-tag" href="#">#SongCham</a></li>
         <li><a class="rail-tag" href="#">#GiaoDuc</a></li>
+        <li><a class="rail-tag" href="#">#ChinhTri</a></li>
       </ul>
     </section>
 
@@ -442,110 +428,11 @@
               <h3 class="rail-red__title"><a href="bai-viet.html">Vì sao người trẻ Việt ngày càng chọn lối “sống chậm”?</a></h3>
             </div>
           </li>
-          <li class="rail-red__row">
-            <img src="assets/img/cover-tang-truong-xanh.png" alt="" width="56" height="56" loading="lazy">
-            <div class="rail-red__body">
-              <p class="rail-red__by">
-                <a class="rail-red__name" href="ca-nhan.html?tac-gia=minh-duc">Minh Đức</a><span class="rail-red__time">· 2 ngày trước</span>
-              </p>
-              <h3 class="rail-red__title"><a href="bai-viet.html">Tăng trưởng xanh: Việt Nam cần làm gì để đạt mục tiêu NetZero 2050?</a></h3>
-            </div>
-          </li>
-      </ul>
-    </section>
-
-    <section class="rail-card rail-card--flush" aria-labelledby="rail-place-title">
-      <a class="rail-place" href="dia-diem.html">
-        <img src="assets/img/place-workshop-coffee.png" alt="" width="280" height="140" loading="lazy">
-        <span class="rail-place__scrim" aria-hidden="true"></span>
-        <span class="rail-place__body">
-          <span class="rail-place__name">The Workshop Coffee</span>
-          <span class="rail-place__meta">
-            <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh
-          </span>
-        </span>
-      </a>
-      <div class="rail-head">
-        <h2 class="rail-title" id="rail-place-title">📍 Dấu chân tôi qua</h2>
-        <a class="rail-more" href="dia-diem-list.html">Khám phá <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-      </div>
-    </section>
-
-    <section class="rail-card" aria-labelledby="rail-authors-title">
-      <div class="rail-head">
-        <h2 class="rail-title" id="rail-authors-title">Gợi ý theo dõi</h2>
-        <a class="rail-more" href="bang-xep-hang.html">Xem tất cả</a>
-      </div>
-      <ul class="rail-rows">
-          <li class="rail-row">
-            <img src="assets/img/avatar-nguyen-thanh-binh.png" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">GS. Nguyễn Thanh Bình</p>
-              <p class="rail-row__desc">42.9k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-thu-hang.png" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">Thu Hằng</p>
-              <p class="rail-row__desc">28.7k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-lan-anh.png" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">TS. Lan Anh</p>
-              <p class="rail-row__desc">19.3k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="true" aria-label="Đang theo dõi" title="Đang theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-nhat-minh.png" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">Nhật Minh</p>
-              <p class="rail-row__desc">15.8k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-hoai-nam.png" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">Hoài Nam</p>
-              <p class="rail-row__desc">67.4k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-hoang-nam.jpg" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">PGS. Hoàng Nam</p>
-              <p class="rail-row__desc">33.5k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-quynh-chi.jpg" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">Quỳnh Chi</p>
-              <p class="rail-row__desc">21.9k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
-          <li class="rail-row">
-            <img src="assets/img/avatar-tran-bao-long.jpg" alt="" width="40" height="40" loading="lazy">
-            <div class="rail-row__body">
-              <p class="rail-row__name">Trần Bảo Long</p>
-              <p class="rail-row__desc">12.6k người theo dõi</p>
-            </div>
-            <button class="rail-follow" type="button" data-follow aria-pressed="false" aria-label="Theo dõi" title="Theo dõi"><svg class="icon icon--them" aria-hidden="true"><use href="#i-them-nguoi"></use></svg><svg class="icon icon--da" aria-hidden="true"><use href="#i-check"></use></svg></button>
-          </li>
       </ul>
     </section>
   </aside>
 
-
+  <!-- ============ Footer ============ -->
   <footer class="site-footer">
     <div class="shell">
       <img class="footer__logo" src="assets/img/logo-gnm-footer.png" alt="Góc Nhìn Mới" width="107" height="32" loading="lazy">
@@ -588,8 +475,10 @@
       <p>Vận hành bởi <a href="#">NetSpace</a></p>
     </div>
   </footer>
+
 </div><!-- /.page -->
 
+<!-- ============ Thanh điều hướng dưới ============ -->
 <nav class="bottom-nav" aria-label="Điều hướng chính">
   <div class="bottom-nav__inner">
     <div class="nav-pill" role="tablist">
@@ -618,9 +507,33 @@
   </div>
 </nav>
 
-<!-- ============ Drawer chuyên mục ============ -->
+<div class="drawer" id="drawer">
+  <div class="drawer__backdrop" data-drawer-close></div>
 
-<!-- ============ Bottom sheet dùng chung (menu hành động / lý do) ============ -->
+  <nav class="drawer__panel" aria-label="Chuyên mục">
+    <div class="drawer__head">
+      <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
+      <button class="icon-btn" type="button" aria-label="Đóng menu" data-drawer-close>
+        <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+
+    <ul class="drawer__list">
+      <li><a class="drawer__link" href="moi-nhat.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-clock"></use></svg>Mới nhất</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="hot-hom-nay.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-heart"></use></svg>Hot hôm nay</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="tra-dam.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-comment"></use></svg>Trà đàm</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="goc-mo.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Góc mở</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="quan-diem.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-nav-write"></use></svg>Quan điểm</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="luan-co-suy-kim.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-bookmark"></use></svg>Luận cổ suy kim</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="photo.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+      <li><a class="drawer__link" href="spotlight.html"><span class="drawer__link__main"><svg class="icon drawer__link__ico" aria-hidden="true"><use href="#i-star"></use></svg>Spotlight</span> <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a></li>
+    </ul>
+
+    <p class="drawer__foot">© 2026 Mạng xã hội Góc Nhìn Mới</p>
+  </nav>
+</div>
+
+<!-- ============ Bottom sheet dùng chung (menu chia sẻ) ============ -->
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
   <div class="sheet__backdrop" data-sheet-close></div>
   <div class="sheet__panel">
@@ -631,18 +544,7 @@
   </div>
 </div>
 
-<!-- ============ Dialog xác nhận ============ -->
-<div class="dialog" id="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogText" hidden>
-  <div class="dialog__backdrop" data-dialog-close></div>
-  <div class="dialog__panel">
-    <h2 class="dialog__title" id="dialogTitle"></h2>
-    <p class="dialog__text" id="dialogText"></p>
-    <div class="dialog__actions" id="dialogActions"></div>
-  </div>
-</div>
-
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 
 <script src="assets/js/app.js"></script></body>
 </html>

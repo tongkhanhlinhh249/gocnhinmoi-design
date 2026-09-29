@@ -6873,6 +6873,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ct__nguoi span { font-size: 12px; line-height: 18px; color: var(--text-action); }
 .dcq-ct__mo-ta { font-size: 15px; line-height: 24px; color: var(--ink); }
 .dcq-ct__act { margin-top: 2px; }
+/* Bản desktop đã có cột tương tác dính bên trái nên giấu thanh ngang đi. */
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+  .art-desk .dcq-ct__act { display: none; }
+}
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }
