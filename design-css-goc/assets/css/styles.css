@@ -7001,7 +7001,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* Nút mở menu chuyên mục trên thanh đầu — chỉ dùng ở khổ không có cột
    điều hướng (màn trong Z Fold). */
-.deskbar__menu { display: none; }
+.deskbar__menu,
+.deskbar__logo { display: none; }
 
 /* ---------- Màn trong Galaxy Z Fold ----------
    Khung gần vuông, rộng chỉ 744–1023px: bỏ cột điều hướng bên trái để dành
@@ -7041,6 +7042,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .page > main > .deskbar { width: calc(100% + 240px); z-index: 60; }
   .v-web .siderail { margin-top: 63px; top: 63px; max-height: calc(100vh - 63px); }
   .v-web .deskbar__menu:hover { background: var(--fill-soft); }
+  .v-web .deskbar__logo { display: block; flex: none; }
+  .v-web .deskbar__logo img { width: 108px; height: 32px; object-fit: contain; }
   .v-web .deskbar__menu .icon { width: 18px; height: 18px; }
 }
 
