@@ -6853,14 +6853,61 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq__anh-ten { font-size: 18px; font-weight: 800; line-height: 24.75px; letter-spacing: -.011em; }
 .dcq__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 2px; font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .9); }
 .dcq__nguoi img { width: 22px; height: 22px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
-/* Tab Khám phá chỉ hiện một ảnh lớn, giống trang chủ */
-.dcq-kp { margin-top: 12px; }
+/* Tab Khám phá chỉ hiện một ảnh lớn, giống trang chủ. Các mục khác cách nhau
+   nhờ đệm 12px của dải cuộn ngang, ở đây phải tự chừa cho bằng. */
+.dcq-kp { margin-block: 12px; }
+/* Thẻ ảnh trong lưới danh sách */
+.dcq-the { min-width: 0; }
 
 /* ---------- Trang danh sách ---------- */
 .dcq-ds-khoi { padding-top: 16px; padding-bottom: 8px; }
-.dcq-ds__ten { font-size: 22px; font-weight: 800; line-height: 30px; letter-spacing: -.011em; color: var(--ink-strong); }
+.dcq-ds__dau { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.dcq-ds__ten { font-size: 26px; font-weight: 800; line-height: 34px; letter-spacing: -.015em; color: var(--ink-strong); }
 .dcq-ds__phu { padding-top: 4px; font-size: 13px; line-height: 20px; color: var(--text-action); }
-.dcq-ds { display: grid; gap: 16px; padding-top: 16px; }
+.dcq-ds__gui {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid var(--gnm-red);
+  border-radius: var(--r-pill);
+  color: var(--gnm-red);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dcq-ds__gui .icon { width: 15px; height: 15px; }
+.dcq-ds__gui:hover { background: #FFEFEF; }
+.dcq-ds { display: grid; gap: 20px 16px; padding-top: 20px; }
+
+/* Thẻ ảnh: ảnh trên, chữ dưới */
+.dcq-the__anh { display: block; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
+.dcq-the__anh img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.dcq-the__than { padding-top: 10px; }
+.dcq-the__hang { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.dcq-the__ten { font-size: 15px; font-weight: 700; line-height: 22px; letter-spacing: -.011em; color: var(--ink-strong); }
+.dcq-the__luu { flex: none; width: 28px; height: 28px; margin-top: -2px; display: grid; place-items: center; border-radius: var(--r-pill); color: var(--icon-grey); }
+.dcq-the__luu .icon { width: 17px; height: 17px; }
+.dcq-the__luu[aria-pressed="true"] { color: var(--gnm-red); }
+.dcq-the__luu[aria-pressed="true"] .icon { fill: var(--gnm-red); }
+.dcq-the__noi { display: flex; align-items: center; gap: 4px; padding-top: 4px; font-size: 12px; line-height: 18px; color: var(--text-action); }
+.dcq-the__noi .icon { width: 12px; height: 12px; flex: none; }
+.dcq-the__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 8px; font-size: 12px; font-weight: 600; line-height: 18px; color: var(--ink-strong); }
+.dcq-the__nguoi img { width: 24px; height: 24px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
+.dcq-ds__cuoi { display: flex; justify-content: center; padding-top: 24px; }
+.dcq-ds__nut {
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  color: var(--ink-strong);
+  font-size: 13px;
+  font-weight: 700;
+}
+.dcq-ds__nut:hover { border-color: var(--gnm-red); color: var(--gnm-red); }
 
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
@@ -6875,6 +6922,12 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ct__nguoi span { font-size: 12px; line-height: 18px; color: var(--text-action); }
 .dcq-ct__mo-ta { font-size: 15px; line-height: 24px; color: var(--ink); }
 .dcq-ct__act { margin-top: 2px; }
+/* Trang ảnh không có thẻ chủ đề phía trên tiêu đề nên bỏ phần đệm dành cho nó */
+.dcq-bai .article__title { padding-top: 0; }
+.art-desk .dcq-bai .article-head { padding-top: 20px; }
+/* Trang ảnh: bỏ giới hạn bề ngang của thân bài chữ, ảnh và mô tả chạy hết cột */
+.art-desk .dcq-ct .article__body,
+.art-desk .article__body:has(> .dcq-ct__anh) { max-width: none; }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }

@@ -4215,3 +4215,17 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (window.toast) window.toast('Đã nhận ảnh của bạn. Chúng tôi sẽ báo lại khi ảnh được đăng.');
   });
 })();
+
+/* Nút "Xem thêm ảnh" của trang danh sách Dấu chân tôi qua */
+(function () {
+  var nut = document.querySelector('[data-dcq-xem-them]');
+  if (!nut) return;
+  nut.addEventListener('click', function () {
+    var an = document.querySelectorAll('[data-dcq-them][hidden]');
+    Array.prototype.forEach.call(an, function (e) { e.hidden = false; });
+    if (!document.querySelector('[data-dcq-them][hidden]')) {
+      nut.hidden = true;
+      if (window.gnmXepSoLe) window.gnmXepSoLe();
+    }
+  });
+})();
