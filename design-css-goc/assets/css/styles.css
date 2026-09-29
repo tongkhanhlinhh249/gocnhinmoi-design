@@ -6766,3 +6766,19 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .article-topbar { max-width: 920px; }
 }
 /* Mở ngang: màn thấp nên ảnh mở đầu dẹt lại để tiêu đề không bị đẩy khỏi khung */
+
+/* ---------- Khối nền màu ở cột giữa (bản web) ----------
+   Thịnh hành và Spotlight vốn tràn viền vì ở điện thoại chúng chiếm trọn bề
+   ngang. Sang bản web hai khối này nằm trong cột giữa, tràn viền thì mảng nền
+   đỏ/hồng dán sát đường kẻ của cột điều hướng, lệch hẳn so với các mục khác.
+   Thụt hai bên đúng bằng đệm của .shell rồi bo góc để thành một khối riêng.
+   (Từ 1180px trở lên hai khối này ẩn hẳn vì đã có ở cột phụ.) */
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+  .v-web .page > main > .redlist,
+  .v-web .page > main > .spotlist {
+    margin-inline: 24px;
+    border-radius: 12px;
+  }
+  .v-web .page > main > .redlist > .shell,
+  .v-web .page > main > .spotlist > .shell { padding-inline: 16px; }
+}

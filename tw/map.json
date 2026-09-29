@@ -2110,5 +2110,9 @@
  "zz-man-gap": {
   "tw": "",
   "keep": "@media (min-width:840px) and (max-width:1023.98px) and (orientation:portrait){.v-web .page{max-width:920px}.v-web .page .shell{padding-inline:28px}.v-web .page .tophero{padding-inline:28px}.v-web .page .chips{padding-inline:28px}.v-web .page .feed{column-gap:24px}.v-web .page .tophero .tophero__item--lg.tophero__item .tophero__media{aspect-ratio:16 / 10}.v-web .page .tophero .tophero__item--lg.tophero__item .tophero__title{font-size:22px;line-height:30px}.v-web .drawer,.v-web .sheet,.v-web .dialog{max-width:920px}.v-web .article-topbar{max-width:920px}}"
+ },
+ "zz-khoi-nen-web": {
+  "tw": "",
+  "keep": "@media (min-width:1024px),(min-width:840px) and (max-width:1023.98px) and (orientation:landscape){.v-web .page>main>.redlist,.v-web .page>main>.spotlist{margin-inline:24px;border-radius:12px}.v-web .page>main>.redlist>.shell,.v-web .page>main>.spotlist>.shell{padding-inline:16px}}"
  }
 }
