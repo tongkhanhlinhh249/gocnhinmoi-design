@@ -6806,9 +6806,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   letter-spacing: -.011em;
   color: var(--ink-strong);
 }
-.dcq__dau { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.dcq__them { flex: none; padding-top: 4px; }
-.dcq__phu { padding-top: 2px; font-size: 13px; line-height: 20px; color: var(--text-action); }
+.dcq__dau { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.dcq__them { flex: none; }
 .dcq__the { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
 .dcq__the > img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .dcq__scrim {
