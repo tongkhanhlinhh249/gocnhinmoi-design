@@ -4126,3 +4126,70 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     ve();
   });
 })();
+
+/* ================= Gửi ảnh "Dấu chân tôi qua" =================
+   Bản mẫu: ảnh chọn xong chỉ xem trước ngay tại chỗ, không tải lên đâu cả.
+   Bấm gửi thì kiểm tra đủ ảnh và tiêu đề rồi báo đã nhận, dọn lại khung. */
+(function () {
+  var form = document.querySelector('[data-dcq-form]');
+  if (!form) return;
+
+  var o = form.querySelector('[data-dcq-tai]');
+  var tep = form.querySelector('[data-dcq-tep]');
+  var xem = form.querySelector('[data-dcq-xem]');
+  var doi = form.querySelector('[data-dcq-doi]');
+  var oTen = form.querySelector('[data-dcq-ten]');
+  var oNoi = form.querySelector('[data-dcq-noi]');
+  var oMo = form.querySelector('[data-dcq-mo]');
+  var dem = form.querySelector('[data-dcq-dem]');
+  var GIOI_HAN = 10 * 1024 * 1024;
+  var nguon = '';
+
+  function donAnh() {
+    if (nguon) { URL.revokeObjectURL(nguon); nguon = ''; }
+    xem.removeAttribute('src');
+    xem.hidden = true;
+    doi.hidden = true;
+    o.classList.remove('co-anh');
+  }
+
+  tep.addEventListener('change', function () {
+    var f = tep.files && tep.files[0];
+    if (!f) { donAnh(); return; }
+    if (f.size > GIOI_HAN) {
+      tep.value = '';
+      donAnh();
+      if (window.toast) window.toast('Ảnh nặng quá 10MB, chọn tấm nhẹ hơn nhé');
+      return;
+    }
+    if (nguon) URL.revokeObjectURL(nguon);
+    nguon = URL.createObjectURL(f);
+    xem.src = nguon;
+    xem.hidden = false;
+    doi.hidden = false;
+    o.classList.add('co-anh');
+  });
+
+  if (oMo && dem) {
+    var demChu = function () { dem.textContent = oMo.value.length + '/200'; };
+    oMo.addEventListener('input', demChu);
+    demChu();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var thieu = [];
+    if (!tep.files || !tep.files.length) thieu.push('ảnh');
+    if (!oTen.value.trim()) thieu.push('tiêu đề');
+    if (thieu.length) {
+      if (window.toast) window.toast('Còn thiếu ' + thieu.join(' và ') + '.');
+      return;
+    }
+    tep.value = '';
+    donAnh();
+    oTen.value = '';
+    if (oNoi) oNoi.value = '';
+    if (oMo) { oMo.value = ''; if (dem) dem.textContent = '0/200'; }
+    if (window.toast) window.toast('Đã gửi ảnh. Ban biên tập sẽ duyệt trong vài ngày tới.');
+  });
+})();
