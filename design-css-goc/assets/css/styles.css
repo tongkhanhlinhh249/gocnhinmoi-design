@@ -6867,7 +6867,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ds__gui {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   flex: none;
   height: 38px;
   padding: 0 16px;
@@ -6878,7 +6877,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   font-weight: 700;
   white-space: nowrap;
 }
-.dcq-ds__gui .icon { width: 15px; height: 15px; }
 .dcq-ds__gui:hover { background: #FFEFEF; }
 .dcq-ds { display: grid; gap: 20px 16px; padding-top: 20px; }
 
