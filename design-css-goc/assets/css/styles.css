@@ -4640,8 +4640,11 @@ input { font: inherit; }
     box-shadow: none;
   }
   .v-web .rail-card--red .rail-title { color: var(--gnm-red); }
-  .v-web .rail-red { display: grid; gap: 12px; padding-top: 12px; }
+  /* minmax(0,1fr): ô lưới mặc định rộng tối thiểu bằng nội dung, cột phụ hẹp
+     (240px ở màn Z Fold) thì dòng tin tràn ra ngoài thẻ. */
+  .v-web .rail-red { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-top: 12px; }
   .v-web .rail-red__row {
+    min-width: 0;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -6996,6 +6999,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-gui__huy:hover { background: rgba(16, 24, 40, .06); }
 .dcq-gui__luu-y { font-size: 12px; line-height: 18px; color: var(--text-action); text-align: center; }
 
+/* Nút mở menu chuyên mục trên thanh đầu — chỉ dùng ở khổ không có cột
+   điều hướng (màn trong Z Fold). */
+.deskbar__menu { display: none; }
+
 /* ---------- Màn trong Galaxy Z Fold ----------
    Khung gần vuông, rộng chỉ 744–1023px: bỏ cột điều hướng bên trái để dành
    chỗ cho cột giữa và cột phụ bên phải, giống bố cục hai cột của bản desktop
@@ -7007,6 +7014,17 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .page > main,
   .v-web .page .site-footer { grid-column: 1; }
   .v-web .siderail { grid-column: 2; grid-row: 1 / 3; }
+  .v-web .deskbar__menu {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--r-pill);
+    color: var(--icon-dark);
+  }
+  .v-web .deskbar__menu:hover { background: var(--fill-soft); }
+  .v-web .deskbar__menu .icon { width: 18px; height: 18px; }
 }
 
 /* Gập dọc thì cột giữa chỉ còn hơn 500px, xếp hai cột thẻ quá chật — cho
