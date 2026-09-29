@@ -163,7 +163,7 @@
 
   <header class="article-topbar fixed inset-x-0 top-0 z-40 max-w-shell mx-auto flex items-center gap-1 h-[52px] pr-[var(--gutter)] bg-surface border-b border-line -translate-y-full transition duration-[180] motion-reduce:transition-none" id="artBar">
     <a class="article-topbar__back size-11 flex-none grid place-items-center text-ink" href="index.html" aria-label="Quay lại"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
-    <p class="min-w-0 text-[14px] font-bold leading-[20px] text-ink truncate">Một sớm trên mặt hồ</p>
+    <p class="min-w-0 text-[14px] font-bold leading-[20px] text-ink truncate">Dấu chân tôi qua</p>
   
       <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer" data-drawer-open><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-menu"></use></svg></button>
     </header>
@@ -189,6 +189,7 @@
     <div class="relative z-[1] bg-surface">
     <!-- ============ Ảnh được chọn ============ -->
     <article class="shell w-full max-w-shell mx-auto px-4">
+      <a class="dcq-ct__quay" href="dau-chan-toi-qua-list.html"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-chevron"></use></svg>Dấu chân tôi qua</a>
       <header class="article-head pt-5">
         <h1 class="article__title pt-[10px] text-2xl font-extrabold leading-[33px] tracking-[-.015em] text-ink">Một sớm trên mặt hồ</h1>
         <p class="dcq-ct__noi"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
@@ -197,20 +198,11 @@
           <a class="byline__who flex-none block" href="ca-nhan.html?tac-gia=minh-anh" aria-label="Xem trang cá nhân của Minh Anh"><img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36"></a>
           <div>
             <p class="text-[14px] font-bold leading-5 text-ink"><a href="ca-nhan.html?tac-gia=minh-anh">Minh Anh</a></p>
-            <p class="article__date text-[12px] leading-[18px] text-ink-muted">Ảnh của bạn đọc · 2 ngày trước</p>
+            <p class="article__date text-[12px] leading-[18px] text-ink-muted">Ảnh từ cộng đồng · 2 ngày trước</p>
           </div>
+          <button class="dcq-ct__them" type="button" data-toast="Tuỳ chọn khác" aria-label="Tuỳ chọn khác"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
         </div>
       </header>
-
-      <div class="art-body">
-      <!-- Cột tương tác dính bên trái — chỉ hiện ở desktop -->
-      <aside class="art-share" aria-label="Chia sẻ và tương tác">
-        <button class="art-share__nut" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ" title="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
-        <a class="art-share__nut" href="#cmt-title" aria-label="Tới phần bình luận"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg></a>
-        <button class="art-share__nut" type="button" data-like data-count="1240" aria-pressed="false" aria-label="Thích ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg></button>
-        <button class="art-share__nut" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh" title="Lưu ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-        <button class="art-share__nut" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-flag"></use></svg></button>
-      </aside>
 
       <div class="article__body pt-[22px]">
         <figure class="dcq-ct__anh">
@@ -218,9 +210,7 @@
         </figure>
         <p>Năm giờ sáng, mặt hồ còn chưa gợn sóng, sương chưa kịp tan khỏi chân núi. Người lái đò bảo mùa này nước trong nhất năm, đi chừng mười phút là hết tiếng động cơ, chỉ còn tiếng mái chèo. Tôi giơ máy lên khi nắng vừa chạm tới rặng núi phía xa.</p>
       </div>
-      </div>
 
-      <!-- ============ Thanh tương tác — bản điện thoại ============ -->
       <div class="actions flex items-center gap-5 mt-[10px] pt-2 border-t border-line dcq-ct__act">
         <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" type="button" data-like data-count="1240" aria-pressed="false" aria-label="Thích">
           <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">1.2k</span>
@@ -228,14 +218,59 @@
         <a class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out" href="#cmt-title" aria-label="Tới phần bình luận">
           <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">36</span>
         </a>
-        <span class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out act--xem" aria-label="Lượt xem"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n text-[12px] font-medium leading-[18px] text-ink-action tabular-nums">8.4k</span></span>
         <span class="flex-1"></span>
         <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-share"></use></svg></button>
         <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-        <button class="act inline-flex items-center gap-[6px] min-h-[24px] text-ink-muted transition-transform duration-[150] ease-out text-icon" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-flag"></use></svg></button>
       </div>
     </article>
 
+    <!-- ============ Gửi ảnh về GNM ============ -->
+    <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
+    <section class="dcq-gui shell w-full max-w-shell mx-auto px-4" id="gui-anh" aria-labelledby="dcqGuiTen">
+      <div class="dcq-gui__the">
+        <div class="dcq-gui__loi">
+        <h2 class="dcq-gui__ten" id="dcqGuiTen">Bạn có khoảnh khắc muốn chia sẻ?</h2>
+        <p class="dcq-gui__chu">Gửi ảnh và câu chuyện của bạn đến Góc Nhìn Mới.</p>
+        </div>
+        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh</button>
+
+        <form class="dcq-gui__form" data-dcq-form hidden>
+          <label class="dcq-tai" data-dcq-tai>
+            <input class="sr-only" type="file" accept="image/*" data-dcq-tep>
+            <span class="dcq-tai__goi">
+              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-camera"></use></svg>
+              <span class="dcq-tai__chinh">Chọn ảnh từ máy</span>
+              <span class="dcq-tai__phu">JPG hoặc PNG, tối đa 10MB</span>
+            </span>
+            <img class="dcq-tai__xem" alt="" data-dcq-xem hidden>
+            <span class="dcq-tai__doi" data-dcq-doi hidden>Đổi ảnh khác</span>
+          </label>
+
+          <label class="dcq-o">
+            <span class="dcq-o__nhan">Tiêu đề ảnh</span>
+            <input type="text" maxlength="60" placeholder="Ví dụ: Một sớm trên mặt hồ" data-dcq-ten>
+          </label>
+
+          <label class="dcq-o">
+            <span class="dcq-o__nhan">Nơi chụp</span>
+            <input type="text" maxlength="60" placeholder="Ví dụ: Hồ Ba Bể, Bắc Kạn" data-dcq-noi>
+          </label>
+
+          <label class="dcq-o">
+            <span class="dcq-o__nhan">Mô tả ngắn</span>
+            <textarea rows="3" maxlength="200" placeholder="Vài câu về khoảnh khắc này" data-dcq-mo></textarea>
+            <span class="dcq-o__dem" data-dcq-dem>0/200</span>
+          </label>
+
+          <div class="dcq-gui__hang">
+            <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
+            <button class="dcq-gui__huy" type="button" data-dcq-huy>Huỷ</button>
+          </div>
+          <p class="dcq-gui__luu-y">Mỗi tuần một khoảnh khắc được chọn xuất hiện ở trang chủ.</p>
+        </form>
+      </div>
+    </section>
+    </div>
     <!-- ============ Bình luận ============ -->
     <section class="shell w-full max-w-shell mx-auto px-4 profile-section mt-[30px]" aria-labelledby="cmt-title">
       <div class="flex items-center justify-between gap-3 pt-1">
@@ -293,51 +328,6 @@
       </ul>
     </section>
 
-    <!-- ============ Gửi ảnh về GNM ============ -->
-    <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
-    <section class="dcq-gui shell w-full max-w-shell mx-auto px-4" id="gui-anh" aria-labelledby="dcqGuiTen">
-      <div class="dcq-gui__the">
-        <h2 class="dcq-gui__ten" id="dcqGuiTen"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-camera"></use></svg>Gửi ảnh về Góc Nhìn Mới</h2>
-        <p class="dcq-gui__chu">Một nơi bạn đã đi qua, một khoảnh khắc muốn giữ lại — gửi về để cùng xuất hiện ở Dấu chân tôi qua.</p>
-        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh của bạn</button>
-
-        <form class="dcq-gui__form" data-dcq-form hidden>
-          <label class="dcq-tai" data-dcq-tai>
-            <input class="sr-only" type="file" accept="image/*" data-dcq-tep>
-            <span class="dcq-tai__goi">
-              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-camera"></use></svg>
-              <span class="dcq-tai__chinh">Chọn ảnh từ máy</span>
-              <span class="dcq-tai__phu">JPG hoặc PNG, tối đa 10MB</span>
-            </span>
-            <img class="dcq-tai__xem" alt="" data-dcq-xem hidden>
-            <span class="dcq-tai__doi" data-dcq-doi hidden>Đổi ảnh khác</span>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Tiêu đề ảnh</span>
-            <input type="text" maxlength="60" placeholder="Ví dụ: Một sớm trên mặt hồ" data-dcq-ten>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Nơi chụp</span>
-            <input type="text" maxlength="60" placeholder="Ví dụ: Hồ Ba Bể, Bắc Kạn" data-dcq-noi>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Mô tả ngắn</span>
-            <textarea rows="3" maxlength="200" placeholder="Vài câu về khoảnh khắc này" data-dcq-mo></textarea>
-            <span class="dcq-o__dem" data-dcq-dem>0/200</span>
-          </label>
-
-          <div class="dcq-gui__hang">
-            <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
-            <button class="dcq-gui__huy" type="button" data-dcq-huy>Huỷ</button>
-          </div>
-          <p class="dcq-gui__luu-y">Mỗi tuần một khoảnh khắc được chọn xuất hiện ở trang chủ.</p>
-        </form>
-      </div>
-    </section>
-    </div>
   </main>
 
   <!-- ============ Cột phải — chỉ hiện ở desktop rộng ============ -->

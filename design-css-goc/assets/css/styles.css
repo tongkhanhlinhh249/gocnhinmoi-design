@@ -6853,6 +6853,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq__anh-ten { font-size: 18px; font-weight: 800; line-height: 24.75px; letter-spacing: -.011em; }
 .dcq__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 2px; font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .9); }
 .dcq__nguoi img { width: 22px; height: 22px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
+/* Dải ảnh cuộn ngang ở tab Khám phá */
+.dcq-hs > li { flex: 0 0 306px; }
 
 /* ---------- Trang danh sách ---------- */
 .dcq-ds-khoi { padding-top: 16px; padding-bottom: 8px; }
@@ -6864,7 +6866,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
 .dcq-ct__anh { overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
 .dcq-ct__anh img { display: block; width: 100%; height: auto; }
-.dcq-ct__noi { display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 18px; color: var(--text-action); }
+.dcq-ct__noi { display: flex; align-items: center; gap: 4px; padding-top: 6px; font-size: 13px; font-weight: 600; line-height: 20px; color: var(--gnm-red); }
 .dcq-ct__noi .icon { width: 12px; height: 12px; flex: none; color: var(--gnm-red); }
 .dcq-ct__ten { font-size: 22px; font-weight: 800; line-height: 30px; letter-spacing: -.011em; color: var(--ink-strong); }
 .dcq-ct__nguoi { display: flex; align-items: center; gap: 10px; padding-top: 2px; }
@@ -6873,14 +6875,31 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ct__nguoi span { font-size: 12px; line-height: 18px; color: var(--text-action); }
 .dcq-ct__mo-ta { font-size: 15px; line-height: 24px; color: var(--ink); }
 .dcq-ct__act { margin-top: 2px; }
-/* Bản desktop đã có cột tương tác dính bên trái nên giấu thanh ngang đi. */
+/* Đường quay về chuyên mục — bản điện thoại đã có tên chuyên mục trên thanh đầu */
+.dcq-ct__quay { display: none; }
+.dcq-ct__them { flex: none; margin-left: auto; width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--r-pill); color: var(--icon-grey); }
+.dcq-ct__them:hover { background: var(--fill-soft); }
+.dcq-ct__them .icon { width: 18px; height: 18px; }
 @media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
-  .art-desk .dcq-ct__act { display: none; }
+  .art-desk .dcq-ct__quay {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding-top: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--text-action);
+  }
+  .art-desk .dcq-ct__quay .icon { width: 14px; height: 14px; transform: rotate(180deg); }
+  .art-desk .dcq-ct__quay:hover { color: var(--gnm-red); }
+  .art-desk .article-head { padding-top: 12px; }
 }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }
-.dcq-gui__the { padding: 16px; border: 1px solid #FFD6D6; border-radius: var(--r-lg); background: linear-gradient(135deg, #FFF4F4 0%, #FFE6E6 100%); }
+.dcq-gui__the { padding: 16px; border: 1px solid #FFD6D6; border-radius: var(--r-card); background: linear-gradient(135deg, #FFF4F4 0%, #FFE6E6 100%); }
+.dcq-gui__loi { min-width: 0; }
 .dcq-gui__ten { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 800; line-height: 24px; letter-spacing: -.011em; color: var(--ink-strong); }
 .dcq-gui__ten .icon { width: 17px; height: 17px; flex: none; color: var(--gnm-red); }
 .dcq-gui__chu { padding-top: 6px; font-size: 13px; line-height: 20px; color: var(--text-action); }
@@ -6946,7 +6965,19 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   font-weight: 700;
 }
 /* Khung mặc định chỉ có lời mời và một nút; bấm vào mới mở đủ các trường. */
-.dcq-gui__nut--mo { margin-top: 14px; padding-inline: 20px; }
+.dcq-gui__nut--mo {
+  width: 100%;
+  margin-top: 14px;
+  padding-inline: 20px;
+  border: 1px solid var(--gnm-red);
+  background: transparent;
+  color: var(--gnm-red);
+}
+.dcq-gui__nut--mo:hover { background: rgba(184, 0, 1, .06); }
+@media (min-width: 768px) {
+  .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .v-web .dcq-gui__nut--mo { width: auto; flex: none; margin-top: 0; }
+}
 .dcq-gui__hang { display: flex; align-items: center; gap: 10px; }
 .dcq-gui__hang .dcq-gui__nut { flex: 1; }
 .dcq-gui__huy {
