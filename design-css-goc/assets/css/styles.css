@@ -6790,36 +6790,14 @@ a.cs-bai:hover { border-color: #FFC9C9; }
    chủ chỉ hiện đúng một ảnh; bấm vào ra trang chi tiết có mô tả ngắn và khung
    gửi ảnh. */
 .dcq { display: grid; gap: 12px; padding-top: 20px; padding-bottom: 12px; }
-.dcq__dau { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .dcq__ten {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 18px;
   font-weight: 800;
   line-height: 25px;
   letter-spacing: -.011em;
   color: var(--ink-strong);
 }
-.dcq__ten .icon { width: 16px; height: 16px; flex: none; color: var(--gnm-red); }
 .dcq__phu { padding-top: 2px; font-size: 13px; line-height: 20px; color: var(--text-action); }
-.dcq__gui {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  flex: none;
-  height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--gnm-red);
-  border-radius: var(--r-pill);
-  color: var(--gnm-red);
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.dcq__gui .icon { width: 15px; height: 15px; }
-.dcq__gui:hover { background: #FFEFEF; }
-
 .dcq__the { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
 .dcq__the > img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .dcq__scrim {
@@ -6865,8 +6843,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq__anh-ten { font-size: 18px; font-weight: 800; line-height: 24.75px; letter-spacing: -.011em; }
 .dcq__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 2px; font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .9); }
 .dcq__nguoi img { width: 22px; height: 22px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
-.dcq__nhac { font-size: 12px; line-height: 18px; color: var(--text-action); }
-.dcq__nhac a { font-weight: 600; color: var(--gnm-red); }
 
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
