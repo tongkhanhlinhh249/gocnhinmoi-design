@@ -7010,7 +7010,9 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 @media (min-width: 744px) and (max-width: 1023.98px) and (min-aspect-ratio: 4/5) and (min-height: 600px) {
   .v-web .desknav { display: none; }
   .v-web .page,
-  .v-web .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr) 240px; }
+  .v-web .page:has(> .siderail),
+  .v-web.art-desk .page,
+  .v-web.art-desk .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr) 240px; }
   .v-web .page > main,
   .v-web .page .site-footer { grid-column: 1; }
   .v-web .siderail { grid-column: 2; grid-row: 1 / 3; }
@@ -7034,6 +7036,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
     max-width: none;
     transform: none;
   }
+  /* Thanh đầu trải hết bề ngang, trùm qua cả cột phụ; cột phụ tụt xuống dưới
+     đúng chiều cao thanh (63px) và dính ngay bên dưới khi cuộn. */
+  .v-web .page > main > .deskbar { width: calc(100% + 240px); z-index: 60; }
+  .v-web .siderail { margin-top: 63px; top: 63px; max-height: calc(100vh - 63px); }
   .v-web .deskbar__menu:hover { background: var(--fill-soft); }
   .v-web .deskbar__menu .icon { width: 18px; height: 18px; }
 }
