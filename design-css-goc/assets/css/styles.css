@@ -6789,7 +6789,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
    Ảnh do bạn đọc gửi về, ban biên tập chọn một tấm đẩy lên trang chủ. Trang
    chủ chỉ hiện đúng một ảnh; bấm vào ra trang chi tiết có mô tả ngắn và khung
    gửi ảnh. */
-.dcq { display: grid; gap: 12px; padding-top: 20px; padding-bottom: 12px; }
+.dcq { display: grid; gap: 12px; padding-block: var(--gutter); }
 .dcq__ten {
   font-size: 18px;
   font-weight: 800;
