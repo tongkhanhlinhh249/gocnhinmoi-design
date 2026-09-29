@@ -3846,7 +3846,7 @@ input { font: inherit; }
    thuộc vào thứ tự xuất CSS. */
 .only-desk.only-desk { display: none; }
 
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web .only-desk.only-desk { display: block; }
   .v-web .profile-num.only-desk { display: flex; }
 
@@ -4554,7 +4554,7 @@ input { font: inherit; }
    của điện thoại: header có nút hamburger, thanh tab dưới, không cột điều
    hướng trái cũng không cột phụ phải. Khung nội dung rộng 765px — đúng bằng
    cột giữa của bản web — để thẻ xếp y như nhau ở hai cỡ màn. */
-@media (min-width: 768px) and (max-width: 839.98px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: portrait) {
+@media (min-width: 768px) and (max-width: 839.98px) {
   body { background: #eef0f3; }
 
   .v-web,
@@ -5626,7 +5626,7 @@ input { font: inherit; }
 
 /* Cột rộng thì xếp hai ô mỗi hàng, không để form kéo dài một cột gây trống
    nửa màn. Ô giới thiệu trải hết hàng vì nó cao. */
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .hs-the--luoi {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5890,7 +5890,7 @@ input { font: inherit; }
 }
 .icon-btn .icon-btn__dot.is-so[hidden] { display: none; }
 
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web .tb-dau { padding-top: 8px; }
   .v-web .tb-dau__ten { font-size: 24px; line-height: 32px; }
   .v-web .tb-item { padding-inline: 16px; }
@@ -6160,7 +6160,7 @@ input { font: inherit; }
 /* Cột thông tin chỉ dựng ở khổ rộng */
 .vn-tin { display: none; }
 
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   /* Khổ rộng: nền sáng lại, hai cột. Trang này đứng riêng nên tắt bộ khung
      chung (cột trái, thanh trên, thanh dưới) để chỗ xem video được rộng. */
   .vn-body { background: var(--bg); }
@@ -6386,10 +6386,10 @@ input { font: inherit; }
 /* Trên điện thoại và máy tính bảng giữ nguyên bố cục cũ; các khối riêng của
    desktop (logo trên thanh, cột chia sẻ) chỉ bật từ 1024px. */
 .art-share, .art-bar__logo { display: none; }
-@media (min-width: 768px) and (max-width: 839.98px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: portrait) {
+@media (min-width: 768px) and (max-width: 839.98px) {
   .v-web.art-desk .article-topbar { max-width: 813px; }
 }
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web.art-desk .page { grid-template-columns: minmax(0, 1fr); }
   .v-web.art-desk .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr) 300px; }
   .v-web.art-desk .page > main,
@@ -6551,7 +6551,7 @@ input { font: inherit; }
 .cht-cu__dong a:hover .cht-cu__ten { color: var(--gnm-red); }
 .cht-cu__phu { display: block; padding-top: 2px; font-size: 12px; line-height: 17px; color: var(--text-muted); }
 
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web .cht-dau { padding-top: 24px; }
   .v-web .cht-bia { aspect-ratio: 21 / 9; }
   .v-web .cht-ten { font-size: 28px; line-height: 36px; }
@@ -6682,7 +6682,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .cs-hop__khung { max-width: 560px; max-height: calc(100vh - 48px); padding-bottom: 20px; border-radius: 16px; }
   .cs-nhom__nut .cs-nut--chinh { flex: none; }
 }
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .cs-thong-bao { bottom: 24px; }
   .art-desk .cs-nhom { max-width: 760px; margin-left: 80px; }
 }
@@ -6722,7 +6722,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* Dải cuộn ngang ở desktop: nút lùi/tiến hiện khi rê chuột */
 .hs-nut { display: none; }
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web .hs-boc { position: relative; }
   .v-web .hs-nut {
     position: absolute;
@@ -6752,21 +6752,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .hs-nut--truoc .icon { transform: rotate(180deg); }
 }
 
-/* ---------- Màn trong Galaxy Z Fold (2176 × 1812) ----------
-   Rộng hơn máy tính bảng nhỏ nhưng chưa tới bản web ba cột: giữ bộ khung điện
-   thoại (header + thanh tab dưới), chỉ nới khung nội dung và giãn khoảng cách
-   cho đỡ trống hai bên. Gập lại (344pt) hay mở ngang đều dùng chung mốc này. */
-@media (min-width: 840px) and (max-width: 1023.98px) and (orientation: portrait) {
-  .v-web .page { max-width: 920px; }
-  .v-web .page .shell { padding-inline: 28px; }
-  .v-web .page .tophero { padding-inline: 28px; }
-  .v-web .page .chips { padding-inline: 28px; }
-  .v-web .page .feed { column-gap: 24px; }
-  .v-web .page .tophero .tophero__item--lg.tophero__item .tophero__media { aspect-ratio: 16 / 10; }
-  .v-web .page .tophero .tophero__item--lg.tophero__item .tophero__title { font-size: 22px; line-height: 30px; }
-  .v-web .drawer, .v-web .sheet, .v-web .dialog { max-width: 920px; }
-  .v-web .article-topbar { max-width: 920px; }
-}
 /* Mở ngang: màn thấp nên ảnh mở đầu dẹt lại để tiêu đề không bị đẩy khỏi khung */
 
 /* ---------- Khối nền màu ở cột giữa (bản web) ----------
@@ -6775,7 +6760,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
    đỏ/hồng dán sát đường kẻ của cột điều hướng, lệch hẳn so với các mục khác.
    Thụt hai bên đúng bằng đệm của .shell rồi bo góc để thành một khối riêng.
    (Từ 1180px trở lên hai khối này ẩn hẳn vì đã có ở cột phụ.) */
-@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) and (orientation: landscape) {
+@media (min-width: 1024px), (min-width: 840px) and (max-width: 1023.98px) {
   .v-web .page > main > .redlist,
   .v-web .page > main > .spotlist {
     margin-inline: 24px;
