@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<meta name="description" content="Dấu chân tôi qua — ảnh bạn đọc gửi về Góc Nhìn Mới, mỗi tuần một khoảnh khắc được chọn.">
-<title>Dấu chân tôi qua — Góc Nhìn Mới</title>
+<meta name="description" content="Tất cả khoảnh khắc trong Dấu chân tôi qua — ảnh bạn đọc gửi về Góc Nhìn Mới.">
+<title>Dấu chân tôi qua — Tất cả khoảnh khắc — Góc Nhìn Mới</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -281,34 +281,91 @@
       </a>
     </div>
 
-    <!-- ============ Ảnh được chọn ============ -->
-    <article class="dcq-ct shell" aria-labelledby="dcqCtTen">
-      <h1 class="dcq-ct__ten" id="dcqCtTen">Một sớm trên mặt hồ</h1>
-      <p class="dcq-ct__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
-      <div class="dcq-ct__anh"><img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405"></div>
-      <div class="dcq-ct__nguoi">
-        <img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36">
-        <div>
-          <b>Minh Anh</b>
-          <span>Ảnh của bạn đọc · 2 ngày trước</span>
+    <!-- ============ Danh sách ảnh ============ -->
+    <section class="dcq-ds-khoi shell" aria-labelledby="dcqDsTen">
+      <h1 class="dcq-ds__ten" id="dcqDsTen">Dấu chân tôi qua</h1>
+      <p class="dcq-ds__phu">Những nơi đã đến, những khoảnh khắc muốn giữ lại — do bạn đọc gửi về.</p>
+      <div class="dcq-ds">
+        <div class="dcq__the">
+          <img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs0"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
+            <h2 class="dcq__anh-ten" id="dcqDs0">Một sớm trên mặt hồ</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-lan-anh.png" alt="" width="22" height="22" loading="lazy">Minh Anh</p>
+          </div>
+        </div>
+        <div class="dcq__the">
+          <img src="assets/img/kp-tay-nguyen.jpg" alt="Cánh đồng lúa mì điểm hoa đỏ dưới trời sáng" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs1"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Buôn Ma Thuột, Đắk Lắk</p>
+            <h2 class="dcq__anh-ten" id="dcqDs1">Mùa hoa nở ngoài rìa ruộng</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="22" height="22" loading="lazy">Quỳnh Chi</p>
+          </div>
+        </div>
+        <div class="dcq__the">
+          <img src="assets/img/kp-ha-noi.jpg" alt="Góc phố cổ Hà Nội buổi chiều" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs2"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Phố cổ, Hà Nội</p>
+            <h2 class="dcq__anh-ten" id="dcqDs2">Buổi chiều không vội</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-van-duc.jpg" alt="" width="22" height="22" loading="lazy">Văn Đức</p>
+          </div>
+        </div>
+        <div class="dcq__the">
+          <img src="assets/img/kp-sai-gon-5h.jpg" alt="Đường phố Sài Gòn lúc rạng sáng" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs3"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Quận 1, TP. Hồ Chí Minh</p>
+            <h2 class="dcq__anh-ten" id="dcqDs3">Sài Gòn lúc 5 giờ</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-minh-hieu.jpg" alt="" width="22" height="22" loading="lazy">Minh Hiếu</p>
+          </div>
+        </div>
+        <div class="dcq__the">
+          <img src="assets/img/place-workshop-coffee.png" alt="Góc quán cà phê nhỏ" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs4"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Quận 3, TP. Hồ Chí Minh</p>
+            <h2 class="dcq__anh-ten" id="dcqDs4">Chỗ ngồi quen mỗi sáng</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-ngoc-han.jpg" alt="" width="22" height="22" loading="lazy">Ngọc Hân</p>
+          </div>
+        </div>
+        <div class="dcq__the">
+          <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="Toàn cảnh thành phố về đêm" width="720" height="405" loading="lazy">
+          <span class="dcq__scrim" aria-hidden="true"></span>
+          <a class="dcq__lien-ket" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs5"></a>
+          <button class="dcq__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh">
+            <svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+          </button>
+          <div class="dcq__than">
+            <p class="dcq__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thủ Thiêm, TP. Hồ Chí Minh</p>
+            <h2 class="dcq__anh-ten" id="dcqDs5">Thành phố nhìn từ bờ bên kia</h2>
+            <p class="dcq__nguoi"><img src="assets/img/avatar-tran-bao.jpg" alt="" width="22" height="22" loading="lazy">Trần Bảo</p>
+          </div>
         </div>
       </div>
-      <p class="dcq-ct__mo-ta">Năm giờ sáng, mặt hồ còn chưa gợn sóng, sương chưa kịp tan khỏi chân núi. Người lái đò bảo mùa này nước trong nhất năm, đi chừng mười phút là hết tiếng động cơ, chỉ còn tiếng mái chèo. Tôi giơ máy lên khi nắng vừa chạm tới rặng núi phía xa.</p>
-
-      <div class="actions dcq-ct__act">
-        <button class="act" type="button" data-like data-count="1240" aria-pressed="false" aria-label="Thích">
-          <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="act__n">1.2k</span>
-        </button>
-        <button class="act" type="button" data-toast="Mở khung bình luận" aria-label="Bình luận">
-          <svg class="icon" aria-hidden="true"><use href="#i-comment"></use></svg><span class="act__n">36</span>
-        </button>
-        <span class="act act--xem" aria-label="Lượt xem"><svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg><span class="act__n">8.4k</span></span>
-        <span class="actions__spacer"></span>
-        <button class="act act--icon" type="button" data-chia-se="bai" aria-haspopup="menu" aria-label="Chia sẻ"><svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg></button>
-        <button class="act act--icon" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
-        <button class="act act--icon" type="button" data-toast="Đã gửi báo cáo" aria-label="Báo cáo ảnh"><svg class="icon" aria-hidden="true"><use href="#i-flag"></use></svg></button>
-      </div>
-    </article>
+    </section>
 
     <!-- ============ Gửi ảnh về GNM ============ -->
     <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->

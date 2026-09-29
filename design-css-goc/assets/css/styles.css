@@ -6797,6 +6797,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
    dưới mục này bằng nhau (36px). Bản điện thoại một cột không có phần dôi. */
 @media (min-width: 768px) {
   .v-web .dcq { padding-bottom: calc(var(--gutter) + 20px); }
+  .v-web .dcq-ds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .dcq__ten {
   font-size: 18px;
@@ -6805,6 +6806,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   letter-spacing: -.011em;
   color: var(--ink-strong);
 }
+.dcq__dau { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.dcq__them { flex: none; padding-top: 4px; }
 .dcq__phu { padding-top: 2px; font-size: 13px; line-height: 20px; color: var(--text-action); }
 .dcq__the { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
 .dcq__the > img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
@@ -6852,6 +6855,12 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 2px; font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .9); }
 .dcq__nguoi img { width: 22px; height: 22px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
 
+/* ---------- Trang danh sách ---------- */
+.dcq-ds-khoi { padding-top: 16px; padding-bottom: 8px; }
+.dcq-ds__ten { font-size: 22px; font-weight: 800; line-height: 30px; letter-spacing: -.011em; color: var(--ink-strong); }
+.dcq-ds__phu { padding-top: 4px; font-size: 13px; line-height: 20px; color: var(--text-action); }
+.dcq-ds { display: grid; gap: 16px; padding-top: 16px; }
+
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
 .dcq-ct__anh { overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
@@ -6864,6 +6873,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ct__nguoi b { display: block; font-size: 13px; font-weight: 700; line-height: 19.5px; color: var(--ink-strong); }
 .dcq-ct__nguoi span { font-size: 12px; line-height: 18px; color: var(--text-action); }
 .dcq-ct__mo-ta { font-size: 15px; line-height: 24px; color: var(--ink); }
+.dcq-ct__act { margin-top: 2px; }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }
