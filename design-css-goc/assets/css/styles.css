@@ -6777,7 +6777,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .page > main > .redlist,
   .v-web .page > main > .spotlist {
     margin-inline: 24px;
-    border-radius: 12px;
+    border-radius: 4px;
   }
   .v-web .page > main > .redlist > .shell,
   .v-web .page > main > .spotlist > .shell { padding-inline: 16px; }
