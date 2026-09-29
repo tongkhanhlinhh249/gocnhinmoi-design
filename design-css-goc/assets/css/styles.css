@@ -4594,7 +4594,7 @@ input { font: inherit; }
   .v-web .dialog { max-width: 813px; }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1180px), (min-width: 744px) and (max-width: 1023.98px) and (min-aspect-ratio: 4/5) and (min-height: 600px) {
   .v-web .page:has(> .siderail) { grid-template-columns: 220px minmax(0, 1fr) 280px; }
 
   .v-web .siderail {
@@ -6716,7 +6716,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .spotrow__meta .icon { width: 13px; height: 13px; flex: none; }
 
 /* Từ 1180px Spotlight nằm ở cột phải, bỏ khối trong dòng tin của Trang chủ */
-@media (min-width: 1180px) {
+@media (min-width: 1180px), (min-width: 744px) and (max-width: 1023.98px) and (min-aspect-ratio: 4/5) and (min-height: 600px) {
   .v-web .page:has(> .siderail .rail-spot) > main > .spotlist { display: none; }
 }
 
@@ -6995,3 +6995,16 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 }
 .dcq-gui__huy:hover { background: rgba(16, 24, 40, .06); }
 .dcq-gui__luu-y { font-size: 12px; line-height: 18px; color: var(--text-action); text-align: center; }
+
+/* ---------- Màn trong Galaxy Z Fold ----------
+   Khung gần vuông, rộng chỉ 744–1023px: bỏ cột điều hướng bên trái để dành
+   chỗ cho cột giữa và cột phụ bên phải, giống bố cục hai cột của bản desktop
+   hẹp. Menu chuyên mục vẫn mở được từ nút ở thanh trên. */
+@media (min-width: 744px) and (max-width: 1023.98px) and (min-aspect-ratio: 4/5) and (min-height: 600px) {
+  .v-web .desknav { display: none; }
+  .v-web .page,
+  .v-web .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr) 240px; }
+  .v-web .page > main,
+  .v-web .page .site-footer { grid-column: 1; }
+  .v-web .siderail { grid-column: 2; grid-row: 1 / 3; }
+}
