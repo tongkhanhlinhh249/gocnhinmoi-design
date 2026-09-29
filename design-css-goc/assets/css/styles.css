@@ -6896,18 +6896,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-the__noi .icon { width: 12px; height: 12px; flex: none; }
 .dcq-the__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 8px; font-size: 12px; font-weight: 600; line-height: 18px; color: var(--ink-strong); }
 .dcq-the__nguoi img { width: 24px; height: 24px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
-.dcq-ds__cuoi { display: flex; justify-content: center; padding-top: 24px; }
-.dcq-ds__nut {
-  height: 40px;
-  padding: 0 20px;
-  border: 1px solid var(--line-2);
-  border-radius: var(--r-card);
-  background: var(--surface);
-  color: var(--ink-strong);
-  font-size: 13px;
-  font-weight: 700;
-}
-.dcq-ds__nut:hover { border-color: var(--gnm-red); color: var(--gnm-red); }
 
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }

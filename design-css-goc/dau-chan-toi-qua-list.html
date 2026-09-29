@@ -372,7 +372,7 @@
             <p class="dcq-the__nguoi"><img src="assets/img/avatar-tran-bao.jpg" alt="" width="24" height="24" loading="lazy">Trần Bảo</p>
           </div>
         </article>
-        <article class="dcq-the" hidden data-dcq-them>
+        <article class="dcq-the">
           <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
             <img src="assets/img/kp-tri-hanh.jpg" alt="Mặt sông phẳng lặng buổi sớm" width="720" height="405" loading="lazy">
           </a>
@@ -385,7 +385,7 @@
             <p class="dcq-the__nguoi"><img src="assets/img/avatar-thanh-ha.jpg" alt="" width="24" height="24" loading="lazy">Thanh Hà</p>
           </div>
         </article>
-        <article class="dcq-the" hidden data-dcq-them>
+        <article class="dcq-the">
           <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
             <img src="assets/img/cover-lang-nghe.png" alt="Người thợ đang làm gốm" width="720" height="405" loading="lazy">
           </a>
@@ -424,10 +424,36 @@
             <p class="dcq-the__nguoi"><img src="assets/img/avatar-khanh-linh.png" alt="" width="24" height="24" loading="lazy">Khánh Linh</p>
           </div>
         </article>
+        <article class="dcq-the" hidden data-dcq-them>
+          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+            <img src="assets/img/cover-nong-nghiep.png" alt="Cánh đồng lúc vào vụ" width="720" height="405" loading="lazy">
+          </a>
+          <div class="dcq-the__than">
+            <div class="dcq-the__hang">
+              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Ngày mùa ngoài đồng</a></h2>
+              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            </div>
+            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thái Bình</p>
+            <p class="dcq-the__nguoi"><img src="assets/img/avatar-phuong-anh.png" alt="" width="24" height="24" loading="lazy">Phương Anh</p>
+          </div>
+        </article>
+        <article class="dcq-the" hidden data-dcq-them>
+          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+            <img src="assets/img/kp-song-cham.jpg" alt="Một buổi sáng chậm rãi bên cửa sổ" width="720" height="405" loading="lazy">
+          </a>
+          <div class="dcq-the__than">
+            <div class="dcq-the__hang">
+              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Sáng chậm bên cửa sổ</a></h2>
+              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            </div>
+            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hội An, Quảng Nam</p>
+            <p class="dcq-the__nguoi"><img src="assets/img/avatar-dang-khoa.jpg" alt="" width="24" height="24" loading="lazy">Đăng Khoa</p>
+          </div>
+        </article>
       </div>
 
-      <div class="dcq-ds__cuoi">
-        <button class="dcq-ds__nut" type="button" data-dcq-xem-them>Xem thêm ảnh</button>
+      <div class="loadmore">
+        <button class="btn-outline" type="button" data-dcq-xem-them>Xem thêm</button>
       </div>
     </section>
 
@@ -435,9 +461,11 @@
     <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
     <section class="dcq-gui shell" id="gui-anh" aria-labelledby="dcqGuiTen">
       <div class="dcq-gui__the">
-        <h2 class="dcq-gui__ten" id="dcqGuiTen"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Gửi ảnh về Góc Nhìn Mới</h2>
-        <p class="dcq-gui__chu">Một nơi bạn đã đi qua, một khoảnh khắc muốn giữ lại — gửi về để cùng xuất hiện ở Dấu chân tôi qua.</p>
-        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh của bạn</button>
+        <div class="dcq-gui__loi">
+        <h2 class="dcq-gui__ten" id="dcqGuiTen">Bạn có khoảnh khắc muốn chia sẻ?</h2>
+        <p class="dcq-gui__chu">Gửi ảnh và câu chuyện của bạn đến Góc Nhìn Mới.</p>
+        </div>
+        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh</button>
 
         <form class="dcq-gui__form" data-dcq-form hidden>
           <label class="dcq-tai" data-dcq-tai>
