@@ -53,7 +53,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       c.style.gridRowEnd = 'span ' + Math.ceil((h + KHE) / BUOC);
     }
     function xep() {
-      web = window.matchMedia('(min-width: 800px)').matches;
+      web = window.matchMedia('(min-width: 744px)').matches;  // khớp mốc bản web của CSS
       feeds.forEach(function (f) {
         Array.prototype.forEach.call(f.children, doThe);
       });
