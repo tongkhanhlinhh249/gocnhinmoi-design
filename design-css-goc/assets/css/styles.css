@@ -6446,6 +6446,8 @@ input { font: inherit; }
 /* ================= Câu hỏi tuần ================= */
 /* Khối giới thiệu trên Trang chủ */
 .cht-khoi { padding-top: 20px; padding-bottom: 4px; }
+/* Tạm ẩn khối Câu hỏi tuần ở trang chủ. Bỏ luật này là hiện lại. */
+.cht-khoi { display: none; }
 .cht-khoi__the { padding: 16px; border: 1px solid #FFD6D6; border-radius: var(--r-lg); background: linear-gradient(135deg, #FFF4F4 0%, #FFE6E6 100%); }
 .cht-khoi__nhan { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--gnm-red); color: #fff; font-size: 11px; font-weight: 800; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; }
 .cht-khoi__nhan .icon { width: 12px; height: 12px; }
