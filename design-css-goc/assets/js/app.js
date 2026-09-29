@@ -4134,6 +4134,21 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   var form = document.querySelector('[data-dcq-form]');
   if (!form) return;
 
+  var nutMo = document.querySelector('[data-dcq-mo-khung]');
+  var nutHuy = form.querySelector('[data-dcq-huy]');
+
+  function moKhung(mo) {
+    form.hidden = !mo;
+    if (nutMo) nutMo.hidden = mo;
+    if (mo) {
+      var dau = form.querySelector('[data-dcq-ten]');
+      if (dau) dau.focus();
+    } else if (nutMo) {
+      nutMo.focus();
+    }
+  }
+  if (nutMo) nutMo.addEventListener('click', function () { moKhung(true); });
+
   var o = form.querySelector('[data-dcq-tai]');
   var tep = form.querySelector('[data-dcq-tep]');
   var xem = form.querySelector('[data-dcq-xem]');
@@ -4176,6 +4191,12 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     demChu();
   }
 
+  if (nutHuy) nutHuy.addEventListener('click', function () {
+    tep.value = '';
+    donAnh();
+    moKhung(false);
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var thieu = [];
@@ -4190,6 +4211,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     oTen.value = '';
     if (oNoi) oNoi.value = '';
     if (oMo) { oMo.value = ''; if (dem) dem.textContent = '0/200'; }
-    if (window.toast) window.toast('Đã gửi ảnh. Ban biên tập sẽ duyệt trong vài ngày tới.');
+    moKhung(false);
+    if (window.toast) window.toast('Đã nhận ảnh của bạn. Chúng tôi sẽ báo lại khi ảnh được đăng.');
   });
 })();

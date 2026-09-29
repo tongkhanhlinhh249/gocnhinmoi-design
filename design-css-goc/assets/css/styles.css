@@ -6789,7 +6789,15 @@ a.cs-bai:hover { border-color: #FFC9C9; }
    Ảnh do bạn đọc gửi về, ban biên tập chọn một tấm đẩy lên trang chủ. Trang
    chủ chỉ hiện đúng một ảnh; bấm vào ra trang chi tiết có mô tả ngắn và khung
    gửi ảnh. */
-.dcq { display: grid; gap: 12px; padding-block: var(--gutter); }
+/* Đệm trên để 0 vì dòng tin phía trên đã tự chừa chỗ, còn mục Trà đàm ngay
+   dưới lại không có đệm trên nên mục này phải tự bù cho đủ. */
+.dcq { display: grid; gap: 12px; padding-top: 0; padding-bottom: var(--gutter); }
+/* Bản web xếp dòng tin thành lưới so le: mỗi thẻ chiếm chiều cao + 20px, nên
+   dòng tin dôi ra 20px dưới thẻ cuối. Bù đúng 20px đó để khoảng trắng trên và
+   dưới mục này bằng nhau (36px). Bản điện thoại một cột không có phần dôi. */
+@media (min-width: 768px) {
+  .v-web .dcq { padding-bottom: calc(var(--gutter) + 20px); }
+}
 .dcq__ten {
   font-size: 18px;
   font-weight: 800;
@@ -6846,22 +6854,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
-.dcq-ct__nhan {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: var(--r-pill);
-  background: var(--gnm-red);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 16px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-.dcq-ct__nhan .icon { width: 12px; height: 12px; }
 .dcq-ct__anh { overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
 .dcq-ct__anh img { display: block; width: 100%; height: auto; }
 .dcq-ct__noi { display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 18px; color: var(--text-action); }
@@ -6940,4 +6932,18 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   font-size: 14px;
   font-weight: 700;
 }
+/* Khung mặc định chỉ có lời mời và một nút; bấm vào mới mở đủ các trường. */
+.dcq-gui__nut--mo { margin-top: 14px; padding-inline: 20px; }
+.dcq-gui__hang { display: flex; align-items: center; gap: 10px; }
+.dcq-gui__hang .dcq-gui__nut { flex: 1; }
+.dcq-gui__huy {
+  flex: none;
+  height: 42px;
+  padding-inline: 14px;
+  border-radius: var(--r-pill);
+  color: var(--text-action);
+  font-size: 13px;
+  font-weight: 600;
+}
+.dcq-gui__huy:hover { background: rgba(16, 24, 40, .06); }
 .dcq-gui__luu-y { font-size: 12px; line-height: 18px; color: var(--text-action); text-align: center; }

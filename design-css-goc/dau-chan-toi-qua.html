@@ -280,15 +280,14 @@
 
     <!-- ============ Ảnh được chọn ============ -->
     <article class="dcq-ct shell" aria-labelledby="dcqCtTen">
-      <p class="dcq-ct__nhan"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Dấu chân tôi qua</p>
-      <div class="dcq-ct__anh"><img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405"></div>
-      <p class="dcq-ct__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
       <h1 class="dcq-ct__ten" id="dcqCtTen">Một sớm trên mặt hồ</h1>
+      <p class="dcq-ct__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể, Bắc Kạn</p>
+      <div class="dcq-ct__anh"><img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405"></div>
       <div class="dcq-ct__nguoi">
         <img src="assets/img/avatar-lan-anh.png" alt="" width="36" height="36">
         <div>
           <b>Minh Anh</b>
-          <span>Ảnh bạn đọc gửi · 2 ngày trước</span>
+          <span>Ảnh của bạn đọc · 2 ngày trước</span>
         </div>
       </div>
       <p class="dcq-ct__mo-ta">Năm giờ sáng, mặt hồ còn chưa gợn sóng, sương chưa kịp tan khỏi chân núi. Người lái đò bảo mùa này nước trong nhất năm, đi chừng mười phút là hết tiếng động cơ, chỉ còn tiếng mái chèo. Tôi giơ máy lên khi nắng vừa chạm tới rặng núi phía xa.</p>
@@ -299,9 +298,10 @@
     <section class="dcq-gui shell" id="gui-anh" aria-labelledby="dcqGuiTen">
       <div class="dcq-gui__the">
         <h2 class="dcq-gui__ten" id="dcqGuiTen"><svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>Gửi ảnh về Góc Nhìn Mới</h2>
-        <p class="dcq-gui__chu">Mỗi tuần ban biên tập chọn một tấm ảnh bạn đọc gửi về để đăng ở trang chủ. Ảnh do chính bạn chụp, kèm nơi chốn và một mô tả ngắn.</p>
+        <p class="dcq-gui__chu">Một nơi bạn đã đi qua, một khoảnh khắc muốn giữ lại — gửi về để cùng xuất hiện ở Dấu chân tôi qua.</p>
+        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh của bạn</button>
 
-        <form class="dcq-gui__form" data-dcq-form>
+        <form class="dcq-gui__form" data-dcq-form hidden>
           <label class="dcq-tai" data-dcq-tai>
             <input class="sr-only" type="file" accept="image/*" data-dcq-tep>
             <span class="dcq-tai__goi">
@@ -329,8 +329,11 @@
             <span class="dcq-o__dem" data-dcq-dem>0/200</span>
           </label>
 
-          <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
-          <p class="dcq-gui__luu-y">Ảnh gửi về sẽ được ban biên tập duyệt trước khi đăng.</p>
+          <div class="dcq-gui__hang">
+            <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
+            <button class="dcq-gui__huy" type="button" data-dcq-huy>Huỷ</button>
+          </div>
+          <p class="dcq-gui__luu-y">Mỗi tuần một khoảnh khắc được chọn xuất hiện ở trang chủ.</p>
         </form>
       </div>
     </section>
