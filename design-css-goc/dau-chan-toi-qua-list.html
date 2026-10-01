@@ -205,6 +205,10 @@
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
       </a>
 
+      <button class="icon-btn" type="button" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="thanhTim" data-tim-mo>
+        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+
       <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot" aria-hidden="true" hidden></span>
@@ -213,7 +217,7 @@
   </header>
 
 
-  <div class="searchbar shell">
+  <div class="searchbar shell" id="thanhTim" hidden>
     <form class="search" role="search" onsubmit="return false">
       <label class="sr-only" for="q">Tìm kiếm nội dung</label>
       <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off" data-search>
@@ -229,7 +233,7 @@
 
     <nav aria-label="Khu vực chính">
       <ul class="desknav__list">
-        <li><a class="desknav__link is-active" href="index.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
+        <li><a class="desknav__link" href="index.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-home"></use></svg>Trang chủ</a></li>
         <li><a class="desknav__link" href="kham-pha.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-explore"></use></svg>Khám phá</a></li>
         <li><a class="desknav__link" href="nghe-va-xem.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-nav-media"></use></svg>Nghe & Xem</a></li>
       </ul>
@@ -245,6 +249,7 @@
         <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
         <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
         <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
+        <li><a class="desknav__link desknav__link--sub is-active" href="dau-chan-toi-qua-list.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-map-pin"></use></svg>Dấu chân tôi qua</a></li>
       </ul>
     </nav>
 
@@ -281,10 +286,15 @@
       <a class="deskbar__write" href="viet-bai.html">
         <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+      <div class="deskbar__cuoi">
+        <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot" aria-hidden="true" hidden></span>
       </a>
+      <a class="deskbar__toi" href="ca-nhan.html" aria-label="Trang cá nhân của bạn">
+        <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
+      </a>
+      </div>
     </div>
 
     <!-- ============ Danh sách ảnh ============ -->
@@ -299,160 +309,160 @@
 
       <div class="dcq-ds">
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Một sớm trên mặt hồ</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs0"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs0">Một sớm trên mặt hồ</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hồ Ba Bể</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-lan-anh.png" alt="" width="24" height="24" loading="lazy">Minh Anh</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-lan-anh.png" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Minh Anh</span><span class="dcq-the__gio">· 2 giờ trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-tay-nguyen.jpg" alt="Vạt hoa nở dưới nắng sớm" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Mùa hoa bên hiên nhà</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs1"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs1">Mùa hoa bên hiên nhà</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Đà Lạt</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Đà Lạt</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="24" height="24" loading="lazy">Quỳnh Chi</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-quynh-chi.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Quỳnh Chi</span><span class="dcq-the__gio">· 5 giờ trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-ha-noi.jpg" alt="Góc phố cổ Hà Nội buổi chiều" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Buổi chiều không vội</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs2"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs2">Buổi chiều không vội</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hà Nội</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hà Nội</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-van-duc.jpg" alt="" width="24" height="24" loading="lazy">Văn Đức</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-van-duc.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Văn Đức</span><span class="dcq-the__gio">· Hôm qua</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-sai-gon-5h.jpg" alt="Gánh hàng rong trên phố lúc rạng sáng" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Sài Gòn lúc 5 giờ</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs3"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs3">Sài Gòn lúc 5 giờ</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-minh-hieu.jpg" alt="" width="24" height="24" loading="lazy">Minh Hiếu</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-minh-hieu.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Minh Hiếu</span><span class="dcq-the__gio">· 1 ngày trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/place-workshop-coffee.png" alt="Góc quán cà phê nhỏ buổi sáng" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Chỗ ngồi quen mỗi sáng</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs4"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs4">Chỗ ngồi quen mỗi sáng</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>TP. Hồ Chí Minh</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-ngoc-han.jpg" alt="" width="24" height="24" loading="lazy">Ngọc Hân</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-ngoc-han.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Ngọc Hân</span><span class="dcq-the__gio">· 2 ngày trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="Toàn cảnh thành phố lúc chập tối" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Thành phố nhìn từ bờ bên kia</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs5"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs5">Thành phố nhìn từ bờ bên kia</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thủ Thiêm</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thủ Thiêm</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-tran-bao.jpg" alt="" width="24" height="24" loading="lazy">Trần Bảo</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-tran-bao.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Trần Bảo</span><span class="dcq-the__gio">· 3 ngày trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-tri-hanh.jpg" alt="Mặt sông phẳng lặng buổi sớm" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Sông Hương buổi sớm</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs6"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs6">Sông Hương buổi sớm</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Huế</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Huế</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-thanh-ha.jpg" alt="" width="24" height="24" loading="lazy">Thanh Hà</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-thanh-ha.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Thanh Hà</span><span class="dcq-the__gio">· 4 ngày trước</span></p>
         </article>
         <article class="dcq-the">
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/cover-lang-nghe.png" alt="Người thợ đang làm gốm" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Bàn tay của làng nghề</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs7"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs7">Bàn tay của làng nghề</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Bát Tràng, Hà Nội</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Bát Tràng, Hà Nội</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-minh-tuan.jpg" alt="" width="24" height="24" loading="lazy">Minh Tuấn</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-minh-tuan.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Minh Tuấn</span><span class="dcq-the__gio">· 5 ngày trước</span></p>
         </article>
         <article class="dcq-the" hidden data-dcq-them>
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/cover-sai-gon.png" alt="Cây cầu lúc chiều muộn" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Chiều bên kia cầu</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs8"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs8">Chiều bên kia cầu</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Quận 4, TP. Hồ Chí Minh</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Quận 4, TP. Hồ Chí Minh</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-quoc-bao.png" alt="" width="24" height="24" loading="lazy">Quốc Bảo</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-quoc-bao.png" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Quốc Bảo</span><span class="dcq-the__gio">· 1 tuần trước</span></p>
         </article>
         <article class="dcq-the" hidden data-dcq-them>
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-gen-z.jpg" alt="Nhóm bạn trẻ trong một sự kiện" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Một buổi rất trẻ</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs9"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs9">Một buổi rất trẻ</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Đà Nẵng</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Đà Nẵng</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-khanh-linh.png" alt="" width="24" height="24" loading="lazy">Khánh Linh</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-khanh-linh.png" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Khánh Linh</span><span class="dcq-the__gio">· 1 tuần trước</span></p>
         </article>
         <article class="dcq-the" hidden data-dcq-them>
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/cover-nong-nghiep.png" alt="Cánh đồng lúc vào vụ" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Ngày mùa ngoài đồng</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs10"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs10">Ngày mùa ngoài đồng</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thái Bình</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Thái Bình</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-phuong-anh.png" alt="" width="24" height="24" loading="lazy">Phương Anh</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-phuong-anh.png" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Phương Anh</span><span class="dcq-the__gio">· 2 tuần trước</span></p>
         </article>
         <article class="dcq-the" hidden data-dcq-them>
-          <a class="dcq-the__anh" href="dau-chan-toi-qua.html">
+          <div class="dcq-the__anh">
             <img src="assets/img/kp-song-cham.jpg" alt="Một buổi sáng chậm rãi bên cửa sổ" width="720" height="405" loading="lazy">
-          </a>
-          <div class="dcq-the__than">
-            <div class="dcq-the__hang">
-              <h2 class="dcq-the__ten"><a href="dau-chan-toi-qua.html">Sáng chậm bên cửa sổ</a></h2>
-              <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqDs11"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h2 class="dcq-the__ten" id="dcqDs11">Sáng chậm bên cửa sổ</h2>
+              <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hội An, Quảng Nam</p>
             </div>
-            <p class="dcq-the__noi"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Hội An, Quảng Nam</p>
-            <p class="dcq-the__nguoi"><img src="assets/img/avatar-dang-khoa.jpg" alt="" width="24" height="24" loading="lazy">Đăng Khoa</p>
           </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-dang-khoa.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Đăng Khoa</span><span class="dcq-the__gio">· 2 tuần trước</span></p>
         </article>
       </div>
 

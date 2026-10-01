@@ -197,6 +197,10 @@
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
       </a>
 
+      <button class="icon-btn" type="button" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="thanhTim" data-tim-mo>
+        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+
       <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot" aria-hidden="true" hidden></span>
@@ -205,7 +209,7 @@
   </header>
 
 
-  <div class="searchbar shell">
+  <div class="searchbar shell" id="thanhTim" hidden>
     <form class="search" role="search" onsubmit="return false">
       <label class="sr-only" for="q">Tìm kiếm nội dung</label>
       <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off" data-search>
@@ -237,6 +241,7 @@
         <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
         <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
         <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="dau-chan-toi-qua-list.html"><svg class="icon desknav__ico" aria-hidden="true"><use href="#i-map-pin"></use></svg>Dấu chân tôi qua</a></li>
       </ul>
     </nav>
 
@@ -273,10 +278,15 @@
       <a class="deskbar__write" href="viet-bai.html">
         <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <a class="icon-btn is-active" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+      <div class="deskbar__cuoi">
+        <a class="icon-btn is-active" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot" aria-hidden="true" hidden></span>
       </a>
+      <a class="deskbar__toi" href="ca-nhan.html" aria-label="Trang cá nhân của bạn">
+        <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
+      </a>
+      </div>
     </div>
 
     <!-- ============ Đầu trang ============ -->

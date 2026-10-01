@@ -200,6 +200,10 @@
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới — Mạng xã hội" width="108" height="32">
       </a>
 
+      <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="thanhTim" data-tim-mo>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+
       <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
@@ -207,7 +211,7 @@
     </div>
   </header>
 
-  <div class="searchbar pt-4 shell w-full max-w-shell mx-auto px-4">
+  <div class="searchbar pt-4 shell w-full max-w-shell mx-auto px-4" id="thanhTim" hidden>
     <form class="search relative flex items-center h-9 px-[17px] bg-surface-fill border rounded-full" role="search" onsubmit="return false">
       <label class="sr-only" for="q">Tìm kiếm nội dung</label>
       <input id="q" type="search" placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." autocomplete="off" data-search>
@@ -238,6 +242,7 @@
         <li><a class="desknav__link desknav__link--sub" href="luan-co-suy-kim.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-pencil"></use></svg>Luận cổ suy kim</a></li>
         <li><a class="desknav__link desknav__link--sub" href="goc-mo.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-shield"></use></svg>Góc mở</a></li>
         <li><a class="desknav__link desknav__link--sub" href="photo.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-camera"></use></svg>Photo</a></li>
+        <li><a class="desknav__link desknav__link--sub" href="dau-chan-toi-qua-list.html"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-map-pin"></use></svg>Dấu chân tôi qua</a></li>
       </ul>
     </nav>
 
@@ -274,10 +279,15 @@
       <a class="deskbar__write" href="viet-bai.html">
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
       </a>
-      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+      <div class="deskbar__cuoi">
+        <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
       </a>
+      <a class="deskbar__toi" href="ca-nhan.html" aria-label="Trang cá nhân của bạn">
+        <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
+      </a>
+      </div>
     </div>
 
     <!-- ============ Thanh trên ============ -->
@@ -392,6 +402,20 @@
         </div>
 
         <div class="feed flex flex-col gap-4 py-4 shell w-full max-w-shell mx-auto px-4" id="pubFeed">
+        <!-- Ảnh Dấu chân tôi qua đã được đăng — cùng kiểu thẻ với trang danh sách, đặt trong khung trắng như các thẻ khác của dòng bài -->
+        <article class="dcq-the">
+          <div class="dcq-the__anh">
+            <img src="assets/img/kp-tay-nguyen.jpg" alt="Vạt hoa nở dưới nắng sớm" width="720" height="405" loading="lazy">
+            <span class="dcq-the__phu" aria-hidden="true"></span>
+            <a class="dcq-the__lk" href="dau-chan-toi-qua.html" aria-labelledby="dcqPf0"></a>
+            <button class="dcq-the__luu" type="button" data-save aria-pressed="false" aria-label="Lưu ảnh"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bookmark"></use></svg></button>
+            <div class="dcq-the__chu">
+              <h3 class="dcq-the__ten" id="dcqPf0">Mùa hoa bên hiên nhà</h3>
+              <p class="dcq-the__noi"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-map-pin"></use></svg>Đà Lạt, Lâm Đồng</p>
+            </div>
+          </div>
+          <p class="dcq-the__nguoi"><img src="assets/img/avatar-duc-anh.png" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Đức Anh</span><span class="dcq-the__gio">· 30/09/2026</span></p>
+        </article>
         <article class="card relative bg-surface rounded-card shadow-card overflow-hidden">
           <a class="card__media relative block aspect-[370/208] bg-surface-fill" href="bai-viet.html">
             <img src="assets/img/kp-gen-z.jpg" alt="" width="370" height="208" loading="lazy">
@@ -747,6 +771,54 @@
 
       <div class="shell w-full max-w-shell mx-auto px-4">
         <div class="grid gap-3 py-4" id="postList">
+        <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="d1" data-loai="dcq" data-status="published" data-created="2026-09-28T07:00" data-updated="2026-09-30T09:10">
+          <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-tay-nguyen.jpg" alt="" width="72" height="72" loading="lazy">
+          <div class="flex-1 min-w-0">
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-ok-soft text-ok"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-verified"></use></svg>Đã đăng</span>
+              <span class="post-row__loai">Dấu chân tôi qua</span>
+            </div>
+            <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Mùa hoa bên hiên nhà</h3>
+            <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Đà Lạt, Lâm Đồng</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đăng lúc 09:10, 30/09/2026</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="d1" aria-label="Hành động khác với ảnh “Mùa hoa bên hiên nhà”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </article>
+        <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="d2" data-loai="dcq" data-status="pending" data-created="2026-08-21T16:40" data-updated="2026-08-21T16:40">
+          <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-ha-noi.jpg" alt="" width="72" height="72" loading="lazy">
+          <div class="flex-1 min-w-0">
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-warn-soft text-warn"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Đang xem xét</span>
+              <span class="post-row__loai">Dấu chân tôi qua</span>
+            </div>
+            <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Chiều trên phố cổ</h3>
+            <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Hoàn Kiếm, Hà Nội</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Đã gửi lúc 16:40, 21/08/2026</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="d2" aria-label="Hành động khác với ảnh “Chiều trên phố cổ”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </article>
+        <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="d3" data-loai="dcq" data-status="rejected" data-created="2026-08-17T18:30" data-updated="2026-08-19T10:05">
+          <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-thanh-pho-thong-minh.jpg" alt="" width="72" height="72" loading="lazy">
+          <div class="flex-1 min-w-0">
+            <div class="post-row__head flex items-center gap-2 flex-wrap">
+              <span class="badge-status inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap bg-danger-soft text-danger"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-alert"></use></svg>Chưa phù hợp</span>
+              <span class="post-row__loai">Dấu chân tôi qua</span>
+            </div>
+            <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Hoàng hôn Thủ Thiêm</h3>
+            <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Thủ Thiêm, TP. Hồ Chí Minh</p>
+            <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Phản hồi lúc 10:05, 19/08/2026</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="d3" aria-label="Hành động khác với ảnh “Hoàng hôn Thủ Thiêm”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>
+          </div>
+        </article>
         <article class="post-row flex gap-3 p-3 bg-surface rounded-md shadow-card" data-id="p1" data-status="published" data-nhuan-but="da-tra" data-created="2026-08-19T10:00" data-updated="2026-08-20T09:12">
           <img class="size-[72px] flex-none rounded-lg object-cover bg-surface-fill" src="assets/img/kp-gen-z.jpg" alt="" width="72" height="72" loading="lazy">
           <div class="flex-1 min-w-0">
@@ -906,8 +978,8 @@
             <h3 class="post-row__title pt-[2px] text-[14px] font-bold leading-[20px] tracking-[-.011em] text-ink line-clamp-2">Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế</h3>
             <p class="pt-1 text-[12px] leading-[18px] text-ink-action line-clamp-2">Định giá tỷ đô và câu hỏi về tính bền vững của mô hình tăng trưởng bằng khuyến mãi.</p>
             <p class="post-row__time pt-[6px] text-[11px] leading-[16.5px] text-ink-muted">Phản hồi lúc 15:48, 17/08/2026</p>
-          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-danger-soft text-danger">Bài viết chưa được đăng. Bạn có thể chỉnh sửa và gửi lại.</p>
-            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="edit">Chỉnh sửa bài</button></div>
+          <p class="post-row__note mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px] bg-danger-soft text-danger">Lý do: Nội dung cần bổ sung nguồn tham khảo và điều chỉnh tiêu đề để phản ánh chính xác nội dung bài viết.</p>
+            <div class="post-row__foot flex items-center gap-2 flex-wrap pt-[10px]"><button class="btn-row inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold bg-[#fdecee] text-primary-800" type="button" data-act="copydraft">Sao chép thành bản nháp</button></div>
           </div>
           <div class="flex flex-col items-center gap-2">
             <button class="btn-menu size-[44px] flex-none grid place-items-center -mt-[6px] -mr-[6px] rounded-full text-icon active:bg-surface-fill" type="button" data-row-menu="p11" aria-label="Hành động khác với bài “Kỳ lân thứ 3 của Việt Nam ra mắt thị trường quốc tế”"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-more"></use></svg></button>

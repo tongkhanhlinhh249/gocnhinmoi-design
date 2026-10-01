@@ -1115,8 +1115,15 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   var NOTE = {
     published: ['ok', 'Bài viết của bạn đã được đăng trên GNM.'],
     pending: ['warn', 'Góc nhìn của bạn đang được xem xét.'],
-    rejected: ['danger', 'Bài viết chưa được đăng. Bạn có thể chỉnh sửa và gửi lại.']
+    rejected: ['danger', 'Bài viết chưa được đăng.']
   };
+  // Ảnh gửi về Dấu chân tôi qua đi chung luồng duyệt nhưng lời lẽ nói về "ảnh"
+  var NOTE_ANH = {
+    published: ['ok', 'Ảnh của bạn đã được đăng ở Dấu chân tôi qua.'],
+    pending: ['warn', 'Ảnh của bạn đang được xem xét.'],
+    rejected: ['danger', 'Ảnh chưa được đăng.']
+  };
+  function laAnh(row) { return row.getAttribute('data-loai') === 'dcq'; }
 
   // Nội dung phản hồi — không nêu tên người xử lý.
   var REASONS = {
@@ -1127,17 +1134,50 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       note: 'Nội dung tổng thể tốt, chỉ cần chỉnh phần cuối. Không phải viết lại bài.',
       guide: 'Bổ sung nguồn cho ba mốc số liệu ở phần “Lộ trình”, sau đó gửi lại để duyệt.'
     },
+    d3: {
+      title: 'Lý do chưa đăng',
+      meta: 'Phản hồi lúc 10:05, 19/08/2026',
+      reason: 'Ảnh bị mờ và còn dấu bản quyền của bên khác; cần ảnh gốc do chính bạn chụp.',
+      note: 'Bố cục và khoảnh khắc đẹp, chỉ chưa đạt yêu cầu về chất lượng và nguồn ảnh.',
+      guide: 'Chọn bản gốc rõ nét, không có dấu bản quyền, rồi gửi trong bản nháp mới.'
+    },
     p11: {
       title: 'Lý do chưa đăng',
       meta: 'Phản hồi lúc 15:48, 17/08/2026',
       reason: 'Nội dung cần bổ sung nguồn tham khảo và điều chỉnh tiêu đề để phản ánh chính xác nội dung bài viết.',
       note: 'Số liệu định giá chưa có nguồn công khai kiểm chứng được.',
-      guide: 'Bổ sung nguồn cho phần định giá và đổi tiêu đề bám sát nội dung, sau đó có thể gửi lại.'
+      guide: 'Bổ sung nguồn cho phần định giá và đổi tiêu đề bám sát nội dung trong bản nháp mới trước khi gửi.'
     }
   };
 
+  /* Bản dựng đổi class ngữ nghĩa thành utility Tailwind ngay trong HTML, nên
+     CSS không còn luật cho các tên như .btn-row hay .badge-status--rejected.
+     Markup do JS vẽ lại phải mang kèm đúng các utility đó (chép từ tw/map.json),
+     nếu không thẻ vừa đổi trạng thái sẽ mất hết kiểu dáng. */
+  var TW = {
+    'icon': 'size-4 flex-none',
+    'badge-status': 'inline-flex items-center gap-1 px-[9px] py-[3px] rounded-full text-[11px] font-bold leading-[16px] whitespace-nowrap',
+    'badge-status--published': 'bg-ok-soft text-ok',
+    'badge-status--pending': 'bg-warn-soft text-warn',
+    'badge-status--rejected': 'bg-danger-soft text-danger',
+    'badge-status--draft': 'bg-surface-fill text-ink-action',
+    'post-row__note': 'mt-2 px-[10px] py-2 rounded-md text-[12px] leading-[18px]',
+    'post-row__note--ok': 'bg-ok-soft text-ok',
+    'post-row__note--warn': 'bg-warn-soft text-warn',
+    'post-row__note--danger': 'bg-danger-soft text-danger',
+    'btn-row': 'inline-flex items-center justify-center min-h-[32px] px-[14px] rounded-full bg-surface-fill text-ink-action text-[12px] font-bold',
+    'btn-row--brand': 'bg-[#fdecee] text-primary-800',
+    'sheet__block': 'pt-[14px]',
+    'sheet__label': 'text-[12px] font-bold leading-[18px] text-ink-muted',
+    'sheet__text': 'pt-1 text-[14px] leading-[22px] text-ink',
+    'sheet__actions': 'grid gap-2 pt-[18px]'
+  };
+  function tw(names) {
+    return names.split(' ').map(function (n) { return TW[n] ? n + ' ' + TW[n] : n; }).join(' ');
+  }
+
   function icon(name) {
-    return '<svg class="icon" aria-hidden="true"><use href="#i-' + name + '"></use></svg>';
+    return '<svg class="' + tw('icon') + '" aria-hidden="true"><use href="#i-' + name + '"></use></svg>';
   }
 
   /* ---------- Vẽ lại một hàng theo trạng thái hiện tại ---------- */
@@ -1145,18 +1185,22 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var st = row.getAttribute('data-status');
 
     var badge = $('.badge-status', row);
-    badge.className = 'badge-status badge-status--' + st;
+    badge.className = tw('badge-status badge-status--' + st);
     badge.innerHTML = icon(ICON[st]) + LABEL[st];
 
     var note = $('.post-row__note', row);
-    var cfg = NOTE[st];
+    var anh = laAnh(row);
+    var cfg = (anh && NOTE_ANH[st]) || NOTE[st];
     if (cfg) {
       if (!note) {
         note = document.createElement('p');
         row.querySelector('.post-row__foot').insertAdjacentElement('beforebegin', note);
       }
-      note.className = 'post-row__note post-row__note--' + cfg[0];
+      note.className = tw('post-row__note post-row__note--' + cfg[0]);
       note.textContent = cfg[1];
+      /* Bài bị từ chối giữ nguyên lý do ngay trên thẻ để người viết đối chiếu */
+      var ly = st === 'rejected' && REASONS[row.getAttribute('data-id')];
+      if (ly) note.textContent = 'Lý do: ' + ly.reason;
     } else if (note) {
       note.remove();
     }
@@ -1164,16 +1208,16 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var foot = $('.post-row__foot', row);
     var title = $('.post-row__title', row).textContent.trim();
     var btn = function (label, act, brand) {
-      return '<button class="btn-row' + (brand ? ' btn-row--brand' : '') + '" type="button" data-act="' + act + '">' + label + '</button>';
+      return '<button class="' + tw('btn-row' + (brand ? ' btn-row--brand' : '')) + '" type="button" data-act="' + act + '">' + label + '</button>';
     };
     /* Bài đã gửi rồi thì không còn "Xem trước" nữa — người viết xem chính bài
        của mình chứ không xem bản nháp. */
-    if (st === 'published')      foot.innerHTML = btn('Xem bài đã đăng', 'view');
-    else if (st === 'pending')   foot.innerHTML = btn('Xem bài', 'view');
-    else if (st === 'rejected')  foot.innerHTML = btn('Chỉnh sửa bài', 'edit', true);
-    else                         foot.innerHTML = btn('Tiếp tục viết', 'edit', true);
+    if (st === 'published')      foot.innerHTML = btn(anh ? 'Xem ảnh đã đăng' : 'Xem bài đã đăng', 'view');
+    else if (st === 'pending')   foot.innerHTML = btn(anh ? 'Xem ảnh đã gửi' : 'Xem bài', 'view');
+    else if (st === 'rejected')  foot.innerHTML = btn('Sao chép thành bản nháp', 'copydraft', true);
+    else                         foot.innerHTML = btn(anh ? 'Tiếp tục chỉnh sửa' : 'Tiếp tục viết', 'edit', true);
 
-    $('.btn-menu', row).setAttribute('aria-label', 'Hành động khác với bài “' + title + '”');
+    $('.btn-menu', row).setAttribute('aria-label', 'Hành động khác với ' + (anh ? 'ảnh' : 'bài') + ' “' + title + '”');
   }
 
   /* ---------- Bộ lọc trạng thái, tìm kiếm, sắp xếp ---------- */
@@ -1408,12 +1452,12 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var r = REASONS[row.getAttribute('data-id')];
     if (!r) { toast('Chưa có phản hồi cho bài viết này'); return; }
     var html =
-      '<div class="sheet__block"><p class="sheet__label">Lý do</p><p class="sheet__text">' + r.reason + '</p></div>' +
-      '<div class="sheet__block"><p class="sheet__label">Góp ý cho bài viết</p><p class="sheet__text">' + r.note + '</p></div>' +
-      '<div class="sheet__block"><p class="sheet__label">Hướng dẫn chỉnh sửa</p><p class="sheet__text">' + r.guide + '</p></div>' +
-      '<div class="sheet__actions">' +
-        '<button class="btn-block btn-block--brand" type="button" data-sheet-act="edit">Chỉnh sửa bài</button>' +
-        '<button class="btn-block btn-block--outline" type="button" data-sheet-act="resubmit">Gửi lại để duyệt</button>' +
+      '<div class="' + tw('sheet__block') + '"><p class="' + tw('sheet__label') + '">Lý do</p><p class="' + tw('sheet__text') + '">' + r.reason + '</p></div>' +
+      '<div class="' + tw('sheet__block') + '"><p class="' + tw('sheet__label') + '">Góp ý cho bài viết</p><p class="' + tw('sheet__text') + '">' + r.note + '</p></div>' +
+      '<div class="' + tw('sheet__block') + '"><p class="' + tw('sheet__label') + '">Hướng dẫn chỉnh sửa</p><p class="' + tw('sheet__text') + '">' + r.guide + '</p></div>' +
+      '<div class="' + tw('sheet__block') + '"><p class="' + tw('sheet__label') + '">Gửi lại thế nào?</p><p class="' + tw('sheet__text') + '">Bài bị từ chối được giữ nguyên để đối chiếu. Hãy sao chép thành bản nháp mới rồi chỉnh sửa và gửi như bài bình thường.</p></div>' +
+      '<div class="' + tw('sheet__actions') + '">' +
+        '<button class="btn-block btn-block--brand" type="button" data-sheet-act="copydraft">Sao chép thành bản nháp</button>' +
       '</div>';
     openSheet(r.title, r.meta, html);
 
@@ -1422,9 +1466,42 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       if (!b) return;
       sheetBody.removeEventListener('click', handler);
       closeSheet();
-      if (b.getAttribute('data-sheet-act') === 'edit') toast('Mở trình soạn thảo để chỉnh sửa bài');
-      else resubmit(row);
+      if (b.getAttribute('data-sheet-act') === 'copydraft') copyDraft(row);
     });
+  }
+
+  /* Bài bị từ chối không sửa, không gửi lại trực tiếp. Sao chép ra một bài mới
+     ở trạng thái bản nháp: mang theo nội dung và ảnh, không mang trạng thái
+     hay lịch sử duyệt (id mới nên không còn phản hồi cũ). Bài gốc giữ nguyên. */
+  function copyDraft(row) {
+    var ban = row.cloneNode(true);
+    var id = row.getAttribute('data-id') + '-nhap-' + Date.now().toString(36);
+    var st = nowStamp('Tạo');
+    ban.setAttribute('data-id', id);
+    ban.setAttribute('data-status', 'draft');
+    ban.setAttribute('data-created', st.iso);
+    ban.setAttribute('data-updated', st.iso);
+    ban.removeAttribute('data-nhuan-but');
+    ban.hidden = false;
+    $('.post-row__time', ban).textContent = st.text;
+    var menu = $('[data-row-menu]', ban);
+    if (menu) menu.setAttribute('data-row-menu', id);
+    renderRow(ban);
+    list.insertBefore(ban, list.firstChild);
+    sortRows();
+    // Chuyển sang mục Bản nháp để người viết thấy ngay bài vừa tạo
+    var chip = $('.chip[data-status-filter="draft"]', chipsWrap);
+    if (chip) chip.click(); else apply();
+    ban.classList.add('is-moi');
+    setTimeout(function () { ban.classList.remove('is-moi'); }, 1800);
+    toast('Đã tạo bản nháp mới. ' + (laAnh(row) ? 'Ảnh' : 'Bài') + ' bị từ chối vẫn được giữ nguyên.');
+  }
+
+  function khongSuaTrucTiep(row) {
+    openDialog('Không thể sửa bài bị từ chối',
+      'Bài bị từ chối được giữ nguyên nội dung và lý do để bạn đối chiếu. Hãy sao chép thành bản nháp để chỉnh sửa và gửi lại.',
+      [{ label: 'Sao chép thành bản nháp', kind: 'brand', run: function () { copyDraft(row); } },
+       { label: 'Để sau', kind: 'soft' }]);
   }
 
   function cancelReview(row) {
@@ -1465,13 +1542,12 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       { act: 'view', label: 'Xem bài đã gửi', icon: 'eye' }
     ],
     rejected: [
-      { act: 'reason', label: 'Xem phản hồi', icon: 'alert' },
-      { act: 'edit', label: 'Chỉnh sửa bài', icon: 'nav-write' },
-      { act: 'resubmit', label: 'Gửi lại', icon: 'send' },
+      { act: 'copydraft', label: 'Sao chép thành bản nháp', icon: 'draft' },
       { act: 'delete', label: 'Xóa bài', icon: 'trash', danger: true }
     ],
     draft: [
       { act: 'edit', label: 'Tiếp tục viết', icon: 'nav-write' },
+      { act: 'preview', label: 'Xem trước', icon: 'eye' },
       { act: 'submit', label: 'Gửi bài', icon: 'send' },
       { act: 'delete', label: 'Xóa bài', icon: 'trash', danger: true }
     ]
@@ -1480,9 +1556,16 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function openMenu(row) {
     var st = row.getAttribute('data-status');
     var title = $('.post-row__title', row).textContent.trim();
+    var DOI_ANH = {
+      'Xem bài đã đăng': 'Xem ảnh đã đăng', 'Xem bài đã gửi': 'Xem ảnh đã gửi',
+      'Tiếp tục viết': 'Tiếp tục chỉnh sửa', 'Gửi bài': 'Gửi ảnh',
+      'Yêu cầu gỡ bài': 'Yêu cầu gỡ ảnh', 'Xóa bài': 'Xóa ảnh'
+    };
+    var anh = laAnh(row);
     var html = '<div class="sheet-menu">' + MENUS[st].map(function (m) {
+      var nhan = anh && DOI_ANH[m.label] ? DOI_ANH[m.label] : m.label;
       return '<button type="button" data-menu-act="' + m.act + '"' + (m.danger ? ' data-danger' : '') + '>' +
-        icon(m.icon) + m.label + '</button>';
+        icon(m.icon) + nhan + '</button>';
     }).join('') + '</div>';
     openSheet(title, LABEL[st], html, $('[data-row-menu]', row));
 
@@ -1498,11 +1581,11 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function run(row, act) {
     var st = row.getAttribute('data-status');
     switch (act) {
-      case 'view':      toast('Mở bài viết'); break;
+      case 'view':      if (laAnh(row)) location.href = 'dau-chan-toi-qua.html'; else toast('Mở bài viết'); break;
       case 'preview':   toast('Mở bản xem trước'); break;
       case 'reason':    showReason(row); break;
       case 'cancel':    cancelReview(row); break;
-      case 'resubmit':  resubmit(row); break;
+      case 'resubmit':  if (st === 'rejected') khongSuaTrucTiep(row); else resubmit(row); break;
       case 'submit':    setStatus(row, 'pending', nowStamp('Đã gửi'));
                         toast('Đã gửi bài viết'); break;
       case 'share':     toast('Đã mở bảng chia sẻ'); break;
@@ -1523,15 +1606,21 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
              { label: 'Quay lại', kind: 'outline' }]);
         }
         break;
-      case 'copydraft': toast('Đã tạo một bản nháp từ bài viết này'); break;
+      case 'copydraft': copyDraft(row); break;
       case 'delete':
-        openDialog('Xóa bài viết?', 'Bài viết sẽ bị xóa khỏi danh sách của bạn. Thao tác này không hoàn tác được.',
+        var vat = laAnh(row) ? 'ảnh' : 'bài';
+        var Vat = laAnh(row) ? 'Ảnh' : 'Bài viết';
+        openDialog(st === 'rejected' ? 'Xóa ' + vat + ' bị từ chối?' : 'Xóa ' + (laAnh(row) ? 'ảnh' : 'bài viết') + '?',
+          st === 'rejected'
+            ? Vat + ' và phản hồi đi kèm sẽ bị xóa khỏi danh sách của bạn. Các bản nháp đã sao chép từ ' + vat + ' này vẫn được giữ nguyên. Thao tác này không hoàn tác được.'
+            : Vat + ' sẽ bị xóa khỏi danh sách của bạn. Thao tác này không hoàn tác được.',
           [{ label: 'Giữ lại', kind: 'soft' },
-           { label: 'Xóa bài', kind: 'outline', run: function () { row.remove(); apply(); toast('Đã xóa bài viết'); } }]);
+           { label: 'Xóa ' + vat, kind: 'outline', run: function () { row.remove(); apply(); toast('Đã xóa ' + (laAnh(row) ? 'ảnh' : 'bài viết')); } }]);
         break;
       case 'edit':
         if (st === 'published') editPublished(row);
         else if (st === 'pending') toast('Hãy hủy gửi duyệt trước khi chỉnh sửa bài');
+        else if (st === 'rejected') khongSuaTrucTiep(row);
         else toast('Mở trình soạn thảo để chỉnh sửa bài');
         break;
     }
@@ -1801,6 +1890,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     });
   }
 
+  rows().forEach(function (r) { if (laAnh(r) || r.getAttribute('data-status') === 'rejected') renderRow(r); });
   sortRows();
   apply();
 })();
@@ -4226,6 +4316,33 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (!document.querySelector('[data-dcq-them][hidden]')) {
       nut.hidden = true;
       if (window.gnmXepSoLe) window.gnmXepSoLe();
+    }
+  });
+})();
+
+/* ================= Nút kính lúp trên thanh đầu điện thoại =================
+   Thanh tìm kiếm nằm gọn sau nút, bấm mới sổ xuống và con trỏ nhảy vào ô. */
+(function () {
+  var nut = document.querySelector('[data-tim-mo]');
+  var thanh = document.getElementById('thanhTim');
+  if (!nut || !thanh) return;
+
+  function dat(mo) {
+    thanh.hidden = !mo;
+    nut.setAttribute('aria-expanded', mo ? 'true' : 'false');
+  }
+  nut.addEventListener('click', function () {
+    var mo = thanh.hidden;
+    dat(mo);
+    if (mo) {
+      var o = thanh.querySelector('input');
+      if (o) o.focus();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !thanh.hidden) {
+      dat(false);
+      nut.focus();
     }
   });
 })();

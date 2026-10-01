@@ -6796,7 +6796,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 }
 .dcq__dau { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .dcq__them { flex: none; }
-.dcq__the { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
+.dcq__the { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--fill-soft); }
 .dcq__the > img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .dcq__scrim {
   position: absolute;
@@ -6868,24 +6868,71 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq-ds__gui:hover { background: #FFEFEF; }
 .dcq-ds { display: grid; gap: 20px 16px; padding-top: 20px; }
 
-/* Thẻ ảnh: ảnh trên, chữ dưới */
-.dcq-the__anh { display: block; overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
-.dcq-the__anh img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.dcq-the__than { padding-top: 10px; }
-.dcq-the__hang { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.dcq-the__ten { font-size: 15px; font-weight: 700; line-height: 22px; letter-spacing: -.011em; color: var(--ink-strong); }
-.dcq-the__luu { flex: none; width: 28px; height: 28px; margin-top: -2px; display: grid; place-items: center; border-radius: var(--r-pill); color: var(--icon-grey); }
+/* Thẻ ảnh — cùng kiểu tin nổi bật: nút lưu nổi góc trên ảnh, tên và địa điểm
+   nằm trên dải tối phía dưới ảnh, tác giả và giờ đăng ở dải đen liền bên dưới. */
+.dcq-the {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-card);
+  background: #000;
+}
+.dcq-the__anh { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--fill-soft); }
+.dcq-the__anh img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dcq-the__phu {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .25) 55%, rgba(0, 0, 0, 0) 100%);
+}
+/* Link phủ kín ảnh; dải chữ không nhận chuột để cú bấm rơi xuống link,
+   nút lưu nằm trên cùng nên vẫn bấm riêng được. */
+.dcq-the__lk { position: absolute; inset: 0; z-index: 1; }
+.dcq-the__luu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(16, 24, 40, .42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
 .dcq-the__luu .icon { width: 17px; height: 17px; }
 .dcq-the__luu[aria-pressed="true"] { color: var(--gnm-red); }
 .dcq-the__luu[aria-pressed="true"] .icon { fill: var(--gnm-red); }
-.dcq-the__noi { display: flex; align-items: center; gap: 4px; padding-top: 4px; font-size: 12px; line-height: 18px; color: var(--text-action); }
+.dcq-the__chu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 0 var(--gutter) 12px;
+  pointer-events: none;
+  color: #fff;
+}
+.dcq-the__ten { font-size: 16px; font-weight: 800; line-height: 22px; letter-spacing: -.011em; }
+.dcq-the__noi { display: flex; align-items: center; gap: 4px; padding-top: 4px; font-size: 12px; line-height: 18px; color: rgba(255, 255, 255, .8); }
 .dcq-the__noi .icon { width: 12px; height: 12px; flex: none; }
-.dcq-the__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 8px; font-size: 12px; font-weight: 600; line-height: 18px; color: var(--ink-strong); }
+.dcq-the__nguoi {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px var(--gutter);
+  background: #000;
+  font-size: 12px;
+  line-height: 18px;
+}
 .dcq-the__nguoi img { width: 24px; height: 24px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
+.dcq-the__ai { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; color: rgba(255, 255, 255, .8); }
+.dcq-the__gio { flex: none; font-size: 11px; line-height: 16.5px; color: rgba(255, 255, 255, .5); }
 
 /* ---------- Trang chi tiết ---------- */
 .dcq-ct { display: grid; gap: 10px; padding-top: 16px; }
-.dcq-ct__anh { overflow: hidden; border-radius: var(--r-card); background: var(--surface-fill); }
+.dcq-ct__anh { overflow: hidden; border-radius: var(--r-card); background: var(--fill-soft); }
 .dcq-ct__anh img { display: block; width: 100%; height: auto; }
 .dcq-ct__noi { display: flex; align-items: center; gap: 4px; padding-top: 6px; font-size: 13px; font-weight: 600; line-height: 20px; color: var(--gnm-red); }
 .dcq-ct__noi .icon { width: 12px; height: 12px; flex: none; color: var(--gnm-red); }
@@ -7001,8 +7048,23 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* Nút mở menu chuyên mục trên thanh đầu — chỉ dùng ở khổ không có cột
    điều hướng (màn trong Z Fold). */
+/* Thanh tìm kiếm ở bản điện thoại nằm gọn sau nút kính lúp trên thanh đầu;
+   bấm nút mới sổ xuống. Luật tablet đặt lại display cho .searchbar nên phải
+   viết đủ nặng để thuộc tính hidden vẫn thắng. */
+.v-web .page .searchbar[hidden],
+.searchbar[hidden] { display: none; }
+/* Thanh đầu có nút kính lúp: bốn phần tử dàn space-between thì kính lúp trôi
+   ra giữa. Logo đứng giữa tuyệt đối, kính lúp và chuông dồn về phải thành cụm. */
+.app-header__inner:has(> [data-tim-mo]) { position: relative; justify-content: flex-start; }
+.app-header__inner:has(> [data-tim-mo]) > .brand { position: absolute; left: 50%; transform: translateX(-50%); }
+/* Hai nút sát nhau (bù lại gap 8px của hàng): mỗi nút đã có 36px vùng bấm nên
+   hai biểu tượng vẫn cách nhau đủ thoáng mà trông liền một cụm. */
+.app-header__inner > [data-tim-mo] { margin-left: auto; margin-right: -8px; }
+
 .deskbar__menu,
-.deskbar__logo { display: none; }
+.deskbar__logo,
+.deskbar__toi { display: none; }
+.deskbar__cuoi { display: flex; align-items: center; gap: 8px; flex: none; }
 
 /* ---------- Màn trong Galaxy Z Fold ----------
    Khung gần vuông, rộng chỉ 744–1023px: bỏ cột điều hướng bên trái để dành
@@ -7037,10 +7099,30 @@ a.cs-bai:hover { border-color: #FFC9C9; }
     max-width: none;
     transform: none;
   }
-  /* Thanh đầu trải hết bề ngang, trùm qua cả cột phụ; cột phụ tụt xuống dưới
-     đúng chiều cao thanh (63px) và dính ngay bên dưới khi cuộn. */
-  .v-web .page > main > .deskbar { width: calc(100% + 240px); z-index: 60; }
+  /* Thanh đầu trải hết bề ngang, trùm qua cả cột phụ, và giữ một dòng:
+     menu — logo — ô tìm kiếm — Viết bài — chuông + ảnh đại diện.
+     Cột phụ tụt xuống dưới đúng chiều cao thanh và dính ngay bên dưới khi cuộn. */
+  .v-web .page > main > .deskbar {
+    width: calc(100% + 240px);
+    z-index: 60;
+    padding-inline: 16px;
+  }
+  .v-web .page > main > .deskbar > .deskbar__cuoi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .v-web .deskbar__cuoi .deskbar__toi { display: block; flex: none; }
+  /* Ô tìm kiếm là viên thuốc xám không viền như bản điện thoại */
+  .v-web .page > main > .deskbar .deskbar__input {
+    background: var(--surface-fill, #F3F4F6);
+    border-color: transparent;
+  }
+  .v-web .page > main > .deskbar .deskbar__input:focus-visible { border-color: var(--line-2); }
   .v-web .siderail { margin-top: 63px; top: 63px; max-height: calc(100vh - 63px); }
+  .v-web .deskbar__toi img { width: 32px; height: 32px; border-radius: var(--r-pill); object-fit: cover; }
+  .v-web .page > main > .deskbar > .deskbar__search { grid-area: tim; }
+  .v-web .page > main > .deskbar > .deskbar__write { grid-area: viet; }
   .v-web .deskbar__menu:hover { background: var(--fill-soft); }
   .v-web .deskbar__logo { display: block; flex: none; }
   .v-web .deskbar__logo img { width: 108px; height: 32px; object-fit: contain; }
@@ -7058,4 +7140,24 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   /* Bảng tác giả nổi bật trở lại năm ô như bản điện thoại, ô thứ sáu chỉ dành
      cho màn rộng */
   .v-web .rank--desk { display: none; }
+}
+
+/* ---------- Bản nháp vừa sao chép từ bài bị từ chối ----------
+   Viền đỏ nhạt chớp lên một lúc để người viết nhận ra bài mới trong danh sách. */
+.post-row { transition: box-shadow .6s var(--ease); }
+.post-row.is-moi { box-shadow: 0 0 0 2px rgba(184, 0, 1, .35), var(--sh-card); }
+
+/* ---------- Dấu chân tôi qua trên trang cá nhân ---------- */
+/* Danh sách quản lý: nhãn loại nằm cạnh nhãn trạng thái */
+.post-row__loai {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  background: var(--fill-soft);
+  color: var(--text-action);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
 }
