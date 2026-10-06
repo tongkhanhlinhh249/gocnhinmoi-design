@@ -7282,3 +7282,53 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-bl__ai { font-size: 13px; font-weight: 700; line-height: 19px; }
 .pod-bl__ai span { font-weight: 400; color: rgba(255, 255, 255, .5); }
 .pod-bl__chu { padding-top: 2px; font-size: 14px; line-height: 21px; color: rgba(255, 255, 255, .78); }
+
+/* ---------- Trang podcast tràn màn ----------
+   Như trang nghe nhạc: bỏ cột điều hướng, cột phụ và thanh tìm kiếm, cả trang
+   nền tối; chỉ giữ nút quay lại. Bản web chia hai cột: trái là phần nghe, phải
+   là bình luận. */
+.pod-ct__thanh { display: none; }
+.pod-ct__trai,
+.pod-ct__phai { min-width: 0; }
+@media (min-width: 744px) {
+  .v-web.pod-trang { background: #121212; }
+  .v-web.pod-trang .page,
+  .v-web.pod-trang .page:has(> .siderail) { display: block; max-width: none; background: #121212; }
+  .v-web.pod-trang .desknav,
+  .v-web.pod-trang .siderail,
+  .v-web.pod-trang .page > main > .deskbar { display: none; }
+  .v-web.pod-trang .page > main { min-height: 100vh; }
+  .v-web.pod-trang .pod-ct .shell { max-width: 1220px; margin-inline: auto; padding-inline: 32px; }
+  .pod-trang .pod-ct__thanh {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding-inline: 24px;
+    background: linear-gradient(to bottom, rgba(18, 18, 18, .85), rgba(18, 18, 18, 0));
+  }
+  .pod-trang .pod-ct__lui {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--r-pill);
+    background: rgba(0, 0, 0, .55);
+    color: #fff;
+  }
+  .pod-trang .pod-ct__lui:hover { background: rgba(0, 0, 0, .8); }
+  .pod-trang .pod-ct__lui .icon { width: 16px; height: 16px; transform: rotate(180deg); }
+  .pod-trang .pod-ct__dau { margin-top: -56px; padding-top: 72px; }
+}
+@media (min-width: 1024px) {
+  .v-web.pod-trang .pod-ct__than {
+    display: grid;
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    column-gap: 48px;
+    align-items: start;
+  }
+  /* Bình luận ở cột phải đứng ngang hàng với dòng thông tin đầu cột trái */
+  .v-web.pod-trang .pod-ct__phai > .pod-ct__khoi:first-child { margin-top: 0; }
+}

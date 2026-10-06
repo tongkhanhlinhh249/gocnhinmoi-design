@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="v-web">
+<body class="v-web pod-trang">
 
 <!-- ============ Bộ icon (vector xuất trực tiếp từ Figma) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -300,6 +300,9 @@
     <!-- ============ Chi tiết tập podcast ============ -->
     <!-- Khung tối như trang nghe nhạc: nền đầu trang lấy màu từ ảnh bìa (làm mờ) -->
     <div class="pod-ct">
+      <div class="pod-ct__thanh">
+        <a class="pod-ct__lui" href="nghe-va-xem.html" aria-label="Quay lại Nghe &amp; Xem"><svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
+      </div>
       <section class="pod-ct__dau" aria-labelledby="podTen">
         <span class="pod-ct__nen" aria-hidden="true" style="background-image:url('assets/img/cover-podcast-tra-dam.png')"></span>
         <div class="pod-ct__dau-trong shell">
@@ -313,6 +316,7 @@
       </section>
 
       <div class="pod-ct__than shell">
+        <div class="pod-ct__trai">
         <p class="pod-ct__meta">05/10/2026 · 44 phút 18 giây · 18,6K lượt nghe</p>
 
         <div class="pod-ct__tacvu">
@@ -380,6 +384,9 @@
           </ul>
         </section>
 
+        </div>
+
+        <div class="pod-ct__phai">
         <section class="pod-ct__khoi" id="cmt-title" aria-labelledby="podBl">
           <h2 class="pod-ct__tieu" id="podBl">Bình luận <span class="pod-ct__dem">(12)</span></h2>
           <form class="pod-bl__o" onsubmit="return false">
@@ -399,6 +406,7 @@
             </li>
           </ul>
         </section>
+        </div>
       </div>
     </div>
   </main>
