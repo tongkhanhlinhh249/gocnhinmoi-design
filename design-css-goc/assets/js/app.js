@@ -4346,3 +4346,46 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     }
   });
 })();
+
+/* ================= Trang podcast: mô tả tập tối đa 800 ký tự =================
+   Dài hơn thì cắt ở ranh giới từ gần nhất, thêm dấu "…" và nút "Xem thêm";
+   mở ra thì đổi thành "Thu gọn". */
+(function () {
+  var khoi = document.querySelector('[data-mo-ta]');
+  if (!khoi) return;
+  var GIOI_HAN = 800;
+  var doan = [].slice.call(khoi.querySelectorAll('.pod-ct__van'));
+  var goc = doan.map(function (p) { return p.textContent; });
+  var tong = goc.reduce(function (n, x) { return n + x.length; }, 0);
+  if (tong <= GIOI_HAN) return;
+
+  var nut = document.createElement('button');
+  nut.type = 'button';
+  nut.className = 'pod-ct__them';
+  khoi.appendChild(nut);
+
+  function gon() {
+    var con = GIOI_HAN;
+    doan.forEach(function (p, i) {
+      var t = goc[i];
+      if (con <= 0) { p.hidden = true; return; }
+      p.hidden = false;
+      if (t.length <= con) { p.textContent = t; con -= t.length; return; }
+      var cat = t.slice(0, con);
+      var k = cat.lastIndexOf(' ');
+      p.textContent = (k > 40 ? cat.slice(0, k) : cat).replace(/[\s,.;:—–-]+$/, '') + '…';
+      con = 0;
+    });
+    nut.textContent = 'Xem thêm';
+    nut.setAttribute('aria-expanded', 'false');
+  }
+  function day() {
+    doan.forEach(function (p, i) { p.hidden = false; p.textContent = goc[i]; });
+    nut.textContent = 'Thu gọn';
+    nut.setAttribute('aria-expanded', 'true');
+  }
+  nut.addEventListener('click', function () {
+    if (nut.getAttribute('aria-expanded') === 'true') gon(); else day();
+  });
+  gon();
+})();

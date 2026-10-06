@@ -7230,6 +7230,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__tieu { font-size: 18px; font-weight: 800; line-height: 26px; }
 .pod-ct__dem { font-weight: 600; color: rgba(255, 255, 255, .5); }
 .pod-ct__van { padding-top: 10px; font-size: 15px; line-height: 24px; color: rgba(255, 255, 255, .72); }
+.pod-ct__them { margin-top: 8px; padding: 0; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
+.pod-ct__them:hover { text-decoration: underline; }
 .pod-kenh { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, .06); }
 .pod-kenh:hover { background: rgba(255, 255, 255, .1); }
 .pod-kenh img { width: 48px; height: 48px; flex: none; border-radius: 6px; object-fit: cover; }
