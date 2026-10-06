@@ -7248,7 +7248,9 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__van { padding-top: 10px; font-size: 15px; line-height: 24px; color: rgba(255, 255, 255, .72); }
 .pod-ct__them { margin-top: 8px; padding: 0; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
 .pod-ct__them:hover { text-decoration: underline; }
-.pod-ds { display: grid; gap: 4px; padding-top: 10px; }
+/* minmax(0, 1fr): ô lưới mặc định rộng theo nội dung, tên tập dài (nowrap)
+   sẽ đẩy cả trang tràn ngang trên điện thoại */
+.pod-ds { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding-top: 10px; }
 .pod-tap { display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 8px; }
 .pod-tap:hover { background: rgba(255, 255, 255, .06); }
 .pod-tap__anh { width: 56px; height: 56px; flex: none; border-radius: 6px; object-fit: cover; }
