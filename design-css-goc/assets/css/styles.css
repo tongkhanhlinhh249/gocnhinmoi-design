@@ -7227,23 +7227,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__tieu { font-size: 18px; font-weight: 800; line-height: 26px; }
 .pod-ct__dem { font-weight: 600; color: rgba(255, 255, 255, .5); }
 .pod-ct__van { padding-top: 10px; font-size: 15px; line-height: 24px; color: rgba(255, 255, 255, .72); }
-/* Mốc nội dung: bấm vào nhảy tới đoạn đó và phát luôn */
-.pod-moc { display: grid; gap: 6px; padding-top: 12px; }
-.pod-moc li { display: flex; align-items: baseline; gap: 12px; font-size: 14px; line-height: 22px; color: rgba(255, 255, 255, .8); }
-.pod-moc button {
-  min-width: 54px;
-  flex: none;
-  padding: 2px 8px;
-  border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, .08);
-  color: #FF8A8A;
-  font-size: 12px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  text-align: center;
-}
-.pod-moc button:hover,
-.pod-moc button.is-dang { background: var(--gnm-red); color: #fff; }
 .pod-kenh { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, .06); }
 .pod-kenh:hover { background: rgba(255, 255, 255, .1); }
 .pod-kenh img { width: 48px; height: 48px; flex: none; border-radius: 6px; object-fit: cover; }
