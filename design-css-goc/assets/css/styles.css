@@ -7300,7 +7300,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
     display: flex;
     align-items: center;
     height: 56px;
-    padding-inline: 24px;
+    /* Nút quay lại thẳng mép trái nội dung trong khung 1280px */
+    padding-inline: max(32px, calc((100% - 1280px) / 2 + 32px));
     background: linear-gradient(to bottom, rgba(18, 18, 18, .85), rgba(18, 18, 18, 0));
   }
   .pod-trang .pod-ct__lui {
