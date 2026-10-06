@@ -7202,7 +7202,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .pod-ct__ten { font-size: 32px; line-height: 40px; }
 }
 .pod-ct__than { padding-top: 4px; }
-.pod-ct__meta { font-size: 13px; line-height: 20px; color: rgba(255, 255, 255, .6); }
 .pod-ct__tacvu { display: flex; align-items: center; gap: 8px; padding: 16px 0 4px; }
 .pod-ct__phat {
   width: 56px;
@@ -7273,8 +7272,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* ---------- Trang podcast tràn màn ----------
    Như trang nghe nhạc: bỏ cột điều hướng, cột phụ và thanh tìm kiếm, cả trang
-   nền tối; chỉ giữ nút quay lại. Bản web chia hai cột: trái là phần nghe, phải
-   là bình luận. */
+   nền tối; chỉ giữ nút quay lại. Nội dung xếp một cột. */
 .pod-ct__thanh { display: none; }
 .pod-ct__trai,
 .pod-ct__phai { min-width: 0; }
@@ -7310,13 +7308,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .pod-trang .pod-ct__lui .icon { width: 16px; height: 16px; transform: rotate(180deg); }
   .pod-trang .pod-ct__dau { margin-top: -56px; padding-top: 72px; }
 }
+/* Một cột, canh trái theo ảnh bìa; giới hạn bề ngang để dòng chữ không quá dài */
 @media (min-width: 1024px) {
-  .v-web.pod-trang .pod-ct__than {
-    display: grid;
-    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
-    column-gap: 48px;
-    align-items: start;
-  }
-  /* Bình luận ở cột phải đứng ngang hàng với dòng thông tin đầu cột trái */
-  .v-web.pod-trang .pod-ct__phai > .pod-ct__khoi:first-child { margin-top: 0; }
+  .v-web.pod-trang .pod-ct__trai,
+  .v-web.pod-trang .pod-ct__phai { max-width: 820px; }
 }
