@@ -7241,13 +7241,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__van { padding-top: 10px; font-size: 15px; line-height: 24px; color: rgba(255, 255, 255, .72); }
 .pod-ct__them { margin-top: 8px; padding: 0; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
 .pod-ct__them:hover { text-decoration: underline; }
-.pod-kenh { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, .06); }
-.pod-kenh:hover { background: rgba(255, 255, 255, .1); }
-.pod-kenh img { width: 48px; height: 48px; flex: none; border-radius: 6px; object-fit: cover; }
-.pod-kenh__than { display: grid; flex: 1; min-width: 0; }
-.pod-kenh__ten { font-size: 15px; font-weight: 800; line-height: 22px; }
-.pod-kenh__phu { font-size: 12px; line-height: 18px; color: rgba(255, 255, 255, .6); }
-.pod-kenh__nut { flex: none; padding: 7px 14px; border: 1px solid rgba(255, 255, 255, .4); border-radius: var(--r-pill); font-size: 12px; font-weight: 700; line-height: 18px; }
 .pod-ds { display: grid; gap: 4px; padding-top: 10px; }
 .pod-tap { display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 8px; }
 .pod-tap:hover { background: rgba(255, 255, 255, .06); }
