@@ -7255,7 +7255,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-tap:hover { background: rgba(255, 255, 255, .06); }
 .pod-tap__anh { width: 56px; height: 56px; flex: none; border-radius: 6px; object-fit: cover; }
 .pod-tap__than { flex: 1; min-width: 0; }
-.pod-tap__ten { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
+/* Tên tập hiện đủ, xuống dòng khi dài */
+.pod-tap__ten { display: block; overflow-wrap: anywhere; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
 .pod-tap__phu { padding-top: 2px; font-size: 12px; line-height: 18px; color: rgba(255, 255, 255, .55); }
 .pod-tap__phat { width: 36px; height: 36px; flex: none; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .3); border-radius: var(--r-pill); color: #fff; }
 .pod-tap__phat .icon { width: 16px; height: 16px; }
@@ -7329,6 +7330,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 /* Điện thoại: hàng nút không đủ chỗ cho cả thời lượng, nên khít nút lại và
    cho thời lượng xuống một dòng riêng */
 @media (max-width: 743.98px) {
+  .pod-ct__bia { align-self: center; }
   .pod-ct__tacvu { flex-wrap: wrap; gap: 2px; }
   .pod-ct__phat { width: 48px; height: 48px; margin-right: 8px; }
   .pod-ct__phat .icon { width: 20px; height: 20px; }
