@@ -6841,6 +6841,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .dcq__anh-ten { font-size: 18px; font-weight: 800; line-height: 24.75px; letter-spacing: -.011em; }
 .dcq__nguoi { display: flex; align-items: center; gap: 6px; padding-top: 2px; font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .9); }
 .dcq__nguoi img { width: 22px; height: 22px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
+.dcq__gio { font-weight: 400; color: rgba(255, 255, 255, .65); }
+/* Lượt xem dạt sang phải cùng hàng tác giả */
+.dcq__xem { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; color: rgba(255, 255, 255, .85); }
+.dcq__xem .icon { width: 14px; height: 14px; flex: none; }
 /* Tab Khám phá chỉ hiện một ảnh lớn, giống trang chủ. Các mục khác cách nhau
    nhờ đệm 12px của dải cuộn ngang, ở đây phải tự chừa cho bằng. */
 .dcq-kp { margin-block: 12px; }
