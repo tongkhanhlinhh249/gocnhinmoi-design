@@ -7256,7 +7256,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-tap__ten { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 700; line-height: 20px; color: #fff; }
 .pod-tap__phu { padding-top: 2px; font-size: 12px; line-height: 18px; color: rgba(255, 255, 255, .55); }
 .pod-tap__phat { width: 36px; height: 36px; flex: none; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .3); border-radius: var(--r-pill); color: #fff; }
-.pod-tap__phat .icon { width: 14px; height: 14px; }
+.pod-tap__phat .icon { width: 16px; height: 16px; }
 .pod-bl__o { display: flex; align-items: center; gap: 10px; padding-top: 14px; }
 .pod-bl__o img { width: 32px; height: 32px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
 .pod-bl__o input {
@@ -7272,7 +7272,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   font-size: 14px;
 }
 .pod-bl__o input::placeholder { color: rgba(255, 255, 255, .45); }
-.pod-bl__o button { width: 40px; height: 40px; flex: none; display: grid; place-items: center; color: #FF6B6B; }
+/* Nút gửi: tròn đỏ, icon trắng 18px cho rõ trên nền tối */
+.pod-bl__o button { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--r-pill); background: var(--gnm-red); color: #fff; }
+.pod-bl__o button:hover { background: #D10A0B; }
+.pod-bl__o button .icon { width: 18px; height: 18px; margin: 1px 1px 0 0; }
 .pod-bl { display: grid; gap: 16px; padding-top: 18px; }
 .pod-bl__dong { display: flex; gap: 10px; }
 .pod-bl__dong img { width: 32px; height: 32px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
