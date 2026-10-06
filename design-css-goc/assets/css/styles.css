@@ -7224,6 +7224,16 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__nut .icon { width: 20px; height: 20px; }
 .pod-ct__nut[aria-pressed="true"] { color: #FF6B6B; }
 .pod-ct__nut[aria-pressed="true"] .icon { fill: currentColor; }
+/* Thêm vào playlist: nút viền tròn sáng cho nổi hơn các nút phụ; đã thêm thì
+   đổi sang dấu tích đỏ */
+.pod-ct__nut--ds { border: 2px solid rgba(255, 255, 255, .75); color: #fff; }
+.pod-ct__nut--ds:hover { border-color: #fff; background: rgba(255, 255, 255, .1); }
+.pod-ct__nut--ds .icon { width: 18px; height: 18px; }
+.pod-ct__nut--ds .icon--da,
+.pod-ct__nut--ds[aria-pressed="true"] .icon--them { display: none; }
+.pod-ct__nut--ds[aria-pressed="true"] .icon--da { display: block; }
+.pod-ct__nut--ds[aria-pressed="true"] { border-color: #FF6B6B; background: rgba(255, 107, 107, .12); color: #FF6B6B; }
+.pod-ct__nut--ds[aria-pressed="true"] .icon { fill: none; }
 .pod-ct__gio { margin-left: auto; font-size: 12px; line-height: 18px; font-variant-numeric: tabular-nums; color: rgba(255, 255, 255, .6); }
 .pod-ct__khoi { margin-top: 20px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .1); }
 .pod-ct__tieu { font-size: 18px; font-weight: 800; line-height: 26px; }
