@@ -522,7 +522,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function miniBat(card, btn, layElapsed, duration, tiepTuc, dung) {
     if (!mini) return;
     var art = card && card.querySelector('img');
-    var tit = card && card.querySelector('.card__title, .podcast__title, .prow__title, .tophero__title');
+    var tit = card && card.querySelector('.card__title, .podcast__title, .prow__title, .tophero__title, .pod-ct__ten');
     var a = mini.querySelector('[data-mini-art]');
     var h = mini.querySelector('[data-mini-title]');
     if (a && art) { a.src = art.getAttribute('src'); a.alt = ''; }
@@ -559,7 +559,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   var activePlayer = null;
 
   $$('[data-podcast]').forEach(function (btn) {
-    var card = btn.closest('.card, .tophero__item, .prow');
+    var card = btn.closest('.card, .tophero__item, .prow, .pod-ct');
     var wave = $('[data-wave]', card);
     var timeEl = $('[data-time]', card);
     var label = $('.btn-play__label', btn);
@@ -600,6 +600,13 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       if (timer) { stop(); return; }
       batDau();
     });
+
+    // Tua tới một mốc rồi phát luôn — dùng cho danh sách mốc ở trang chi tiết tập
+    btn.gnmTua = function (giay) {
+      elapsed = Math.max(0, Math.min(duration - 1, giay));
+      render();
+      if (timer) miniVe(elapsed, duration); else batDau();
+    };
 
     render();
   });
@@ -4344,5 +4351,20 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
       dat(false);
       nut.focus();
     }
+  });
+})();
+
+/* ================= Trang chi tiết podcast: bấm mốc thời gian để nghe ================= */
+(function () {
+  var trang = document.querySelector('.pod-ct');
+  if (!trang) return;
+  var nut = trang.querySelector('[data-podcast]');
+  trang.addEventListener('click', function (e) {
+    var moc = e.target.closest('[data-moc]');
+    if (!moc || !nut || !nut.gnmTua) return;
+    nut.gnmTua(parseInt(moc.getAttribute('data-moc'), 10) || 0);
+    var cu = trang.querySelector('[data-moc].is-dang');
+    if (cu) cu.classList.remove('is-dang');
+    moc.classList.add('is-dang');
   });
 })();
