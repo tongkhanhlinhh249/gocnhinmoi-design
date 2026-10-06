@@ -7193,6 +7193,9 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__kenh { padding-top: 8px; font-size: 14px; font-weight: 600; line-height: 20px; color: rgba(255, 255, 255, .85); }
 .pod-ct__kenh a { font-weight: 800; color: #fff; }
 .pod-ct__kenh a:hover { text-decoration: underline; }
+/* Bút danh tác giả kèm ảnh đại diện nhỏ */
+.pod-ct__tg { display: inline-flex; align-items: center; gap: 8px; }
+.pod-ct__tg img { width: 24px; height: 24px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
 @media (min-width: 744px) {
   .v-web .pod-ct__dau-trong { flex-direction: row; align-items: flex-end; gap: 24px; }
   .v-web .pod-ct__bia { width: 200px; height: 200px; }
