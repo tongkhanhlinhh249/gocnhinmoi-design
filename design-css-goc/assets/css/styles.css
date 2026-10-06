@@ -7327,22 +7327,16 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 }
 /* Một cột, mô tả, đề xuất và bình luận trải hết khung 1280px như phần đầu trang */
 
-/* Điện thoại: tách thành hai tầng cho dễ bấm bằng ngón cái.
-   Tầng 1 — trình phát: nút Phát, thời lượng ngay cạnh, Thêm vào playlist ở mép phải.
-   Tầng 2 — tương tác: tim, bình luận, lưu, chia sẻ, tuỳ chọn dàn đều cả hàng.
-   Mọi nút cao 44px, khoảng cách giữa các nút ≥ 8px. */
+/* Điện thoại: hàng nút không đủ chỗ cho cả thời lượng, nên khít nút lại và
+   cho thời lượng xuống một dòng riêng */
 @media (max-width: 743.98px) {
   .pod-ct__bia { align-self: center; }
-  .pod-ct__tacvu { flex-wrap: wrap; justify-content: space-between; row-gap: 10px; column-gap: 8px; padding-top: 12px; }
-  .pod-ct__phat { order: 1; width: 52px; height: 52px; margin-right: 0; box-shadow: 0 6px 18px rgba(184, 0, 1, .4); }
+  .pod-ct__tacvu { flex-wrap: wrap; gap: 2px; }
+  .pod-ct__phat { width: 48px; height: 48px; margin-right: 8px; }
   .pod-ct__phat .icon { width: 20px; height: 20px; }
-  .pod-ct__gio { order: 2; flex: 1 0 calc(100% - 52px - 44px - 16px); margin-left: 0; font-size: 13px; line-height: 20px; color: rgba(255, 255, 255, .7); }
-  .pod-ct__nut--ds { order: 3; }
-  .pod-ct__nut { order: 4; width: 44px; height: 44px; }
-  .pod-ct__nut--so { width: auto; min-width: 44px; padding: 0 8px; }
-  /* Icon đầu và cuối thẳng mép nội dung như nút Phát phía trên */
-  .pod-ct__nut[data-like] { margin-left: -8px; }
-  .pod-ct__nut[data-toast="Tuỳ chọn khác"] { margin-right: -12px; }
+  .pod-ct__nut { width: 36px; height: 36px; }
+  .pod-ct__nut--so { width: auto; padding: 0 8px; }
+  .pod-ct__gio { flex-basis: 100%; margin-left: 0; padding-top: 8px; }
 }
 
 /* Chân trang nền tối cho liền mạch với trang podcast */
