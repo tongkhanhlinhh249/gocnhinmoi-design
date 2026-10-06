@@ -7190,13 +7190,15 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .pod-ct__chu { min-width: 0; }
 .pod-ct__nhan { font-size: 11px; font-weight: 800; line-height: 16px; letter-spacing: .1em; text-transform: uppercase; color: #FF6B6B; }
 .pod-ct__ten { padding-top: 6px; font-size: 26px; font-weight: 800; line-height: 33px; letter-spacing: -.02em; }
-.pod-ct__kenh { padding-top: 8px; font-size: 14px; font-weight: 600; line-height: 20px; color: rgba(255, 255, 255, .85); }
-.pod-ct__kenh a { font-weight: 800; color: #fff; }
+/* Cùng format dòng tác giả ở card tin (tophero): ảnh 24px, bút danh 12px,
+   thời gian tương đối 11px mờ hơn, canh giữa theo hàng */
+.pod-ct__kenh { display: flex; align-items: center; gap: 4px; min-width: 0; padding-top: 8px; }
+.pod-ct__kenh a { font-size: 12px; font-weight: 600; line-height: 18px; color: rgba(255, 255, 255, .8); white-space: nowrap; }
 .pod-ct__kenh a:hover { text-decoration: underline; }
 /* Bút danh tác giả kèm ảnh đại diện nhỏ */
 .pod-ct__tg { display: inline-flex; align-items: center; gap: 8px; }
 .pod-ct__tg img { width: 24px; height: 24px; flex: none; border-radius: var(--r-pill); object-fit: cover; }
-.pod-ct__luc { margin-left: 6px; font-weight: 400; color: rgba(255, 255, 255, .6); }
+.pod-ct__luc { font-size: 11px; line-height: 16.5px; color: rgba(255, 255, 255, .5); white-space: nowrap; }
 @media (min-width: 744px) {
   .v-web .pod-ct__dau-trong { flex-direction: row; align-items: flex-end; gap: 24px; }
   .v-web .pod-ct__bia { width: 200px; height: 200px; }
