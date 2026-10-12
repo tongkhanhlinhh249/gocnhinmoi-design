@@ -7165,7 +7165,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
      cùng kiểu với "Gợi ý theo dõi" */
   .v-web .page > main > .spotlist { margin-inline: 0; border-radius: 0; background: none; }
   .v-web .page > main > .spotlist > .shell { padding-inline: 24px; }
-  .v-web .spotlist .spotlist__title { color: var(--ink); }
+  .v-web .spotlist .spotlist__title { font-size: 17px; line-height: 25px; color: var(--ink); }
   .v-web .spotlist .spotlist__list { display: none; }
   /* Bốn card dàn một hàng, card cuối bị cắt ở mép để gợi ý cuộn ngang
      (giống dải Gợi ý theo dõi) */
