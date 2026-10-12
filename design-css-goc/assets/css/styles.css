@@ -1052,7 +1052,7 @@ input { font: inherit; }
   /* Ở bố cục rộng nút co vừa chữ (justify-self: start) nên không có padding
      thì chữ dính sát mép đỏ. */
   padding-inline: 20px;
-  border-radius: var(--r-md);
+  border-radius: var(--r-pill);
   background: var(--gnm-red);
   color: #fff;
   font-size: 14px;
