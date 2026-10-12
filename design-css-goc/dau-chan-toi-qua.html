@@ -150,6 +150,16 @@
     <path d="M5.6 4.2V2.9C5.6 2.35 6.05 1.9 6.6 1.9H9.4C9.95 1.9 10.4 2.35 10.4 2.9V4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     <path d="M12.3 4.2V13.1C12.3 13.65 11.85 14.1 11.3 14.1H4.7C4.15 14.1 3.7 13.65 3.7 13.1V4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </symbol>
+  <symbol id="i-anh" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <circle cx="9" cy="9.5" r="1.8" stroke="currentColor" stroke-width="1.6" fill="none"/>
+    <path d="M3.5 17.5l5.2-5.2a1.5 1.5 0 0 1 2.1 0l4.7 4.7M13.5 15l2.2-2.2a1.5 1.5 0 0 1 2.1 0l2.7 2.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-anh-them" viewBox="0 0 24 24">
+    <path d="M13 4H5.5A2.5 2.5 0 0 0 3 6.5v11A2.5 2.5 0 0 0 5.5 20h11a2.5 2.5 0 0 0 2.5-2.5V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M3.5 17.5l5.2-5.2a1.5 1.5 0 0 1 2.1 0l5.2 5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M18.5 2.5v6M15.5 5.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
   <symbol id="i-camera" viewBox="0 0 20 20">
     <path d="M17.5 15.4C17.5 16.2 16.8 16.9 16 16.9H4C3.2 16.9 2.5 16.2 2.5 15.4V7.1C2.5 6.3 3.2 5.6 4 5.6H6.6L7.9 3.1H12.1L13.4 5.6H16C16.8 5.6 17.5 6.3 17.5 7.1V15.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
     <circle cx="10" cy="11" r="2.9" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -236,11 +246,12 @@
     <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
     <section class="dcq-gui shell" id="gui-anh" aria-labelledby="dcqGuiTen">
       <div class="dcq-gui__the">
+        <span class="dcq-gui__bieu" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-anh"></use></svg></span>
         <div class="dcq-gui__loi">
         <h2 class="dcq-gui__ten" id="dcqGuiTen">Bạn có khoảnh khắc muốn chia sẻ?</h2>
-        <p class="dcq-gui__chu">Gửi ảnh và câu chuyện của bạn đến Góc Nhìn Mới.</p>
+        <p class="dcq-gui__chu">Gửi ảnh cùng câu chuyện của bạn đến Dấu chân tôi qua.</p>
         </div>
-        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung>Gửi ảnh</button>
+        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung><svg class="icon" aria-hidden="true"><use href="#i-anh-them"></use></svg>Gửi ảnh của bạn</button>
 
         <form class="dcq-gui__form" data-dcq-form hidden>
           <label class="dcq-tai" data-dcq-tai>

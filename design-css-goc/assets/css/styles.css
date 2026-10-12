@@ -6956,7 +6956,17 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }
-.dcq-gui__the { padding: 16px; border: 1px solid #FFD6D6; border-radius: var(--r-card); background: linear-gradient(135deg, #FFF4F4 0%, #FFE6E6 100%); }
+.dcq-gui__the { padding: 16px; border-radius: var(--r-card); background: #FFF3F3; }
+/* Bớt nổi bật để không bị nhầm với nút Viết bài trên thanh đầu: nền hồng phẳng,
+   không viền; ô biểu tượng ảnh trắng; nút chỉ có viền. */
+.dcq-gui__bieu { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--surface); color: var(--gnm-red); }
+.dcq-gui__bieu .icon { width: 24px; height: 24px; }
+.dcq-gui__the:has(.dcq-gui__form[hidden]) { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: center; }
+.dcq-gui__the:has(.dcq-gui__form[hidden]) > .dcq-gui__nut--mo { grid-column: 1 / -1; }
+/* Mở khung điền thì bỏ ô biểu tượng cho gọn */
+.dcq-gui__the:not(:has(.dcq-gui__form[hidden])) > .dcq-gui__bieu { display: none; }
+/* Trang danh sách: khung nằm ngay dưới tiêu đề, đã ở trong .shell */
+.dcq-ds-khoi > .dcq-gui { padding-top: 16px; padding-bottom: 0; }
 .dcq-gui__loi { min-width: 0; }
 .dcq-gui__ten { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 800; line-height: 24px; letter-spacing: -.011em; color: var(--ink-strong); }
 .dcq-gui__ten .icon { width: 17px; height: 17px; flex: none; color: var(--gnm-red); }
@@ -7024,16 +7034,26 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 }
 /* Khung mặc định chỉ có lời mời và một nút; bấm vào mới mở đủ các trường. */
 .dcq-gui__nut--mo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
+  height: 40px;
   margin-top: 14px;
-  padding-inline: 20px;
+  padding-inline: 18px;
   border: 1px solid var(--gnm-red);
-  background: transparent;
+  border-radius: var(--r-md);
+  background: var(--surface);
   color: var(--gnm-red);
+  font-size: 14px;
 }
+.dcq-gui__nut--mo .icon { width: 18px; height: 18px; flex: none; }
+.dcq-gui__nut--mo[hidden] { display: none; }
 .dcq-gui__nut--mo:hover { background: rgba(184, 0, 1, .06); }
 @media (min-width: 744px) {
-  .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) { display: flex; align-items: center; gap: 16px; padding: 16px 20px; }
+  .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) > .dcq-gui__loi { flex: 1; }
   .v-web .dcq-gui__nut--mo { width: auto; flex: none; margin-top: 0; }
 }
 .dcq-gui__hang { display: flex; align-items: center; gap: 10px; }
