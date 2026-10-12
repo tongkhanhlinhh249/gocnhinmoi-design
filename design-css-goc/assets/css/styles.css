@@ -6956,11 +6956,11 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
 .dcq-gui { padding-top: 20px; padding-bottom: 8px; }
-.dcq-gui__the { padding: 16px; border-radius: var(--r-card); background: #FFF3F3; }
+.dcq-gui__the { padding: 16px; border-radius: var(--r-card); background: #FFEFEF; }
 /* Bớt nổi bật để không bị nhầm với nút Viết bài trên thanh đầu: nền hồng phẳng,
    không viền; ô biểu tượng ảnh trắng; nút chỉ có viền. */
-.dcq-gui__bieu { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--surface); color: var(--gnm-red); }
-.dcq-gui__bieu .icon { width: 24px; height: 24px; }
+.dcq-gui__bieu { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: var(--r-md); background: var(--surface); color: var(--gnm-red); }
+.dcq-gui__bieu .icon { width: 22px; height: 22px; }
 .dcq-gui__the:has(.dcq-gui__form[hidden]) { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: center; }
 .dcq-gui__the:has(.dcq-gui__form[hidden]) > .dcq-gui__nut--mo { grid-column: 1 / -1; }
 /* Mở khung điền thì bỏ ô biểu tượng cho gọn */
@@ -6968,9 +6968,10 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 /* Trang danh sách: khung nằm ngay dưới tiêu đề, đã ở trong .shell */
 .dcq-ds-khoi > .dcq-gui { padding-top: 16px; padding-bottom: 0; }
 .dcq-gui__loi { min-width: 0; }
-.dcq-gui__ten { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 800; line-height: 24px; letter-spacing: -.011em; color: var(--ink-strong); }
+/* Tiêu đề theo thang section-title: 15px ở điện thoại, 17px từ 744px */
+.dcq-gui__ten { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 800; line-height: 22.5px; letter-spacing: -.011em; color: var(--ink-strong); }
 .dcq-gui__ten .icon { width: 17px; height: 17px; flex: none; color: var(--gnm-red); }
-.dcq-gui__chu { padding-top: 6px; font-size: 13px; line-height: 20px; color: var(--text-action); }
+.dcq-gui__chu { padding-top: 4px; font-size: 13px; line-height: 20px; color: var(--text-action); }
 .dcq-gui__form { display: grid; gap: 12px; padding-top: 14px; }
 .dcq-tai {
   position: relative;
@@ -7033,6 +7034,8 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   font-weight: 700;
 }
 /* Khung mặc định chỉ có lời mời và một nút; bấm vào mới mở đủ các trường. */
+/* Nút phụ theo design system: viên thuốc cao 40px, chữ 13px đậm, viền đỏ
+   nền trắng (cùng họ với nút "Xem thêm"/"Theo dõi" dạng viền) */
 .dcq-gui__nut--mo {
   display: inline-flex;
   align-items: center;
@@ -7041,20 +7044,24 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   width: 100%;
   height: 40px;
   margin-top: 14px;
-  padding-inline: 18px;
+  padding-inline: 20px;
   border: 1px solid var(--gnm-red);
-  border-radius: var(--r-md);
+  border-radius: var(--r-pill);
   background: var(--surface);
   color: var(--gnm-red);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 700;
 }
-.dcq-gui__nut--mo .icon { width: 18px; height: 18px; flex: none; }
+.dcq-gui__nut--mo .icon { width: 16px; height: 16px; flex: none; }
+/* Luật :focus-visible chung ép bo góc 4px — giữ dáng viên thuốc khi có focus */
+.dcq-gui__nut--mo:focus-visible { border-radius: var(--r-pill); }
 .dcq-gui__nut--mo[hidden] { display: none; }
 .dcq-gui__nut--mo:hover { background: rgba(184, 0, 1, .06); }
 @media (min-width: 744px) {
   .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) { display: flex; align-items: center; gap: 16px; padding: 16px 20px; }
   .v-web .dcq-gui__the:has(.dcq-gui__form[hidden]) > .dcq-gui__loi { flex: 1; }
   .v-web .dcq-gui__nut--mo { width: auto; flex: none; margin-top: 0; }
+  .v-web .dcq-gui__ten { font-size: 17px; line-height: 25px; }
 }
 .dcq-gui__hang { display: flex; align-items: center; gap: 10px; }
 .dcq-gui__hang .dcq-gui__nut { flex: 1; }
