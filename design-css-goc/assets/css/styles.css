@@ -7155,15 +7155,33 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 
 /* ---------- Spotlight và Thịnh hành trên máy tính bảng (744–1023px) ----------
    Spotlight: bỏ nền hồng, thay danh sách bằng card ảnh lớn (như trang
-   Spotlight) xếp 2 cột cho tận dụng bề ngang.
+   Spotlight) dàn một hàng cuộn ngang.
    Thịnh hành: nền hồng nhạt chữ tối như ở cột phụ bản desktop, đỡ chói khi
    khối trải hết bề ngang. Markup Thịnh hành đã dịch sang utility nên phải
    bám theo cấu trúc thẻ. */
 .spotlist__the { display: none; }
 @media (min-width: 744px) and (max-width: 1023.98px) {
-  .v-web .page > main > .spotlist { background: none; }
+  /* Không còn nền nên bỏ thụt lề/bo góc của khối màu, tiêu đề thẳng hàng và
+     cùng kiểu với "Gợi ý theo dõi" */
+  .v-web .page > main > .spotlist { margin-inline: 0; border-radius: 0; background: none; }
+  .v-web .page > main > .spotlist > .shell { padding-inline: 24px; }
+  .v-web .spotlist .spotlist__title { color: var(--ink); }
   .v-web .spotlist .spotlist__list { display: none; }
-  .v-web .spotlist .spotlist__the { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding-top: 12px; }
+  /* Bốn card dàn một hàng, card cuối bị cắt ở mép để gợi ý cuộn ngang
+     (giống dải Gợi ý theo dõi) */
+  .v-web .spotlist .spotlist__the {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 12px var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+  }
+  .v-web .spotlist__the::-webkit-scrollbar { display: none; }
+  .v-web .spotlist__the > .card { flex: 0 0 300px; scroll-snap-align: start; }
   .v-web .spotlist__the .card__title a:hover { text-decoration: underline; }
 
   .v-web .page > main > .redlist { background: #FFEFEF; }
