@@ -7079,10 +7079,28 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .page,
   .v-web .page:has(> .siderail),
   .v-web.art-desk .page,
-  .v-web.art-desk .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr) 240px; }
+  .v-web.art-desk .page:has(> .siderail) { grid-template-columns: minmax(0, 1fr); }
   .v-web .page > main,
   .v-web .page .site-footer { grid-column: 1; }
-  .v-web .siderail { grid-column: 2; grid-row: 1 / 3; }
+  /* Z Fold (cả ngang lẫn dọc) chỉ dùng cột giữa của bản desktop. Cột phải bỏ
+     hẳn; Spotlight, Hashtag nổi bật, Thịnh hành, Gợi ý theo dõi hiện lại trong
+     dòng tin đúng chỗ như bản điện thoại. */
+  .v-web .page > .siderail { display: none; }
+  .v-web .page > main > .panel,
+  .v-web .page > main > .places,
+  .v-web .page > main > .authors,
+  .v-web .page > main > .redlist,
+  body.v-web .page:has(> .siderail .rail-spot) > main > .spotlist { display: block; }
+  /* Thứ tự các mục giống bản điện thoại (trang nào chốt sẵn thứ tự trong
+     markup thì có data-thu-tu và giữ nguyên) */
+  main:not([data-thu-tu]) { display: flex; flex-direction: column; }
+  main:not([data-thu-tu]) > .leaderboard { order: 1; }
+  main:not([data-thu-tu]) > .tra-dam-khoi { order: 2; }
+  main:not([data-thu-tu]) > .redlist { order: 2; }
+  main:not([data-thu-tu]) > .discussed { order: 3; }
+  main:not([data-thu-tu]) > .panel { order: 4; }
+  main:not([data-thu-tu]) > .authors { order: 5; }
+  main:not([data-thu-tu]) > .places { order: 6; }
   .v-web .deskbar__menu {
     display: grid;
     place-items: center;
@@ -7103,11 +7121,9 @@ a.cs-bai:hover { border-color: #FFC9C9; }
     max-width: none;
     transform: none;
   }
-  /* Thanh đầu trải hết bề ngang, trùm qua cả cột phụ, và giữ một dòng:
-     menu — logo — ô tìm kiếm — Viết bài — chuông + ảnh đại diện.
-     Cột phụ tụt xuống dưới đúng chiều cao thanh và dính ngay bên dưới khi cuộn. */
+  /* Thanh đầu trải hết bề ngang và giữ một dòng:
+     menu — logo — ô tìm kiếm — Viết bài — chuông + ảnh đại diện. */
   .v-web .page > main > .deskbar {
-    width: calc(100% + 240px);
     z-index: 60;
     padding-inline: 16px;
   }
@@ -7123,7 +7139,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
     border-color: transparent;
   }
   .v-web .page > main > .deskbar .deskbar__input:focus-visible { border-color: var(--line-2); }
-  .v-web .siderail { margin-top: 63px; top: 63px; max-height: calc(100vh - 63px); }
   .v-web .deskbar__toi img { width: 32px; height: 32px; border-radius: var(--r-pill); object-fit: cover; }
   .v-web .page > main > .deskbar > .deskbar__search { grid-area: tim; }
   .v-web .page > main > .deskbar > .deskbar__write { grid-area: viet; }
@@ -7131,19 +7146,6 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .deskbar__logo { display: block; flex: none; }
   .v-web .deskbar__logo img { width: 108px; height: 32px; object-fit: contain; }
   .v-web .deskbar__menu .icon { width: 18px; height: 18px; }
-}
-
-/* Gập dọc thì cột giữa chỉ còn hơn 500px, xếp hai cột thẻ quá chật — cho
-   dòng tin chạy một cột như bản điện thoại, cột phụ bên phải giữ nguyên. */
-@media (min-width: 744px) and (max-width: 1023.98px) and (min-aspect-ratio: 4/5) and (min-height: 600px) and (orientation: portrait) {
-  .v-web .page .feed { grid-template-columns: minmax(0, 1fr); }
-  /* Tin nổi bật xếp dọc và giữ tỉ lệ ảnh của bản điện thoại */
-  .v-web .page .tophero { grid-template-columns: minmax(0, 1fr); }
-  .v-web .page .tophero > :first-child .tophero__media { aspect-ratio: 400 / 400; }
-  .v-web .page .tophero > :first-child ~ * .tophero__media { aspect-ratio: 400 / 240; }
-  /* Bảng tác giả nổi bật trở lại năm ô như bản điện thoại, ô thứ sáu chỉ dành
-     cho màn rộng */
-  .v-web .rank--desk { display: none; }
 }
 
 /* ---------- Bản nháp vừa sao chép từ bài bị từ chối ----------
