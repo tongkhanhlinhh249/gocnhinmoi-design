@@ -6955,7 +6955,7 @@ a.cs-bai:hover { border-color: #FFC9C9; }
 .art-desk .article__body:has(> .dcq-ct__anh) { max-width: none; }
 
 /* ---------- Khung gửi ảnh về GNM ---------- */
-.dcq-gui { padding-top: 20px; padding-bottom: 8px; }
+.dcq-gui { padding-top: 20px; padding-bottom: 8px; scroll-margin-top: 72px; }
 .dcq-gui__the { padding: 16px; border-radius: var(--r-card); background: #FFEFEF; }
 /* Bớt nổi bật để không bị nhầm với nút Viết bài trên thanh đầu: nền hồng phẳng,
    không viền; ô biểu tượng ảnh trắng; nút chỉ có viền. */

@@ -123,6 +123,9 @@
     <path d="M12.6793 5.62415L11.1784 10.126C11.0967 10.3711 10.9591 10.5937 10.7765 10.7765C10.5937 10.9591 10.3711 11.0967 10.126 11.1784L5.62415 12.6793L7.12503 8.17748C7.20672 7.9324 7.34435 7.7097 7.52702 7.52702C7.7097 7.34435 7.9324 7.20672 8.17748 7.12503L12.6793 5.62415Z" stroke="currentColor" stroke-width="1.66395" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M9.15172 17.4714C13.7466 17.4714 17.4714 13.7466 17.4714 9.15172C17.4714 4.55685 13.7466 0.831975 9.15172 0.831975C4.55685 0.831975 0.831975 4.55685 0.831975 9.15172C0.831975 13.7466 4.55685 17.4714 9.15172 17.4714Z" stroke="currentColor" stroke-width="1.66395" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-cong" viewBox="0 0 16 16">
+    <path d="M8 2.5v11M2.5 8h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  </symbol>
   <symbol id="i-nav-write" viewBox="0 0 17.8844 17.8844">
     <path d="M8.52774 1.86889H2.70392C2.26261 1.86889 1.83938 2.0442 1.52732 2.35624C1.21527 2.6683 1.03997 3.09153 1.03997 3.53284V15.1805C1.03997 15.6218 1.21527 16.045 1.52732 16.3571C1.83938 16.6691 2.26261 16.8445 2.70392 16.8445H14.3515C14.7929 16.8445 15.2161 16.6691 15.5282 16.3571C15.8402 16.045 16.0155 15.6218 16.0155 15.1805V9.35666" stroke="currentColor" stroke-width="2.07994" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M13.8316 1.5569C14.1626 1.22591 14.6114 1.03997 15.0795 1.03997C15.5476 1.03997 15.9966 1.22591 16.3275 1.5569C16.6585 1.88788 16.8444 2.33678 16.8444 2.80486C16.8444 3.27294 16.6585 3.72184 16.3275 4.05283L8.82889 11.5522C8.63135 11.7496 8.38731 11.8941 8.11924 11.9724L5.72898 12.6713C5.65739 12.6922 5.5815 12.6934 5.50926 12.6749C5.43702 12.6564 5.37109 12.6188 5.31835 12.5661C5.26563 12.5133 5.22804 12.4474 5.20952 12.3751C5.19102 12.3029 5.19227 12.227 5.21315 12.1554L5.91201 9.76512C5.99065 9.49734 6.13542 9.25355 6.33299 9.05631L13.8316 1.5569Z" stroke="currentColor" stroke-width="2.07994" stroke-linecap="round" stroke-linejoin="round"/>
@@ -287,9 +290,9 @@
         <svg class="icon deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
         <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
       </label>
-      <a class="deskbar__write" href="viet-bai.html">
-        <svg class="icon" aria-hidden="true"><use href="#i-nav-write"></use></svg>Viết bài
-      </a>
+      <button class="deskbar__write" type="button" data-them-nd aria-haspopup="menu">
+        <svg class="icon" aria-hidden="true"><use href="#i-cong"></use></svg>Thêm nội dung
+      </button>
       <div class="deskbar__cuoi">
         <a class="icon-btn" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>

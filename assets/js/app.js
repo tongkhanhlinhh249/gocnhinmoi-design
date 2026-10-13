@@ -191,6 +191,20 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     sh.classList.remove('is-open');
     setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo', 'is-tg'); }, 260);
   }
+
+  /* Nút "Thêm nội dung" trên thanh đầu: chọn viết bài hoặc gửi ảnh cho mục
+     Dấu chân tôi qua (sang trang danh sách và mở sẵn khung gửi ảnh). */
+  document.addEventListener('click', function (e) {
+    var nut = e.target.closest && e.target.closest('[data-them-nd]');
+    if (!nut) return;
+    e.preventDefault();
+    moSheetMenu('Thêm nội dung', [
+      ['nav-write', 'Viết bài'],
+      ['camera', 'Gửi ảnh Dấu chân tôi qua']
+    ], function (chon) {
+      location.href = chon === 'Viết bài' ? 'viet-bai.html' : 'dau-chan-toi-qua-list.html#gui-anh';
+    }, nut);
+  });
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('[data-sheet-close]')) dongSheetMenu();
     var nut = e.target.closest && e.target.closest('[data-card-menu]');
@@ -4238,6 +4252,15 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     }
   }
   if (nutMo) nutMo.addEventListener('click', function () { moKhung(true); });
+  // Đến từ nút "Thêm nội dung" (#gui-anh) thì mở sẵn khung và cuộn tới
+  function moTheoNeo() {
+    if (location.hash !== '#gui-anh') return;
+    moKhung(true);
+    var khung = document.getElementById('gui-anh');
+    if (khung) khung.scrollIntoView({ block: 'start' });
+  }
+  moTheoNeo();
+  window.addEventListener('hashchange', moTheoNeo);
 
   var o = form.querySelector('[data-dcq-tai]');
   var tep = form.querySelector('[data-dcq-tep]');
