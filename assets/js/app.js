@@ -189,7 +189,7 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var sh = document.getElementById('sheet');
     if (!sh) return;
     sh.classList.remove('is-open');
-    setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo', 'is-tg'); }, 260);
+    setTimeout(function () { sh.hidden = true; sh.classList.remove('is-neo', 'is-tg', 'is-popup'); }, 260);
   }
 
   /* Nút "Thêm nội dung" trên thanh đầu: chọn viết bài hoặc gửi ảnh cho mục
@@ -198,6 +198,10 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var nut = e.target.closest && e.target.closest('[data-them-nd]');
     if (!nut) return;
     e.preventDefault();
+    // Không bám vào nút (điện thoại, tablet) thì hiện dạng hộp thoại giữa màn.
+    // Gắn trước khi mở để hộp hiện ra đúng dáng ngay từ đầu.
+    var sh = document.getElementById('sheet');
+    if (sh) sh.classList.toggle('is-popup', !window.matchMedia('(min-width: 1024px)').matches);
     moSheetMenu('Thêm nội dung', [
       ['nav-write', 'Viết bài'],
       ['camera', 'Gửi ảnh Dấu chân tôi qua']

@@ -7185,6 +7185,27 @@ a.cs-bai:hover { border-color: #FFC9C9; }
   .v-web .deskbar__menu .icon { width: 18px; height: 18px; }
 }
 
+/* ---------- Popup "Thêm nội dung" ----------
+   Cùng thẻ #sheet nhưng ở điện thoại/tablet hiện thành hộp thoại giữa màn
+   thay vì tấm trượt từ đáy; desktop vẫn là hộp nhỏ bám dưới nút. */
+.sheet.is-popup .sheet__panel {
+  top: 50%;
+  bottom: auto;
+  left: 16px;
+  right: 16px;
+  max-width: 360px;
+  margin-inline: auto;
+  padding: 20px 16px 12px;
+  border-radius: var(--r-lg);
+  box-shadow: 0 20px 48px rgba(16, 24, 40, .25);
+  opacity: 0;
+  transform: translateY(-50%) scale(.96);
+  transition: opacity .18s var(--ease), transform .18s var(--ease);
+}
+.sheet.is-popup.is-open .sheet__panel { opacity: 1; transform: translateY(-50%); }
+.sheet.is-popup .sheet__panel > [aria-hidden="true"]:first-child { display: none; }
+.sheet.is-popup .sheet-menu { padding-top: 10px; }
+
 /* ---------- Spotlight và Thịnh hành trên máy tính bảng (744–1023px) ----------
    Spotlight: bỏ nền hồng, thay danh sách bằng card ảnh lớn (như trang
    Spotlight) dàn một hàng cuộn ngang.
