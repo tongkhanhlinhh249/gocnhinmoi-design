@@ -292,21 +292,33 @@
       <a class="deskbar__logo" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ">
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
       </a>
-      <label class="deskbar__search">
-        <svg class="icon size-4 flex-none deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
-        <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
-      </label>
-      <button class="deskbar__write" type="button" data-them-nd aria-haspopup="menu">
-        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-cong"></use></svg>Thêm nội dung
-      </button>
+      <a class="deskbar__viet" href="viet-bai.html" aria-label="Viết bài">
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-pencil"></use></svg>Viết bài
+      </a>
       <div class="deskbar__cuoi">
-        <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+        <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="deskTim" data-desk-tim>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
       </a>
       <a class="deskbar__toi" href="ca-nhan.html" aria-label="Trang cá nhân của bạn">
         <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
       </a>
+      </div>
+      <div class="deskbar__tim" id="deskTim" hidden>
+        <form class="deskbar__tim-form" role="search" onsubmit="return false">
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input type="search" placeholder="Tìm bài viết, tác giả, chủ đề..." autocomplete="off" aria-label="Tìm kiếm" data-search>
+          <button class="deskbar__tim-xoa" type="button" aria-label="Xoá từ khoá" data-desk-tim-xoa><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button>
+          <button class="deskbar__tim-tim" type="submit">Tìm</button>
+        </form>
+        <p class="deskbar__tim-tieude">Tìm kiếm gần đây</p>
+        <ul class="deskbar__tim-ds">
+          <li><button type="button" data-tim-goiy="Hà Nội"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Hà Nội</button></li>
+          <li><button type="button" data-tim-goiy="Du lịch Việt Nam"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Du lịch Việt Nam</button></li>
+        </ul>
       </div>
     </div>
 
@@ -317,10 +329,58 @@
           <h1 class="dcq-ds__ten" id="dcqDsTen">Dấu chân tôi qua</h1>
           <p class="dcq-ds__phu">Những nơi đã đến, những khoảnh khắc muốn giữ lại.</p>
         </div>
-        <a class="dcq-ds__gui" href="#gui-anh">Gửi ảnh</a>
       </div>
 
       <div class="dcq-ds">
+        <!-- ============ Gửi ảnh về GNM ============ -->
+        <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
+        <section class="dcq-gui" id="gui-anh" aria-labelledby="dcqGuiTen">
+          <div class="dcq-gui__the">
+            <span class="dcq-gui__bieu" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-anh-them"></use></svg></span>
+            <div class="dcq-gui__loi">
+            <h2 class="dcq-gui__ten" id="dcqGuiTen">Gửi ảnh đến Dấu chân tôi qua</h2>
+            <p class="dcq-gui__chu">Chia sẻ ảnh bạn chụp về nơi đã đến, kèm địa điểm và vài dòng kể chuyện.</p>
+            </div>
+            <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-anh-them"></use></svg>Gửi ảnh</button>
+
+            <form class="dcq-gui__form" data-dcq-form hidden>
+              <label class="dcq-tai" data-dcq-tai>
+                <input class="sr-only" type="file" accept="image/*" data-dcq-tep>
+                <span class="dcq-tai__goi">
+                  <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-camera"></use></svg>
+                  <span class="dcq-tai__chinh">Chọn ảnh từ máy</span>
+                  <span class="dcq-tai__phu">JPG hoặc PNG, tối đa 10MB</span>
+                </span>
+                <img class="dcq-tai__xem" alt="" data-dcq-xem hidden>
+                <span class="dcq-tai__doi" data-dcq-doi hidden>Đổi ảnh khác</span>
+              </label>
+
+              <label class="dcq-o">
+                <span class="dcq-o__nhan">Tiêu đề ảnh</span>
+                <input type="text" maxlength="60" placeholder="Ví dụ: Một sớm trên mặt hồ" data-dcq-ten>
+              </label>
+
+              <label class="dcq-o">
+                <span class="dcq-o__nhan">Nơi chụp</span>
+                <input type="text" maxlength="60" placeholder="Ví dụ: Hồ Ba Bể, Bắc Kạn" data-dcq-noi>
+              </label>
+
+              <label class="dcq-o">
+                <span class="dcq-o__nhan">Mô tả ngắn</span>
+                <textarea rows="3" maxlength="200" placeholder="Vài câu về khoảnh khắc này" data-dcq-mo></textarea>
+                <span class="dcq-o__dem" data-dcq-dem>0/200</span>
+              </label>
+
+              <p class="dcq-gui__ghi-chu">Góc Nhìn Mới trân trọng mọi hình ảnh độc giả gửi về. Để cùng xây dựng một không gian mạng xã hội đáng tin cậy, chúng tôi đề nghị tác giả đảm bảo thông tin kèm theo ảnh là chính xác, hình ảnh do chính mình chụp hoặc có quyền sử dụng, không xâm phạm quyền tác giả hay quyền lợi hợp pháp của bên thứ ba. Tác giả chịu hoàn toàn trách nhiệm trước pháp luật về nội dung và hình ảnh trong bài gửi. Góc Nhìn Mới có quyền biên tập hoặc từ chối đăng những ảnh không đáp ứng các yêu cầu trên.</p>
+
+            <div class="dcq-gui__hang">
+                <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
+                <button class="dcq-gui__huy" type="button" data-dcq-huy>Huỷ</button>
+              </div>
+              <p class="dcq-gui__luu-y">Mỗi tuần một khoảnh khắc được chọn xuất hiện ở trang chủ.</p>
+            </form>
+          </div>
+        </section>
         <article class="dcq-the">
           <div class="dcq-the__anh">
             <img src="assets/img/cover-du-lich.png" alt="Thuyền gỗ trên mặt hồ lặng, phía sau là dãy núi mờ sương" width="720" height="405" loading="lazy">
@@ -425,7 +485,7 @@
           </div>
           <p class="dcq-the__nguoi"><img src="assets/img/avatar-minh-tuan.jpg" alt="" width="24" height="24" loading="lazy"><span class="dcq-the__ai">Minh Tuấn</span><span class="dcq-the__gio">· 5 ngày trước</span></p>
         </article>
-        <article class="dcq-the" hidden data-dcq-them>
+        <article class="dcq-the">
           <div class="dcq-the__anh">
             <img src="assets/img/cover-sai-gon.png" alt="Cây cầu lúc chiều muộn" width="720" height="405" loading="lazy">
             <span class="dcq-the__phu" aria-hidden="true"></span>
@@ -481,54 +541,6 @@
 
       <div class="loadmore flex justify-center pt-2 pb-6">
         <button class="btn-outline inline-flex items-center gap-2 h-10 px-5 border border-line-2 rounded-full bg-surface text-[13px] font-bold text-ink shadow-card disabled:opacity-55 disabled:shadow-none" type="button" data-dcq-xem-them>Xem thêm</button>
-      </div>
-    </section>
-
-    <!-- ============ Gửi ảnh về GNM ============ -->
-    <!-- Bản mẫu: ảnh chọn xong chỉ xem trước tại chỗ, bấm gửi thì báo đã nhận. -->
-    <section class="dcq-gui shell w-full max-w-shell mx-auto px-4" id="gui-anh" aria-labelledby="dcqGuiTen">
-      <div class="dcq-gui__the">
-        <span class="dcq-gui__bieu" aria-hidden="true"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-anh"></use></svg></span>
-        <div class="dcq-gui__loi">
-        <h2 class="dcq-gui__ten" id="dcqGuiTen">Bạn có khoảnh khắc muốn chia sẻ?</h2>
-        <p class="dcq-gui__chu">Gửi ảnh cùng câu chuyện của bạn đến Dấu chân tôi qua.</p>
-        </div>
-        <button class="dcq-gui__nut dcq-gui__nut--mo" type="button" data-dcq-mo-khung><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-anh-them"></use></svg>Gửi ảnh của bạn</button>
-
-        <form class="dcq-gui__form" data-dcq-form hidden>
-          <label class="dcq-tai" data-dcq-tai>
-            <input class="sr-only" type="file" accept="image/*" data-dcq-tep>
-            <span class="dcq-tai__goi">
-              <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-camera"></use></svg>
-              <span class="dcq-tai__chinh">Chọn ảnh từ máy</span>
-              <span class="dcq-tai__phu">JPG hoặc PNG, tối đa 10MB</span>
-            </span>
-            <img class="dcq-tai__xem" alt="" data-dcq-xem hidden>
-            <span class="dcq-tai__doi" data-dcq-doi hidden>Đổi ảnh khác</span>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Tiêu đề ảnh</span>
-            <input type="text" maxlength="60" placeholder="Ví dụ: Một sớm trên mặt hồ" data-dcq-ten>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Nơi chụp</span>
-            <input type="text" maxlength="60" placeholder="Ví dụ: Hồ Ba Bể, Bắc Kạn" data-dcq-noi>
-          </label>
-
-          <label class="dcq-o">
-            <span class="dcq-o__nhan">Mô tả ngắn</span>
-            <textarea rows="3" maxlength="200" placeholder="Vài câu về khoảnh khắc này" data-dcq-mo></textarea>
-            <span class="dcq-o__dem" data-dcq-dem>0/200</span>
-          </label>
-
-          <div class="dcq-gui__hang">
-            <button class="dcq-gui__nut" type="submit">Gửi ảnh</button>
-            <button class="dcq-gui__huy" type="button" data-dcq-huy>Huỷ</button>
-          </div>
-          <p class="dcq-gui__luu-y">Mỗi tuần một khoảnh khắc được chọn xuất hiện ở trang chủ.</p>
-        </form>
       </div>
     </section>
   </main>

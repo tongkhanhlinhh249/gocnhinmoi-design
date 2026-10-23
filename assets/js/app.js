@@ -198,6 +198,11 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var nut = e.target.closest && e.target.closest('[data-them-nd]');
     if (!nut) return;
     e.preventDefault();
+    // Ô "đang nghĩ gì" trên thanh đầu web: vào thẳng trang viết bài, không hỏi lại.
+    if (nut.classList.contains('deskbar__compose')) {
+      location.href = 'viet-bai.html';
+      return;
+    }
     // Không bám vào nút (điện thoại, tablet) thì hiện dạng hộp thoại giữa màn.
     // Gắn trước khi mở để hộp hiện ra đúng dáng ngay từ đầu.
     var sh = document.getElementById('sheet');
@@ -4415,4 +4420,179 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (nut.getAttribute('aria-expanded') === 'true') gon(); else day();
   });
   gon();
+})();
+
+/* ================= Kính lúp trên thanh đầu web =================
+   Hộp tìm kiếm sổ xuống dưới thanh. Gõ là lọc luôn; Enter hoặc nút "Tìm" chốt
+   từ khoá: lưu vào "Tìm kiếm gần đây", đóng hộp và cuộn tới danh sách. */
+(function () {
+  var nut = document.querySelector('[data-desk-tim]');
+  var hop = document.getElementById('deskTim');
+  if (!nut || !hop) return;
+  var o = hop.querySelector('input');
+  var ds = hop.querySelector('.deskbar__tim-ds');
+  var KHOA = 'gnm-tim-gan-day';
+  var mau = ['Hà Nội', 'Du lịch Việt Nam'];
+
+  function doc() {
+    try {
+      var v = JSON.parse(localStorage.getItem(KHOA));
+      if (v && v.length) return v;
+    } catch (e) {}
+    return mau;
+  }
+  function ghi(v) {
+    try { localStorage.setItem(KHOA, JSON.stringify(v)); } catch (e) {}
+  }
+  function ve() {
+    ds.innerHTML = '';
+    doc().forEach(function (t) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('data-tim-goiy', t);
+      b.innerHTML = '<svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>';
+      b.appendChild(document.createTextNode(t));
+      li.appendChild(b);
+      ds.appendChild(li);
+    });
+  }
+  function dat(mo) {
+    hop.hidden = !mo;
+    nut.setAttribute('aria-expanded', mo ? 'true' : 'false');
+    if (mo) o.focus();
+  }
+  function datTu(v) {
+    o.value = v;
+    o.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  function chot() {
+    var v = o.value.trim();
+    if (v) {
+      var l = doc().filter(function (t) { return t.toLowerCase() !== v.toLowerCase(); });
+      l.unshift(v);
+      ghi(l.slice(0, 5));
+      ve();
+    }
+    dat(false);
+    var dsTin = document.querySelector('#feedSecondary, #feedPrimary, main > .feed');
+    if (dsTin) dsTin.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ----- Kết quả gợi ý: tối đa 3 bài liên quan nhất -----
+     Chỉ mục gom từ thẻ bài trên trang hiện tại và các trang chuyên mục, tải
+     một lần khi mở hộp lần đầu. */
+  var tieuDeGan = hop.querySelector('.deskbar__tim-tieude');
+  var kq = document.createElement('div');
+  kq.className = 'deskbar__tim-kq';
+  kq.hidden = true;
+  hop.appendChild(kq);
+  var chiMuc = null;
+  var NGUON = ['index.html', 'moi-nhat.html', 'hot-hom-nay.html', 'tra-dam.html',
+               'goc-mo.html', 'quan-diem.html', 'spotlight.html'];
+
+  function chuan(t) {
+    return (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+  }
+  function gomThe(docEl, ds, thay) {
+    [].forEach.call(docEl.querySelectorAll('article.card, .tophero__item'), function (the) {
+      var a = the.querySelector('.card__title a, .tophero__title a, h2 a, h3 a');
+      if (!a) return;
+      var ten = a.textContent.trim();
+      if (!ten || thay[chuan(ten)]) return;
+      thay[chuan(ten)] = 1;
+      var im = the.querySelector('.card__media img, .tophero__media img, img');
+      var tg = the.querySelector('.byline__name');
+      ds.push({
+        ten: ten,
+        khoa: chuan(ten),
+        tg: tg ? tg.textContent.trim() : '',
+        tgKhoa: chuan(tg ? tg.textContent : ''),
+        href: a.getAttribute('href') || 'bai-viet.html',
+        anh: im ? im.getAttribute('src') : ''
+      });
+    });
+  }
+  function layChiMuc() {
+    if (chiMuc) return chiMuc;
+    var ds = [], thay = {};
+    gomThe(document, ds, thay);
+    var hienTai = location.pathname.split('/').pop() || 'index.html';
+    chiMuc = Promise.all(NGUON.filter(function (f) { return f !== hienTai; }).map(function (f) {
+      return fetch(f).then(function (r) { return r.text(); }).then(function (h) {
+        gomThe(new DOMParser().parseFromString(h, 'text/html'), ds, thay);
+      }).catch(function () {});
+    })).then(function () { return ds; });
+    return chiMuc;
+  }
+  function diem(b, q, tu) {
+    var d = 0;
+    if (b.khoa.indexOf(q) === 0) d += 12;
+    else if (b.khoa.indexOf(q) !== -1) d += 8;
+    tu.forEach(function (t) {
+      if (b.khoa.indexOf(t) !== -1) d += 3;
+      else if (b.tgKhoa.indexOf(t) !== -1) d += 1;
+    });
+    return d;
+  }
+  function veKetQua() {
+    var q = chuan(o.value).trim();
+    var coTu = !!q;
+    kq.hidden = !coTu;
+    tieuDeGan.hidden = ds.hidden = coTu;
+    if (!coTu) return;
+    var tu = q.split(/\s+/);
+    layChiMuc().then(function (all) {
+      if (chuan(o.value).trim() !== q) return;   // người dùng đã gõ tiếp
+      var top = all.map(function (b) { return { b: b, d: diem(b, q, tu) }; })
+        .filter(function (x) { return x.d > 0; })
+        .sort(function (x, y) { return y.d - x.d; })
+        .slice(0, 3);
+      kq.innerHTML = '';
+      var t = document.createElement('p');
+      t.className = 'deskbar__tim-tieude';
+      t.textContent = top.length ? 'Kết quả liên quan' : 'Không tìm thấy kết quả cho "' + o.value.trim() + '"';
+      kq.appendChild(t);
+      if (!top.length) return;
+      var ul = document.createElement('ul');
+      ul.className = 'deskbar__tim-kq-ds';
+      top.forEach(function (x) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = x.b.href;
+        if (x.b.anh) {
+          var im = document.createElement('img');
+          im.src = x.b.anh; im.alt = ''; im.width = 56; im.height = 40;
+          a.appendChild(im);
+        }
+        var g = document.createElement('span');
+        var ten = document.createElement('strong');
+        ten.textContent = x.b.ten;
+        g.appendChild(ten);
+        a.appendChild(g);
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      kq.appendChild(ul);
+    });
+  }
+  o.addEventListener('input', veKetQua);
+
+  ve();
+  nut.addEventListener('click', function () { dat(hop.hidden); });
+  hop.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    chot();
+  });
+  hop.addEventListener('click', function (e) {
+    var g = e.target.closest('[data-tim-goiy]');
+    if (g) { datTu(g.getAttribute('data-tim-goiy')); chot(); return; }
+    if (e.target.closest('[data-desk-tim-xoa]')) { datTu(''); o.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (!hop.hidden && !hop.contains(e.target) && !nut.contains(e.target)) dat(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !hop.hidden) { dat(false); nut.focus(); }
+  });
 })();

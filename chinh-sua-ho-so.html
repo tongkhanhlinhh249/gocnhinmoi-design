@@ -263,21 +263,35 @@
       <a class="deskbar__logo" href="index.html" aria-label="Góc Nhìn Mới — về trang chủ">
         <img src="assets/img/logo-gnm.png" alt="Góc Nhìn Mới" width="108" height="32">
       </a>
-      <label class="deskbar__search">
-        <svg class="icon size-4 flex-none deskbar__ico" aria-hidden="true"><use href="#i-search"></use></svg>
-        <input class="deskbar__input" type="search" data-search placeholder="Tìm kiếm bài viết, tác giả, chủ đề..." aria-label="Tìm kiếm">
-      </label>
-      <button class="deskbar__write" type="button" data-them-nd aria-haspopup="menu">
-        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-cong"></use></svg>Thêm nội dung
+      <a class="deskbar__ava" href="ca-nhan.html" aria-label="Trang cá nhân của bạn"><img class="deskbar__compose-ava" src="assets/img/avatar-duc-anh.png" alt="" width="36" height="36"></a>
+      <button class="deskbar__compose" type="button" data-them-nd aria-label="Viết bài chia sẻ góc nhìn">
+        <svg class="icon size-4 flex-none deskbar__compose-but" aria-hidden="true"><use href="#i-pencil"></use></svg>
+        <span class="deskbar__compose-txt">Viết bài chia sẻ góc nhìn</span>
       </button>
       <div class="deskbar__cuoi">
-        <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
+        <button class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" type="button" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="deskTim" data-desk-tim>
+        <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+      <a class="icon-btn relative size-9 grid place-items-center rounded-full text-icon-dark transition-colors active:bg-surface-fill" href="thong-bao.html" aria-label="Thông báo" data-chuong>
         <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-bell"></use></svg>
         <span class="icon-btn__dot absolute top-[6px] left-[22px] size-2 rounded-full bg-primary-800" aria-hidden="true" hidden></span>
       </a>
       <a class="deskbar__toi" href="ca-nhan.html" aria-label="Trang cá nhân của bạn">
         <img src="assets/img/avatar-duc-anh.png" alt="" width="32" height="32">
       </a>
+      </div>
+      <div class="deskbar__tim" id="deskTim" hidden>
+        <form class="deskbar__tim-form" role="search" onsubmit="return false">
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input type="search" placeholder="Tìm bài viết, tác giả, chủ đề..." autocomplete="off" aria-label="Tìm kiếm" data-search>
+          <button class="deskbar__tim-xoa" type="button" aria-label="Xoá từ khoá" data-desk-tim-xoa><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-close"></use></svg></button>
+          <button class="deskbar__tim-tim" type="submit">Tìm</button>
+        </form>
+        <p class="deskbar__tim-tieude">Tìm kiếm gần đây</p>
+        <ul class="deskbar__tim-ds">
+          <li><button type="button" data-tim-goiy="Hà Nội"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Hà Nội</button></li>
+          <li><button type="button" data-tim-goiy="Du lịch Việt Nam"><svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-clock"></use></svg>Du lịch Việt Nam</button></li>
+        </ul>
       </div>
     </div>
 

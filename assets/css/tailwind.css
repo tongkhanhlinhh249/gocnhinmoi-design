@@ -784,3 +784,72 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .leading-\[33px\]{line-height:33px}
 .leading-\[34px\]{line-height:34px}
 @media (prefers-reduced-motion:reduce){.motion-reduce\:transition-none{transition-property:none}}
+
+/* Ô "đang nghĩ gì" trên thanh đầu web: thay ô tìm kiếm, bấm mở hộp Viết bài / Gửi ảnh */
+.deskbar__compose{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:0;border:0;border-radius:999px;background:none;box-shadow:none;text-align:left;cursor:pointer}
+.deskbar__compose-ava{flex:none;width:36px;height:36px;border-radius:999px;object-fit:cover}
+.deskbar__compose-txt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 16px;border-radius:999px;background:#F0F2F5;font-size:14px;line-height:20px;color:#65676B;transition:background-color .15s}
+.deskbar__compose:hover .deskbar__compose-txt{background:#E4E6EB}
+.deskbar__compose-ico{flex:none;width:24px;height:24px}
+.deskbar__compose-ico + .deskbar__compose-ico{margin-left:-2px}
+
+/* Nút kính lúp + hộp tìm kiếm sổ xuống trên thanh đầu web */
+.deskbar__tim{position:absolute;top:calc(100% - 4px);right:24px;z-index:70;width:min(420px,calc(100% - 32px));padding:12px 16px 8px;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(16,24,40,.16),0 0 0 1px rgba(16,24,40,.06)}
+.deskbar__tim[hidden]{display:none}
+.deskbar__tim-form{display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border:1px solid #E7E7E8;border-radius:999px;color:#8E8E93}
+.deskbar__tim-form:focus-within{border-color:#B80001}
+.deskbar__tim-form input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:14px;line-height:20px;color:#101828}
+.deskbar__tim-xoa{display:grid;place-items:center;width:24px;height:24px;border:0;border-radius:999px;background:none;color:#8E8E93;cursor:pointer}
+.deskbar__tim-tieude{padding:14px 4px 4px;font-size:13px;font-weight:700;line-height:18px;color:#65676B}
+.deskbar__tim-ds button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 4px;border:0;border-radius:8px;background:none;font-size:14px;line-height:20px;color:#1A1A1A;text-align:left;cursor:pointer}
+.deskbar__tim-ds button:hover{background:#F3F4F6}
+.deskbar__tim-form input::-webkit-search-cancel-button,.deskbar__tim-form input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
+.deskbar__tim-tim{flex:none;height:28px;padding:0 14px;margin-right:-6px;border:0;border-radius:999px;background:#B80001;font-size:13px;font-weight:700;line-height:20px;color:#fff;cursor:pointer}
+.deskbar__tim-tim:hover{background:#940809}
+.deskbar__tim-kq[hidden],.deskbar__tim [hidden]{display:none}
+.deskbar__tim-kq-ds a{display:flex;align-items:center;gap:12px;padding:8px 4px;border-radius:8px;color:#1A1A1A}
+.deskbar__tim-kq-ds a:hover{background:#F3F4F6}
+.deskbar__tim-kq-ds img{flex:none;width:56px;height:40px;border-radius:4px;object-fit:cover;background:#F3F4F6}
+.deskbar__tim-kq-ds span{min-width:0;display:flex;flex-direction:column;gap:2px}
+.deskbar__tim-kq-ds strong{font-size:14px;font-weight:600;line-height:19px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.deskbar__tim-kq-ds small{font-size:12px;line-height:16px;color:#8E8E93}
+
+/* Dấu chân tôi qua: "Gửi ảnh của bạn" là ô đầu tiên của lưới; bấm mở form dạng hộp thoại */
+.dcq-the[hidden]{display:none}
+.dcq-ds > .dcq-gui{align-self:stretch;display:grid;place-items:center;padding:0;border-radius:var(--r-card);background:#FFEFEF}
+.dcq-ds > .dcq-gui .dcq-gui__the:has(.dcq-gui__form[hidden]){display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 16px;background:none;text-align:center}
+.dcq-ds > .dcq-gui .dcq-gui__the:not(:has(.dcq-gui__form[hidden])){position:fixed;z-index:95;top:50%;left:50%;transform:translate(-50%,-50%);width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;border-radius:12px;background:#fff;box-shadow:0 0 0 100vmax rgba(16,24,40,.5)}
+
+/* Chọn ảnh xong: khung co giãn theo tỉ lệ ảnh để thấy đủ cả tấm (tối đa 60vh) */
+.dcq-tai.co-anh{min-height:0;padding:0;background:#F3F4F6}
+.dcq-tai.co-anh .dcq-tai__xem{position:static;display:block;width:100%;height:auto;max-height:min(60vh,420px);object-fit:contain}
+
+/* Ô "Gửi ảnh" trong lưới: viền nét đứt thay cho nền đỏ */
+.dcq-ds > .dcq-gui{background:none;border:1.5px dashed #E39A9B}
+.dcq-ds > .dcq-gui .dcq-gui__bieu{background:#FFEFEF}
+.dcq-ds > .dcq-gui:hover{border-color:#B80001}
+.dcq-ds > .dcq-gui .dcq-gui__the:has(.dcq-gui__form[hidden]) .dcq-gui__loi{width:100%;text-align:center}
+.dcq-ds > .dcq-gui .dcq-gui__the:has(.dcq-gui__form[hidden]) :is(.dcq-gui__ten,.dcq-gui__chu){text-align:center;margin-inline:auto}
+.dcq-ds > .dcq-gui .dcq-gui__the:has(.dcq-gui__form[hidden]) .dcq-gui__ten{justify-content:center}
+
+/* Ghi chú trong form gửi ảnh */
+.dcq-gui__ghi-chu{margin-bottom:16px;padding:12px 14px;border:1px solid #F0A5A5;border-radius:8px;background:#FFEFEF;font-size:12px;line-height:19px;color:#B80001}
+
+/* Trang Dấu chân tôi qua: nút "Viết bài" gọn ở header (nền trung tính), ô Gửi ảnh viền liền nhẹ */
+.deskbar__viet{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;background:#F3F4F6;font-size:13px;font-weight:700;line-height:20px;color:#1A1A1A;transition:background-color .15s}
+.deskbar__viet:hover{background:#E5E7EB}
+.deskbar__viet .icon{width:15px;height:15px}
+.dcq-ds > .dcq-gui{border:1px solid #F0C9C9}
+.dcq-ds > .dcq-gui:hover{border-color:#E39A9B}
+.dcq-ds > .dcq-gui{background:#FFF7F7;border-color:#F3D0D0}
+.dcq-ds > .dcq-gui:hover{border-color:#E8A9AA}
+.dcq-ds > .dcq-gui .dcq-gui__bieu{background:#FFE6E6}
+
+/* Header web: avatar đứng ngoài, ô "Viết bài chia sẻ góc nhìn" là nút mở trang viết bài */
+.deskbar__ava{flex:none;display:block}
+.deskbar__compose{height:40px;padding:0 16px;gap:10px;border-radius:999px;background:#F0F2F5;transition:background-color .15s}
+.deskbar__compose:hover{background:#E4E6EB}
+.deskbar__compose:focus-visible{outline:2px solid #B80001;outline-offset:2px}
+.deskbar__compose-but{width:16px;height:16px;color:#1A1A1A}
+.deskbar__compose-txt{padding:0;background:none;font-weight:700;color:#1A1A1A}
+.deskbar__compose:hover .deskbar__compose-txt{background:none}
