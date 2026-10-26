@@ -860,3 +860,13 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
   .v-web .deskbar .deskbar__compose,.v-web .deskbar .deskbar__ava,.v-web .deskbar .deskbar__viet{display:none}
   .v-web .deskbar .deskbar__cuoi{margin-left:auto}
 }
+
+/* Chân cột điều hướng: hàng tài khoản + nút đăng xuất */
+.v-web .desknav__me{padding:8px 6px 8px 10px;gap:6px}
+.v-web .desknav__me:hover{background:none}
+.v-web .desknav__me__lk{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:0;border-radius:10px}
+.v-web .desknav__me__lk>img{width:36px;height:36px;flex:none;border-radius:var(--r-pill);object-fit:cover}
+.v-web .desknav__me__lk:hover .desknav__me__name{color:var(--gnm-red)}
+.v-web .desknav__me__out{flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:var(--r-pill);background:none;color:var(--icon-grey);cursor:pointer;transition:background-color .15s,color .15s}
+.v-web .desknav__me__out:hover{background:#FFEFEF;color:var(--gnm-red)}
+.v-web .desknav__me__out .icon{width:16px;height:16px}

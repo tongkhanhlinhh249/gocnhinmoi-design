@@ -256,14 +256,18 @@
         <li><a class="desknav__link desknav__link--sub desknav__link--mute" href="#"><svg class="icon size-4 flex-none desknav__ico" aria-hidden="true"><use href="#i-settings"></use></svg>Cài đặt</a></li>
       </ul>
 
-      <a class="desknav__me" href="ca-nhan.html">
-        <img src="assets/img/avatar-duc-anh.png" alt="" width="36" height="36" loading="lazy">
-        <span class="desknav__me__body">
+      <div class="desknav__me">
+        <a class="desknav__me__lk" href="ca-nhan.html">
+          <img src="assets/img/avatar-duc-anh.png" alt="" width="36" height="36" loading="lazy">
+          <span class="desknav__me__body">
           <span class="desknav__me__name">Đức Anh</span>
           <span class="desknav__me__handle">@ducanh</span>
         </span>
-        <svg class="icon size-4 flex-none desknav__me__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-      </a>
+        </a>
+        <button class="desknav__me__out" type="button" data-dang-xuat aria-label="Đăng xuất" title="Đăng xuất">
+          <svg class="icon size-4 flex-none" aria-hidden="true"><use href="#i-logout"></use></svg>
+        </button>
+      </div>
     </div>
   </aside>
   <main id="main" data-thu-tu="chot">
@@ -1359,6 +1363,16 @@
 </div>
 
 <div class="toast fixed left-1/2 z-[80] px-4 py-[10px] rounded-full text-surface text-[13px] opacity-0 pointer-events-none" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ Dialog xác nhận ============ -->
+<div class="dialog fixed inset-0 z-[95]" id="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogText" hidden>
+  <div class="dialog__backdrop absolute inset-0 opacity-0 transition-opacity" data-dialog-close></div>
+  <div class="dialog__panel absolute left-[50%] top-[50%] p-5 rounded-lg bg-surface opacity-0">
+    <h2 class="text-base font-extrabold leading-[24px] text-ink" id="dialogTitle"></h2>
+    <p class="pt-2 text-[13px] leading-[20px] text-ink-action" id="dialogText"></p>
+    <div class="grid gap-2 pt-[18px]" id="dialogActions"></div>
+  </div>
+</div>
 
 <script src="assets/js/app.js"></script></body>
 </html>
