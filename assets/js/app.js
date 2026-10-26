@@ -198,8 +198,8 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     var nut = e.target.closest && e.target.closest('[data-them-nd]');
     if (!nut) return;
     e.preventDefault();
-    // Ô "đang nghĩ gì" trên thanh đầu web: vào thẳng trang viết bài, không hỏi lại.
-    if (nut.classList.contains('deskbar__compose')) {
+    // Ô viết bài trên thanh đầu web và nút + ở thanh tab dưới: vào thẳng trang viết bài, không hỏi lại.
+    if (nut.classList.contains('deskbar__compose') || nut.classList.contains('nav-write')) {
       location.href = 'viet-bai.html';
       return;
     }
