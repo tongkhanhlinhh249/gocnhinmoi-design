@@ -379,10 +379,10 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   function dangXuat() {
     moHopChung(
       'Đăng xuất khỏi Góc Nhìn Mới?',
-      'Bản nháp của bạn vẫn được giữ lại. Bạn có thể đăng nhập lại bất cứ lúc nào.',
+      'Bạn có thể đăng nhập lại bất cứ lúc nào.',
       [
-        { label: 'Đăng xuất', kind: 'brand', run: function () { toast('Đã đăng xuất'); } },
-        { label: 'Ở lại', kind: 'outline' }
+        { label: 'Hủy', kind: 'outline' },
+        { label: 'Đăng xuất', kind: 'brand', run: function () { toast('Đã đăng xuất'); } }
       ]
     );
   }
