@@ -4596,3 +4596,17 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
     if (e.key === 'Escape' && !hop.hidden) { dat(false); nut.focus(); }
   });
 })();
+
+/* ================= Trang Tác giả nổi bật: "Xem thêm" ================= */
+(function () {
+  var nut = document.querySelector('[data-tg-xem-them]');
+  if (!nut) return;
+  var BUOC = 12;
+  function conAn() { return document.querySelectorAll('[data-tg-them][hidden]'); }
+  function capNhat() { if (!conAn().length) nut.hidden = true; }
+  nut.addEventListener('click', function () {
+    [].slice.call(conAn(), 0, BUOC).forEach(function (e) { e.hidden = false; });
+    capNhat();
+  });
+  capNhat();
+})();

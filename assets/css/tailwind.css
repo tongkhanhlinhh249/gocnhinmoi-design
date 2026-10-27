@@ -870,3 +870,24 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .v-web .desknav__me__out{flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:var(--r-pill);background:none;color:var(--icon-grey);cursor:pointer;transition:background-color .15s,color .15s}
 .v-web .desknav__me__out:hover{background:#FFEFEF;color:var(--gnm-red)}
 .v-web .desknav__me__out .icon{width:16px;height:16px}
+
+/* Trang Tác giả nổi bật: lưới thẻ tác giả */
+.tg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:744px){.v-web .tg-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.tg-card{display:flex;flex-direction:column;align-items:center;padding:20px 12px 14px;border-radius:12px;background:#fff;box-shadow:var(--sh-card)}
+.tg-card__lk{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;min-width:0;text-align:center}
+.tg-card__ava{width:72px;height:72px;margin-bottom:8px;border-radius:999px;object-fit:cover;background:#F3F4F6}
+.tg-card__ten{display:flex;align-items:center;justify-content:center;gap:4px;max-width:100%;font-size:14px;font-weight:700;line-height:20px;color:#101828}
+.tg-card__ten>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tg-card__ten .icon{width:14px;height:14px;flex:none}
+.tg-card__so{font-size:12px;line-height:18px;color:#8E8E93;font-variant-numeric:tabular-nums}
+.tg-card__lk:hover .tg-card__ten{color:#B80001}
+.tg-card__follow{margin-top:auto;width:100%;padding:7px 12px;border:0;border-radius:999px;background:#FDECEE;font-size:12px;font-weight:700;line-height:18px;color:#B80001;cursor:pointer;transition:background-color .15s}
+.tg-card__lk+.tg-card__follow{margin-top:14px}
+.tg-card__follow:hover{background:#FAD9DD}
+.tg-card__follow[aria-pressed="true"]{background:#F3F4F6;color:#4B5563}
+.tg-card[hidden]{display:none}
+.tg-card{transition:background-color .15s}
+.tg-card:hover{background:#FFF3F3}
+.tg-card:hover .tg-card__follow[aria-pressed="false"]{background:#FADADD}
+.tg-card:hover .tg-card__follow[aria-pressed="true"]{background:#E9EBEF}
