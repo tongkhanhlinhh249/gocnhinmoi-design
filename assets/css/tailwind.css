@@ -891,3 +891,12 @@ body.is-header-hidden{--stick-top:env(safe-area-inset-top)}
 .tg-card:hover{background:#FFF3F3}
 .tg-card:hover .tg-card__follow[aria-pressed="false"]{background:#FADADD}
 .tg-card:hover .tg-card__follow[aria-pressed="true"]{background:#E9EBEF}
+
+/* Nghe & Xem — Tin nổi bật: một thẻ lớn, là bài xuất bản mới nhất (video hero hoặc podcast banner) */
+.tin-nb>li[hidden]{display:none}
+.tin-nb>li{width:100%}
+.tin-nb>li.vcard{aspect-ratio:368/225}
+.tin-nb>.tin-nb__pod{aspect-ratio:368/225;border-radius:var(--r-md);overflow:hidden}
+.tin-nb .pod-banner{display:block;width:100%;height:100%;aspect-ratio:auto}
+.tin-nb .pod-banner img{width:100%;height:100%;object-fit:cover}
+@media (min-width:744px){.v-web .tin-nb>li.vcard,.v-web .tin-nb>.tin-nb__pod{aspect-ratio:16/9}}

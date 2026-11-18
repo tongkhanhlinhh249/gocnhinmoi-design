@@ -4610,3 +4610,16 @@ window.GNM_TAC_GIA = {"dang-khoa":{"name":"Đăng Khoa","avatar":"avatar-dang-kh
   });
   capNhat();
 })();
+
+/* ================= Nghe & Xem: Tin nổi bật = bài xuất bản mới nhất =================
+   Giống khối tin nổi bật ở các trang cấp 1: chỉ một thẻ lớn, luôn là bài mới nhất.
+   Mỗi nguồn khai báo thời điểm xuất bản ở data-pub. */
+(function () {
+  var ds = document.querySelector('[data-tin-noi-bat]');
+  if (!ds) return;
+  var the = [].slice.call(ds.children);
+  var moi = the.reduce(function (a, b) {
+    return Date.parse(b.getAttribute('data-pub')) > Date.parse(a.getAttribute('data-pub')) ? b : a;
+  }, the[0]);
+  the.forEach(function (e) { e.hidden = e !== moi; });
+})();
